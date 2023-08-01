@@ -7,15 +7,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -168.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 276.0
-offset_top = 92.0
-offset_right = 916.0
-offset_bottom = 572.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 642.0
+offset_bottom = 483.0
 texture = ExtResource("1_or8su")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -25,10 +27,10 @@ anchor_left = 0.424
 anchor_top = 0.421
 anchor_right = 0.424
 anchor_bottom = 0.421
-offset_left = 60.552
-offset_top = 134.192
-offset_right = 202.552
-offset_bottom = 219.192
+offset_left = 6.63998
+offset_top = 119.92
+offset_right = 148.64
+offset_bottom = 204.92
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true

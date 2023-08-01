@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://2k0uvag8l5tm"]
+[gd_scene load_steps=2 format=3 uid="uid://2k0uvag8l5tm"]
+
+[ext_resource type="Texture2D" uid="uid://bgeqhuovd8x2w" path="res://art/introscreen/intro_screen_large.png" id="1_or8su"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -8,19 +10,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 92.0
+offset_right = 916.0
+offset_bottom = 572.0
+texture = ExtResource("1_or8su")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -33.0
-offset_right = 55.0
-offset_bottom = 33.0
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.421
+anchor_right = 0.424
+anchor_bottom = 0.421
+offset_left = 60.552
+offset_top = 134.192
+offset_right = 202.552
+offset_bottom = 219.192
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

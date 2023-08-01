@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgeqhuovd8x2w"
-path="res://.godot/imported/intro_screen_large.png-f5192a677be6409da5bd714bd0cbe91f.ctex"
+uid="uid://b1g3qeamg2wwd"
+path="res://.godot/imported/snow_way_home.png-43ed245f1cb8ab23446237e3a5d5df4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/introscreen/intro_screen_large.png"
-dest_files=["res://.godot/imported/intro_screen_large.png-f5192a677be6409da5bd714bd0cbe91f.ctex"]
+source_file="res://art/storyboarding/snow_way_home.png"
+dest_files=["res://.godot/imported/snow_way_home.png-43ed245f1cb8ab23446237e3a5d5df4b.ctex"]
 
 [params]
 

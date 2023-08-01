@@ -1,18 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://qhu4pswy7baj"]
 
 [ext_resource type="Script" path="res://scenes/snowball/snowball_TD/Snowball_TD.cs" id="1_cmm3a"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n144g"]
+[ext_resource type="Texture2D" uid="uid://5pft6r46gtd7" path="res://art/character/snowball_32x32.png" id="2_k3yrp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
-radius = 62.2013
+radius = 16.2788
 
 [node name="Snowball_TD" type="CharacterBody2D"]
+position = Vector2(269, 182)
 script = ExtResource("1_cmm3a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(124.75, 124.75)
-texture = SubResource("PlaceholderTexture2D_n144g")
+texture = ExtResource("2_k3yrp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4jxrl")

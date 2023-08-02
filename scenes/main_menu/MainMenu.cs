@@ -12,4 +12,12 @@ public partial class MainMenu : Control
 	public override void _Process(double delta)
 	{
 	}
+
+	private void _on_start_button_pressed()
+	{
+		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+		//Todo: update this to use a save slot screen
+		sceneManager.GotoScene("res://scenes/levels/level1/Level_1.tscn");
+	}
+
 }

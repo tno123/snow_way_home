@@ -8,8 +8,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -512.0
-offset_bottom = -168.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6lole")
@@ -53,3 +51,5 @@ text = "Hello"
 layout_mode = 2
 focus_mode = 0
 text = "Button 2"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

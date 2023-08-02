@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://qhu4pswy7baj"]
+[gd_scene load_steps=4 format=3 uid="uid://qhu4pswy7baj"]
 
 [ext_resource type="Texture2D" uid="uid://bsu2xcd1s2ixt" path="res://art/character/snowball_64x64.png" id="1_h1lvw"]
+[ext_resource type="Script" path="res://scenes/snowball/snowball_side/Snowball_Side.cs" id="1_hi0j4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
-radius = 16.2788
+radius = 32.0156
 
 [node name="Snowball_side" type="CharacterBody2D"]
 position = Vector2(269, 182)
+script = ExtResource("1_hi0j4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_h1lvw")

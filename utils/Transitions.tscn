@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpga1f1wqte48"]
+[gd_scene load_steps=20 format=3 uid="uid://bmahbldyxo1ex"]
 
 [ext_resource type="Texture2D" uid="uid://djgs5g4axxixs" path="res://art/ui/transition_sphere/transition_sphere1.png" id="1_snkyh"]
 [ext_resource type="Texture2D" uid="uid://chenmnbxmrrgg" path="res://art/ui/transition_sphere/transition_sphere2.png" id="2_jr01q"]
@@ -83,6 +83,8 @@ _data = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_hp4h4")
+frame = 15
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

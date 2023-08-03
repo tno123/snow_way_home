@@ -35,5 +35,6 @@ public partial class Snowball_Side : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+
 	}
 }

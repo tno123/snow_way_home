@@ -10,6 +10,7 @@ radius = 32.0156
 
 [node name="Snowball_side" type="CharacterBody2D"]
 position = Vector2(269, 182)
+collision_mask = 2
 script = ExtResource("1_hi0j4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

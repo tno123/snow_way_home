@@ -25,11 +25,6 @@ Globals="*res://utils/Globals.cs"
 window/size/viewport_width=640
 window/size/viewport_height=480
 
-[display]
-
-window/size/viewport_width=640
-window/size/viewport_height=480
-
 [dotnet]
 
 project/assembly_name="Snow Way Home"

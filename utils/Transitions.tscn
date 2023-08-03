@@ -1,0 +1,90 @@
+[gd_scene load_steps=20 format=3 uid="uid://bpga1f1wqte48"]
+
+[ext_resource type="Texture2D" uid="uid://djgs5g4axxixs" path="res://art/ui/transition_sphere/transition_sphere1.png" id="1_snkyh"]
+[ext_resource type="Texture2D" uid="uid://chenmnbxmrrgg" path="res://art/ui/transition_sphere/transition_sphere2.png" id="2_jr01q"]
+[ext_resource type="Texture2D" uid="uid://boo7oq1ywyfb8" path="res://art/ui/transition_sphere/transition_sphere3.png" id="3_5mgd3"]
+[ext_resource type="Texture2D" uid="uid://4xihedhh0h2u" path="res://art/ui/transition_sphere/transition_sphere4.png" id="4_pi1ic"]
+[ext_resource type="Texture2D" uid="uid://bcqs6rjr5kpt4" path="res://art/ui/transition_sphere/transition_sphere5.png" id="5_0o4wj"]
+[ext_resource type="Texture2D" uid="uid://cqjtncqn7jb2i" path="res://art/ui/transition_sphere/transition_sphere6.png" id="6_4uotq"]
+[ext_resource type="Texture2D" uid="uid://cx78lhup0ux0" path="res://art/ui/transition_sphere/transition_sphere7.png" id="7_d3wnw"]
+[ext_resource type="Texture2D" uid="uid://8rven44rbmjw" path="res://art/ui/transition_sphere/transition_sphere8.png" id="8_uagm2"]
+[ext_resource type="Texture2D" uid="uid://bw85tnueckxbb" path="res://art/ui/transition_sphere/transition_sphere9.png" id="9_oqt50"]
+[ext_resource type="Texture2D" uid="uid://hhvcsmj48tti" path="res://art/ui/transition_sphere/transition_sphere10.png" id="10_cjkfx"]
+[ext_resource type="Texture2D" uid="uid://jfgnm1dl7cgc" path="res://art/ui/transition_sphere/transition_sphere11.png" id="11_q644n"]
+[ext_resource type="Texture2D" uid="uid://rqn8nxwgt35j" path="res://art/ui/transition_sphere/transition_sphere12.png" id="12_imtc1"]
+[ext_resource type="Texture2D" uid="uid://c54v11fmyjedj" path="res://art/ui/transition_sphere/transition_sphere13.png" id="13_oe6gj"]
+[ext_resource type="Texture2D" uid="uid://bv45ougl37k28" path="res://art/ui/transition_sphere/transition_sphere14.png" id="14_d5s1p"]
+[ext_resource type="Texture2D" uid="uid://c0ao4i6cl3kvn" path="res://art/ui/transition_sphere/transition_sphere15.png" id="15_ej7ij"]
+[ext_resource type="Texture2D" uid="uid://ch7410ybwcm6h" path="res://art/ui/transition_sphere/transition_sphere16.png" id="16_1d6t1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp4h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_snkyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jr01q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5mgd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pi1ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0o4wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4uotq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d3wnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uagm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oqt50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cjkfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q644n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_imtc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_oe6gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d5s1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ej7ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1d6t1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_781uc"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dsjkh"]
+_data = {
+"new_animation": SubResource("Animation_781uc")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hp4h4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dsjkh")
+}

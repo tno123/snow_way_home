@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Snowball_Side : CharacterBody2D
+public partial class Snowball : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;

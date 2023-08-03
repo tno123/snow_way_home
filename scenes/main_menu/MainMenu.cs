@@ -22,7 +22,7 @@ public partial class MainMenu : Control
 	{
 		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		//Todo: update this to use a save slot screen
-		sceneManager.GotoScene("res://scenes/levels/level1/Level_1.tscn");
+		sceneManager.GotoScene("res://scenes/levels/templevel/TempLevel.tscn");
 	}
 	
 	public override void _Process(double delta)

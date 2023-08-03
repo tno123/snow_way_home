@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 
-public partial class Level_1 : Node
+public partial class TempLevel : Node
 {
 	
 	// Called when the node enters the scene tree for the first time.

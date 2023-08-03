@@ -60,5 +60,6 @@ texture = ExtResource("3_lo6h0")
 
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
+[connection signal="pressed" from="Start" to="." method="_on_start_button_pressed"]
 [connection signal="button_down" from="Options" to="." method="_on_options_button_down"]
 [connection signal="button_up" from="Options" to="." method="_on_options_button_up"]

@@ -1,5 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://chx0rltnxnyvl"]
 
+[ext_resource type="Script" path="res://scenes/levels/level1/Level_1.cs" id="1_0y3xi"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="1_4oegx"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/snowball_side/Snowball_side.tscn" id="2_fwtmb"]
 
@@ -224,6 +225,7 @@ terrain_set_0/terrain_1/color = Color(0.47451, 0.615686, 0.917647, 1)
 sources/2 = SubResource("TileSetAtlasSource_usblf")
 
 [node name="Level_1" type="Node"]
+script = ExtResource("1_0y3xi")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vxx7b")
@@ -232,3 +234,5 @@ layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 32768
 
 [node name="Snowball_side" parent="." instance=ExtResource("2_fwtmb")]
 position = Vector2(73, 243)
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://2k0uvag8l5tm"]
+[gd_scene load_steps=7 format=3 uid="uid://2k0uvag8l5tm"]
 
 [ext_resource type="Texture2D" uid="uid://12n3bc8wv233" path="res://art/introscreen/introscreen.png" id="1_n1f1p"]
 [ext_resource type="Script" path="res://scenes/main_menu/MainMenu.cs" id="1_v54ta"]
 [ext_resource type="Texture2D" uid="uid://doy6gokr7rwgq" path="res://art/ui/startbutton.png" id="2_m4dlg"]
 [ext_resource type="Texture2D" uid="uid://ckt8ni4qn0anp" path="res://art/ui/optionsbutton.png" id="3_lo6h0"]
+[ext_resource type="PackedScene" uid="uid://cl26evrs1n8k1" path="res://scenes/levels/level1/Level_1.tscn" id="4_dnbh2"]
+[ext_resource type="PackedScene" uid="uid://dh32dethkkqwm" path="res://utils/Transitions.tscn" id="4_s5p2y"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("transitions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v54ta")
+transitions = NodePath("Start/Transitions")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -32,12 +35,21 @@ offset_bottom = 353.0
 tooltip_text = "
 "
 focus_mode = 0
-metadata/_edit_group_ = true
+
+[node name="Transitions" parent="Start" instance=ExtResource("4_s5p2y")]
+layout_mode = 1
+offset_left = 51.0
+offset_top = -1.0
+offset_right = 51.0
+offset_bottom = -1.0
+scale = Vector2(1.00632, 1.01012)
+scene_to_load = ExtResource("4_dnbh2")
 
 [node name="StartTexture" type="TextureRect" parent="Start"]
 layout_mode = 0
+offset_left = 1.0
 offset_top = -1.0
-offset_right = 160.0
+offset_right = 161.0
 offset_bottom = 52.0
 texture = ExtResource("2_m4dlg")
 

@@ -7,6 +7,9 @@ public partial class MainMenu : Control
 	Texture2D StartUnselected;
 	Texture2D OptionsSelected;
 	Texture2D OptionsUnselected;
+	
+	[Export]
+	public Transitions transitions;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,24 +20,27 @@ public partial class MainMenu : Control
 		OptionsUnselected = (Texture2D)ResourceLoader.Load("res://art/ui/optionsbutton.png");
 	}
 
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	private void _on_start_button_pressed()
-	{
-		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
-		//Todo: update this to use a save slot screen
-		sceneManager.GotoScene("res://scenes/levels/templevel/TempLevel.tscn");
-	}
 	
 	public override void _Process(double delta)
 	{
+	}
+	private void _on_start_button_pressed()
+	{
+		
+		transitions.SetNextAnimation("fade_out");
+		GetNode<TextureRect>("Start/StartTexture").Visible=false;
+		GetNode<TextureRect>("Options/OptionsTexture").Visible=false;
+		//var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+		//Todo: update this to use a save slot screen
+		//sceneManager.GotoScene("res://scenes/levels/level1/Level_1.tscn");
 	}
 	private void _on_start_button_down()
 	{
 		var StartButtonTexture = GetNode<TextureRect>("Start/StartTexture");
 		StartButtonTexture.Texture = StartSelected;	
-	
 	}
-	
 	
 	private void _on_start_button_up()
 	{
@@ -54,17 +60,3 @@ public partial class MainMenu : Control
 		OptionsButtonTexture.Texture = OptionsUnselected;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

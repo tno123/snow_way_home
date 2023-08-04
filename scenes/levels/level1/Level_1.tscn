@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cl26evrs1n8k1"]
+[gd_scene load_steps=11 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/level1/Level_1.cs" id="1_4kpna"]
-[ext_resource type="PackedScene" uid="uid://dh32dethkkqwm" path="res://utils/Transitions.tscn" id="2_dodqk"]
+[ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="2_dodqk"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
-[ext_resource type="PackedScene" uid="uid://bggy0fpp65axq" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
+[ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
 [ext_resource type="Texture2D" uid="uid://bfcb3ls0nk3l2" path="res://assets/Rocky Roads/Deco/clouds.png" id="4_beakr"]
 [ext_resource type="Texture2D" uid="uid://dhleo2ir0uxoa" path="res://assets/Rocky Roads/Backgrounds/desert_b.png" id="5_utll2"]
 
@@ -192,6 +192,7 @@ texture_region_size = Vector2i(64, 64)
 7:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 7:5/0/physics_layer_1/angular_velocity = 0.0
 7:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+7:5/0/custom_data_0 = true
 8:5/0 = 0
 8:5/0/terrain_set = 0
 8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -199,6 +200,7 @@ texture_region_size = Vector2i(64, 64)
 8:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 8:5/0/physics_layer_1/angular_velocity = 0.0
 8:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+8:5/0/custom_data_0 = true
 9:5/0 = 0
 9:5/0/terrain_set = 0
 9:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -206,6 +208,7 @@ texture_region_size = Vector2i(64, 64)
 9:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 9:5/0/physics_layer_1/angular_velocity = 0.0
 9:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+9:5/0/custom_data_0 = true
 10:5/0 = 0
 10:5/0/terrain_set = 0
 10:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -213,6 +216,7 @@ texture_region_size = Vector2i(64, 64)
 10:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 10:5/0/physics_layer_1/angular_velocity = 0.0
 10:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+10:5/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_vxx7b"]
 tile_size = Vector2i(64, 64)
@@ -225,6 +229,8 @@ terrain_set_0/terrain_0/name = "Normal"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Ice"
 terrain_set_0/terrain_1/color = Color(0.47451, 0.615686, 0.917647, 1)
+custom_data_layer_0/name = "Ice"
+custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_usblf")
 
 [node name="Level_1" type="Node" node_paths=PackedStringArray("transitions")]

@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/main_menu/MainMenu.cs" id="1_v54ta"]
 [ext_resource type="Texture2D" uid="uid://doy6gokr7rwgq" path="res://art/ui/startbutton.png" id="2_m4dlg"]
 [ext_resource type="Texture2D" uid="uid://ckt8ni4qn0anp" path="res://art/ui/optionsbutton.png" id="3_lo6h0"]
-[ext_resource type="PackedScene" uid="uid://cl26evrs1n8k1" path="res://scenes/levels/level1/Level_1.tscn" id="4_dnbh2"]
-[ext_resource type="PackedScene" uid="uid://dh32dethkkqwm" path="res://utils/Transitions.tscn" id="4_s5p2y"]
+[ext_resource type="PackedScene" uid="uid://dfrhscokjxy7t" path="res://scenes/levels/level1/Level_1.tscn" id="4_dnbh2"]
+[ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_s5p2y"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("transitions")]
 layout_mode = 3

@@ -241,16 +241,7 @@ position = Vector2(73, 243)
 
 [node name="Camera2D" type="Camera2D" parent="Snowball"]
 
-[node name="Transitions" parent="." instance=ExtResource("2_dodqk")]
-visible = false
-offset_left = 37.0
-offset_top = 262.0
-offset_right = -526.0
-offset_bottom = -160.0
-scene_switch_anim = "fade_in"
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.8, 0.8)
@@ -266,3 +257,10 @@ texture = ExtResource("5_utll2")
 position = Vector2(341, 205)
 scale = Vector2(5.23438, 3.14844)
 texture = ExtResource("4_beakr")
+
+[node name="Transitions" parent="." instance=ExtResource("2_dodqk")]
+offset_left = 37.0
+offset_top = 262.0
+offset_right = 37.0
+offset_bottom = 262.0
+scene_switch_anim = "fade_in"

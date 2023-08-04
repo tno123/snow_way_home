@@ -21,3 +21,13 @@ sprite_frames = SubResource("SpriteFrames_677wc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4jxrl")
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="NextJumpTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true

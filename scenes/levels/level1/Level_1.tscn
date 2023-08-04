@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=8 format=3 uid="uid://cl26evrs1n8k1"]
 
 [ext_resource type="Script" path="res://scenes/levels/level1/Level_1.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
-[ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
+[ext_resource type="PackedScene" uid="uid://bggy0fpp65axq" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb5f6"]
 

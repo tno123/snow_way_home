@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/main_menu/MainMenu.cs" id="1_v54ta"]
 [ext_resource type="Texture2D" uid="uid://doy6gokr7rwgq" path="res://art/ui/startbutton.png" id="2_m4dlg"]
 [ext_resource type="Texture2D" uid="uid://ckt8ni4qn0anp" path="res://art/ui/optionsbutton.png" id="3_lo6h0"]
-[ext_resource type="PackedScene" uid="uid://y3oh4i1bgph" path="res://utils/Transitions.tscn" id="5_url6f"]
-[ext_resource type="PackedScene" uid="uid://chx0rltnxnyvl" path="res://scenes/levels/level1/Level_1.tscn" id="6_5dn7i"]
+[ext_resource type="PackedScene" uid="uid://cl26evrs1n8k1" path="res://scenes/levels/level1/Level_1.tscn" id="4_dnbh2"]
+[ext_resource type="PackedScene" uid="uid://dh32dethkkqwm" path="res://utils/Transitions.tscn" id="4_s5p2y"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("transitions")]
 layout_mode = 3
@@ -28,37 +28,28 @@ texture = ExtResource("1_n1f1p")
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 2
-anchor_left = 0.205
-anchor_top = 0.633
-anchor_right = 0.205
-anchor_bottom = 0.633
-offset_left = -0.200012
-offset_top = 0.160004
-offset_right = 158.8
-offset_bottom = 49.16
+offset_left = 131.0
+offset_top = 304.0
+offset_right = 290.0
+offset_bottom = 353.0
 tooltip_text = "
 "
 focus_mode = 0
 
-[node name="Transitions" parent="Start" instance=ExtResource("5_url6f")]
+[node name="Transitions" parent="Start" instance=ExtResource("4_s5p2y")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.006
-anchor_top = 0.02
-anchor_right = 0.006
-anchor_bottom = 0.02
-offset_left = 0.0459999
-offset_top = -1.98
-offset_right = 159.046
-offset_bottom = 49.02
-grow_horizontal = 1
-grow_vertical = 1
-scene_to_load = ExtResource("6_5dn7i")
+offset_left = 51.0
+offset_top = -1.0
+offset_right = 51.0
+offset_bottom = -1.0
+scale = Vector2(1.00632, 1.01012)
+scene_to_load = ExtResource("4_dnbh2")
 
 [node name="StartTexture" type="TextureRect" parent="Start"]
 layout_mode = 0
+offset_left = 1.0
 offset_top = -1.0
-offset_right = 160.0
+offset_right = 161.0
 offset_bottom = 52.0
 texture = ExtResource("2_m4dlg")
 

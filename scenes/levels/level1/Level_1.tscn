@@ -245,7 +245,8 @@ layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 32768
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
 position = Vector2(73, 243)
 
-[node name="Camera2D" type="Camera2D" parent="Snowball"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Transitions" parent="." instance=ExtResource("2_dodqk")]
 visible = false
@@ -272,3 +273,10 @@ texture = ExtResource("5_utll2")
 position = Vector2(341, 205)
 scale = Vector2(5.23438, 3.14844)
 texture = ExtResource("4_beakr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(73, 243)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

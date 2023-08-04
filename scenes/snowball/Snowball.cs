@@ -6,14 +6,18 @@ public partial class Snowball : CharacterBody2D
 	[Export]
 	public float IceSpeed = 10.0f;
 
+	[Export]
+	public float CoyoteTime = 0.1f;
+
+	[Export]
+	public float NextJumpTime = 0.1f;
+
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
+	public TileMap tileMap;
 
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
-
-	public TileMap tileMap;
-	
 	private Vector2 velocity = Vector2.Zero;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -23,6 +27,8 @@ public partial class Snowball : CharacterBody2D
 	{
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
+		CoyoteJumpTimer.WaitTime = CoyoteTime;
+		NextJumpTimer.WaitTime = NextJumpTime;
 	}
 
 	public override void _PhysicsProcess(double delta)

@@ -18,7 +18,7 @@ public partial class TempLevel : Node
 		camera = GetNode<Camera2D>("Camera2D");
 		snowball = GetNode<CharacterBody2D>("Snowball");
 		transition.SetNextAnimation("fade_in");
-		currentScenePath = "res://scenes/levels/templevel/tempLevel.tscn";
+		currentScenePath = "res://scenes/levels/templevel/TempLevel.tscn";
 	
 		
 	}

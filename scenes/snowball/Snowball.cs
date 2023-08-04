@@ -19,6 +19,8 @@ public partial class Snowball : CharacterBody2D
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
 	private Vector2 velocity = Vector2.Zero;
+	private bool WasOnFloor = false;
+	private bool IsOnIce = false;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -34,8 +36,8 @@ public partial class Snowball : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		tileMap = GetParent().GetNode<TileMap>("TileMap");
-		bool IsOnIce = false;
-		bool WasOnFloor = IsOnFloor();
+		IsOnIce = false;
+		WasOnFloor = IsOnFloor();
 
 		velocity = Velocity;
 
@@ -79,12 +81,18 @@ public partial class Snowball : CharacterBody2D
 	void HandleJump() {
 		// Handle Jump, Coyote Jump, and Next Jump
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor() ||
-			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)// ||
-			//!IsOnFloor() && Input.IsActionJustPressed("ui_accept") && NextJumpTimer.TimeLeft == 0)
+			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)
 		{
 			//NextJumpTimer.Start();
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
+			NextJumpTimer.Start();
+		}
+		
+		if (Input.IsActionJustPressed("ui_accept") && !IsOnFloor() && NextJumpTimer.IsStopped())
+		{
+			NextJumpTimer.Start();
+			velocity.Y = JumpVelocity;
 		}
 	}
 

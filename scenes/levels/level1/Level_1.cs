@@ -10,7 +10,7 @@ public partial class Level_1 : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
+		transitions.SetNextAnimation("fade_in");
 		//var StartButtonTexture = GetNode<Area2D>("Start/StartTexture");
 	}
 
@@ -20,7 +20,7 @@ public partial class Level_1 : Node
 	}
 	public void _on_body_entered(Node2D body)
 	{
-
+		
 		transitions.SetNextAnimation("fade_out");
 	}
 	

@@ -13,6 +13,8 @@ public partial class Snowball : CharacterBody2D
 	private Timer NextJumpTimer;
 
 	public TileMap tileMap;
+	
+	private Vector2 velocity = Vector2.Zero;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -28,22 +30,14 @@ public partial class Snowball : CharacterBody2D
 		tileMap = GetParent().GetNode<TileMap>("TileMap");
 		bool IsOnIce = false;
 		bool WasOnFloor = IsOnFloor();
-		bool Jumped = false;
 
-		Vector2 velocity = Velocity;
+		velocity = Velocity;
 
 		// Add the gravity.
-		if (!IsOnFloor()) 
-		{
-			velocity.Y += gravity * (float)delta;
-		}
+		ApplyGravity((float)delta);
 
 		// Handle Jump, Coyote Jump, and Next Jump
-		if (HandleJump()) 
-		{
-			velocity.Y = JumpVelocity;
-			Jumped = true;
-		}
+		HandleJump();
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -64,7 +58,7 @@ public partial class Snowball : CharacterBody2D
 		MoveAndSlide();
 
 		// Handle coyote jump timer.
-		if (!IsOnFloor() && WasOnFloor && !Jumped)
+		if (!IsOnFloor() && WasOnFloor && velocity.Y >= 0)
 		{
 			CoyoteJumpTimer.Start();
 			WasOnFloor = false;
@@ -74,19 +68,26 @@ public partial class Snowball : CharacterBody2D
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Stop();
 		}
-		Jumped = false;
 	}
 
-	bool HandleJump() {
+	void HandleJump() {
 		// Handle Jump, Coyote Jump, and Next Jump
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor() ||
-			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0  && !CoyoteJumpTimer.IsStopped())// ||
+			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)// ||
 			//!IsOnFloor() && Input.IsActionJustPressed("ui_accept") && NextJumpTimer.TimeLeft == 0)
 		{
 			//NextJumpTimer.Start();
-			return true;
+			velocity.Y = JumpVelocity;
+			CoyoteJumpTimer.Stop();
 		}
-		return false;
+	}
+
+	void ApplyGravity(float delta) {
+		// Add the gravity.
+		if (!IsOnFloor()) 
+		{
+			velocity.Y += gravity * delta;
+		}
 	}
 
 	bool HandleIceTile() {

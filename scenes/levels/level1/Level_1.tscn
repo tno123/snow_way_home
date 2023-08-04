@@ -257,7 +257,6 @@ offset_bottom = -160.0
 scene_switch_anim = "fade_in"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.8, 0.8)

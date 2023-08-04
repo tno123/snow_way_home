@@ -27,6 +27,8 @@ public partial class Snowball : CharacterBody2D
 	{
 		tileMap = GetParent().GetNode<TileMap>("TileMap");
 		bool IsOnIce = false;
+		bool WasOnFloor = IsOnFloor();
+		bool Jumped = false;
 
 		Vector2 velocity = Velocity;
 
@@ -34,19 +36,15 @@ public partial class Snowball : CharacterBody2D
 		if (!IsOnFloor()) 
 		{
 			velocity.Y += gravity * (float)delta;
-			CoyoteJumpTimer.Start();
 		}
 
-		// Handle Jump.
-		//and Coyote Time
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor() ||
-			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0 ||
-			!IsOnFloor() && Input.IsActionJustPressed("ui_accept") && NextJumpTimer.TimeLeft > 0)
+		// Handle Jump, Coyote Jump, and Next Jump
+		if (HandleJump()) 
 		{
 			velocity.Y = JumpVelocity;
-			NextJumpTimer.Start();
-			
+			Jumped = true;
 		}
+
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
@@ -56,19 +54,7 @@ public partial class Snowball : CharacterBody2D
 		}
 		else
 		{
-			// Do try except on get last slide collision
-			try {
-				var colliderRid = GetLastSlideCollision().GetColliderRid();
-				if (colliderRid != null)
-				{
-					var tileData = tileMap.GetCellTileData(0,tileMap.GetCoordsForBodyRid(colliderRid));
-					if ((bool)tileData.GetCustomData("Ice") == true && IsOnFloor()) {
-						IsOnIce = true;
-					}
-				}
-			} catch (NullReferenceException) {
-				// Do nothing
-			}
+			IsOnIce = HandleIceTile();
 			
 			//Friction
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
@@ -76,5 +62,47 @@ public partial class Snowball : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+
+		// Handle coyote jump timer.
+		if (!IsOnFloor() && WasOnFloor && !Jumped)
+		{
+			CoyoteJumpTimer.Start();
+			WasOnFloor = false;
+		}
+		else if (IsOnFloor())
+		{
+			CoyoteJumpTimer.Stop();
+			NextJumpTimer.Stop();
+		}
+		Jumped = false;
+	}
+
+	bool HandleJump() {
+		// Handle Jump, Coyote Jump, and Next Jump
+		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor() ||
+			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0  && !CoyoteJumpTimer.IsStopped())// ||
+			//!IsOnFloor() && Input.IsActionJustPressed("ui_accept") && NextJumpTimer.TimeLeft == 0)
+		{
+			//NextJumpTimer.Start();
+			return true;
+		}
+		return false;
+	}
+
+	bool HandleIceTile() {
+		var retVal = false;
+		try {
+				var colliderRid = GetLastSlideCollision().GetColliderRid();
+				if (colliderRid != null) //Todo: Check if this is the correct way to check for null
+				{
+					var tileData = tileMap.GetCellTileData(0,tileMap.GetCoordsForBodyRid(colliderRid));
+					if ((bool)tileData.GetCustomData("Ice") == true && IsOnFloor()) {
+						retVal = true;
+					}
+				}
+			} catch (NullReferenceException) {
+				// Do nothing
+			}
+		return retVal;
 	}
 }

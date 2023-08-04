@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhu4pswy7baj"]
+
+[ext_resource type="Script" path="res://scenes/snowball/Snowball.cs" id="1_6j51x"]
+[ext_resource type="Texture2D" uid="uid://bsu2xcd1s2ixt" path="res://art/character/snowball_64x64.png" id="1_h1lvw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_677wc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
+radius = 32.0156
+
+[node name="Snowball" type="CharacterBody2D"]
+position = Vector2(269, 182)
+collision_mask = 2
+script = ExtResource("1_6j51x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h1lvw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_677wc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4jxrl")
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="NextJumpTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl26evrs1n8k1"]
+[gd_scene load_steps=11 format=3 uid="uid://cl26evrs1n8k1"]
 
 [ext_resource type="Script" path="res://scenes/levels/level1/Level_1.cs" id="1_4kpna"]
 [ext_resource type="PackedScene" uid="uid://dh32dethkkqwm" path="res://utils/Transitions.tscn" id="2_dodqk"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
 [ext_resource type="PackedScene" uid="uid://bggy0fpp65axq" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
+[ext_resource type="Texture2D" uid="uid://bfcb3ls0nk3l2" path="res://assets/Rocky Roads/Deco/clouds.png" id="4_beakr"]
+[ext_resource type="Texture2D" uid="uid://dhleo2ir0uxoa" path="res://assets/Rocky Roads/Backgrounds/desert_b.png" id="5_utll2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb5f6"]
 
@@ -237,9 +239,30 @@ layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 32768
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
 position = Vector2(73, 243)
 
+[node name="Camera2D" type="Camera2D" parent="Snowball"]
+
 [node name="Transitions" parent="." instance=ExtResource("2_dodqk")]
+visible = false
 offset_left = 37.0
 offset_top = 262.0
 offset_right = -526.0
 offset_bottom = -160.0
 scene_switch_anim = "fade_in"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(237.5, 235)
+scale = Vector2(3.97266, 4.125)
+texture = ExtResource("5_utll2")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(341, 205)
+scale = Vector2(5.23438, 3.14844)
+texture = ExtResource("4_beakr")

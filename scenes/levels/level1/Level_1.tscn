@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chx0rltnxnyvl"]
+[gd_scene load_steps=11 format=3 uid="uid://chx0rltnxnyvl"]
 
 [ext_resource type="Script" path="res://scenes/levels/level1/Level_1.cs" id="1_0y3xi"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="1_4oegx"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/snowball_side/Snowball_side.tscn" id="2_fwtmb"]
+[ext_resource type="PackedScene" uid="uid://y3oh4i1bgph" path="res://utils/Transitions.tscn" id="4_3m51v"]
+[ext_resource type="Texture2D" uid="uid://ceeqardebsexn" path="res://assets/Rocky Roads/Objects/sign_arrow.png" id="6_a0cla"]
+[ext_resource type="PackedScene" uid="uid://2k0uvag8l5tm" path="res://scenes/main_menu/MainMenu.tscn" id="7_1nq5f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb5f6"]
 
@@ -147,15 +150,42 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_usblf")
 
-[node name="Level_1" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4826"]
+size = Vector2(55, 62)
+
+[node name="Level_1" type="Node" node_paths=PackedStringArray("transitions")]
 script = ExtResource("1_0y3xi")
+transitions = NodePath("Area2D/Transitions")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vxx7b")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 589826, 3)
+layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 589826, 3, 327683, 131074, 1, 327684, 131074, 1, 327685, 131074, 1, 327686, 131074, 1, 327687, 131074, 1, 327688, 131074, 1, 327689, 131074, 1, 327690, 131074, 1, 327691, 131074, 1, 327692, 131074, 1, 327693, 131074, 1, 327694, 131074, 1)
 
 [node name="Snowball_side" parent="." instance=ExtResource("2_fwtmb")]
 position = Vector2(73, 243)
 
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[node name="Camera2D" type="Camera2D" parent="Snowball_side"]
+limit_left = -100
+limit_top = -50
+limit_bottom = 100
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(914, 310)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(17.5, -21)
+shape = SubResource("RectangleShape2D_j4826")
+
+[node name="TextureRect" type="TextureRect" parent="Area2D"]
+offset_left = -9.0
+offset_top = -52.0
+offset_right = 46.0
+offset_bottom = 10.0
+texture = ExtResource("6_a0cla")
+
+[node name="Transitions" parent="Area2D" instance=ExtResource("4_3m51v")]
+scene_to_load = ExtResource("7_1nq5f")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

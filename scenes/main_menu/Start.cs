@@ -1,27 +1,26 @@
 using Godot;
 using System;
 
-
-public partial class Level_1 : Node
+public partial class Start : Button
 {
 	[Export]
 	public Transitions transitions;
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
-		//var StartButtonTexture = GetNode<Area2D>("Start/StartTexture");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
-	public void _on_body_entered(Node2D body)
+	/*
+	private void _on_toggled(bool button_pressed)
 	{
-
-		transitions.SetNextAnimation("fade_out");
+		transitions.SetNextAnimation(button_pressed);
 	}
-	
+	*/
 }
+
+
+

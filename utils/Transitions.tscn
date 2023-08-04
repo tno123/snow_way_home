@@ -1,81 +1,109 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpga1f1wqte48"]
+[gd_scene load_steps=7 format=3 uid="uid://y3oh4i1bgph"]
 
-[ext_resource type="Texture2D" uid="uid://djgs5g4axxixs" path="res://art/ui/transition_sphere/transition_sphere1.png" id="1_snkyh"]
-[ext_resource type="Texture2D" uid="uid://chenmnbxmrrgg" path="res://art/ui/transition_sphere/transition_sphere2.png" id="2_jr01q"]
-[ext_resource type="Texture2D" uid="uid://boo7oq1ywyfb8" path="res://art/ui/transition_sphere/transition_sphere3.png" id="3_5mgd3"]
-[ext_resource type="Texture2D" uid="uid://4xihedhh0h2u" path="res://art/ui/transition_sphere/transition_sphere4.png" id="4_pi1ic"]
-[ext_resource type="Texture2D" uid="uid://bcqs6rjr5kpt4" path="res://art/ui/transition_sphere/transition_sphere5.png" id="5_0o4wj"]
-[ext_resource type="Texture2D" uid="uid://cqjtncqn7jb2i" path="res://art/ui/transition_sphere/transition_sphere6.png" id="6_4uotq"]
-[ext_resource type="Texture2D" uid="uid://cx78lhup0ux0" path="res://art/ui/transition_sphere/transition_sphere7.png" id="7_d3wnw"]
-[ext_resource type="Texture2D" uid="uid://8rven44rbmjw" path="res://art/ui/transition_sphere/transition_sphere8.png" id="8_uagm2"]
-[ext_resource type="Texture2D" uid="uid://bw85tnueckxbb" path="res://art/ui/transition_sphere/transition_sphere9.png" id="9_oqt50"]
-[ext_resource type="Texture2D" uid="uid://hhvcsmj48tti" path="res://art/ui/transition_sphere/transition_sphere10.png" id="10_cjkfx"]
-[ext_resource type="Texture2D" uid="uid://jfgnm1dl7cgc" path="res://art/ui/transition_sphere/transition_sphere11.png" id="11_q644n"]
-[ext_resource type="Texture2D" uid="uid://rqn8nxwgt35j" path="res://art/ui/transition_sphere/transition_sphere12.png" id="12_imtc1"]
-[ext_resource type="Texture2D" uid="uid://c54v11fmyjedj" path="res://art/ui/transition_sphere/transition_sphere13.png" id="13_oe6gj"]
-[ext_resource type="Texture2D" uid="uid://bv45ougl37k28" path="res://art/ui/transition_sphere/transition_sphere14.png" id="14_d5s1p"]
-[ext_resource type="Texture2D" uid="uid://c0ao4i6cl3kvn" path="res://art/ui/transition_sphere/transition_sphere15.png" id="15_ej7ij"]
-[ext_resource type="Texture2D" uid="uid://ch7410ybwcm6h" path="res://art/ui/transition_sphere/transition_sphere16.png" id="16_1d6t1"]
+[ext_resource type="Script" path="res://utils/Transitions.cs" id="1_sc4qa"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_t3yah"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_snkyh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_jr01q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_5mgd3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_pi1ic")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_0o4wj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_4uotq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_d3wnw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_uagm2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_oqt50")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_cjkfx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_q644n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_imtc1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_oe6gj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_d5s1p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_ej7ij")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_1d6t1")
-}],
-"loop": true,
-"name": &"sphere_transition",
-"speed": 30.0
-}]
+[sub_resource type="Gradient" id="Gradient_cj2m7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.722772)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_do4xe"]
+gradient = SubResource("Gradient_cj2m7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(321, 231)
-sprite_frames = SubResource("SpriteFrames_t3yah")
-animation = &"sphere_transition"
+[sub_resource type="Animation" id="Animation_tn0sb"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_hvmrt"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(15, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m10di"]
+_data = {
+"fade_in": SubResource("Animation_tn0sb"),
+"fade_out": SubResource("Animation_hvmrt")
+}
+
+[node name="Transitions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sc4qa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_do4xe")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m10di")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

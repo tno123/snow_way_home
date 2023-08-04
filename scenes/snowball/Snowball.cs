@@ -4,6 +4,9 @@ using System;
 public partial class Snowball : CharacterBody2D
 {
 	[Export]
+	public int MaxJumps = 3;
+
+	[Export]
 	public float IceSpeed = 10.0f;
 
 	[Export]
@@ -75,10 +78,12 @@ public partial class Snowball : CharacterBody2D
 		{
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Stop();
+			MaxJumps = 3;
 		}
 	}
 
 	void HandleJump() {
+		bool jumped = false;
 		// Handle Jump, Coyote Jump, and Next Jump
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor() ||
 			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)
@@ -87,12 +92,17 @@ public partial class Snowball : CharacterBody2D
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Start();
+			jumped = true;
 		}
 		
-		if (Input.IsActionJustPressed("ui_accept") && !IsOnFloor() && NextJumpTimer.IsStopped())
+		if (Input.IsActionJustPressed("ui_accept") && !IsOnFloor() && NextJumpTimer.IsStopped() && MaxJumps > 0)
 		{
 			NextJumpTimer.Start();
 			velocity.Y = JumpVelocity;
+			jumped = true;
+		}
+		if (jumped) {
+			MaxJumps--;
 		}
 	}
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=11 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_axowr"]
+[ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="5_iw12g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -244,7 +245,7 @@ collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_g6q6x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 320, -96, 320, -288, 208, -288, 384, 0, 384, 0, 320)
+polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -288, 208, -392, 208, -488, 384)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
@@ -278,3 +279,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="Powerup" parent="." instance=ExtResource("5_iw12g")]
+position = Vector2(-312, 192)

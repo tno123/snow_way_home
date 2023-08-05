@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2k0uvag8l5tm"]
+[gd_scene load_steps=9 format=3 uid="uid://2k0uvag8l5tm"]
 
 [ext_resource type="Texture2D" uid="uid://12n3bc8wv233" path="res://art/introscreen/introscreen.png" id="1_n1f1p"]
 [ext_resource type="Script" path="res://scenes/main_menu/MainMenu.cs" id="1_v54ta"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://ckt8ni4qn0anp" path="res://art/ui/optionsbutton.png" id="3_lo6h0"]
 [ext_resource type="PackedScene" uid="uid://dfrhscokjxy7t" path="res://scenes/levels/templevel/TempLevel.tscn" id="4_dnbh2"]
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_s5p2y"]
+[ext_resource type="Texture2D" uid="uid://c75nqpu35i15g" path="res://art/ui/levels.png" id="7_d7urs"]
+[ext_resource type="PackedScene" uid="uid://cb8j53junrfii" path="res://scenes/select_screen/select_screen.tscn" id="7_prflq"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("transitions")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("StartTransition", "LevelsTransition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +17,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v54ta")
-transitions = NodePath("Start/Transitions")
+StartTransition = NodePath("Start/Transitions")
+LevelsTransition = NodePath("Levels/Transitions")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -38,10 +41,9 @@ focus_mode = 0
 
 [node name="Transitions" parent="Start" instance=ExtResource("4_s5p2y")]
 layout_mode = 1
-offset_left = 51.0
-offset_top = -1.0
-offset_right = 51.0
-offset_bottom = -1.0
+offset_left = 4.0
+offset_right = 4.0
+offset_bottom = 0.0
 scale = Vector2(1.00632, 1.01012)
 scene_to_load = ExtResource("4_dnbh2")
 
@@ -71,8 +73,29 @@ offset_right = 160.0
 offset_bottom = 52.0
 texture = ExtResource("3_lo6h0")
 
+[node name="Levels" type="Button" parent="."]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 378.0
+offset_right = 405.0
+offset_bottom = 429.0
+
+[node name="Transitions" parent="Levels" instance=ExtResource("4_s5p2y")]
+layout_mode = 1
+offset_left = 4.0
+offset_right = -1.0
+offset_bottom = -1.0
+scene_to_load = ExtResource("7_prflq")
+
+[node name="LevelsTexture" type="TextureRect" parent="Levels"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_d7urs")
+
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
 [connection signal="pressed" from="Start" to="." method="_on_start_button_pressed"]
 [connection signal="button_down" from="Options" to="." method="_on_options_button_down"]
 [connection signal="button_up" from="Options" to="." method="_on_options_button_up"]
+[connection signal="pressed" from="Levels" to="." method="_on_levels_button_pressed"]

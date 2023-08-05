@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=12 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/level1/Level_1.cs" id="1_4kpna"]
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="2_dodqk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
 [ext_resource type="Texture2D" uid="uid://bfcb3ls0nk3l2" path="res://assets/Rocky Roads/Deco/clouds.png" id="4_beakr"]
 [ext_resource type="Texture2D" uid="uid://dhleo2ir0uxoa" path="res://assets/Rocky Roads/Backgrounds/desert_b.png" id="5_utll2"]
+[ext_resource type="Texture2D" uid="uid://b4ujokssrxc6d" path="res://assets/Rocky Roads/Objects/bounce pad.png" id="7_dykp4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb5f6"]
 
@@ -279,3 +280,8 @@ position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="BouncePad" type="Sprite2D" parent="."]
+position = Vector2(210, 229)
+scale = Vector2(1.70313, 1.65625)
+texture = ExtResource("7_dykp4")

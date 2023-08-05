@@ -233,11 +233,9 @@ custom_data_layer_0/name = "Ice"
 custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_usblf")
 
-[node name="TempLevel" type="Node" node_paths=PackedStringArray("transition", "polygon", "collisionPolygon")]
+[node name="TempLevel" type="Node" node_paths=PackedStringArray("transition")]
 script = ExtResource("1_4kpna")
 transition = NodePath("Transitions")
-polygon = NodePath("StaticBody2D/CollisionPolygon2D/Polygon2D")
-collisionPolygon = NodePath("StaticBody2D/CollisionPolygon2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -256,14 +254,12 @@ layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 32768
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
 position = Vector2(73, 280)
 floor_snap_length = 3.0
-NextJumpTime = 0.3
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Transitions" parent="." instance=ExtResource("4_axowr")]
-visible = false
 offset_left = 42.0
 offset_top = 251.0
 offset_right = -535.0

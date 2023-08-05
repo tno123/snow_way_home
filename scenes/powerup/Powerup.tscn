@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmty4q2b5q4b0"]
+
+[ext_resource type="Texture2D" uid="uid://08tdletvr0jm" path="res://assets/Rocky Roads/Objects/gem.png" id="1_5026r"]
+[ext_resource type="Script" path="res://scenes/powerup/Powerup.cs" id="1_m1bpc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwoa8"]
+atlas = ExtResource("1_5026r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ud8"]
+atlas = ExtResource("1_5026r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mifla"]
+atlas = ExtResource("1_5026r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5v0x"]
+atlas = ExtResource("1_5026r")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cpim"]
+atlas = ExtResource("1_5026r")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w1c1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwoa8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ud8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mifla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5v0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cpim")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ff2i"]
+
+[node name="Powerup" type="Node2D"]
+script = ExtResource("1_m1bpc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_5w1c1")
+autoplay = "default"
+frame = 4
+frame_progress = 0.700651
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1ff2i")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

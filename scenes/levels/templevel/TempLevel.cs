@@ -6,6 +6,12 @@ public partial class TempLevel : Node
 {
 	[Export]
 	public Transitions transition;
+
+	[Export]
+	public Polygon2D polygon;
+
+	[Export]
+	public CollisionPolygon2D collisionPolygon;
 	
 	Camera2D camera;
 	CharacterBody2D snowball;
@@ -20,7 +26,7 @@ public partial class TempLevel : Node
 		transition.SetNextAnimation("fade_in");
 		currentScenePath = "res://scenes/levels/templevel/TempLevel.tscn";
 	
-		
+		polygon.Polygon = collisionPolygon.Polygon;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

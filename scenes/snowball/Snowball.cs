@@ -18,6 +18,7 @@ public partial class Snowball : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public TileMap tileMap;
+	public StaticBody2D staticBody2D;
 
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
@@ -117,9 +118,14 @@ public partial class Snowball : CharacterBody2D
 	bool HandleIceTile() {
 		var retVal = false;
 		try {
+				var collider = GetLastSlideCollision().GetCollider();
 				var colliderRid = GetLastSlideCollision().GetColliderRid();
 				if (colliderRid != null) //Todo: Check if this is the correct way to check for null
 				{
+					//check if standing on staticbody
+					if (collider.GetClass() == "StaticBody2D")
+						return false;
+
 					var tileData = tileMap.GetCellTileData(0,tileMap.GetCoordsForBodyRid(colliderRid));
 					if ((bool)tileData.GetCustomData("Ice") == true && IsOnFloor()) {
 						retVal = true;

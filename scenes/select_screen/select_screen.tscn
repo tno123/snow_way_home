@@ -112,6 +112,16 @@ offset_top = 8.0
 offset_right = 125.0
 offset_bottom = 132.0
 
+[node name="Level1" type="RichTextLabel" parent="select1"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 146.0
+offset_right = 60.0
+offset_bottom = 174.0
+scale = Vector2(2, 2)
+text = "Level 1
+"
+
 [node name="select2" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.172
@@ -153,6 +163,15 @@ offset_left = -9.0
 offset_top = -10.0
 offset_right = 115.0
 offset_bottom = 114.0
+
+[node name="Level2" type="RichTextLabel" parent="select2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 123.0
+offset_right = 85.0
+offset_bottom = 151.0
+scale = Vector2(2, 2)
+text = "Level 2"
 
 [node name="select3" type="Control" parent="."]
 layout_mode = 1
@@ -288,51 +307,6 @@ offset_right = 345.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 text = "Select level"
-
-[node name="Desert1" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 405.0
-offset_top = 236.0
-offset_right = 480.0
-offset_bottom = 264.0
-scale = Vector2(2, 2)
-text = "Desert 2"
-
-[node name="Desert2" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 231.0
-offset_right = 210.0
-offset_bottom = 259.0
-scale = Vector2(2, 2)
-text = "Desert 1"
-
-[node name="Mountains1" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 450.0
-offset_right = 135.0
-offset_bottom = 478.0
-scale = Vector2(2, 2)
-text = "Mountains 1"
-
-[node name="Clouds" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 466.0
-offset_top = 450.0
-offset_right = 541.0
-offset_bottom = 478.0
-scale = Vector2(2, 2)
-text = "Clouds "
-
-[node name="Mountains2" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 450.0
-offset_right = 353.0
-offset_bottom = 478.0
-scale = Vector2(2, 2)
-text = "Mountains 2"
 
 [connection signal="pressed" from="select1/select1button" to="." method="_on_button_pressed" binds= [&"select1"]]
 [connection signal="pressed" from="select2/select2button" to="." method="_on_button_pressed" binds= [&"select2"]]

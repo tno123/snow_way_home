@@ -9,7 +9,7 @@ public partial class SnowPower : ProgressBar
 		//Assume child of CanvasLayer
 		var snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
 		MaxValue = snowball.MaxJumps;
-		snowball.PowerupCollected += OnPowerupCollected;
+		//snowball.PowerupCollected += OnPowerupCollected;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,7 +17,7 @@ public partial class SnowPower : ProgressBar
 	{
 	}
 
-	private void OnPowerupCollected()
+	private void PowerupCollected()
 	{
 		Value += 1;
 	}

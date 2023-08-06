@@ -44,7 +44,7 @@ public partial class Snowball : CharacterBody2D
 		for (int i = 0; i < numPowerups; i++)
 		{
 			var powerup = (Powerup)GetParent().GetNode("Powerups").GetChild(i);
-			powerup.PowerupCollected += OnPowerupCollected;
+			powerup.PowerupCollected += OnPowerup;
 		}
 	}
 
@@ -148,8 +148,8 @@ public partial class Snowball : CharacterBody2D
 		return retVal;
 	}
 
-	private void OnPowerupCollected()
+	private void OnPowerup()
 	{
-		EmitSignal(SignalName.PowerupCollected);
+		EmitSignal(SignalName.Powerup);
 	}
 }

@@ -235,9 +235,11 @@ custom_data_layer_0/name = "Ice"
 custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_usblf")
 
-[node name="TempLevel" type="Node" node_paths=PackedStringArray("transition")]
+[node name="TempLevel" type="Node" node_paths=PackedStringArray("transition", "polygon", "collisionPolygon")]
 script = ExtResource("1_4kpna")
 transition = NodePath("Transitions")
+polygon = NodePath("StaticBody2D/CollisionPolygon2D/Polygon2D")
+collisionPolygon = NodePath("StaticBody2D/CollisionPolygon2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

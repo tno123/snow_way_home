@@ -15,6 +15,9 @@ public partial class Snowball : CharacterBody2D
 	[Export]
 	public float NextJumpTime = 0.1f;
 
+	[Signal]
+	public delegate void PowerupEventHandler();
+
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public TileMap tileMap;
@@ -35,6 +38,14 @@ public partial class Snowball : CharacterBody2D
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
+
+		//TODO: This is a hacky way to get the powerups, but it works for now (REFACTOR)
+		var numPowerups = GetParent().GetNode<Node>("Powerups").GetChildCount();
+		for (int i = 0; i < numPowerups; i++)
+		{
+			var powerup = (Powerup)GetParent().GetNode("Powerups").GetChild(i);
+			powerup.PowerupCollected += OnPowerupCollected;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -135,5 +146,10 @@ public partial class Snowball : CharacterBody2D
 				// Do nothing
 			}
 		return retVal;
+	}
+
+	private void OnPowerupCollected()
+	{
+		EmitSignal(SignalName.PowerupCollected);
 	}
 }

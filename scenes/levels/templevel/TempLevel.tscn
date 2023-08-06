@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=12 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="3_fgw1v"]
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_axowr"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="5_iw12g"]
+[ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_ejhy1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -280,5 +281,17 @@ position_smoothing_speed = 20.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Powerup" parent="." instance=ExtResource("5_iw12g")]
+[node name="Powerups" type="Node" parent="."]
+
+[node name="Powerup" parent="Powerups" instance=ExtResource("5_iw12g")]
 position = Vector2(-312, 192)
+
+[node name="Powerup2" parent="Powerups" instance=ExtResource("5_iw12g")]
+position = Vector2(480, 304)
+
+[node name="Powerup3" parent="Powerups" instance=ExtResource("5_iw12g")]
+position = Vector2(280, 240)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SnowPower" parent="CanvasLayer" instance=ExtResource("6_ejhy1")]

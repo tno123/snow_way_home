@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciawowjochtyb"]
+
+[ext_resource type="Script" path="res://scenes/powerup/SnowPower.cs" id="1_k6fqc"]
+
+[node name="SnowPower" type="ProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -448.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+script = ExtResource("1_k6fqc")

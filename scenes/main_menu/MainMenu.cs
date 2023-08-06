@@ -9,7 +9,9 @@ public partial class MainMenu : Control
 	Texture2D OptionsUnselected;
 	
 	[Export]
-	public Transitions transitions;
+	public Transitions StartTransition;
+	[Export]
+	public Transitions LevelsTransition;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -29,9 +31,10 @@ public partial class MainMenu : Control
 	private void _on_start_button_pressed()
 	{
 		
-		transitions.SetNextAnimation("fade_out");
+		StartTransition.SetNextAnimation("fade_out");
 		GetNode<TextureRect>("Start/StartTexture").Visible=false;
 		GetNode<TextureRect>("Options/OptionsTexture").Visible=false;
+		GetNode<TextureRect>("Levels/LevelsTexture").Visible=false;
 		//var sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		//Todo: update this to use a save slot screen
 		//sceneManager.GotoScene("res://scenes/levels/level1/Level_1.tscn");
@@ -59,4 +62,16 @@ public partial class MainMenu : Control
 		var OptionsButtonTexture = GetNode<TextureRect>("Options/OptionsTexture");
 		OptionsButtonTexture.Texture = OptionsUnselected;
 	}
+	
+	private void _on_levels_button_pressed()
+	{
+		LevelsTransition.SetNextAnimation("fade_out");
+
+	}
 }
+
+
+
+
+
+

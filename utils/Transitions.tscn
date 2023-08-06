@@ -34,10 +34,10 @@ tracks/1/path = NodePath("TextureRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_68m38"]
@@ -88,7 +88,7 @@ script = ExtResource("1_p5u6c")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(25, 25)
+scale = Vector2(19.8983, 19.8983)
 pivot_offset = Vector2(32, 32)
 texture = SubResource("GradientTexture2D_ipvf2")
 

@@ -51,10 +51,9 @@ public partial class Transitions : Control
 	private void _on_animation_player_animation_finished(StringName anim_name)
 	{
 		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
-		//GD.Print(scene_to_load);
+	
 		
 		if (scene_to_load != null && anim_name == scene_switch_anim){
-			
 			sceneManager.GotoScene(scene_to_load.ResourcePath);
 			
 		}

@@ -1,0 +1,315 @@
+[gd_scene load_steps=12 format=3 uid="uid://cb8j53junrfii"]
+
+[ext_resource type="Script" path="res://scenes/select_screen/select_screen.cs" id="1_p0h1y"]
+[ext_resource type="Texture2D" uid="uid://dhleo2ir0uxoa" path="res://assets/Rocky Roads/Backgrounds/desert_b.png" id="2_wimdo"]
+[ext_resource type="Texture2D" uid="uid://dipb25bdtulx0" path="res://art/ui/select_rectangle.png" id="3_njobw"]
+[ext_resource type="Texture2D" uid="uid://o13ow2dnn33i" path="res://assets/Rocky Roads/Backgrounds/desert_a.png" id="3_vh8e7"]
+[ext_resource type="Texture2D" uid="uid://l3npkrwa2q3k" path="res://assets/Rocky Roads/Backgrounds/mountains_a.png" id="5_y3dc3"]
+[ext_resource type="Texture2D" uid="uid://dpqi6iw4cte45" path="res://assets/Rocky Roads/Backgrounds/mountains_b.png" id="6_d5xvv"]
+[ext_resource type="Texture2D" uid="uid://bxjfsvt1kudr3" path="res://assets/Rocky Roads/Backgrounds/clouds.png" id="7_nxbtv"]
+
+[sub_resource type="Animation" id="Animation_ax4cu"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("select1/blink_asset:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3rwtx"]
+_data = {
+"new_animation": SubResource("Animation_ax4cu")
+}
+
+[sub_resource type="Animation" id="Animation_i2oqk"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blink_asset:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.306781),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b0mdm"]
+_data = {
+"new_animation": SubResource("Animation_i2oqk")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p0h1y")
+
+[node name="select1" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.636
+anchor_top = 0.069
+anchor_right = 0.636
+anchor_bottom = 0.069
+offset_left = -272.04
+offset_top = 54.88
+offset_right = -134.04
+offset_bottom = 202.88
+metadata/_edit_group_ = true
+
+[node name="blink" type="AnimationPlayer" parent="select1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_3rwtx")
+}
+
+[node name="background" type="TextureRect" parent="select1"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 136.0
+texture = ExtResource("3_vh8e7")
+expand_mode = 1
+
+[node name="blink_asset" type="TextureRect" parent="select1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.172
+anchor_top = 0.731
+anchor_right = 0.172
+anchor_bottom = 0.731
+offset_left = -33.736
+offset_top = -108.188
+offset_right = 114.264
+offset_bottom = 34.812
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_njobw")
+stretch_mode = 3
+
+[node name="select1button" type="Button" parent="select1"]
+modulate = Color(1, 1, 1, 0.529412)
+layout_mode = 0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 132.0
+
+[node name="Level1" type="RichTextLabel" parent="select1"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 146.0
+offset_right = 60.0
+offset_bottom = 174.0
+scale = Vector2(2, 2)
+text = "Level 1
+"
+
+[node name="select2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.172
+anchor_top = 0.181
+anchor_right = 0.172
+anchor_bottom = 0.181
+offset_left = 300.92
+offset_top = 26.12
+offset_right = 410.92
+offset_bottom = 118.12
+metadata/_edit_group_ = true
+
+[node name="background" type="TextureRect" parent="select2"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+texture = ExtResource("2_wimdo")
+expand_mode = 1
+
+[node name="blink_asset" type="TextureRect" parent="select2"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 122.0
+offset_bottom = 120.0
+texture = ExtResource("3_njobw")
+
+[node name="blink" type="AnimationPlayer" parent="select2"]
+libraries = {
+"": SubResource("AnimationLibrary_b0mdm")
+}
+
+[node name="select2button" type="Button" parent="select2"]
+modulate = Color(1, 1, 1, 0.529412)
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+
+[node name="Level2" type="RichTextLabel" parent="select2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 123.0
+offset_right = 85.0
+offset_bottom = 151.0
+scale = Vector2(2, 2)
+text = "Level 2"
+
+[node name="select3" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.172
+anchor_top = 0.181
+anchor_right = 0.172
+anchor_bottom = 0.181
+offset_left = 162.92
+offset_top = 228.12
+offset_right = 272.92
+offset_bottom = 320.12
+metadata/_edit_group_ = true
+
+[node name="background" type="TextureRect" parent="select3"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+texture = ExtResource("5_y3dc3")
+expand_mode = 1
+
+[node name="blink_asset" type="TextureRect" parent="select3"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 122.0
+offset_bottom = 120.0
+texture = ExtResource("3_njobw")
+
+[node name="blink" type="AnimationPlayer" parent="select3"]
+libraries = {
+"": SubResource("AnimationLibrary_b0mdm")
+}
+
+[node name="select3button" type="Button" parent="select3"]
+modulate = Color(1, 1, 1, 0.529412)
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+
+[node name="select4" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.172
+anchor_top = 0.181
+anchor_right = 0.172
+anchor_bottom = 0.181
+offset_left = -44.08
+offset_top = 228.12
+offset_right = 65.92
+offset_bottom = 320.12
+metadata/_edit_group_ = true
+
+[node name="background" type="TextureRect" parent="select4"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+texture = ExtResource("6_d5xvv")
+expand_mode = 1
+
+[node name="blink_asset" type="TextureRect" parent="select4"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 122.0
+offset_bottom = 120.0
+texture = ExtResource("3_njobw")
+
+[node name="blink" type="AnimationPlayer" parent="select4"]
+libraries = {
+"": SubResource("AnimationLibrary_b0mdm")
+}
+
+[node name="select4button" type="Button" parent="select4"]
+modulate = Color(1, 1, 1, 0.529412)
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+
+[node name="select5" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.172
+anchor_top = 0.181
+anchor_right = 0.172
+anchor_bottom = 0.181
+offset_left = 364.92
+offset_top = 228.12
+offset_right = 474.92
+offset_bottom = 320.12
+metadata/_edit_group_ = true
+
+[node name="background" type="TextureRect" parent="select5"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+texture = ExtResource("7_nxbtv")
+expand_mode = 1
+
+[node name="blink_asset" type="TextureRect" parent="select5"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 122.0
+offset_bottom = 120.0
+texture = ExtResource("3_njobw")
+
+[node name="blink" type="AnimationPlayer" parent="select5"]
+libraries = {
+"": SubResource("AnimationLibrary_b0mdm")
+}
+
+[node name="select5button" type="Button" parent="select5"]
+modulate = Color(1, 1, 1, 0.529412)
+layout_mode = 0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 114.0
+
+[node name="SelectLevelText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 12.0
+offset_right = 345.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+text = "Select level"
+
+[connection signal="pressed" from="select1/select1button" to="." method="_on_button_pressed" binds= [&"select1"]]
+[connection signal="pressed" from="select2/select2button" to="." method="_on_button_pressed" binds= [&"select2"]]
+[connection signal="pressed" from="select3/select3button" to="." method="_on_button_pressed" binds= [&"select3"]]
+[connection signal="pressed" from="select4/select4button" to="." method="_on_button_pressed" binds= [&"select4"]]
+[connection signal="pressed" from="select5/select5button" to="." method="_on_button_pressed" binds= [&"select5"]]

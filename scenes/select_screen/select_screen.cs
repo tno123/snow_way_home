@@ -25,19 +25,4 @@ public partial class select_screen : Control
 		animationPlayer = GetNode<AnimationPlayer>(path);
 		animationPlayer.Play("new_animation");
 	}
-
-	
-	/*
-	private void _on_select_1_button_pressed()
-	{
-		
-		// When a given button is pressed, start blinking animation
-		// for all other buttons, stop blinking
-		animationPlayer.Stop();
-		var blink = GetNode<TextureRect>("select2/blink_asset");
-		blink.Visible = false; 
-		
-		animationPlayer = GetNode<AnimationPlayer>("select1/blink");
-	}
-	*/
 }

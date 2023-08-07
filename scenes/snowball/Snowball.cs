@@ -16,7 +16,7 @@ public partial class Snowball : CharacterBody2D
 	public float NextJumpTime = 0.1f;
 
 	[Signal]
-	public delegate void PowerupEventHandler();
+	public delegate void PowerupEventHandler(int value);
 
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
@@ -90,7 +90,7 @@ public partial class Snowball : CharacterBody2D
 		{
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Stop();
-			MaxJumps = 3;
+			//MaxJumps = 1;
 		}
 	}
 
@@ -112,10 +112,11 @@ public partial class Snowball : CharacterBody2D
 			NextJumpTimer.Start();
 			velocity.Y = JumpVelocity;
 			jumped = true;
-		}
-		if (jumped) {
+			EmitSignal(SignalName.Powerup, -1);
 			MaxJumps--;
 		}
+		//if (jumped) {
+		//}
 	}
 
 	void ApplyGravity(float delta) {
@@ -150,6 +151,7 @@ public partial class Snowball : CharacterBody2D
 
 	private void OnPowerup()
 	{
-		EmitSignal(SignalName.Powerup);
+		EmitSignal(SignalName.Powerup,1);
+		MaxJumps++;
 	}
 }

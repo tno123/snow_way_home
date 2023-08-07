@@ -23,6 +23,7 @@ public partial class Snowball : CharacterBody2D
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
 
+	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
 	private Vector2 velocity = Vector2.Zero;
@@ -151,7 +152,10 @@ public partial class Snowball : CharacterBody2D
 
 	private void OnPowerup()
 	{
-		EmitSignal(SignalName.Powerup,1);
-		Power++;
+		if (Power < MaxPower)
+		{
+			EmitSignal(SignalName.Powerup,1);
+			Power++;
+		}
 	}
 }

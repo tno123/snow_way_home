@@ -8,8 +8,8 @@ public partial class SnowPower : ProgressBar
 	{
 		//Assume child of CanvasLayer
 		var snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
-		MaxValue = snowball.MaxJumps;
-		Value = snowball.MaxJumps;
+		MaxValue = snowball.Power;
+		Value = snowball.Power;
 		snowball.Powerup += PowerupCollected;
 	}
 

@@ -21,10 +21,13 @@ public partial class TempLevel : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		transition.Visible = true;
+		transition.SetNextAnimation("fade_in");
 		camera = GetNode<Camera2D>("Camera2D");
 		snowball = GetNode<CharacterBody2D>("Snowball");
-		transition.SetNextAnimation("fade_in");
 		currentScenePath = "res://scenes/levels/templevel/TempLevel.tscn";
+		// 
+		
 	
 		polygon.Polygon = collisionPolygon.Polygon;
 	}

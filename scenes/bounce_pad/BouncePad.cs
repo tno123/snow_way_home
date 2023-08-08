@@ -7,6 +7,9 @@ public partial class BouncePad : Sprite2D
 	public delegate bool BounceEventHandler();
 	
 	AnimatedSprite2D animation;
+	/* Consider adding BounceVelocity as class property
+	as a base velocity, and then objects have different added velocity.
+	*/
 	
 	
 
@@ -29,6 +32,7 @@ public partial class BouncePad : Sprite2D
 		*/
 		animation.Play("main");
 		EmitSignal(SignalName.Bounce);
+		// 
 		
 		
 	}

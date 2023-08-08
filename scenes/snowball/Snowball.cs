@@ -20,9 +20,9 @@ public partial class Snowball : CharacterBody2D
 
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
+	public const float BounceVelocity = -750.0f;
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
-
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
@@ -56,6 +56,7 @@ public partial class Snowball : CharacterBody2D
 		WasOnFloor = IsOnFloor();
 
 		velocity = Velocity;
+		
 
 		// Add the gravity.
 		ApplyGravity((float)delta);
@@ -162,13 +163,9 @@ public partial class Snowball : CharacterBody2D
 	}
 	private void _on_bounce_pad_bounce()
 	{
-		// not working
-		velocity = Velocity;
-		GD.Print(velocity.Y);
-		velocity.Y -=50;
-		GD.Print(velocity.Y);
-		
-		
+		velocity.Y = BounceVelocity;
+		Velocity = velocity;
+		MoveAndSlide();
 		
 	}
 }

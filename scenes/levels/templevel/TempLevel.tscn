@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=13 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_axowr"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="5_iw12g"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_ejhy1"]
+[ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_gh2tq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -294,3 +295,6 @@ position = Vector2(280, 240)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SnowPower" parent="CanvasLayer" instance=ExtResource("6_ejhy1")]
+
+[node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
+position = Vector2(197, 223)

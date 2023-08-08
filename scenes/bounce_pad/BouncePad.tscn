@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3rvweu6uicbd"]
+
+[ext_resource type="Script" path="res://scenes/bounce_pad/BouncePad.cs" id="1_2i2uy"]
+[ext_resource type="Texture2D" uid="uid://b4ujokssrxc6d" path="res://assets/Rocky Roads/Objects/bounce pad.png" id="1_mkioj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kby0"]
+atlas = ExtResource("1_mkioj")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn6oy"]
+atlas = ExtResource("1_mkioj")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8537"]
+atlas = ExtResource("1_mkioj")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jny1u"]
+atlas = ExtResource("1_mkioj")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdags"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kby0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn6oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8537")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jny1u")
+}],
+"loop": false,
+"name": &"main",
+"speed": 10.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1un25"]
+a = Vector2(-4.76837e-07, -4.76837e-07)
+b = Vector2(0, 10.6667)
+
+[node name="BouncePad" type="Sprite2D"]
+position = Vector2(112, 71)
+script = ExtResource("1_2i2uy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vdags")
+animation = &"main"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 22)
+rotation = 1.5708
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -5)
+shape = SubResource("SegmentShape2D_1un25")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

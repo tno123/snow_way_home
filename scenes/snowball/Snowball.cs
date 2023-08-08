@@ -129,6 +129,7 @@ public partial class Snowball : CharacterBody2D
 	}
 
 	bool HandleIceTile() {
+	// Pressing "down" negates ice physics 
 		var retVal = false;
 		try {
 				var collider = GetLastSlideCollision().GetCollider();

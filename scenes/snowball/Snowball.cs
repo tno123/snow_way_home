@@ -125,6 +125,7 @@ public partial class Snowball : CharacterBody2D
 		if (!IsOnFloor()) 
 		{
 			velocity.Y += gravity * delta;
+			
 		}
 	}
 
@@ -158,5 +159,16 @@ public partial class Snowball : CharacterBody2D
 			EmitSignal(SignalName.Powerup,1);
 			Power++;
 		}
+	}
+	private void _on_bounce_pad_bounce()
+	{
+		// not working
+		velocity = Velocity;
+		GD.Print(velocity.Y);
+		velocity.Y -=50;
+		GD.Print(velocity.Y);
+		
+		
+		
 	}
 }

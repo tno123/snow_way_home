@@ -254,7 +254,7 @@ polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -288, 208, -392, 208, -48
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vxx7b")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2)
+layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 196612, 196610, 0, 65540, 196610, 1, 4, 262146, 0, -65530, 196610, 1, -131066, 131074, 0)
 
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
 position = Vector2(73, 280)
@@ -290,7 +290,7 @@ position = Vector2(-312, 192)
 position = Vector2(480, 304)
 
 [node name="Powerup3" parent="Powerups" instance=ExtResource("5_iw12g")]
-position = Vector2(280, 240)
+position = Vector2(417, -75)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -298,3 +298,9 @@ position = Vector2(280, 240)
 
 [node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
 position = Vector2(197, 223)
+
+[node name="BouncePad2" parent="." instance=ExtResource("7_gh2tq")]
+position = Vector2(287, 32)
+
+[connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
+[connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqjtwpb6ythll"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5te5w"]
+
+[node name="Wind" type="Sprite2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5te5w")
+frame_progress = 0.789671

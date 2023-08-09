@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://qhu4pswy7baj"]
+[gd_scene load_steps=22 format=3 uid="uid://qhu4pswy7baj"]
 
 [ext_resource type="Script" path="res://scenes/snowball/Snowball.cs" id="1_6j51x"]
 [ext_resource type="Texture2D" uid="uid://bsu2xcd1s2ixt" path="res://art/character/snowball_64x64.png" id="1_h1lvw"]
 [ext_resource type="Texture2D" uid="uid://by78ld8ldtq15" path="res://assets/Rocky Roads/FX/walk_dust.png" id="3_y5v0d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
+radius = 32.0156
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yldy"]
 atlas = ExtResource("3_y5v0d")
@@ -36,9 +39,44 @@ region = Rect2(96, 0, 16, 16)
 atlas = ExtResource("3_y5v0d")
 region = Rect2(112, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8xjl"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nll70"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61kco"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja813"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfso"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc4j1"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q757p"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8v4c"]
+atlas = ExtResource("3_y5v0d")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_677wc"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": null
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1yldy")
 }, {
@@ -64,12 +102,41 @@ animations = [{
 "texture": SubResource("AtlasTexture_ef1ed")
 }],
 "loop": true,
-"name": &"main",
+"name": &"moving_left",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8xjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nll70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61kco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja813")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc4j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q757p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8v4c")
+}],
+"loop": true,
+"name": &"moving_right",
 "speed": 15.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
-radius = 32.0156
 
 [node name="Snowball" type="CharacterBody2D"]
 position = Vector2(269, 182)
@@ -78,14 +145,6 @@ script = ExtResource("1_6j51x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_h1lvw")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(33, 14)
-scale = Vector2(3.25, 2)
-sprite_frames = SubResource("SpriteFrames_677wc")
-animation = &"main"
-frame = 5
-frame_progress = 0.997639
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4jxrl")
@@ -99,3 +158,9 @@ one_shot = true
 process_callback = 0
 wait_time = 0.1
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(43, 3)
+scale = Vector2(6.125, 3.3125)
+sprite_frames = SubResource("SpriteFrames_677wc")
+animation = &"moving_right"

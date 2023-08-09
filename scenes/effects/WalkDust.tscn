@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://ntub3pjj8wt1"]
+
+[ext_resource type="Texture2D" uid="uid://by78ld8ldtq15" path="res://assets/Rocky Roads/FX/walk_dust.png" id="1_5b5ud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekvet"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl55s"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24koy"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1jf1"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0md8s"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns2mu"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig6kb"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6gm1"]
+atlas = ExtResource("1_5b5ud")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgh56"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekvet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl55s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24koy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1jf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0md8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns2mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig6kb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6gm1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 13.0
+}]
+
+[node name="WalkDust" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hgh56")
+animation = &"walk"
+frame = 2
+frame_progress = 0.17845

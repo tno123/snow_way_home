@@ -246,14 +246,14 @@ collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_g6q6x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -288, 208, -392, 208, -488, 384)
+polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -280, 208, -392, 208, -488, 384)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vxx7b")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2)
+layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 65542, 458754, 3, 65543, 589826, 3, 196617, 458754, 3, 196618, 589826, 3)
 
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
 position = Vector2(73, 280)

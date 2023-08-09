@@ -7,7 +7,7 @@ public partial class Snowball : CharacterBody2D
 	public int Power = 3;
 
 	[Export]
-	public float IceSpeed = 10.0f;
+	public float IceSpeed = 5.0f;
 
 	[Export]
 	public float CoyoteTime = 0.1f;
@@ -29,6 +29,7 @@ public partial class Snowball : CharacterBody2D
 	private Vector2 velocity = Vector2.Zero;
 	private bool WasOnFloor = false;
 	private bool IsOnIce = false;
+	private float lastVelocityX = 0;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -66,16 +67,18 @@ public partial class Snowball : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+		if (direction.X != 0)
 		{
-			velocity.X = direction.X * Speed;
+			if (!HandleIceTile())
+				velocity.X = direction.X * Speed;
 		}
 		else
 		{
+			//TODO: Need to handle correct ice physics
 			IsOnIce = HandleIceTile();
-			
 			//Friction
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
+			//lastVelocityX = velocity.X;
 		}
 
 		Velocity = velocity;

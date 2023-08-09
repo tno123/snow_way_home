@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snow Way Home", "Snow Way Home.csproj", "{937AE587-6A31-4399-9B3A-B508D4C1213C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snow Way Home", "Snow Way Home.csproj", "{CD049BD1-E58F-4655-95DD-C1514256895B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{937AE587-6A31-4399-9B3A-B508D4C1213C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{937AE587-6A31-4399-9B3A-B508D4C1213C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{937AE587-6A31-4399-9B3A-B508D4C1213C}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{937AE587-6A31-4399-9B3A-B508D4C1213C}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{937AE587-6A31-4399-9B3A-B508D4C1213C}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{937AE587-6A31-4399-9B3A-B508D4C1213C}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{CD049BD1-E58F-4655-95DD-C1514256895B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD049BD1-E58F-4655-95DD-C1514256895B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD049BD1-E58F-4655-95DD-C1514256895B}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{CD049BD1-E58F-4655-95DD-C1514256895B}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{CD049BD1-E58F-4655-95DD-C1514256895B}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{CD049BD1-E58F-4655-95DD-C1514256895B}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

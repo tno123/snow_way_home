@@ -8,6 +8,9 @@ public partial class MainMenu : Control
 	Texture2D OptionsSelected;
 	Texture2D OptionsUnselected;
 	
+	TextureRect StartButtonTexture;
+	TextureRect OptionsButtonTexture;
+	
 	[Export]
 	public Transitions StartTransition;
 	[Export]
@@ -15,7 +18,10 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var StartButtonTexture = GetNode<TextureRect>("Start/StartTexture");
+		StartTransition.Visible = LevelsTransition.Visible = true;
+		StartButtonTexture = GetNode<TextureRect>("Start/StartTexture");
+		OptionsButtonTexture = GetNode<TextureRect>("Options/OptionsTexture");
+
 		StartSelected =  (Texture2D)ResourceLoader.Load("res://art/ui/startbutton_selected.png");
 		StartUnselected = (Texture2D)ResourceLoader.Load("res://art/ui/startbutton.png");
 		OptionsSelected = (Texture2D)ResourceLoader.Load("res://art/ui/optionsbutton_selected.png");
@@ -41,25 +47,24 @@ public partial class MainMenu : Control
 	}
 	private void _on_start_button_down()
 	{
-		var StartButtonTexture = GetNode<TextureRect>("Start/StartTexture");
+		
 		StartButtonTexture.Texture = StartSelected;	
 	}
 	
 	private void _on_start_button_up()
 	{
-		var StartButtonTexture = GetNode<TextureRect>("Start/StartTexture");
+	
 		StartButtonTexture.Texture = StartUnselected;	
 	}
 	
 	private void _on_options_button_down()
 	{
-		var OptionsButtonTexture = GetNode<TextureRect>("Options/OptionsTexture");
+		
 		OptionsButtonTexture.Texture = OptionsSelected;
 	}
 	
 	private void _on_options_button_up()
 	{
-		var OptionsButtonTexture = GetNode<TextureRect>("Options/OptionsTexture");
 		OptionsButtonTexture.Texture = OptionsUnselected;
 	}
 	

@@ -29,32 +29,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_n1f1p")
 
-[node name="Start" type="Button" parent="."]
-layout_mode = 2
-offset_left = 131.0
-offset_top = 304.0
-offset_right = 290.0
-offset_bottom = 353.0
-tooltip_text = "
-"
-focus_mode = 0
-
-[node name="Transitions" parent="Start" instance=ExtResource("4_s5p2y")]
-layout_mode = 1
-offset_left = 4.0
-offset_right = 4.0
-offset_bottom = 0.0
-scale = Vector2(1.00632, 1.01012)
-scene_to_load = ExtResource("4_dnbh2")
-
-[node name="StartTexture" type="TextureRect" parent="Start"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 161.0
-offset_bottom = 52.0
-texture = ExtResource("2_m4dlg")
-
 [node name="Options" type="Button" parent="."]
 layout_mode = 2
 offset_left = 379.0
@@ -93,9 +67,35 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_d7urs")
 
-[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
-[connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
-[connection signal="pressed" from="Start" to="." method="_on_start_button_pressed"]
+[node name="Start" type="Button" parent="."]
+layout_mode = 2
+offset_left = 131.0
+offset_top = 304.0
+offset_right = 290.0
+offset_bottom = 353.0
+tooltip_text = "
+"
+focus_mode = 0
+
+[node name="Transitions" parent="Start" instance=ExtResource("4_s5p2y")]
+layout_mode = 1
+offset_left = 4.0
+offset_right = 4.0
+offset_bottom = 0.0
+scale = Vector2(1.00632, 1.01012)
+scene_to_load = ExtResource("4_dnbh2")
+
+[node name="StartTexture" type="TextureRect" parent="Start"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 161.0
+offset_bottom = 52.0
+texture = ExtResource("2_m4dlg")
+
 [connection signal="button_down" from="Options" to="." method="_on_options_button_down"]
 [connection signal="button_up" from="Options" to="." method="_on_options_button_up"]
 [connection signal="pressed" from="Levels" to="." method="_on_levels_button_pressed"]
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
+[connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
+[connection signal="pressed" from="Start" to="." method="_on_start_button_pressed"]

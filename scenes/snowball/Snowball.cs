@@ -29,12 +29,15 @@ public partial class Snowball : CharacterBody2D
 	private Vector2 velocity = Vector2.Zero;
 	private bool WasOnFloor = false;
 	private bool IsOnIce = false;
+	public AnimatedSprite2D animation;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
+		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
@@ -51,6 +54,7 @@ public partial class Snowball : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		
 		tileMap = GetParent().GetNode<TileMap>("TileMap");
 		IsOnIce = false;
 		WasOnFloor = IsOnFloor();
@@ -69,6 +73,7 @@ public partial class Snowball : CharacterBody2D
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		if (direction != Vector2.Zero)
 		{
+			animation.Play("main");
 			velocity.X = direction.X * Speed;
 		}
 		else
@@ -80,6 +85,7 @@ public partial class Snowball : CharacterBody2D
 		}
 
 		Velocity = velocity;
+		
 		MoveAndSlide();
 
 		// Handle coyote jump timer.

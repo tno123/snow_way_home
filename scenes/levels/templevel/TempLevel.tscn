@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=12 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_axowr"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="5_iw12g"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_ejhy1"]
-[ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_gh2tq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -247,14 +246,14 @@ collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_g6q6x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -280, 208, -392, 208, -488, 384)
+polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -280, 208, -392, 208, -448, 312, -648, 312, -760, 288, -792, 320, -800, 384, -488, 384)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vxx7b")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 196612, 196610, 0, 65540, 196610, 1, 4, 262146, 0, -65530, 196610, 1, -131066, 131074, 0)
+layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 65542, 458754, 3, 65543, 589826, 3, 196617, 458754, 3, 196618, 589826, 3)
 
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
 position = Vector2(73, 280)
@@ -263,6 +262,14 @@ metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Transitions" parent="." instance=ExtResource("4_axowr")]
+visible = false
+offset_left = 42.0
+offset_top = 251.0
+offset_right = -535.0
+offset_bottom = -175.0
+scene_switch_anim = "fade_in"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(73, 280)
@@ -282,25 +289,11 @@ position = Vector2(-312, 192)
 position = Vector2(480, 304)
 
 [node name="Powerup3" parent="Powerups" instance=ExtResource("5_iw12g")]
-position = Vector2(417, -75)
+position = Vector2(280, 240)
+
+[node name="Powerup4" parent="Powerups" instance=ExtResource("5_iw12g")]
+position = Vector2(-720, 280)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SnowPower" parent="CanvasLayer" instance=ExtResource("6_ejhy1")]
-
-[node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
-position = Vector2(197, 223)
-
-[node name="BouncePad2" parent="." instance=ExtResource("7_gh2tq")]
-position = Vector2(287, 32)
-
-[node name="Transitions" parent="." instance=ExtResource("4_axowr")]
-visible = false
-offset_left = 42.0
-offset_top = 251.0
-offset_right = -535.0
-offset_bottom = -175.0
-scene_switch_anim = "fade_in"
-
-[connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
-[connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

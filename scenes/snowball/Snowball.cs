@@ -31,12 +31,14 @@ public partial class Snowball : CharacterBody2D
 	private bool IsOnIce = false;
 	private float lastVelocityX = 0;
 	private AnimatedSprite2D animation;
+	private Sprite2D sprite;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
+		sprite = GetNode<Sprite2D>("Sprite2D");
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
@@ -77,8 +79,20 @@ public partial class Snowball : CharacterBody2D
 			if (!HandleIceTile())
 				
 			velocity.X = direction.X * Speed;
+			animation.Play("move");
+			if (direction.X < 0){
+				Vector2 newOffset = animation.Offset;
+				newOffset.X = 0;
+				animation.Offset = newOffset;				
+				sprite.FlipH = animation.FlipH = false;
+			}
+			if (direction.X > 0){
+				Vector2 newOffset = animation.Offset;
+				newOffset.X = -15;
+				animation.Offset = newOffset;
+				sprite.FlipH = animation.FlipH = true;
+			}
 			
-			animation.Play("moving_left");
 		}
 		else
 		{

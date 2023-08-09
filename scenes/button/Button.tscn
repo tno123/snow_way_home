@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://d343cauapd6gf"]
+
+[ext_resource type="Script" path="res://scenes/button/Button.cs" id="1_dtu74"]
+[ext_resource type="Texture2D" uid="uid://c8r13pj4jjcey" path="res://assets/Rocky Roads/Objects/button.png" id="1_gj3hk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6ile"]
+atlas = ExtResource("1_gj3hk")
+region = Rect2(0, 8, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frny2"]
+atlas = ExtResource("1_gj3hk")
+region = Rect2(16, 8, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k88io"]
+atlas = ExtResource("1_gj3hk")
+region = Rect2(32, 8, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2h4h"]
+atlas = ExtResource("1_gj3hk")
+region = Rect2(48, 8, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sp4h0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6ile")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frny2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k88io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2h4h")
+}],
+"loop": false,
+"name": &"main",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgdvk"]
+size = Vector2(55, 20)
+
+[node name="Button" type="Sprite2D"]
+position = Vector2(119, 69)
+script = ExtResource("1_dtu74")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_sp4h0")
+animation = &"main"
+frame = 1
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_vgdvk")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

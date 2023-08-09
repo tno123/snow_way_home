@@ -303,11 +303,17 @@ rotation = 0.00698132
 [node name="Crate" parent="." instance=ExtResource("8_ms5ip")]
 position = Vector2(334, 348)
 
+[node name="Crate3" parent="." instance=ExtResource("8_ms5ip")]
+position = Vector2(-149, 346)
+
+[node name="Crate4" parent="." instance=ExtResource("8_ms5ip")]
+position = Vector2(-78, 345)
+
 [node name="Button" parent="." instance=ExtResource("9_o18qb")]
 position = Vector2(-358, 190)
 
 [node name="Crate2" parent="." instance=ExtResource("8_ms5ip")]
-position = Vector2(-114, 346)
+position = Vector2(-109, 283)
 
 [node name="Transitions" parent="." instance=ExtResource("4_axowr")]
 visible = false

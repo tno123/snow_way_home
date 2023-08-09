@@ -79,7 +79,9 @@ public partial class Snowball : CharacterBody2D
 			if (!HandleIceTile())
 				
 			velocity.X = direction.X * Speed;
-			animation.Play("move");
+			if (IsOnFloor()){animation.Play("move");}
+			//else{animation.Stop();}
+			
 			if (direction.X < 0){
 				Vector2 newOffset = animation.Offset;
 				newOffset.X = 0;
@@ -194,4 +196,15 @@ public partial class Snowball : CharacterBody2D
 		MoveAndSlide();
 		
 	}
+	private void _on_animated_sprite_2d_animation_finished()
+	{
+		/* let the animation play out after a jump
+		but stop playing when in air */
+		if (!IsOnFloor()){animation.Stop();}
+		
+
+	}
 }
+
+
+

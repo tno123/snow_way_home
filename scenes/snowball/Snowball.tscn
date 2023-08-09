@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ef1ed")
 }],
-"loop": true,
+"loop": false,
 "name": &"move",
 "speed": 15.0
 }]
@@ -101,4 +101,7 @@ position = Vector2(43, 3)
 scale = Vector2(6.125, 3.3125)
 sprite_frames = SubResource("SpriteFrames_677wc")
 animation = &"move"
-frame_progress = 0.310086
+frame = 7
+frame_progress = 0.0135389
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

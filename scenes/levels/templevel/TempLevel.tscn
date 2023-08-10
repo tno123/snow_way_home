@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=17 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="5_iw12g"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_ejhy1"]
 [ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_gh2tq"]
+[ext_resource type="PackedScene" uid="uid://d37gf16f3078l" path="res://scenes/key/Key.tscn" id="7_quxfs"]
 [ext_resource type="PackedScene" uid="uid://djrawr3j1j264" path="res://scenes/crate/Crate.tscn" id="8_ms5ip"]
 [ext_resource type="PackedScene" uid="uid://d343cauapd6gf" path="res://scenes/button/Button.tscn" id="9_o18qb"]
+[ext_resource type="PackedScene" uid="uid://6r4byoitf0ye" path="res://scenes/effects/Shine.tscn" id="10_0d3gv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -300,8 +302,23 @@ position = Vector2(287, 32)
 position = Vector2(147, 225)
 rotation = 0.00698132
 
+[node name="Key" parent="." instance=ExtResource("7_quxfs")]
+position = Vector2(398, 297)
+
+[node name="Shine" parent="Key" instance=ExtResource("10_0d3gv")]
+position = Vector2(12, -14)
+
+[node name="Shine2" parent="Key" instance=ExtResource("10_0d3gv")]
+position = Vector2(-24, -17)
+
 [node name="Crate" parent="." instance=ExtResource("8_ms5ip")]
 position = Vector2(334, 348)
+
+[node name="Shine" parent="Crate" instance=ExtResource("10_0d3gv")]
+position = Vector2(94, -66)
+
+[node name="Shine2" parent="Crate" instance=ExtResource("10_0d3gv")]
+position = Vector2(42, -80)
 
 [node name="Crate3" parent="." instance=ExtResource("8_ms5ip")]
 position = Vector2(-149, 346)

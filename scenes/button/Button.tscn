@@ -33,10 +33,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f2h4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2h4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k88io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frny2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6ile")
 }],
 "loop": false,
 "name": &"main",
-"speed": 10.0
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgdvk"]
@@ -51,7 +63,7 @@ metadata/_edit_group_ = true
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_sp4h0")
 animation = &"main"
-frame = 1
+frame = 7
 frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]

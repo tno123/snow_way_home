@@ -38,16 +38,17 @@ public partial class MainMenu : Control
 	{
 		
 		StartTransition.SetNextAnimation("fade_out");
-		GetNode<TextureRect>("Start/StartTexture").Visible=false;
-		GetNode<TextureRect>("Options/OptionsTexture").Visible=false;
-		GetNode<TextureRect>("Levels/LevelsTexture").Visible=false;
+		
+		GetNode<Godot.Button>("Start").Visible=false;
+		GetNode<Godot.Button>("Options").Visible=false;
+		GetNode<Godot.Button>("Levels").Visible=false;
+		
 		//var sceneManager = GetNode<SceneManager>("/root/SceneManager");
 		//Todo: update this to use a save slot screen
 		//sceneManager.GotoScene("res://scenes/levels/level1/Level_1.tscn");
 	}
 	private void _on_start_button_down()
 	{
-		
 		StartButtonTexture.Texture = StartSelected;	
 	}
 	

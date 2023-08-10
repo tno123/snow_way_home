@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://d37gf16f3078l"]
+
+[ext_resource type="Script" path="res://scenes/key/Key.cs" id="1_wwgwh"]
+[ext_resource type="Texture2D" uid="uid://copocf4fdxlyc" path="res://assets/Rocky Roads/Objects/key.png" id="2_0xkp8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsu76"]
+atlas = ExtResource("2_0xkp8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01frv"]
+atlas = ExtResource("2_0xkp8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q40qi"]
+atlas = ExtResource("2_0xkp8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0rnj"]
+atlas = ExtResource("2_0xkp8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtkfa"]
+atlas = ExtResource("2_0xkp8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_buhd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsu76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01frv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q40qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0rnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtkfa")
+}],
+"loop": true,
+"name": &"main",
+"speed": 5.0
+}]
+
+[node name="Key" type="Sprite2D"]
+script = ExtResource("1_wwgwh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_buhd5")
+animation = &"main"
+frame_progress = 0.881441

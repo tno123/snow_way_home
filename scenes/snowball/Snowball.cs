@@ -21,6 +21,7 @@ public partial class Snowball : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public const float BounceVelocity = -750.0f;
+	public const float BoostVelocity = 2000.0f;
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
 	private int MaxPower = 3;
@@ -32,7 +33,13 @@ public partial class Snowball : CharacterBody2D
 	private float lastVelocityX = 0;
 	private AnimatedSprite2D animation;
 	private Sprite2D sprite;
-
+	
+	private AnimatedSprite2D BoostAnimLeft;
+	private AnimatedSprite2D BoostAnimRight;
+	private AnimatedSprite2D BoostCharging;
+	
+	private bool isBoosting = false;
+	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
@@ -40,6 +47,10 @@ public partial class Snowball : CharacterBody2D
 	{
 		sprite = GetNode<Sprite2D>("Sprite2D");
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
+		BoostAnimLeft = GetNode<AnimatedSprite2D>("BoostAnimationLeft");
+		BoostAnimRight = GetNode<AnimatedSprite2D>("BoostAnimationRight");
+		BoostCharging = GetNode<AnimatedSprite2D>("BoostCharging");
 		
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
@@ -70,6 +81,7 @@ public partial class Snowball : CharacterBody2D
 
 		// Handle Jump, Coyote Jump, and Next Jump
 		HandleJump();
+		HandleBoost();
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -148,6 +160,71 @@ public partial class Snowball : CharacterBody2D
 		//if (jumped) {
 		//}
 	}
+	
+	private void HandleBoost()
+	{
+		// Check if the X button is just pressed
+		if (Input.IsActionJustPressed("boost") && !isBoosting)
+		{
+			StartBoost();
+		}
+		 // Check if the X button (or your defined action) is being held down
+		if (Input.IsActionPressed("boost") && isBoosting)
+		{
+			BoostCharging.Play("boost_charging");
+		}
+
+		// Check if the X button is just released
+		if (Input.IsActionJustReleased("boost") && isBoosting)
+		{
+			EndBoost();
+		}
+	}
+	public bool IsBoosting
+	{
+		get { return isBoosting; }
+	}
+	
+	private void StartBoost()
+	{
+		isBoosting = true;
+
+		// Slight scale change to help indicate boost
+		sprite.Scale = new Vector2(0.9f, 0.9f);
+
+		BoostAnimLeft.Play("left_boost");
+		BoostAnimRight.Play("right_boost");
+	}
+	
+	private void EndBoost()
+{
+	isBoosting = false;
+	BoostCharging.Stop();
+
+	// Reset the zoom/scale
+	sprite.Scale = new Vector2(1f, 1f);
+
+	// End animations
+	BoostAnimLeft.Stop();
+	BoostAnimRight.Stop();
+
+
+	// Increase velocity in the X direction that snowball is facing
+	if (sprite.FlipH) // Facing right
+	{
+		velocity.X += BoostVelocity;
+		Velocity = velocity;
+		MoveAndSlide();
+	}
+	else // Facing left
+	{
+		velocity.X -= BoostVelocity;;
+		Velocity = velocity;
+		MoveAndSlide();
+	}
+
+	// If you want this boost to be a one-time burst, you can reset the velocity back after some time or distance. Consider using a Timer for that.
+}
 
 	void ApplyGravity(float delta) {
 		// Add the gravity.

@@ -36,7 +36,9 @@ public partial class Snowball : CharacterBody2D
 	
 	private AnimatedSprite2D BoostAnimLeft;
 	private AnimatedSprite2D BoostAnimRight;
-	private AnimatedSprite2D BoostCharging;
+	private AnimatedSprite2D BoostChargingAnim;
+	private AnimatedSprite2D JumpLandAnim;
+	private AnimatedSprite2D JumpAnim;
 	
 	private bool isBoosting = false;
 	
@@ -50,7 +52,11 @@ public partial class Snowball : CharacterBody2D
 		
 		BoostAnimLeft = GetNode<AnimatedSprite2D>("BoostAnimationLeft");
 		BoostAnimRight = GetNode<AnimatedSprite2D>("BoostAnimationRight");
-		BoostCharging = GetNode<AnimatedSprite2D>("BoostCharging");
+		BoostChargingAnim = GetNode<AnimatedSprite2D>("BoostChargingAnim");
+		
+		JumpAnim = GetNode<AnimatedSprite2D>("JumpAnim");
+		JumpLandAnim = GetNode<AnimatedSprite2D>("JumpLandAnim");
+		
 		
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
@@ -143,6 +149,7 @@ public partial class Snowball : CharacterBody2D
 			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)
 		{
 			//NextJumpTimer.Start();
+			JumpAnim.Play("main");
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Start();
@@ -157,8 +164,10 @@ public partial class Snowball : CharacterBody2D
 			EmitSignal(SignalName.Powerup, -1);
 			Power--;
 		}
-		//if (jumped) {
-		//}
+		if (WasOnFloor && IsOnFloor()) {
+			JumpLandAnim.Play("main");
+			JumpAnim.Stop();
+		}
 	}
 	
 	private void HandleBoost()
@@ -171,7 +180,7 @@ public partial class Snowball : CharacterBody2D
 		 // Check if the X button (or your defined action) is being held down
 		if (Input.IsActionPressed("boost") && isBoosting)
 		{
-			BoostCharging.Play("boost_charging");
+			BoostChargingAnim.Play("boost_charging");
 		}
 
 		// Check if the X button is just released
@@ -199,7 +208,7 @@ public partial class Snowball : CharacterBody2D
 	private void EndBoost()
 {
 	isBoosting = false;
-	BoostCharging.Stop();
+	BoostChargingAnim.Stop();
 
 	// Reset the zoom/scale
 	sprite.Scale = new Vector2(1f, 1f);

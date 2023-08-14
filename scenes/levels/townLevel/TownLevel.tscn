@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://00ae8gsru8jo"]
+
+[ext_resource type="Texture2D" uid="uid://c30n22su056bp" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_5aakn"]
+[ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
+[ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="2_gbfq3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8rkev"]
+texture = ExtResource("1_5aakn")
+
+[sub_resource type="TileSet" id="TileSet_6o2tc"]
+sources/0 = SubResource("TileSetAtlasSource_8rkev")
+
+[node name="TownLevel" type="Node"]
+script = ExtResource("1_ryx16")
+
+[node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
+position = Vector2(206, 108)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_6o2tc")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]

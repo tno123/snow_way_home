@@ -290,6 +290,14 @@ public partial class Snowball : CharacterBody2D
 		
 
 	}
+	/*It is probably best to handle logic for what happens with
+	steam and puddles and lava pit in this script (snowball.cs)*/
+	
+	/*Steam*/
+	
+	/*Puddle*/
+	
+	/*Lava pit*/
 }
 
 

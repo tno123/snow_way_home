@@ -165,7 +165,7 @@ public partial class Snowball : CharacterBody2D
 			Power--;
 		}
 		if (WasOnFloor && IsOnFloor()) {
-			JumpLandAnim.Play("main");
+			JumpLandAnim.Play("main"); // This should play when the snowball lands
 			JumpAnim.Stop();
 		}
 	}

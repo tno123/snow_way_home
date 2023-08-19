@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=18 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djrawr3j1j264" path="res://scenes/crate/Crate.tscn" id="8_ms5ip"]
 [ext_resource type="PackedScene" uid="uid://d343cauapd6gf" path="res://scenes/button/Button.tscn" id="9_o18qb"]
 [ext_resource type="PackedScene" uid="uid://6r4byoitf0ye" path="res://scenes/effects/Shine.tscn" id="10_0d3gv"]
+[ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemy/Enemy.tscn" id="12_asx06"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -251,7 +252,7 @@ collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_g6q6x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -288, 208, -392, 208, -488, 384)
+polygon = PackedVector2Array(0, 384, -488, 384, -576, 384, -576, 280, -432, 280, -392, 208, -288, 208, -96, 320, 0, 320)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
@@ -339,6 +340,14 @@ offset_top = 251.0
 offset_right = 41.0
 offset_bottom = 250.0
 scene_switch_anim = "fade_in"
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
+position = Vector2(-512, 192)
+collision_mask = 2
+LineOfSight = NodePath("../Line2D")
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(0.65098, 0.0862745, 0.117647, 1)
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
 [connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

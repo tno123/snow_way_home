@@ -252,7 +252,7 @@ collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_g6q6x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 384, -488, 384, -576, 384, -576, 280, -432, 280, -392, 208, -288, 208, -96, 320, 0, 320)
+polygon = PackedVector2Array(0, 384, -968, 384, -968, 280, -432, 280, -392, 208, -288, 208, -96, 320, 0, 320)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
@@ -349,13 +349,11 @@ offset_bottom = 250.0
 scene_switch_anim = "fade_in"
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
-position = Vector2(-512, 192)
-collision_mask = 2
-LineOfSight = NodePath("Line2D")
+position = Vector2(-576, 224)
+LineOfSight = NodePath("../Line2D")
 
-[node name="Line2D" type="Line2D" parent="Enemy"]
-position = Vector2(512, -192)
-default_color = Color(0.65098, 0.0862745, 0.117647, 1)
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
 [connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

@@ -267,6 +267,12 @@ public partial class Snowball : CharacterBody2D
 		return retVal;
 	}
 
+	public void Damage(int damage)
+	{
+		Power -= damage;
+		EmitSignal(SignalName.Powerup, -damage);
+	}
+
 	private void OnPowerup()
 	{
 		if (Power < MaxPower)

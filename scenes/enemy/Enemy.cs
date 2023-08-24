@@ -4,10 +4,9 @@ using System;
 public partial class Enemy : CharacterBody2D
 {
 	[Export]
-	public Line2D LineOfSight;
-
-	[Export]
 	public float MinDistance = 200.0f;
+	[Export]
+	public Line2D LineOfSight;
 
 	public const float Speed = 100.0f;
 	public const float JumpVelocity = -400.0f;
@@ -64,27 +63,20 @@ public partial class Enemy : CharacterBody2D
 		}
 
 
-		/*
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
-		*/
-
 		Velocity = velocity;
 		MoveAndSlide();
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			var collision = GetSlideCollision(i);
+			if (collision.GetCollider() is Snowball)
+			{
+				//Damage snowball and destroy self
+				Snowball.Damage(1);
+				QueueFree();
+			}
+		}
+
+
 	}
 
 	private void UpdateLineOfSight()

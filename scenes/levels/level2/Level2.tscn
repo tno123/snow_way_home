@@ -532,28 +532,28 @@ sources/1 = SubResource("TileSetAtlasSource_yfs6a")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(739, 0)
+motion_mirroring = Vector2(1024, 0)
 
 [node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(257.778, 120)
-scale = Vector2(2.31111, 2.31111)
+position = Vector2(312, 40)
+scale = Vector2(3.2, 3.2)
 texture = ExtResource("1_25esc")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.9, 0.9)
-motion_mirroring = Vector2(740, 0)
+motion_mirroring = Vector2(1024, 0)
 
 [node name="BackgroundLayer2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(255.111, 120.5)
-scale = Vector2(2.31667, 2.31667)
+position = Vector2(312, 40)
+scale = Vector2(3.20556, 3.20556)
 texture = ExtResource("2_qobuu")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(740, 0)
+motion_mirroring = Vector2(1024, 0)
 
 [node name="BackgroundLayer3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(256, 120)
-scale = Vector2(2.32222, 2.32222)
+position = Vector2(312, 40)
+scale = Vector2(3.20556, 3.20556)
 texture = ExtResource("3_3dois")
 
 [node name="TileMap" type="TileMap" parent="."]

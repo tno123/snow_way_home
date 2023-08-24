@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/Enemy.cs" id="1_10uhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kht51"]
-size = Vector2(37, 26.5)
+size = Vector2(38.4615, 26.2365)
 
 [sub_resource type="Animation" id="Animation_jdntt"]
 resource_name = "walk"
@@ -25,14 +25,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("CollisionShape2D:shape:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1.5, 11.5), Vector2(1.5, 12), Vector2(2, 9.95), Vector2(1.4375, 9.19375), Vector2(0.499999, 9), Vector2(1, 10.25), Vector2(2.5, 12)]
+"values": [Vector2(38.4615, 26.2365), Vector2(38.4615, 24.698), Vector2(38.4615, 29.3134), Vector2(38.4615, 29.3134), Vector2(36.9231, 29.3134), Vector2(38.4615, 27.775), Vector2(38.4615, 26.2365)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 15.0537), Vector2(3, 16.0537), Vector2(3, 13.0537), Vector2(3, 13.0537), Vector2(-2.38419e-07, 13.0537), Vector2(0.999999, 14.0537), Vector2(3, 15.0537)]
 }
 
 [sub_resource type="Animation" id="Animation_5j4my"]
@@ -61,6 +73,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1.5, 11.5)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38.4615, 26.2365)]
+}
 
 [sub_resource type="Animation" id="Animation_qij4q"]
 resource_name = "idle"
@@ -88,7 +112,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.5, 11.5), Vector2(1.5, 12.25)]
+"values": [Vector2(2.975, 15), Vector2(3, 16.1125)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bktgn"]
@@ -102,7 +126,7 @@ _data = {
 script = ExtResource("1_10uhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("1_3b0uj")
 hframes = 4
 vframes = 2
@@ -110,6 +134,7 @@ region_rect = Rect2(1.75037, 7.8237, 31.3108, 27.3385)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 11.5)
+scale = Vector2(1.3, 1.3)
 shape = SubResource("RectangleShape2D_kht51")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

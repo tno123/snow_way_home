@@ -292,6 +292,13 @@ position = Vector2(417, -75)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SnowPower" parent="CanvasLayer" instance=ExtResource("6_ejhy1")]
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.033
+offset_right = 0.0
+offset_bottom = 0.16
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
 position = Vector2(197, 223)
@@ -344,9 +351,10 @@ scene_switch_anim = "fade_in"
 [node name="Enemy" parent="." node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
 position = Vector2(-512, 192)
 collision_mask = 2
-LineOfSight = NodePath("../Line2D")
+LineOfSight = NodePath("Line2D")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="Enemy"]
+position = Vector2(512, -192)
 default_color = Color(0.65098, 0.0862745, 0.117647, 1)
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]

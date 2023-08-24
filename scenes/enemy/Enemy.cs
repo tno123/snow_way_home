@@ -24,7 +24,7 @@ public partial class Enemy : CharacterBody2D
 	{
 		//Add points to the LineOfSight.
 		LineOfSight.AddPoint(Position,0);
-		Snowball = GetParent().GetNode<Snowball>("Snowball");
+		Snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
 		LineOfSight.AddPoint(Snowball.Position,1);
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -73,6 +73,7 @@ public partial class Enemy : CharacterBody2D
 				//Damage snowball and destroy self
 				Snowball.Damage(1);
 				QueueFree();
+				LineOfSight.QueueFree();
 			}
 		}
 

@@ -348,12 +348,21 @@ offset_right = 41.0
 offset_bottom = 250.0
 scene_switch_anim = "fade_in"
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
-position = Vector2(-576, 224)
-LineOfSight = NodePath("../Line2D")
+[node name="Enemies" type="Node" parent="."]
 
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
+[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
+position = Vector2(-576, 224)
+LineOfSight = NodePath("../../TempLines/Line2D")
+
+[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
+position = Vector2(-888, 224)
+LineOfSight = NodePath("../../TempLines/Line2D2")
+
+[node name="TempLines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="TempLines"]
+
+[node name="Line2D2" type="Line2D" parent="TempLines"]
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
 [connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

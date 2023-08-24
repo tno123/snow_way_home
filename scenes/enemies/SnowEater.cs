@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Enemy : CharacterBody2D
+public partial class SnowEater : CharacterBody2D
 {
 	[Export]
 	public float MinDistance = 200.0f;

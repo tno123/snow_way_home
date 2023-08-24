@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=19 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djrawr3j1j264" path="res://scenes/crate/Crate.tscn" id="8_ms5ip"]
 [ext_resource type="PackedScene" uid="uid://d343cauapd6gf" path="res://scenes/button/Button.tscn" id="9_o18qb"]
 [ext_resource type="PackedScene" uid="uid://6r4byoitf0ye" path="res://scenes/effects/Shine.tscn" id="10_0d3gv"]
-[ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemy/Enemy.tscn" id="12_asx06"]
+[ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="12_rtyh2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -19,6 +19,9 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cp3jb"]
 friction = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye080"]
+texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_usblf"]
 texture = ExtResource("2_g608n")
@@ -240,6 +243,7 @@ terrain_set_0/terrain_1/color = Color(0.47451, 0.615686, 0.917647, 1)
 custom_data_layer_0/name = "Ice"
 custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_usblf")
+sources/0 = SubResource("TileSetAtlasSource_ye080")
 
 [node name="TempLevel" type="Node" node_paths=PackedStringArray("transition", "polygon", "collisionPolygon")]
 script = ExtResource("1_4kpna")
@@ -350,19 +354,13 @@ scene_switch_anim = "fade_in"
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
-position = Vector2(-576, 224)
+[node name="SnowEater" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_rtyh2")]
+position = Vector2(-569, 224)
 LineOfSight = NodePath("../../TempLines/Line2D")
-
-[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_asx06")]
-position = Vector2(-888, 224)
-LineOfSight = NodePath("../../TempLines/Line2D2")
 
 [node name="TempLines" type="Node" parent="."]
 
 [node name="Line2D" type="Line2D" parent="TempLines"]
-
-[node name="Line2D2" type="Line2D" parent="TempLines"]
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
 [connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

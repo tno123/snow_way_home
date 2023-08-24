@@ -303,6 +303,7 @@ offset_right = 0.0
 offset_bottom = 0.16
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
 position = Vector2(197, 223)

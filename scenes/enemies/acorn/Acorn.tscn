@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://hey0ntd1uwg7"]
+
+[ext_resource type="Texture2D" uid="uid://bo2kcc27kn1rl" path="res://assets/acorn32.png" id="1_fi8vl"]
+[ext_resource type="Script" path="res://scenes/enemies/acorn/Acorn.cs" id="1_mx7e8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q6xam"]
+radius = 9.0
+height = 22.0
+
+[node name="Acorn" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_mx7e8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fi8vl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q6xam")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

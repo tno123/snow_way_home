@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=20 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d343cauapd6gf" path="res://scenes/button/Button.tscn" id="9_o18qb"]
 [ext_resource type="PackedScene" uid="uid://6r4byoitf0ye" path="res://scenes/effects/Shine.tscn" id="10_0d3gv"]
 [ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="12_rtyh2"]
+[ext_resource type="PackedScene" uid="uid://bqpqdmxhpgxl5" path="res://scenes/enemies/Squirrel.tscn" id="13_ipmaw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -362,6 +363,9 @@ LineOfSight = NodePath("../../TempLines/Line2D")
 [node name="SnowEater2" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_rtyh2")]
 position = Vector2(-792, 216)
 LineOfSight = NodePath("../../TempLines/Line2D2")
+
+[node name="Squirrel" parent="Enemies" instance=ExtResource("13_ipmaw")]
+position = Vector2(-624, 128)
 
 [node name="TempLines" type="Node" parent="."]
 

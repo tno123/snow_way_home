@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=26 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Texture2D" uid="uid://c30n22su056bp" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_5aakn"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="2_gbfq3"]
 [ext_resource type="Texture2D" uid="uid://bplqkk513jurd" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/background.png" id="2_hle1d"]
 [ext_resource type="Texture2D" uid="uid://cqry161ag7ilh" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/middleground.png" id="3_5p34v"]
+[ext_resource type="PackedScene" uid="uid://gpadwbtokqlu" path="res://scenes/houses/Houses.tscn" id="5_keer4"]
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="6_wlyqx"]
 [ext_resource type="PackedScene" uid="uid://canoxnjxt32de" path="res://scenes/sign/Sign.tscn" id="7_pi0sw"]
 [ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://utils/Exclamation.tscn" id="7_yndl4"]
@@ -918,6 +919,9 @@ motion_mirroring = Vector2(1024, 0)
 scale = Vector2(3.206, 3.206)
 texture = ExtResource("6_wlyqx")
 centered = false
+
+[node name="Houses" parent="." instance=ExtResource("5_keer4")]
+position = Vector2(2065, 449)
 
 [node name="Rock4" parent="." instance=ExtResource("11_3c7gg")]
 position = Vector2(874, 392)

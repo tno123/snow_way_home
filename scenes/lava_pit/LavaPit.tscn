@@ -56,11 +56,13 @@ animations = [{
 size = Vector2(64, 34)
 
 [node name="LavaPit" type="Area2D"]
+position = Vector2(32, 24)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yjm3u")
-frame_progress = 0.732417
+frame = 2
+frame_progress = 0.297929
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

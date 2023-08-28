@@ -1,25 +1,23 @@
-[gd_scene load_steps=27 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=25 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Texture2D" uid="uid://c30n22su056bp" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_5aakn"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="2_gbfq3"]
 [ext_resource type="Texture2D" uid="uid://bplqkk513jurd" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/background.png" id="2_hle1d"]
-[ext_resource type="PackedScene" uid="uid://canoxnjxt32de" path="res://scenes/Sign.tscn" id="2_i08bc"]
 [ext_resource type="Texture2D" uid="uid://cqry161ag7ilh" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/middleground.png" id="3_5p34v"]
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="6_wlyqx"]
-[ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://scenes/Exclamation.tscn" id="7_yndl4"]
-[ext_resource type="PackedScene" uid="uid://bgmia3qr1hwql" path="res://scenes/Lamp.tscn" id="8_3uhck"]
-[ext_resource type="PackedScene" uid="uid://hwfhrgxpvuil" path="res://scenes/Rock.tscn" id="9_rst6i"]
-[ext_resource type="PackedScene" uid="uid://1tlqixuee6ma" path="res://scenes/Rock_2.tscn" id="10_6f38q"]
-[ext_resource type="PackedScene" uid="uid://vt6c5rlbbkrt" path="res://scenes/Rock_3.tscn" id="11_3c7gg"]
-[ext_resource type="PackedScene" uid="uid://gpadwbtokqlu" path="res://scenes/Houses.tscn" id="13_xcy48"]
-[ext_resource type="PackedScene" uid="uid://t5rhh4g4u44a" path="res://scenes/Well.tscn" id="14_rglq4"]
+[ext_resource type="PackedScene" uid="uid://canoxnjxt32de" path="res://scenes/sign/Sign.tscn" id="7_pi0sw"]
+[ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://utils/Exclamation.tscn" id="7_yndl4"]
+[ext_resource type="PackedScene" uid="uid://hwfhrgxpvuil" path="res://scenes/rocks/Rock.tscn" id="9_rst6i"]
+[ext_resource type="PackedScene" uid="uid://1tlqixuee6ma" path="res://scenes/rocks/Rock_2.tscn" id="10_6f38q"]
+[ext_resource type="PackedScene" uid="uid://vt6c5rlbbkrt" path="res://scenes/rocks/Rock_3.tscn" id="11_3c7gg"]
+[ext_resource type="PackedScene" uid="uid://t5rhh4g4u44a" path="res://scenes/well/Well.tscn" id="14_rglq4"]
 [ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="15_8tde8"]
-[ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/Bonfire.tscn" id="16_3gm7b"]
-[ext_resource type="PackedScene" uid="uid://jnie64po4xfs" path="res://HatmanIdle.tscn" id="17_glhjr"]
-[ext_resource type="PackedScene" uid="uid://cgssbamcnneca" path="res://BeardedIdle.tscn" id="18_ibbcl"]
-[ext_resource type="PackedScene" uid="uid://csudboacvt0p2" path="res://OldManIdle.tscn" id="19_jk28a"]
-[ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://WomanIdle.tscn" id="20_bjxk0"]
+[ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/bonfire/Bonfire.tscn" id="16_3gm7b"]
+[ext_resource type="PackedScene" uid="uid://jnie64po4xfs" path="res://scenes/villagers/HatmanIdle.tscn" id="16_t41ec"]
+[ext_resource type="PackedScene" uid="uid://csudboacvt0p2" path="res://scenes/villagers/OldManIdle.tscn" id="17_mxqer"]
+[ext_resource type="PackedScene" uid="uid://cgssbamcnneca" path="res://scenes/villagers/BeardedIdle.tscn" id="18_ibbcl"]
+[ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://scenes/villagers/WomanIdle.tscn" id="18_t2ion"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtsst"]
 
@@ -921,23 +919,17 @@ scale = Vector2(3.206, 3.206)
 texture = ExtResource("6_wlyqx")
 centered = false
 
-[node name="Houses" parent="." instance=ExtResource("13_xcy48")]
-position = Vector2(2175, 445)
-
 [node name="Rock4" parent="." instance=ExtResource("11_3c7gg")]
 position = Vector2(874, 392)
-
-[node name="Sign" parent="." instance=ExtResource("2_i08bc")]
-position = Vector2(1319, 467)
 
 [node name="Rock" parent="." instance=ExtResource("9_rst6i")]
 position = Vector2(1143, 463)
 
-[node name="Lamp" parent="." instance=ExtResource("8_3uhck")]
-position = Vector2(1609, 427)
+[node name="Sign" parent="." instance=ExtResource("7_pi0sw")]
+position = Vector2(1333, 469)
 
 [node name="Exclamation" parent="." instance=ExtResource("7_yndl4")]
-position = Vector2(678, 345)
+position = Vector2(2054, 402)
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
 position = Vector2(2033, 227)
@@ -947,9 +939,6 @@ metadata/_edit_group_ = true
 position = Vector2(10, -116)
 zoom = Vector2(0.8, 0.8)
 limit_left = 260
-
-[node name="Lamp2" parent="." instance=ExtResource("8_3uhck")]
-position = Vector2(1741, 429)
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -975,17 +964,14 @@ layer_0/tile_data = PackedInt32Array(2228252, 1310721, 8, 2228253, 1376257, 8, 2
 [node name="Bonfire" parent="." instance=ExtResource("16_3gm7b")]
 position = Vector2(1465, 519)
 
-[node name="HatmanIdle" parent="." instance=ExtResource("17_glhjr")]
-position = Vector2(2071, 506)
-
-[node name="HatmanIdle2" parent="." instance=ExtResource("17_glhjr")]
-position = Vector2(2158, 506)
-
 [node name="BeardedIdle" parent="." instance=ExtResource("18_ibbcl")]
-position = Vector2(1920, 507)
+position = Vector2(2035, 508)
 
-[node name="OldManIdle" parent="." instance=ExtResource("19_jk28a")]
-position = Vector2(2233, 500)
+[node name="HatmanIdle" parent="." instance=ExtResource("16_t41ec")]
+position = Vector2(1936, 509)
 
-[node name="WomanIdle" parent="." instance=ExtResource("20_bjxk0")]
-position = Vector2(2330, 506)
+[node name="OldManIdle" parent="." instance=ExtResource("17_mxqer")]
+position = Vector2(1822, 508)
+
+[node name="WomanIdle" parent="." instance=ExtResource("18_t2ion")]
+position = Vector2(1729, 510)

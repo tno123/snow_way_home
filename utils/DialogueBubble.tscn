@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1in7h462p5lh"]
+
+[sub_resource type="Gradient" id="Gradient_apncg"]
+offsets = PackedFloat32Array(0, 0.0193548)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7qq4d"]
+gradient = SubResource("Gradient_apncg")
+
+[node name="DialogueBubble" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_7qq4d")
+
+[node name="CharacterLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DialogueLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -79,6 +79,16 @@ public partial class Snowball : CharacterBody2D
 				powerup.PowerupCollected += OnPowerup;
 			}
 		}
+		var mapObjects = GetParent().GetNode("MapObjects");
+		if (mapObjects != null)
+		{
+			var numPuddles = mapObjects.GetChildCount();
+			for (int i = 0; i < numPuddles; i++)
+			{
+				var puddle = (Puddle)mapObjects.GetChild(i);
+				puddle.PuddleEntered += OnIced;
+			}
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)

@@ -22,10 +22,12 @@ public partial class SnowEater : CharacterBody2D
 
 	public override void _Ready()
 	{
-		//Add points to the LineOfSight.
-		LineOfSight.AddPoint(Position,0);
 		Snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
-		LineOfSight.AddPoint(Snowball.Position,1);
+		if (LineOfSight != null) {
+		//Add points to the LineOfSight.
+			LineOfSight.AddPoint(Position,0);
+			LineOfSight.AddPoint(Snowball.Position,1);
+		}
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		Sprite2D = GetNode<Sprite2D>("Sprite2D");
@@ -42,6 +44,8 @@ public partial class SnowEater : CharacterBody2D
 		// Add the gravity.
 		if (!IsOnFloor())
 			velocity.Y += gravity * (float)delta;
+
+		mode = Position.DistanceTo(Snowball.Position) < MinDistance ? "walk" : "idle";
 
 		//if mode is walk, walk towards snowball. Take care to flip the sprite if the snowball is to the left.
 		if (mode == "walk")
@@ -73,7 +77,8 @@ public partial class SnowEater : CharacterBody2D
 				//Damage snowball and destroy self
 				Snowball.Damage(1);
 				QueueFree();
-				LineOfSight.QueueFree();
+				if (LineOfSight != null)
+					LineOfSight.QueueFree();
 			}
 		}
 
@@ -82,6 +87,8 @@ public partial class SnowEater : CharacterBody2D
 
 	private void UpdateLineOfSight()
 	{
+		if (LineOfSight == null)
+			return;
 		LineOfSight.ClearPoints();
 		LineOfSight.AddPoint(Position);
 		LineOfSight.AddPoint(Snowball.Position);
@@ -89,12 +96,10 @@ public partial class SnowEater : CharacterBody2D
 		if (LineOfSight.GetPointPosition(0).DistanceTo(LineOfSight.GetPointPosition(1)) < MinDistance)
 		{
 			LineOfSight.DefaultColor = new Color(0, 1, 0);
-			mode = "walk";
 		}
 		else
 		{
 			LineOfSight.DefaultColor = new Color(1, 0, 0);
-			mode = "idle";
 		}
 
 	}

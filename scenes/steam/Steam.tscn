@@ -46,15 +46,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xbde"]
+size = Vector2(39, 34)
 
 [node name="Steam" type="Area2D"]
 position = Vector2(31, 22)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.6875, 7.125)
 rotation = -1.5708
+scale = Vector2(2.15626, 2.47656)
 sprite_frames = SubResource("SpriteFrames_hxgjc")
-frame_progress = 0.562508
+frame = 3
+frame_progress = 0.287305
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.5, 7)
 shape = SubResource("RectangleShape2D_1xbde")

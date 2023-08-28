@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3rap4ggvuflm"]
+[gd_scene load_steps=3 format=3 uid="uid://c3rap4ggvuflm"]
 
 [ext_resource type="Texture2D" uid="uid://cpwvscvksjqla" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/bonfire.png" id="1_rvyhk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vi0f"]
+radius = 32.0
+height = 86.0
 
 [node name="Bonfire" type="Node2D"]
 
@@ -8,3 +12,9 @@
 position = Vector2(8.00003, -5.99998)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_rvyhk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, -11)
+shape = SubResource("CapsuleShape2D_4vi0f")

@@ -149,7 +149,7 @@ public partial class Snowball : CharacterBody2D
 			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)
 		{
 			//NextJumpTimer.Start();
-			JumpAnim.Play("main");
+			//JumpAnim.Play("main");
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Start();
@@ -165,7 +165,7 @@ public partial class Snowball : CharacterBody2D
 			Power--;
 		}
 		if (WasOnFloor && IsOnFloor()) {
-			JumpLandAnim.Play("main"); // This should play when the snowball lands
+			//JumpLandAnim.Play("main"); // This should play when the snowball lands
 			JumpAnim.Stop();
 		}
 	}

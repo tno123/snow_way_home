@@ -116,12 +116,12 @@ animations = [{
 
 [node name="Puddle1" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r0452")
-frame_progress = 0.523354
+frame_progress = 0.910126
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hnmff")
 
 [node name="Puddle2" type="AnimatedSprite2D" parent="."]
-position = Vector2(68, 2)
+position = Vector2(29, -6)
 sprite_frames = SubResource("SpriteFrames_7tbhd")
-frame_progress = 0.242821
+frame_progress = 0.397058

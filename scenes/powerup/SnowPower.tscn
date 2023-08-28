@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciawowjochtyb"]
+[gd_scene load_steps=3 format=3 uid="uid://ciawowjochtyb"]
 
 [ext_resource type="Script" path="res://scenes/powerup/SnowPower.cs" id="1_k6fqc"]
+[ext_resource type="Texture2D" uid="uid://8fwpnyy3oojg" path="res://icon.svg" id="2_nwjf5"]
 
 [node name="SnowPower" type="ProgressBar"]
 anchors_preset = 15
@@ -10,5 +11,14 @@ offset_right = -512.0
 offset_bottom = -448.0
 grow_horizontal = 2
 grow_vertical = 2
+max_value = 3.0
+step = 1.0
+value = 2.0
 show_percentage = false
 script = ExtResource("1_k6fqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(24, 56)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("2_nwjf5")

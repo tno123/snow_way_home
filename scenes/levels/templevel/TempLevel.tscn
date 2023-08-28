@@ -359,9 +359,15 @@ scene_switch_anim = "fade_in"
 position = Vector2(-569, 224)
 LineOfSight = NodePath("../../TempLines/Line2D")
 
+[node name="SnowEater2" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_rtyh2")]
+position = Vector2(-792, 216)
+LineOfSight = NodePath("../../TempLines/Line2D2")
+
 [node name="TempLines" type="Node" parent="."]
 
 [node name="Line2D" type="Line2D" parent="TempLines"]
+
+[node name="Line2D2" type="Line2D" parent="TempLines"]
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
 [connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

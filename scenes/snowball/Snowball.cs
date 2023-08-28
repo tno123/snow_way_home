@@ -17,13 +17,18 @@ public partial class Snowball : CharacterBody2D
 
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
+	[Signal]
+	public delegate void IcedEventHandler(bool ice);
 
 	public const float Speed = 200.0f;
-	public const float JumpVelocity = -220.0f;
+	public const float JumpVelocity = -350.0f;
 	public const float BounceVelocity = -750.0f;
 	public const float BoostVelocity = 2000.0f;
+	public float FallSpeed = 1.0f;
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
+	public bool CurrentIce = false;
+
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
@@ -243,7 +248,7 @@ public partial class Snowball : CharacterBody2D
 		// Add the gravity.
 		if (!IsOnFloor()) 
 		{
-			velocity.Y += gravity * delta;
+			velocity.Y += gravity * delta * FallSpeed;
 			
 		}
 	}
@@ -277,6 +282,12 @@ public partial class Snowball : CharacterBody2D
 		EmitSignal(SignalName.Powerup, -damage);
 	}
 
+	public void SetIce(bool ice) {
+		//Todo: create ice signal to powerbar
+		CurrentIce = ice;
+		OnIced(ice);
+	}
+
 	private void OnPowerup()
 	{
 		if (Power < MaxPower)
@@ -285,6 +296,11 @@ public partial class Snowball : CharacterBody2D
 			Power++;
 		}
 	}
+	private void OnIced(bool ice)
+	{
+		EmitSignal(SignalName.Iced,ice);
+	}
+
 	private void _on_bounce_pad_bounce()
 	{
 		velocity.Y = BounceVelocity;

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgmia3qr1hwql"]
+
+[ext_resource type="Texture2D" uid="uid://ck337x8ni146y" path="res://assets/oak_woods_v1.0/decorations/lamp.png" id="1_myumb"]
+
+[node name="Lamp" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 71.0
+offset_bottom = 123.0
+texture = ExtResource("1_myumb")

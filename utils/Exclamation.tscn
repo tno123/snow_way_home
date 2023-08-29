@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1b3sy7n064ko"]
+
+[ext_resource type="Texture2D" uid="uid://cj7gb28vdwq4x" path="res://assets/Rocky Roads/FX/exclamation.png" id="1_m766b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw3t5"]
+atlas = ExtResource("1_m766b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pv00"]
+atlas = ExtResource("1_m766b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7tnd"]
+atlas = ExtResource("1_m766b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfnls"]
+atlas = ExtResource("1_m766b")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqydq"]
+atlas = ExtResource("1_m766b")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_outar"]
+atlas = ExtResource("1_m766b")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6xeh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw3t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pv00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7tnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfnls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqydq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_outar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw3t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pv00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7tnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfnls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqydq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_outar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw3t5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(35, 30.5)
+scale = Vector2(5.375, 4.8125)
+sprite_frames = SubResource("SpriteFrames_k6xeh")

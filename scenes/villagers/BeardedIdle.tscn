@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgssbamcnneca"]
+
+[ext_resource type="Texture2D" uid="uid://ba5lx47y1nnmg" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/bearded-idle.png" id="1_qce3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwb1f"]
+atlas = ExtResource("1_qce3y")
+region = Rect2(160, 0, 40, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt33s"]
+atlas = ExtResource("1_qce3y")
+region = Rect2(120, 0, 40, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5aen"]
+atlas = ExtResource("1_qce3y")
+region = Rect2(80, 0, 40, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3vgn"]
+atlas = ExtResource("1_qce3y")
+region = Rect2(40, 0, 40, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okm4i"]
+atlas = ExtResource("1_qce3y")
+region = Rect2(0, 0, 40, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joa0x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwb1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt33s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5aen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3vgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okm4i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BeardedIdle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_joa0x")
+frame_progress = 0.660037

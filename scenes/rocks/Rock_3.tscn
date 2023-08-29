@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://vt6c5rlbbkrt"]
+
+[ext_resource type="Texture2D" uid="uid://djehksdam4wlx" path="res://assets/oak_woods_v1.0/decorations/rock_3.png" id="1_fh8bf"]
+
+[node name="Rock3" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 247.0
+offset_bottom = 170.0
+texture = ExtResource("1_fh8bf")

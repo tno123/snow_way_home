@@ -44,6 +44,8 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D BoostChargingAnim;
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
+
+	private Vector2 PreviousVelocity = Vector2.Zero;
 	
 	private bool isBoosting = false;
 	
@@ -113,9 +115,9 @@ public partial class Snowball : CharacterBody2D
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		if (direction.X != 0)
 		{
-			if (!HandleIceTile())
-				
+			//if (!HandleIceTile())	
 			velocity.X = direction.X * Speed;
+
 			if (IsOnFloor()){animation.Play("move");}
 			//else{animation.Stop();}
 			
@@ -137,13 +139,15 @@ public partial class Snowball : CharacterBody2D
 		{
 			animation.Stop();
 			//TODO: Need to handle correct ice physics
-			IsOnIce = HandleIceTile();
+			//IsOnIce = HandleIceTile();
+			IsOnIce=false;
 			//Friction
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
 			//lastVelocityX = velocity.X;
 		}
 
 		Velocity = velocity;
+		PreviousVelocity=velocity;
 		
 		MoveAndSlide();
 
@@ -168,7 +172,7 @@ public partial class Snowball : CharacterBody2D
 			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)
 		{
 			//NextJumpTimer.Start();
-			JumpAnim.Play("main");
+			
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Start();
@@ -177,16 +181,17 @@ public partial class Snowball : CharacterBody2D
 		
 		if (Input.IsActionJustPressed("ui_accept") && !IsOnFloor() && NextJumpTimer.IsStopped() && Power > 0)
 		{
+			JumpAnim.Play("main");
 			NextJumpTimer.Start();
 			velocity.Y = JumpVelocity;
 			jumped = true;
 			EmitSignal(SignalName.Powerup, -1);
 			Power--;
 		}
-		if (WasOnFloor && IsOnFloor()) {
-			JumpLandAnim.Play("main"); // This should play when the snowball lands
-			JumpAnim.Stop();
+		if (PreviousVelocity.Y > 400 && IsOnFloor()){
+			JumpLandAnim.Play("main");
 		}
+		
 	}
 	
 	private void HandleBoost()
@@ -326,6 +331,14 @@ public partial class Snowball : CharacterBody2D
 		
 
 	}
+	/*It is probably best to handle logic for what happens with
+	steam and puddles and lava pit in this script (snowball.cs)*/
+	
+	/*Steam*/
+	
+	/*Puddle*/
+	
+	/*Lava pit*/
 }
 
 

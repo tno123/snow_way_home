@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://csudboacvt0p2"]
+
+[ext_resource type="Texture2D" uid="uid://bl53l5gst45bg" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/oldman-idle.png" id="1_qquvr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gs6o"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(0, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovojn"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(34, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffegf"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(68, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywc8u"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(102, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5oad"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(136, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua06a"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(170, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jgs8"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(204, 0, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s657w"]
+atlas = ExtResource("1_qquvr")
+region = Rect2(238, 0, 34, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_usf35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gs6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovojn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffegf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywc8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5oad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua06a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jgs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s657w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="OldManIdle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 13)
+scale = Vector2(2, 1.668)
+sprite_frames = SubResource("SpriteFrames_usf35")
+frame_progress = 0.0574306

@@ -4,7 +4,7 @@ using System;
 public partial class Transitions : Control
 {
 	private TextureRect textureRect;
-	private AnimationPlayer animationPlayer;
+	public AnimationPlayer animationPlayer;
 	
 	[Export]
 	String scene_switch_anim = "fade_out";

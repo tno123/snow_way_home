@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gpadwbtokqlu"]
+
+[ext_resource type="Texture2D" uid="uid://bdv5n6xun1q6y" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/props/houses.png" id="1_i006e"]
+
+[node name="Houses" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i006e")

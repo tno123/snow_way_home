@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckfe5oq0qmyyd"]
+
+[ext_resource type="Texture2D" uid="uid://bd6y4y1v852y4" path="res://assets/Rocky Roads/FX/bullet_windtrail.png" id="1_oc7jy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_250ry"]
+atlas = ExtResource("1_oc7jy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td1a8"]
+atlas = ExtResource("1_oc7jy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tryso"]
+atlas = ExtResource("1_oc7jy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iarud"]
+atlas = ExtResource("1_oc7jy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfko5"]
+atlas = ExtResource("1_oc7jy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxgjc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_250ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td1a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tryso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iarud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfko5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xbde"]
+size = Vector2(39, 34)
+
+[node name="Steam" type="Area2D"]
+position = Vector2(31, 22)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.6875, 7.125)
+rotation = -1.5708
+scale = Vector2(2.15626, 2.47656)
+sprite_frames = SubResource("SpriteFrames_hxgjc")
+frame = 3
+frame_progress = 0.287305
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.5, 7)
+shape = SubResource("RectangleShape2D_1xbde")

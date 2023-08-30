@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4awhu2krse1v"]
+
+[ext_resource type="Texture2D" uid="uid://b80gm6uouq521" path="res://assets/Rocky Roads/Objects/ladder.png" id="1_pi6sj"]
+
+[node name="Ladder" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 20.5)
+scale = Vector2(2.25, 1.64063)
+texture = ExtResource("1_pi6sj")

@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://h2qncu7w46on"]
+
+[ext_resource type="Texture2D" uid="uid://svpmp30e51ld" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/woman-idle.png" id="1_pa3j8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arodk"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(0, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbrei"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(37, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glpdd"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(74, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6kmx"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(111, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weomc"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(148, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdfyf"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(185, 0, 37, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv30g"]
+atlas = ExtResource("1_pa3j8")
+region = Rect2(222, 0, 37, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hruf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arodk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbrei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glpdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6kmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weomc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdfyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv30g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WomanIdle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0hruf")

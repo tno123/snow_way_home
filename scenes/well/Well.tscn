@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://t5rhh4g4u44a"]
+
+[ext_resource type="Texture2D" uid="uid://dcnfq7d2mlmrw" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/props/props.png" id="1_gcqdi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqex1"]
+atlas = ExtResource("1_gcqdi")
+region = Rect2(260.073, 82.3375, 96.0003, 89.0605)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(86, 62)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(43.5, 55.25)
+scale = Vector2(1.90625, 2.24157)
+texture = SubResource("AtlasTexture_fqex1")

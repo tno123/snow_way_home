@@ -4,7 +4,7 @@ using System;
 public partial class Squirrel : Node2D
 {
 	[Export]
-	public float ThrowingDistance = 200.0f;
+	public float ThrowingDistance = 400.0f;
 	[Export]
 	public float ThrowTime = 2.5f;
 	public Snowball snowball;

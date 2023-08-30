@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://byrwr0ao16lvb"]
+
+[ext_resource type="Script" path="res://scenes/levels/level2/EndTransition.cs" id="1_11j1g"]
+[ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="1_iivra"]
+[ext_resource type="PackedScene" uid="uid://cbrjivs3fuxlf" path="res://scenes/levels/level4/BossLevel.tscn" id="2_m8tqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlbpq"]
+size = Vector2(128, 128)
+
+[node name="EndTransition" type="Node2D"]
+script = ExtResource("1_11j1g")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xlbpq")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+
+[node name="Transitions" parent="." instance=ExtResource("1_iivra")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 0.0
+offset_bottom = 0.0
+scene_to_load = ExtResource("2_m8tqb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

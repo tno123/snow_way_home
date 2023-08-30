@@ -461,8 +461,6 @@ position = Vector2(43, 3)
 scale = Vector2(6.125, 3.3125)
 sprite_frames = SubResource("SpriteFrames_677wc")
 animation = &"move"
-frame = 9
-frame_progress = 1.0
 
 [node name="BoostAnimationLeft" type="AnimatedSprite2D" parent="."]
 position = Vector2(-72, 8)

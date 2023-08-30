@@ -19,6 +19,7 @@ public partial class StartSlowGravity : Node
 	private void _on_slow_gravity_area_body_entered(Node2D body)
 	{
 		snowball.FallSpeed = 0.01f;
+		//snowball.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("slow");
 		QueueFree();
 	}
 }

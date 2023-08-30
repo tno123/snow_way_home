@@ -5,7 +5,7 @@ public partial class Acorn : Area2D
 {
 	public Sprite2D Sprite;
 	public Vector2 Direction;
-	private float speed = 100.0f;
+	private float speed = 200.0f;
 	private float rotSpeed = 10.0f;
 	
 	// Called when the node enters the scene tree for the first time.

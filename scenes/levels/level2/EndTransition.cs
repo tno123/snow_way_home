@@ -17,7 +17,6 @@ public partial class EndTransition : Node2D
 	{
 		if (body is Snowball)
 		{
-			GD.Print("END");
 			var transition = GetNode<Transitions>("Transitions");
 			transition.Visible = true;
 			transition.animationPlayer.Play("fade_out");

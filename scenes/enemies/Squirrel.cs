@@ -7,6 +7,8 @@ public partial class Squirrel : Node2D
 	public float ThrowingDistance = 400.0f;
 	[Export]
 	public float ThrowTime = 2.5f;
+	[Export]
+	public bool Flip = false;
 	public Snowball snowball;
 	public Timer timer;
 
@@ -17,6 +19,10 @@ public partial class Squirrel : Node2D
 		snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
 		timer = GetNode<Timer>("Timer");
 		timer.WaitTime = ThrowTime;
+		if (Flip)
+		{
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

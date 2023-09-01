@@ -10,7 +10,7 @@ public partial class Cutscene : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//camera = GetNode<Camera2D>("Camera2D");
+		camera = GetNode<Snowball>("Snowball").GetNode<Camera2D>("Camera2D");
 		//previousPosition = new Vector2(camera.Position.X, camera.Position.Y);
 	}
 

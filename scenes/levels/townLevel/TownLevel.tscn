@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=28 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Texture2D" uid="uid://c30n22su056bp" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_5aakn"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://csudboacvt0p2" path="res://scenes/villagers/OldManIdle.tscn" id="17_mxqer"]
 [ext_resource type="PackedScene" uid="uid://cgssbamcnneca" path="res://scenes/villagers/BeardedIdle.tscn" id="18_ibbcl"]
 [ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://scenes/villagers/WomanIdle.tscn" id="18_t2ion"]
-[ext_resource type="Texture2D" uid="uid://covp3q1vqj860" path="res://assets/Rocky Roads/UI/go.png" id="20_m1frr"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="21_clmjs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtsst"]
@@ -950,14 +949,17 @@ position = Vector2(1333, 469)
 [node name="Exclamation" parent="." instance=ExtResource("7_yndl4")]
 position = Vector2(2054, 402)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(839, 369)
+zoom = Vector2(0.8, 0.8)
+limit_left = 260
+
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
 position = Vector2(839, 369)
 metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Snowball"]
-position = Vector2(10, -116)
-zoom = Vector2(0.8, 0.8)
-limit_left = 260
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -994,11 +996,6 @@ position = Vector2(1822, 508)
 
 [node name="WomanIdle" parent="." instance=ExtResource("18_t2ion")]
 position = Vector2(1729, 510)
-
-[node name="Go" type="Sprite2D" parent="."]
-position = Vector2(1975, -15)
-scale = Vector2(15.5313, 20.375)
-texture = ExtResource("20_m1frr")
 
 [node name="Powerups" type="Node" parent="."]
 

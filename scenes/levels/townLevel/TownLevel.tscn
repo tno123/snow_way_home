@@ -15,16 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://vt6c5rlbbkrt" path="res://scenes/rocks/Rock_3.tscn" id="11_3c7gg"]
 [ext_resource type="PackedScene" uid="uid://t5rhh4g4u44a" path="res://scenes/well/Well.tscn" id="14_rglq4"]
 [ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="15_8tde8"]
-[ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="15_p8kvn"]
 [ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/bonfire/Bonfire.tscn" id="16_3gm7b"]
-[ext_resource type="PackedScene" uid="uid://b3o4uw1qxpuh2" path="res://scenes/levels/townLevel/WellLevel.tscn" id="16_l6e4v"]
 [ext_resource type="PackedScene" uid="uid://jnie64po4xfs" path="res://scenes/villagers/HatmanIdle.tscn" id="16_t41ec"]
 [ext_resource type="PackedScene" uid="uid://csudboacvt0p2" path="res://scenes/villagers/OldManIdle.tscn" id="17_mxqer"]
 [ext_resource type="PackedScene" uid="uid://cgssbamcnneca" path="res://scenes/villagers/BeardedIdle.tscn" id="18_ibbcl"]
 [ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://scenes/villagers/WomanIdle.tscn" id="18_t2ion"]
 [ext_resource type="Texture2D" uid="uid://covp3q1vqj860" path="res://assets/Rocky Roads/UI/go.png" id="20_m1frr"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="21_clmjs"]
-[ext_resource type="PackedScene" uid="uid://cmgcc5ago0e4u" path="res://scenes/Cutscene.tscn" id="25_yxy2p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtsst"]
 
@@ -975,18 +972,6 @@ position = Vector2(670, 403)
 [node name="Well" parent="." instance=ExtResource("14_rglq4")]
 position = Vector2(2927, 434)
 
-[node name="Transitions" parent="Well" instance=ExtResource("15_p8kvn")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -124.0
-offset_top = -26.0
-offset_right = -60.0
-offset_bottom = 91.0
-grow_horizontal = 1
-grow_vertical = 1
-scene_to_load = ExtResource("16_l6e4v")
-
 [node name="GothicTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dl5en")
 format = 2
@@ -1016,6 +1001,3 @@ texture = ExtResource("20_m1frr")
 
 [node name="Powerup" parent="Powerups" instance=ExtResource("21_clmjs")]
 position = Vector2(3089, 502)
-
-[node name="Cutscene" parent="." instance=ExtResource("25_yxy2p")]
-position = Vector2(2608, 537)

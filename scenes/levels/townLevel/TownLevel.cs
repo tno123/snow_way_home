@@ -16,13 +16,24 @@ public partial class TownLevel : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		/*
+		if ((snowball as Snowball).IsBoosting)
+			{
+				camera.Zoom = camera.Zoom.Lerp(boostZoom, zoomSpeed);
+				//camera.ZoomIn();
+			}
+			else
+			{
+				camera.Zoom = camera.Zoom.Lerp(defaultZoom, zoomSpeed);
+				//camera.ZoomOut();
+			}
+			*/
 	}
 	
 	public async void SomeFunction() //https://ask.godotengine.org/7042/wait-like-function
 	{
-		GD.Print("start");
+	
 		await ToSignal(GetTree().CreateTimer(1.0f), "timeout");
-		GD.Print("end");
 		Exclamation.Play("default");
 	}
 }

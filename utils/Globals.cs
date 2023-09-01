@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public partial class Globals : Node
 {
+    public static float FallSpeed = 1.0f;
     /*
     public static List<String> powerups =new List<string>()
     {

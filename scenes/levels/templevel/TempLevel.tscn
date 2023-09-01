@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=20 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://djrawr3j1j264" path="res://scenes/crate/Crate.tscn" id="8_ms5ip"]
 [ext_resource type="PackedScene" uid="uid://d343cauapd6gf" path="res://scenes/button/Button.tscn" id="9_o18qb"]
 [ext_resource type="PackedScene" uid="uid://6r4byoitf0ye" path="res://scenes/effects/Shine.tscn" id="10_0d3gv"]
+[ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="12_rtyh2"]
+[ext_resource type="PackedScene" uid="uid://bqpqdmxhpgxl5" path="res://scenes/enemies/Squirrel.tscn" id="13_ipmaw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6q6x"]
 
@@ -19,6 +21,9 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cp3jb"]
 friction = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye080"]
+texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_usblf"]
 texture = ExtResource("2_g608n")
@@ -240,6 +245,7 @@ terrain_set_0/terrain_1/color = Color(0.47451, 0.615686, 0.917647, 1)
 custom_data_layer_0/name = "Ice"
 custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_usblf")
+sources/0 = SubResource("TileSetAtlasSource_ye080")
 
 [node name="TempLevel" type="Node" node_paths=PackedStringArray("transition", "polygon", "collisionPolygon")]
 script = ExtResource("1_4kpna")
@@ -252,7 +258,7 @@ collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_g6q6x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 384, 0, 320, -96, 320, -288, 208, -392, 208, -488, 384)
+polygon = PackedVector2Array(0, 384, -968, 384, -968, 280, -432, 280, -392, 208, -288, 208, -96, 320, 0, 320)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
@@ -293,6 +299,14 @@ position = Vector2(417, -75)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SnowPower" parent="CanvasLayer" instance=ExtResource("6_ejhy1")]
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.033
+offset_right = 0.0
+offset_bottom = 0.16
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
 position = Vector2(197, 223)
@@ -341,6 +355,25 @@ offset_top = 251.0
 offset_right = 41.0
 offset_bottom = 250.0
 scene_switch_anim = "fade_in"
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="SnowEater" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_rtyh2")]
+position = Vector2(-569, 224)
+LineOfSight = NodePath("../../TempLines/Line2D")
+
+[node name="SnowEater2" parent="Enemies" node_paths=PackedStringArray("LineOfSight") instance=ExtResource("12_rtyh2")]
+position = Vector2(-792, 216)
+LineOfSight = NodePath("../../TempLines/Line2D2")
+
+[node name="Squirrel" parent="Enemies" instance=ExtResource("13_ipmaw")]
+position = Vector2(-624, 128)
+
+[node name="TempLines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="TempLines"]
+
+[node name="Line2D2" type="Line2D" parent="TempLines"]
 
 [connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
 [connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]

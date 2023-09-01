@@ -1,127 +1,24 @@
-[gd_scene load_steps=19 format=3 uid="uid://5qoicbb60bf1"]
+[gd_scene load_steps=4 format=3 uid="uid://cv4vgn6yeth54"]
 
 [ext_resource type="Script" path="res://scenes/puddle/Puddle.cs" id="1_7cgpe"]
 [ext_resource type="Texture2D" uid="uid://bs5lc1yjmmxry" path="res://assets/puddle.png" id="1_wrc5x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_20ipc"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xxh"]
+size = Vector2(64, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3twi"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(32, 0, 32, 32)
+[node name="Puddle" type="Node2D"]
+script = ExtResource("1_7cgpe")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhmqp"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(64, 0, 32, 32)
+[node name="Area2D" type="Area2D" parent="."]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qi84n"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(96, 0, 32, 32)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_e5xxh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i172"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(128, 0, 32, 32)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("1_wrc5x")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvjnj"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mtip"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t2urc"]
-atlas = ExtResource("1_opwr4")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r0452"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20ipc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3twi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uhmqp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qi84n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6i172")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wvjnj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mtip")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t2urc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnmff"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7dhtj"]
-atlas = ExtResource("1_cfs3r")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnjv8"]
-atlas = ExtResource("1_cfs3r")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s340q"]
-atlas = ExtResource("1_cfs3r")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5h7k"]
-atlas = ExtResource("1_cfs3r")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_stk07"]
-atlas = ExtResource("1_cfs3r")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7tbhd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7dhtj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rnjv8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s340q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5h7k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_stk07")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[node name="Puddle" type="Area2D"]
-
-[node name="Puddle1" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_r0452")
-frame_progress = 0.910126
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hnmff")
-
-[node name="Puddle2" type="AnimatedSprite2D" parent="."]
-position = Vector2(29, -6)
-sprite_frames = SubResource("SpriteFrames_7tbhd")
-frame_progress = 0.397058
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

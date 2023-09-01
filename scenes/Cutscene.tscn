@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fv50f0yicjpx"]
+
+[ext_resource type="Script" path="res://scenes/Cutscene.cs" id="1_uu7pn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i24uy"]
+size = Vector2(39, 386)
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource("1_uu7pn")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9.5, -183)
+shape = SubResource("RectangleShape2D_i24uy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

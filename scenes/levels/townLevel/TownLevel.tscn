@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://gpadwbtokqlu" path="res://scenes/Houses/Houses.tscn" id="5_keer4"]
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="6_wlyqx"]
 [ext_resource type="PackedScene" uid="uid://canoxnjxt32de" path="res://scenes/sign/Sign.tscn" id="7_pi0sw"]
-[ext_resource type="PackedScene" path="res://utils/Exclamation.tscn" id="7_yndl4"]
+[ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://utils/Exclamation.tscn" id="7_yndl4"]
 [ext_resource type="PackedScene" uid="uid://hwfhrgxpvuil" path="res://scenes/rocks/Rock.tscn" id="9_rst6i"]
 [ext_resource type="PackedScene" uid="uid://1tlqixuee6ma" path="res://scenes/rocks/Rock_2.tscn" id="10_6f38q"]
 [ext_resource type="PackedScene" uid="uid://vt6c5rlbbkrt" path="res://scenes/rocks/Rock_3.tscn" id="11_3c7gg"]
@@ -947,14 +947,17 @@ position = Vector2(1333, 469)
 [node name="Exclamation" parent="." instance=ExtResource("7_yndl4")]
 position = Vector2(2054, 402)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(839, 369)
+zoom = Vector2(0.8, 0.8)
+limit_left = 260
+
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
 position = Vector2(839, 369)
 metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Snowball"]
-position = Vector2(10, -116)
-zoom = Vector2(0.8, 0.8)
-limit_left = 260
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false

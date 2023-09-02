@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmgcc5ago0e4u"]
+[gd_scene load_steps=3 format=3 uid="uid://fv50f0yicjpx"]
 
 [ext_resource type="Script" path="res://scenes/Cutscene.cs" id="1_uu7pn"]
 
@@ -15,4 +15,8 @@ metadata/_edit_group_ = true
 position = Vector2(9.5, -183)
 shape = SubResource("RectangleShape2D_i24uy")
 
+[node name="StopTime" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="StopTime" to="." method="_on_timer_timeout"]

@@ -44,6 +44,7 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D BoostChargingAnim;
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
+	private bool canMove = true;
 
 	private Vector2 PreviousVelocity = Vector2.Zero;
 	
@@ -107,61 +108,63 @@ public partial class Snowball : CharacterBody2D
 		ApplyGravity((float)delta);
 
 		// Handle Jump, Coyote Jump, and Next Jump
-		HandleJump();
-		HandleBoost();
+		if (canMove){
+			HandleJump();
+			HandleBoost();
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction.X != 0)
-		{
-			//if (!HandleIceTile())	
-			velocity.X = direction.X * Speed;
+			// Get the input direction and handle the movement/deceleration.
+			// As good practice, you should replace UI actions with custom gameplay actions.
+			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+			if (direction.X != 0)
+			{
+				//if (!HandleIceTile())	
+				velocity.X = direction.X * Speed;
 
-			if (IsOnFloor()){animation.Play("move");}
-			//else{animation.Stop();}
-			
-			if (direction.X < 0){
-				Vector2 newOffset = animation.Offset;
-				newOffset.X = 0;
-				animation.Offset = newOffset;				
-				sprite.FlipH = animation.FlipH = false;
+				if (IsOnFloor()){animation.Play("move");}
+				//else{animation.Stop();}
+				
+				if (direction.X < 0){
+					Vector2 newOffset = animation.Offset;
+					newOffset.X = 0;
+					animation.Offset = newOffset;				
+					sprite.FlipH = animation.FlipH = false;
+				}
+				if (direction.X > 0){
+					Vector2 newOffset = animation.Offset;
+					newOffset.X = -15;
+					animation.Offset = newOffset;
+					sprite.FlipH = animation.FlipH = true;
+				}
+				
 			}
-			if (direction.X > 0){
-				Vector2 newOffset = animation.Offset;
-				newOffset.X = -15;
-				animation.Offset = newOffset;
-				sprite.FlipH = animation.FlipH = true;
+			else
+			{
+				animation.Stop();
+				//TODO: Need to handle correct ice physics
+				//IsOnIce = HandleIceTile();
+				IsOnIce=false;
+				//Friction
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
+				//lastVelocityX = velocity.X;
 			}
+
+			Velocity = velocity;
+			PreviousVelocity=velocity;
 			
-		}
-		else
-		{
-			animation.Stop();
-			//TODO: Need to handle correct ice physics
-			//IsOnIce = HandleIceTile();
-			IsOnIce=false;
-			//Friction
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
-			//lastVelocityX = velocity.X;
-		}
+			MoveAndSlide();
 
-		Velocity = velocity;
-		PreviousVelocity=velocity;
-		
-		MoveAndSlide();
-
-		// Handle coyote jump timer.
-		if (!IsOnFloor() && WasOnFloor && velocity.Y >= 0)
-		{
-			CoyoteJumpTimer.Start();
-			WasOnFloor = false;
-		}
-		else if (IsOnFloor())
-		{
-			CoyoteJumpTimer.Stop();
-			NextJumpTimer.Stop();
-			//Power = 1;
+			// Handle coyote jump timer.
+			if (!IsOnFloor() && WasOnFloor && velocity.Y >= 0)
+			{
+				CoyoteJumpTimer.Start();
+				WasOnFloor = false;
+			}
+			else if (IsOnFloor())
+			{
+				CoyoteJumpTimer.Stop();
+				NextJumpTimer.Stop();
+				//Power = 1;
+			}
 		}
 	}
 
@@ -331,6 +334,14 @@ public partial class Snowball : CharacterBody2D
 		
 
 	}
+	public void StopMovement()
+	{
+		canMove = false;
+	}
+	public void StartMovement()
+	{
+		 canMove = true;
+	}	
 	/*It is probably best to handle logic for what happens with
 	steam and puddles and lava pit in this script (snowball.cs)*/
 	

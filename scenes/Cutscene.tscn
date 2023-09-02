@@ -7,6 +7,7 @@ size = Vector2(39, 386)
 
 [node name="Cutscene" type="Node2D"]
 script = ExtResource("1_uu7pn")
+offset = Vector2(250, 500)
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -17,6 +18,10 @@ shape = SubResource("RectangleShape2D_i24uy")
 
 [node name="StopTime" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="PanIn" type="Timer" parent="."]
+
+[node name="PanOut" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StopTime" to="." method="_on_timer_timeout"]

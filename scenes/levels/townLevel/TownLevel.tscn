@@ -1015,12 +1015,8 @@ position = Vector2(3167, 1230)
 [node name="Bonfire5" parent="." instance=ExtResource("16_3gm7b")]
 position = Vector2(2646, 1197)
 
-[node name="Bonfire6" parent="." instance=ExtResource("16_3gm7b")]
-position = Vector2(2446, 1196)
-position = Vector2(3236, 501)
-
 [node name="Cutscene" parent="." instance=ExtResource("22_utifi")]
 position = Vector2(2989, 602)
 
-[node name="Bonfire2" parent="." instance=ExtResource("16_3gm7b")]
-position = Vector2(3231, 1143)
+[node name="Bonfire7" parent="." instance=ExtResource("16_3gm7b")]
+position = Vector2(2447, 1197)

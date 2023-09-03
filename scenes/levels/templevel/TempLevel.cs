@@ -57,10 +57,12 @@ public partial class TempLevel : Node
 			if ((snowball as Snowball).IsBoosting)
 			{
 				camera.Zoom = camera.Zoom.Lerp(boostZoom, zoomSpeed);
+				//camera.ZoomIn();
 			}
 			else
 			{
 				camera.Zoom = camera.Zoom.Lerp(defaultZoom, zoomSpeed);
+				//camera.ZoomOut();
 			}
 			
 			

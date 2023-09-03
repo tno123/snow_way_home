@@ -297,11 +297,13 @@ public partial class Snowball : CharacterBody2D
 
 	public void Damage(int damage)
 	{
-		Power -= damage;
-		EmitSignal(SignalName.Powerup, -damage);
 		if (CurrentIce) {
 			CurrentIce = false;
 			OnIced(false);
+		} else 
+		{
+			Power -= damage;
+			EmitSignal(SignalName.Powerup, -damage);
 		}
 	}
 

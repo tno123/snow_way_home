@@ -15,9 +15,6 @@ public partial class SnowEater : CharacterBody2D
 	public AnimationPlayer AnimationPlayer;
 	public Sprite2D Sprite2D;
 
-	private bool WasOnEdge = false;
-	private bool DirRight = true;
-
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
@@ -69,6 +66,21 @@ public partial class SnowEater : CharacterBody2D
 		}
 
 
+		
+		//reorient sprite if snowball is close enough
+		if (mode=="idle" && Position.DistanceTo(Snowball.Position) < MinDistance)
+		{
+			if (Position.X < Snowball.Position.X)
+			{
+				Sprite2D.FlipH = false;
+			}
+			else
+			{
+				Sprite2D.FlipH = true;
+			}
+		}
+
+
 		Velocity = velocity;
 		MoveAndSlide();
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
@@ -110,7 +122,8 @@ public partial class SnowEater : CharacterBody2D
 	{
 		// Use raycast to check if there is a floor in front of the enemy
 		var spaceState = GetWorld2D().DirectSpaceState;
-		var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, GlobalPosition + new Vector2(Speed, Speed));
+		var direction = Sprite2D.FlipH ? -Speed : Speed;
+		var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, GlobalPosition + new Vector2(direction, Speed));
 		var result = spaceState.IntersectRay(query);
 		Variant value;
 		if (result.TryGetValue("normal",out value))

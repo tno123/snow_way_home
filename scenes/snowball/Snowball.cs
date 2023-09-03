@@ -109,6 +109,10 @@ public partial class Snowball : CharacterBody2D
 		// Handle Jump, Coyote Jump, and Next Jump
 		HandleJump();
 		HandleBoost();
+		if (IsOnFloor() && PreviousVelocity.Y > 400)
+		{
+			Damage(1);
+		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -295,6 +299,10 @@ public partial class Snowball : CharacterBody2D
 	{
 		Power -= damage;
 		EmitSignal(SignalName.Powerup, -damage);
+		if (CurrentIce) {
+			CurrentIce = false;
+			OnIced(false);
+		}
 	}
 
 	public void SetIce(bool ice) {

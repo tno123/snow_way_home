@@ -21,7 +21,7 @@ public partial class StartIceDestroy : Node
 	private void _on_ice_destroy_area_body_entered(Node2D body)
 	{
 		snowball.FallSpeed = 1.0f;
-		snowball.SetIce(false);
+		snowball.Damage(1);
 		QueueFree();
 	}
 }

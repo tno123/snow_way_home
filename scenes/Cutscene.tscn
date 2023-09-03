@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://fv50f0yicjpx"]
+[gd_scene load_steps=5 format=3 uid="uid://fv50f0yicjpx"]
 
 [ext_resource type="Script" path="res://scenes/Cutscene.cs" id="1_uu7pn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i24uy"]
 size = Vector2(39, 386)
+
+[sub_resource type="Animation" id="Animation_5g28t"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dr3vf"]
+_data = {
+"new_animation": SubResource("Animation_5g28t")
+}
 
 [node name="Cutscene" type="Node2D"]
 script = ExtResource("1_uu7pn")
@@ -22,6 +30,11 @@ wait_time = 2.0
 [node name="PanIn" type="Timer" parent="."]
 
 [node name="PanOut" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dr3vf")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StopTime" to="." method="_on_timer_timeout"]

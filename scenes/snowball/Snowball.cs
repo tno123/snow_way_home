@@ -323,6 +323,7 @@ public partial class Snowball : CharacterBody2D
 	}
 	private void OnIced(bool ice)
 	{
+		CurrentIce = ice;
 		EmitSignal(SignalName.Iced,ice);
 	}
 

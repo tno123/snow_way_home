@@ -951,12 +951,12 @@ position = Vector2(1333, 469)
 position = Vector2(2054, 402)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1252, 1120)
+position = Vector2(2804, 469)
 zoom = Vector2(0.8, 0.8)
 limit_left = 260
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(1252, 1120)
+position = Vector2(2804, 469)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -1017,7 +1017,6 @@ position = Vector2(2646, 1197)
 
 [node name="Cutscene" parent="." instance=ExtResource("22_utifi")]
 position = Vector2(2989, 602)
-offset = Vector2(250, 0)
 
 [node name="Bonfire7" parent="." instance=ExtResource("16_3gm7b")]
 position = Vector2(2447, 1197)

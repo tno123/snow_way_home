@@ -15,13 +15,15 @@ public partial class Snowball : CharacterBody2D
 	[Export]
 	public float NextJumpTime = 0.1f;
 
+	[Export]
+	public const float JumpVelocity = -350.0f;
+
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
 	[Signal]
 	public delegate void IcedEventHandler(bool ice);
 
 	public const float Speed = 200.0f;
-	public const float JumpVelocity = -350.0f;
 	public const float BounceVelocity = -750.0f;
 	public const float BoostVelocity = 2000.0f;
 	public float FallSpeed = 1.0f;

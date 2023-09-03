@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=21 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]

@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://scenes/villagers/WomanIdle.tscn" id="18_t2ion"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="21_clmjs"]
 [ext_resource type="PackedScene" uid="uid://fv50f0yicjpx" path="res://scenes/Cutscene.tscn" id="22_utifi"]
-[ext_resource type="PackedScene" uid="uid://i4nqowg76dki" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_y2dnc"]
+[ext_resource type="PackedScene" uid="uid://cgluklbgi0scq" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_y2dnc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtsst"]
 
@@ -952,12 +952,12 @@ position = Vector2(1333, 469)
 position = Vector2(2054, 402)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3447, 1520)
+position = Vector2(3444, 1481)
 zoom = Vector2(0.8, 0.8)
 limit_left = 260
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(3447, 1520)
+position = Vector2(3444, 1481)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -1031,3 +1031,9 @@ position = Vector2(2565, 517)
 
 [node name="WellTransition" parent="." instance=ExtResource("23_y2dnc")]
 position = Vector2(3449, 1764)
+
+[node name="Bonfire9" parent="." instance=ExtResource("16_3gm7b")]
+position = Vector2(791, 1151)
+
+[node name="Bonfire10" parent="." instance=ExtResource("16_3gm7b")]
+position = Vector2(981, 1149)

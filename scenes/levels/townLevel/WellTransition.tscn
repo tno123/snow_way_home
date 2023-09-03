@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://i4nqowg76dki"]
+[gd_scene load_steps=5 format=3 uid="uid://cgluklbgi0scq"]
 
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="1_7afym"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/WellTransition.cs" id="1_gdtjy"]

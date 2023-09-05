@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xxh"]
 size = Vector2(64, 18)
 
-[node name="Puddle" type="Node2D"]
+[node name="Puddle" type="Node2D" groups=["Puddles"]]
 script = ExtResource("1_7cgpe")
 
 [node name="Area2D" type="Area2D" parent="."]

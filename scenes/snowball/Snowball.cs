@@ -73,24 +73,24 @@ public partial class Snowball : CharacterBody2D
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
 
-		//TODO: This is a hacky way to get the powerups, but it works for now (REFACTOR)
+		//Groups are good thumbsup emoji
 		var powerups = GetParent().GetNode<Node>("Powerups");
 		if (powerups != null)
 		{
-			var numPowerups = GetParent().GetNode<Node>("Powerups").GetChildCount();
-			for (int i = 0; i < numPowerups; i++)
+			var allPowerups = GetTree().GetNodesInGroup("Powerups");
+			for (int i = 0; i < allPowerups.Count; i++)
 			{
-				var powerup = (Powerup)GetParent().GetNode("Powerups").GetChild(i);
+				var powerup = (Powerup)allPowerups[i];
 				powerup.PowerupCollected += OnPowerup;
 			}
 		}
 		var mapObjects = GetParent().GetNode("MapObjects");
 		if (mapObjects != null)
 		{
-			var numPuddles = mapObjects.GetChildCount();
-			for (int i = 0; i < numPuddles; i++)
+			var puddles = GetTree().GetNodesInGroup("Puddles");
+			for (int i = 0; i < puddles.Count; i++)
 			{
-				var puddle = (Puddle)mapObjects.GetChild(i);
+				var puddle = (Puddle)puddles[i];
 				puddle.PuddleEntered += OnIced;
 			}
 		}

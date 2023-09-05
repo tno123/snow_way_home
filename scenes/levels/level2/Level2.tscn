@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfovgbicmuwg4"]
+[gd_scene load_steps=32 format=3 uid="uid://bfovgbicmuwg4"]
 
 [ext_resource type="Texture2D" uid="uid://c4pwnmx6jm3oo" path="res://assets/oak_woods_v1.0/background/background_layer_1.png" id="1_25esc"]
 [ext_resource type="Texture2D" uid="uid://dm0joiqd70s6l" path="res://assets/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains_desat.png" id="1_l4fhy"]
@@ -24,6 +24,9 @@ shader = ExtResource("2_1o0pk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3c2ru"]
 shader = ExtResource("2_1o0pk")
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_u4ptv"]
+tile_data = PackedInt32Array(0, 196609, 0, 65536, 65537, 1, 131072, 65537, 1, 1, 196609, 10, 65537, 1, 11, 131073, 131073, 13, 2, 131073, 10, 65538, 1, 11, 131074, 196609, 13, 3, 1, 0, 65539, 65537, 1, 131075, 65537, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_we5u5"]
 texture = ExtResource("7_7yeh8")
@@ -1290,6 +1293,7 @@ custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_yfs6a")
 sources/0 = SubResource("TileSetAtlasSource_we5u5")
 sources/3 = SubResource("TileSetAtlasSource_btqs6")
+pattern_0 = SubResource("TileMapPattern_u4ptv")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rgb8k"]
 a = Vector2(-192, -1600)
@@ -1393,7 +1397,6 @@ script = ExtResource("9_vci2x")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1568, 82)
 scale = Vector2(0.5, 0.5)
-process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 drag_horizontal_enabled = true

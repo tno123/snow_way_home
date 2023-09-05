@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2vox6ki3cw20"]
+
+[ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="1_7afym"]
+[ext_resource type="Script" path="res://scenes/levels/townLevel/WellTransition.cs" id="1_gdtjy"]
+[ext_resource type="PackedScene" uid="uid://b65a5h84u6pld" path="res://scenes/levels/wellLevel/WellLevel.tscn" id="3_j0xya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wpph"]
+size = Vector2(65, 62)
+
+[node name="EndTransition" type="Node2D"]
+script = ExtResource("1_gdtjy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_5wpph")
+
+[node name="Transitions" parent="." instance=ExtResource("1_7afym")]
+visible = false
+offset_right = 0.0
+offset_bottom = 0.0
+scene_to_load = ExtResource("3_j0xya")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

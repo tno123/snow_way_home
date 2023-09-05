@@ -15,13 +15,15 @@ public partial class Snowball : CharacterBody2D
 	[Export]
 	public float NextJumpTime = 0.1f;
 
+	[Export]
+	public const float JumpVelocity = -350.0f;
+
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
 	[Signal]
 	public delegate void IcedEventHandler(bool ice);
 
 	public const float Speed = 200.0f;
-	public const float JumpVelocity = -350.0f;
 	public const float BounceVelocity = -750.0f;
 	public const float BoostVelocity = 2000.0f;
 	public float FallSpeed = 1.0f;
@@ -44,6 +46,7 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D BoostChargingAnim;
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
+	private bool canMove = true;
 
 	private Vector2 PreviousVelocity = Vector2.Zero;
 	
@@ -70,24 +73,24 @@ public partial class Snowball : CharacterBody2D
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
 
-		//TODO: This is a hacky way to get the powerups, but it works for now (REFACTOR)
+		//Groups are good thumbsup emoji
 		var powerups = GetParent().GetNode<Node>("Powerups");
 		if (powerups != null)
 		{
-			var numPowerups = GetParent().GetNode<Node>("Powerups").GetChildCount();
-			for (int i = 0; i < numPowerups; i++)
+			var allPowerups = GetTree().GetNodesInGroup("Powerups");
+			for (int i = 0; i < allPowerups.Count; i++)
 			{
-				var powerup = (Powerup)GetParent().GetNode("Powerups").GetChild(i);
+				var powerup = (Powerup)allPowerups[i];
 				powerup.PowerupCollected += OnPowerup;
 			}
 		}
 		var mapObjects = GetParent().GetNode("MapObjects");
 		if (mapObjects != null)
 		{
-			var numPuddles = mapObjects.GetChildCount();
-			for (int i = 0; i < numPuddles; i++)
+			var puddles = GetTree().GetNodesInGroup("Puddles");
+			for (int i = 0; i < puddles.Count; i++)
 			{
-				var puddle = (Puddle)mapObjects.GetChild(i);
+				var puddle = (Puddle)puddles[i];
 				puddle.PuddleEntered += OnIced;
 			}
 		}
@@ -107,65 +110,71 @@ public partial class Snowball : CharacterBody2D
 		ApplyGravity((float)delta);
 
 		// Handle Jump, Coyote Jump, and Next Jump
-		HandleJump();
-		HandleBoost();
-		if (IsOnFloor() && PreviousVelocity.Y > 400)
-		{
-			Damage(1);
-		}
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction.X != 0)
-		{
-			//if (!HandleIceTile())	
-			velocity.X = direction.X * Speed;
-
-			if (IsOnFloor()){animation.Play("move");}
-			//else{animation.Stop();}
-			
-			if (direction.X < 0){
-				Vector2 newOffset = animation.Offset;
-				newOffset.X = 0;
-				animation.Offset = newOffset;				
-				sprite.FlipH = animation.FlipH = false;
-			}
-			if (direction.X > 0){
-				Vector2 newOffset = animation.Offset;
-				newOffset.X = -15;
-				animation.Offset = newOffset;
-				sprite.FlipH = animation.FlipH = true;
-			}
-			
-		}
-		else
-		{
-			animation.Stop();
-			//TODO: Need to handle correct ice physics
-			//IsOnIce = HandleIceTile();
-			IsOnIce=false;
-			//Friction
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
-			//lastVelocityX = velocity.X;
-		}
-
-		Velocity = velocity;
-		PreviousVelocity=velocity;
 		
-		MoveAndSlide();
+		
+		
+		if (canMove){
+			
+			HandleJump();
+			HandleBoost();
+			if (IsOnFloor() && PreviousVelocity.Y > 400)
+			{
+				Damage(1);
+			}
 
-		// Handle coyote jump timer.
-		if (!IsOnFloor() && WasOnFloor && velocity.Y >= 0)
-		{
-			CoyoteJumpTimer.Start();
-			WasOnFloor = false;
-		}
-		else if (IsOnFloor())
-		{
-			CoyoteJumpTimer.Stop();
-			NextJumpTimer.Stop();
-			//Power = 1;
+			// Get the input direction and handle the movement/deceleration.
+			// As good practice, you should replace UI actions with custom gameplay actions.
+			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+			if (direction.X != 0)
+			{
+				//if (!HandleIceTile())	
+				velocity.X = direction.X * Speed;
+
+				if (IsOnFloor()){animation.Play("move");}
+				//else{animation.Stop();}
+				
+				if (direction.X < 0){
+					Vector2 newOffset = animation.Offset;
+					newOffset.X = 0;
+					animation.Offset = newOffset;				
+					sprite.FlipH = animation.FlipH = false;
+				}
+				if (direction.X > 0){
+					Vector2 newOffset = animation.Offset;
+					newOffset.X = -15;
+					animation.Offset = newOffset;
+					sprite.FlipH = animation.FlipH = true;
+				}
+				
+			}
+			else
+			{
+				animation.Stop();
+				//TODO: Need to handle correct ice physics
+				//IsOnIce = HandleIceTile();
+				IsOnIce=false;
+				//Friction
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
+				//lastVelocityX = velocity.X;
+			}
+
+			Velocity = velocity;
+			PreviousVelocity=velocity;
+			
+			MoveAndSlide();
+
+			// Handle coyote jump timer.
+			if (!IsOnFloor() && WasOnFloor && velocity.Y >= 0)
+			{
+				CoyoteJumpTimer.Start();
+				WasOnFloor = false;
+			}
+			else if (IsOnFloor())
+			{
+				CoyoteJumpTimer.Stop();
+				NextJumpTimer.Stop();
+				//Power = 1;
+			}
 		}
 	}
 
@@ -342,6 +351,14 @@ public partial class Snowball : CharacterBody2D
 		
 
 	}
+	public void StopMovement()
+	{
+		canMove = false;
+	}
+	public void StartMovement()
+	{
+		 canMove = true;
+	}	
 	/*It is probably best to handle logic for what happens with
 	steam and puddles and lava pit in this script (snowball.cs)*/
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bfovgbicmuwg4"]
+[gd_scene load_steps=31 format=3 uid="uid://bfovgbicmuwg4"]
 
 [ext_resource type="Texture2D" uid="uid://c4pwnmx6jm3oo" path="res://assets/oak_woods_v1.0/background/background_layer_1.png" id="1_25esc"]
 [ext_resource type="Texture2D" uid="uid://dm0joiqd70s6l" path="res://assets/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains_desat.png" id="1_l4fhy"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="3_3dois"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_34k1r"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="7_7yeh8"]
-[ext_resource type="Texture2D" path="res://assets/oak_woods_v1.0/decorations64.png" id="9_6u768"]
 [ext_resource type="Texture2D" uid="uid://degromml7q0ok" path="res://assets/oak_woods_v1.0/oak_woods_tileset_64_snowy.png" id="9_mhmt3"]
 [ext_resource type="Script" path="res://scenes/levels/level2/StartIceDestroy.cs" id="9_otg0r"]
 [ext_resource type="Script" path="res://scenes/levels/level2/StartSlowGravity.cs" id="9_vci2x"]
@@ -25,9 +24,6 @@ shader = ExtResource("2_1o0pk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3c2ru"]
 shader = ExtResource("2_1o0pk")
-
-[sub_resource type="TileMapPattern" id="TileMapPattern_u4ptv"]
-tile_data = PackedInt32Array(0, 196609, 0, 65536, 65537, 1, 131072, 65537, 1, 1, 196609, 10, 65537, 1, 11, 131073, 131073, 13, 2, 131073, 10, 65538, 1, 11, 131074, 196609, 13, 3, 1, 0, 65539, 65537, 1, 131075, 65537, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_we5u5"]
 texture = ExtResource("7_7yeh8")
@@ -232,6 +228,7 @@ texture_region_size = Vector2i(64, 64)
 1:1/0/terrain = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:1/0/terrains_peering_bit/right_side = 0
 1:1/0/terrains_peering_bit/bottom_right_corner = 0
 1:1/0/terrains_peering_bit/bottom_side = 0
@@ -808,28 +805,6 @@ texture_region_size = Vector2i(64, 64)
 20:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:14/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o2pdp"]
-texture = ExtResource("9_6u768")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
-4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
-5:0/0 = 0
-5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:0/0/physics_layer_0/angular_velocity = 0.0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btqs6"]
 texture = ExtResource("9_mhmt3")
 texture_region_size = Vector2i(64, 64)
@@ -1316,8 +1291,6 @@ custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_yfs6a")
 sources/0 = SubResource("TileSetAtlasSource_we5u5")
 sources/3 = SubResource("TileSetAtlasSource_btqs6")
-sources/10 = SubResource("TileSetAtlasSource_o2pdp")
-pattern_0 = SubResource("TileMapPattern_u4ptv")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rgb8k"]
 a = Vector2(-192, -1600)

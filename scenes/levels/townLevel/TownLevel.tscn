@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=31 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Texture2D" uid="uid://c30n22su056bp" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_5aakn"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
@@ -22,7 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://scenes/villagers/WomanIdle.tscn" id="18_t2ion"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="21_clmjs"]
 [ext_resource type="PackedScene" uid="uid://fv50f0yicjpx" path="res://scenes/Cutscene.tscn" id="22_utifi"]
-[ext_resource type="PackedScene" uid="uid://cgluklbgi0scq" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_y2dnc"]
+[ext_resource type="PackedScene" uid="uid://d2vox6ki3cw20" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_y2dnc"]
+[ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="24_sfdih"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtsst"]
 
@@ -1040,3 +1041,6 @@ position = Vector2(981, 1149)
 
 [node name="Bonfire11" parent="." instance=ExtResource("16_3gm7b")]
 position = Vector2(2296, 516)
+
+[node name="BouncePad" parent="." instance=ExtResource("24_sfdih")]
+position = Vector2(671, 1950)

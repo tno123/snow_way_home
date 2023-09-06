@@ -128,7 +128,9 @@ public partial class Snowball : CharacterBody2D
 			if (direction.X != 0)
 			{
 				//if (!HandleIceTile())	
-				velocity.X = direction.X * Speed;
+					velocity.X = direction.X * Speed;
+				//else
+				//	velocity.X = direction.X * PreviousVelocity.X / IceSpeed;
 
 				if (IsOnFloor()){animation.Play("move");}
 				//else{animation.Stop();}
@@ -151,10 +153,10 @@ public partial class Snowball : CharacterBody2D
 			{
 				animation.Stop();
 				//TODO: Need to handle correct ice physics
-				//IsOnIce = HandleIceTile();
-				IsOnIce=false;
+				IsOnIce = HandleIceTile();
+				//IsOnIce=false;
 				//Friction
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? PreviousVelocity.X*0.99f : Speed);
 				//lastVelocityX = velocity.X;
 			}
 
@@ -317,7 +319,6 @@ public partial class Snowball : CharacterBody2D
 	}
 
 	public void SetIce(bool ice) {
-		//Todo: create ice signal to powerbar
 		CurrentIce = ice;
 		OnIced(ice);
 	}

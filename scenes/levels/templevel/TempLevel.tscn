@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=21 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -268,7 +268,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 196612, 196610, 0, 65540, 196610, 1, 4, 262146, 0, -65530, 196610, 1, -131066, 131074, 0)
 
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
-position = Vector2(73, 280)
+position = Vector2(285, 210)
 floor_snap_length = 3.0
 metadata/_edit_group_ = true
 
@@ -276,7 +276,7 @@ metadata/_edit_group_ = true
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(73, 280)
+position = Vector2(285, 210)
 process_callback = 0
 limit_bottom = 550
 position_smoothing_enabled = true

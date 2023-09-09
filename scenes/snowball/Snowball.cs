@@ -15,19 +15,20 @@ public partial class Snowball : CharacterBody2D
 	[Export]
 	public float NextJumpTime = 0.1f;
 
+	[Export]
+	public const float JumpVelocity = -350.0f;
+
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
-	[Signal]
-	public delegate void IcedEventHandler(bool ice);
 
 	public const float Speed = 200.0f;
-	public const float JumpVelocity = -350.0f;
 	public const float BounceVelocity = -750.0f;
 	public const float BoostVelocity = 2000.0f;
 	public float FallSpeed = 1.0f;
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
 	public bool CurrentIce = false;
+	public Vector2 Checkpoint = Vector2.Zero;
 
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
@@ -70,25 +71,26 @@ public partial class Snowball : CharacterBody2D
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
+		Checkpoint = Position;
 
-		//TODO: This is a hacky way to get the powerups, but it works for now (REFACTOR)
+		//Groups are good thumbsup emoji
 		var powerups = GetParent().GetNode<Node>("Powerups");
 		if (powerups != null)
 		{
-			var numPowerups = GetParent().GetNode<Node>("Powerups").GetChildCount();
-			for (int i = 0; i < numPowerups; i++)
+			var allPowerups = GetTree().GetNodesInGroup("Powerups");
+			for (int i = 0; i < allPowerups.Count; i++)
 			{
-				var powerup = (Powerup)GetParent().GetNode("Powerups").GetChild(i);
+				var powerup = (Powerup)allPowerups[i];
 				powerup.PowerupCollected += OnPowerup;
 			}
 		}
 		var mapObjects = GetParent().GetNode("MapObjects");
 		if (mapObjects != null)
 		{
-			var numPuddles = mapObjects.GetChildCount();
-			for (int i = 0; i < numPuddles; i++)
+			var puddles = GetTree().GetNodesInGroup("Puddles");
+			for (int i = 0; i < puddles.Count; i++)
 			{
-				var puddle = (Puddle)mapObjects.GetChild(i);
+				var puddle = (Puddle)puddles[i];
 				puddle.PuddleEntered += OnIced;
 			}
 		}
@@ -108,9 +110,21 @@ public partial class Snowball : CharacterBody2D
 		ApplyGravity((float)delta);
 
 		// Handle Jump, Coyote Jump, and Next Jump
+		
+		//test test test
+		
 		if (canMove){
+			
 			HandleJump();
 			HandleBoost();
+			if (IsOnFloor() && PreviousVelocity.Y > 400)
+			{
+				Damage(1);
+			}
+			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped() && GetNode<AnimatedSprite2D>("IceSprite").Animation == "breaking")
+			{
+				GetNode<AnimatedSprite2D>("IceSprite").Visible = false;
+			}
 
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
@@ -118,7 +132,9 @@ public partial class Snowball : CharacterBody2D
 			if (direction.X != 0)
 			{
 				//if (!HandleIceTile())	
-				velocity.X = direction.X * Speed;
+					velocity.X = direction.X * Speed;
+				//else
+				//	velocity.X = direction.X * PreviousVelocity.X / IceSpeed;
 
 				if (IsOnFloor()){animation.Play("move");}
 				//else{animation.Stop();}
@@ -141,10 +157,13 @@ public partial class Snowball : CharacterBody2D
 			{
 				animation.Stop();
 				//TODO: Need to handle correct ice physics
-				//IsOnIce = HandleIceTile();
-				IsOnIce=false;
+				IsOnIce = HandleIceTile();
+				//IsOnIce=false;
 				//Friction
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? IceSpeed : Speed);
+				if (IsOnIce)
+					velocity.X = Mathf.Lerp(Velocity.X, 0,0.01f);
+				else
+					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				//lastVelocityX = velocity.X;
 			}
 
@@ -296,12 +315,27 @@ public partial class Snowball : CharacterBody2D
 
 	public void Damage(int damage)
 	{
-		Power -= damage;
-		EmitSignal(SignalName.Powerup, -damage);
+		if (CurrentIce) {
+			CurrentIce = false;
+			OnIced(false);
+		} else 
+		{
+			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped())
+			{
+				Power -= damage;
+				EmitSignal(SignalName.Powerup, -damage);
+			}
+		}
+	}
+
+	public void Death()
+	{
+		Position = Checkpoint;
+		Power = MaxPower;
+		EmitSignal(SignalName.Powerup, MaxPower);
 	}
 
 	public void SetIce(bool ice) {
-		//Todo: create ice signal to powerbar
 		CurrentIce = ice;
 		OnIced(ice);
 	}
@@ -316,7 +350,17 @@ public partial class Snowball : CharacterBody2D
 	}
 	private void OnIced(bool ice)
 	{
-		EmitSignal(SignalName.Iced,ice);
+		CurrentIce = ice;
+		var sprite = GetNode<AnimatedSprite2D>("IceSprite");
+		sprite.Visible = true;
+
+		if (ice)
+			sprite.Play("iced");
+		else 
+		{
+			sprite.Play("breaking");
+			GetNode<Timer>("InvulnerabilityTimer").Start();
+		}
 	}
 
 	private void _on_bounce_pad_bounce()

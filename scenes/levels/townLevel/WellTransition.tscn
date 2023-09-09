@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgluklbgi0scq"]
+[gd_scene load_steps=5 format=3 uid="uid://d2vox6ki3cw20"]
 
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="1_7afym"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/WellTransition.cs" id="1_gdtjy"]
-[ext_resource type="PackedScene" uid="uid://b3o4uw1qxpuh2" path="res://scenes/levels/townLevel/WellLevel.tscn" id="2_obttt"]
+[ext_resource type="PackedScene" uid="uid://b65a5h84u6pld" path="res://scenes/levels/wellLevel/WellLevel.tscn" id="3_j0xya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wpph"]
 size = Vector2(65, 62)
@@ -20,6 +20,6 @@ shape = SubResource("RectangleShape2D_5wpph")
 visible = false
 offset_right = 0.0
 offset_bottom = 0.0
-scene_to_load = ExtResource("2_obttt")
+scene_to_load = ExtResource("3_j0xya")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

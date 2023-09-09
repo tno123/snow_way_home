@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2vox6ki3cw20"]
+[gd_scene load_steps=5 format=3 uid="uid://cgluklbgi0scq"]
 
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="1_7afym"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/WellTransition.cs" id="1_gdtjy"]
-[ext_resource type="PackedScene" uid="uid://b65a5h84u6pld" path="res://scenes/levels/wellLevel/WellLevel.tscn" id="3_j0xya"]
+[ext_resource type="PackedScene" uid="uid://b3o4uw1qxpuh2" path="res://scenes/levels/wellLevel/WellLevel.tscn" id="3_j0xya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wpph"]
 size = Vector2(65, 62)

@@ -30,6 +30,7 @@ public partial class Snowball : CharacterBody2D
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
 	public bool CurrentIce = false;
+	public Vector2 Checkpoint = Vector2.Zero;
 
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
@@ -72,6 +73,7 @@ public partial class Snowball : CharacterBody2D
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
+		Checkpoint = Position;
 
 		//Groups are good thumbsup emoji
 		var powerups = GetParent().GetNode<Node>("Powerups");
@@ -319,6 +321,13 @@ public partial class Snowball : CharacterBody2D
 			Power -= damage;
 			EmitSignal(SignalName.Powerup, -damage);
 		}
+	}
+
+	public void Death()
+	{
+		Position = Checkpoint;
+		Power = MaxPower;
+		EmitSignal(SignalName.Powerup, MaxPower);
 	}
 
 	public void SetIce(bool ice) {

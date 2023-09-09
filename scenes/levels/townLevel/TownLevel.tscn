@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=30 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Texture2D" uid="uid://c30n22su056bp" path="res://assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_5aakn"]
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://gpadwbtokqlu" path="res://scenes/Houses/Houses.tscn" id="5_keer4"]
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="6_wlyqx"]
 [ext_resource type="PackedScene" uid="uid://canoxnjxt32de" path="res://scenes/sign/Sign.tscn" id="7_pi0sw"]
-[ext_resource type="PackedScene" path="res://utils/Exclamation.tscn" id="7_yndl4"]
+[ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://utils/Exclamation.tscn" id="7_yndl4"]
 [ext_resource type="PackedScene" uid="uid://hwfhrgxpvuil" path="res://scenes/rocks/Rock.tscn" id="9_rst6i"]
 [ext_resource type="PackedScene" uid="uid://1tlqixuee6ma" path="res://scenes/rocks/Rock_2.tscn" id="10_6f38q"]
 [ext_resource type="PackedScene" uid="uid://vt6c5rlbbkrt" path="res://scenes/rocks/Rock_3.tscn" id="11_3c7gg"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cgssbamcnneca" path="res://scenes/villagers/BeardedIdle.tscn" id="18_ibbcl"]
 [ext_resource type="PackedScene" uid="uid://h2qncu7w46on" path="res://scenes/villagers/WomanIdle.tscn" id="18_t2ion"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="21_clmjs"]
-[ext_resource type="PackedScene" path="res://scenes/Cutscene.tscn" id="22_utifi"]
+[ext_resource type="PackedScene" uid="uid://fv50f0yicjpx" path="res://scenes/Cutscene.tscn" id="22_utifi"]
 [ext_resource type="PackedScene" uid="uid://d2vox6ki3cw20" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_087am"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtsst"]

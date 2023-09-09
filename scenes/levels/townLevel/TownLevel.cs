@@ -9,8 +9,6 @@ public partial class TownLevel : Node
 	public override void _Ready()
 	{
 	
-		Exclamation = GetNode<AnimatedSprite2D>("Exclamation");
-		SomeFunction();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,9 +28,5 @@ public partial class TownLevel : Node
 			*/
 	}
 	
-	public async void SomeFunction() //https://ask.godotengine.org/7042/wait-like-function
-	{
 	
-		
-	}
 }

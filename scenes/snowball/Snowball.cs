@@ -156,7 +156,10 @@ public partial class Snowball : CharacterBody2D
 				IsOnIce = HandleIceTile();
 				//IsOnIce=false;
 				//Friction
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, IsOnIce? PreviousVelocity.X*0.99f : Speed);
+				if (IsOnIce)
+					velocity.X = Mathf.Lerp(Velocity.X, 0,0.01f);
+				else
+					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				//lastVelocityX = velocity.X;
 			}
 

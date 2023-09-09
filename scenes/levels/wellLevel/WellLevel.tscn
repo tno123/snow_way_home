@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c4awhu2krse1v" path="res://scenes/ladder/Ladder.tscn" id="1_3du7r"]
 [ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="2_3y2w0"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="3_gcppq"]
-[ext_resource type="PackedScene" uid="uid://b6ckwa4vaghq7" path="res://scenes/levels/wellLevel/ForestTransition.tscn" id="4_vv4do"]
+[ext_resource type="PackedScene" uid="uid://beutj4yh607lt" path="res://scenes/levels/wellLevel/ForestTransition.tscn" id="4_vv4do"]
 [ext_resource type="PackedScene" uid="uid://cv4vgn6yeth54" path="res://scenes/puddle/Puddle.tscn" id="5_0xjpm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xstci"]
@@ -477,8 +477,8 @@ position = Vector2(72, 32)
 [node name="Snowball" parent="." instance=ExtResource("3_gcppq")]
 position = Vector2(71, -75)
 
-[node name="EndTransition" parent="." instance=ExtResource("4_vv4do")]
-position = Vector2(371, 172)
-
 [node name="Puddle" parent="." instance=ExtResource("5_0xjpm")]
 position = Vector2(73, 222)
+
+[node name="EndTransition" parent="." instance=ExtResource("4_vv4do")]
+position = Vector2(371, 172)

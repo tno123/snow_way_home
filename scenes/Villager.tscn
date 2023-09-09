@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://01l2nml0ntau"]
+
+[ext_resource type="Texture2D" uid="uid://cnvj687g2bdi3" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/sprites/bearded-idle/bearded-idle-5.png" id="1_jig4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txa43"]
+size = Vector2(29, 46)
+
+[node name="Villager" type="CharacterBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_txa43")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jig4f")

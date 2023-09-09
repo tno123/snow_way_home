@@ -33,7 +33,6 @@ public partial class TownLevel : Node
 	public async void SomeFunction() //https://ask.godotengine.org/7042/wait-like-function
 	{
 	
-		await ToSignal(GetTree().CreateTimer(1.0f), "timeout");
-		Exclamation.Play("default");
+		
 	}
 }

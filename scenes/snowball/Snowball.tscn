@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://qhu4pswy7baj"]
+[gd_scene load_steps=66 format=3 uid="uid://qhu4pswy7baj"]
 
 [ext_resource type="Script" path="res://scenes/snowball/Snowball.cs" id="1_6j51x"]
 [ext_resource type="Texture2D" uid="uid://bsu2xcd1s2ixt" path="res://art/character/snowball_64x64.png" id="1_h1lvw"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c40kjrhgpegod" path="res://assets/Rocky Roads/FX/cannon_fire_smoke.png" id="4_n40du"]
 [ext_resource type="Texture2D" uid="uid://bd6y4y1v852y4" path="res://assets/Rocky Roads/FX/bullet_windtrail.png" id="5_lq2gi"]
 [ext_resource type="Texture2D" uid="uid://cj6g0mvp183j5" path="res://assets/Rocky Roads/FX/splash.png" id="6_cwfuq"]
+[ext_resource type="Texture2D" uid="uid://ccodblmhppaug" path="res://art/character/icesprite.png" id="7_442re"]
+[ext_resource type="Texture2D" uid="uid://d0fjdyjes4e2h" path="res://art/character/brokenicesprite.png" id="8_ffdj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
 radius = 32.0156
@@ -434,6 +436,33 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_xp2j4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ffdj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_442re")
+}],
+"loop": true,
+"name": &"breaking",
+"speed": 2.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_442re")
+}],
+"loop": true,
+"name": &"iced",
+"speed": 5.0
+}]
+
 [node name="Snowball" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_6j51x")
@@ -456,6 +485,8 @@ wait_time = 0.1
 one_shot = true
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(43, 3)
@@ -501,5 +532,9 @@ sprite_frames = SubResource("SpriteFrames_f2ofb")
 animation = &"main"
 frame = 6
 frame_progress = 1.0
+
+[node name="IceSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xp2j4")
+autoplay = "default"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

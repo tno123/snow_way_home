@@ -20,8 +20,6 @@ public partial class Snowball : CharacterBody2D
 
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
-	[Signal]
-	public delegate void IcedEventHandler(bool ice);
 
 	public const float Speed = 200.0f;
 	public const float BounceVelocity = -750.0f;
@@ -122,6 +120,10 @@ public partial class Snowball : CharacterBody2D
 			if (IsOnFloor() && PreviousVelocity.Y > 400)
 			{
 				Damage(1);
+			}
+			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped() && GetNode<AnimatedSprite2D>("IceSprite").Animation == "breaking")
+			{
+				GetNode<AnimatedSprite2D>("IceSprite").Visible = false;
 			}
 
 			// Get the input direction and handle the movement/deceleration.
@@ -318,8 +320,11 @@ public partial class Snowball : CharacterBody2D
 			OnIced(false);
 		} else 
 		{
-			Power -= damage;
-			EmitSignal(SignalName.Powerup, -damage);
+			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped())
+			{
+				Power -= damage;
+				EmitSignal(SignalName.Powerup, -damage);
+			}
 		}
 	}
 
@@ -346,7 +351,16 @@ public partial class Snowball : CharacterBody2D
 	private void OnIced(bool ice)
 	{
 		CurrentIce = ice;
-		EmitSignal(SignalName.Iced,ice);
+		var sprite = GetNode<AnimatedSprite2D>("IceSprite");
+		sprite.Visible = true;
+
+		if (ice)
+			sprite.Play("iced");
+		else 
+		{
+			sprite.Play("breaking");
+			GetNode<Timer>("InvulnerabilityTimer").Start();
+		}
 	}
 
 	private void _on_bounce_pad_bounce()

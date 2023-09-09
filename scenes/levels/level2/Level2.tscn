@@ -1416,7 +1416,7 @@ layer_0/tile_data = PackedInt32Array(131071, 196609, 2, 65535, 196609, 2, 262147
 
 [node name="Snowball" parent="." instance=ExtResource("2_u6hjr")]
 position = Vector2(1568, 194)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
 position = Vector2(0, -224)
@@ -1429,8 +1429,8 @@ script = ExtResource("9_otg0r")
 script = ExtResource("9_vci2x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1568, 82)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1568, 59.6)
+scale = Vector2(0.6, 0.6)
 limit_bottom = 350
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0

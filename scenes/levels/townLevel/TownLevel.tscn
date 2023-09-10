@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=23 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="2_g4so2"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://t5rhh4g4u44a" path="res://scenes/well/Well.tscn" id="14_rglq4"]
 [ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="15_8tde8"]
 [ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/bonfire/Bonfire.tscn" id="16_3gm7b"]
-[ext_resource type="PackedScene" path="res://scenes/Villager.tscn" id="20_4wu7w"]
+[ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="19_liab8"]
+[ext_resource type="PackedScene" uid="uid://kmsxpgq4l5i8" path="res://scenes/Villager.tscn" id="20_4wu7w"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="21_clmjs"]
 [ext_resource type="PackedScene" uid="uid://fv50f0yicjpx" path="res://scenes/Cutscene.tscn" id="22_utifi"]
 [ext_resource type="PackedScene" uid="uid://d2vox6ki3cw20" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_087am"]
@@ -510,12 +511,12 @@ position = Vector2(2065, 449)
 position = Vector2(1333, 469)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3375, 1513)
+position = Vector2(2343, 277)
 zoom = Vector2(0.8, 0.8)
 limit_left = 260
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(3375, 1513)
+position = Vector2(2343, 277)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -541,5 +542,10 @@ position = Vector2(2989, 602)
 [node name="EndTransition" parent="." instance=ExtResource("23_087am")]
 position = Vector2(3448, 1768)
 
-[node name="Villager" parent="." instance=ExtResource("20_4wu7w")]
-position = Vector2(2005, 430)
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Villager" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(2091, 482)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("19_liab8")]
+position = Vector2(1960, 433)

@@ -453,6 +453,8 @@ texture = ExtResource("2_3y2w0")
 [sub_resource type="TileSet" id="TileSet_4y2o4"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "Ice"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_xstci")
 sources/1 = SubResource("TileSetAtlasSource_wxeo5")
 
@@ -478,3 +480,7 @@ position = Vector2(79, -101)
 
 [node name="EndTransition" parent="." instance=ExtResource("4_vv4do")]
 position = Vector2(339, 162)
+
+[node name="Powerups" type="Node" parent="."]
+
+[node name="MapObjects" type="Node" parent="."]

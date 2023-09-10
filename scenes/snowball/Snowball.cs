@@ -98,7 +98,6 @@ public partial class Snowball : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		
 		tileMap = GetParent().GetNode<TileMap>("TileMap");
 		IsOnIce = false;
 		WasOnFloor = IsOnFloor();
@@ -252,34 +251,34 @@ public partial class Snowball : CharacterBody2D
 	}
 	
 	private void EndBoost()
-{
-	isBoosting = false;
-	BoostChargingAnim.Stop();
-
-	// Reset the zoom/scale
-	sprite.Scale = new Vector2(1f, 1f);
-
-	// End animations
-	BoostAnimLeft.Stop();
-	BoostAnimRight.Stop();
-
-
-	// Increase velocity in the X direction that snowball is facing
-	if (sprite.FlipH) // Facing right
 	{
-		velocity.X += BoostVelocity;
-		Velocity = velocity;
-		MoveAndSlide();
-	}
-	else // Facing left
-	{
-		velocity.X -= BoostVelocity;;
-		Velocity = velocity;
-		MoveAndSlide();
+		isBoosting = false;
+		BoostChargingAnim.Stop();
+
+		// Reset the zoom/scale
+		sprite.Scale = new Vector2(1f, 1f);
+
+		// End animations
+		BoostAnimLeft.Stop();
+		BoostAnimRight.Stop();
+
+
+		// Increase velocity in the X direction that snowball is facing
+		if (sprite.FlipH) // Facing right
+		{
+			velocity.X += BoostVelocity;
+			Velocity = velocity;
+			MoveAndSlide();
+		}
+		else // Facing left
+		{
+			velocity.X -= BoostVelocity;;
+			Velocity = velocity;
+			MoveAndSlide();
 	}
 
 	// If you want this boost to be a one-time burst, you can reset the velocity back after some time or distance. Consider using a Timer for that.
-}
+	}
 
 	void ApplyGravity(float delta) {
 		// Add the gravity.
@@ -324,6 +323,8 @@ public partial class Snowball : CharacterBody2D
 			{
 				Power -= damage;
 				EmitSignal(SignalName.Powerup, -damage);
+				if (Power <= 0)
+					Death();
 			}
 		}
 	}

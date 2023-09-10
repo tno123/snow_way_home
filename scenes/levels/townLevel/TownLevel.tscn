@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=22 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="2_g4so2"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://gpadwbtokqlu" path="res://scenes/Houses/Houses.tscn" id="5_keer4"]
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="6_wlyqx"]
 [ext_resource type="PackedScene" uid="uid://canoxnjxt32de" path="res://scenes/sign/Sign.tscn" id="7_pi0sw"]
-[ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://utils/Exclamation.tscn" id="7_yndl4"]
 [ext_resource type="PackedScene" uid="uid://hwfhrgxpvuil" path="res://scenes/rocks/Rock.tscn" id="9_rst6i"]
 [ext_resource type="PackedScene" uid="uid://1tlqixuee6ma" path="res://scenes/rocks/Rock_2.tscn" id="10_6f38q"]
 [ext_resource type="PackedScene" uid="uid://vt6c5rlbbkrt" path="res://scenes/rocks/Rock_3.tscn" id="11_3c7gg"]
@@ -511,12 +510,12 @@ position = Vector2(2065, 449)
 position = Vector2(1333, 469)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2414, 390)
+position = Vector2(3375, 1513)
 zoom = Vector2(0.8, 0.8)
 limit_left = 260
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(2414, 390)
+position = Vector2(3375, 1513)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -543,4 +542,4 @@ position = Vector2(2989, 602)
 position = Vector2(3448, 1768)
 
 [node name="Villager" parent="." instance=ExtResource("20_4wu7w")]
-position = Vector2(2427, 526)
+position = Vector2(2005, 430)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kmsxpgq4l5i8"]
+[gd_scene load_steps=8 format=3 uid="uid://do8156mp34wi7"]
 
 [ext_resource type="Script" path="res://scenes/Villager.cs" id="1_05vds"]
 [ext_resource type="Texture2D" uid="uid://boxxsnb26gr1o" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/bearded-walk.png" id="2_fxeif"]
@@ -18,6 +18,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_8vh7c"]
+resource_name = "idle"
+
 [sub_resource type="Animation" id="Animation_nfmgs"]
 resource_name = "walk"
 length = 0.6
@@ -34,9 +37,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
-
-[sub_resource type="Animation" id="Animation_8vh7c"]
-resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oe0d2"]
 _data = {

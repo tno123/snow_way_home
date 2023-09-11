@@ -19,6 +19,15 @@ public partial class Villager : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	
 	
+	/*
+	Villagers som er oppå en annen villager beveger seg fortere,
+	tror de "arver" speed til villager under seg
+
+	TODO: 
+	- Villagers skal skade snøball når de kolliderer
+	- Lage flere typer villagers
+	- 
+	*/
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

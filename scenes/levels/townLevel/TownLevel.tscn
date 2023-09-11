@@ -602,3 +602,37 @@ position = Vector2(465, -69)
 
 [node name="Villager22" parent="Enemies" instance=ExtResource("20_4wu7w")]
 position = Vector2(755, -67)
+
+[node name="Villager23" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(541, -628)
+
+[node name="Villager24" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(877, -690)
+
+[node name="Villager25" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(570, -758)
+
+[node name="Villager26" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(401, -777)
+
+[node name="Villager27" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(1007, -539)
+
+[node name="Villager28" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(617, -516)
+collision_layer = 0
+
+[node name="Villager29" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(1097, -417)
+
+[node name="Villager41" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(704, -866)
+
+[node name="Villager42" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(597, -862)
+
+[node name="Villager43" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(518, -971)
+
+[node name="Villager44" parent="Enemies" instance=ExtResource("20_4wu7w")]
+position = Vector2(808, -969)

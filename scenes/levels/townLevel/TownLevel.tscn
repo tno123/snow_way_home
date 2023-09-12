@@ -525,7 +525,28 @@ layer_0/tile_data = PackedInt32Array(2228252, 1310721, 8, 2228253, 1376257, 8, 2
 [node name="Powerups" type="Node" parent="."]
 
 [node name="Powerup" parent="Powerups" instance=ExtResource("21_clmjs")]
-position = Vector2(3191, 537)
+position = Vector2(3200, 581)
+
+[node name="Powerup2" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(550, 1400)
+
+[node name="Powerup3" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(3100, 1100)
+
+[node name="Powerup4" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(3150, 1050)
+
+[node name="Powerup5" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(3200, 1100)
+
+[node name="Powerup6" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(2554, 1039)
+
+[node name="Powerup7" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(550, 1600)
+
+[node name="Powerup8" parent="Powerups" instance=ExtResource("21_clmjs")]
+position = Vector2(550, 1500)
 
 [node name="Cutscene" parent="." instance=ExtResource("22_utifi")]
 position = Vector2(2989, 602)

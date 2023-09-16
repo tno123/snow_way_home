@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://66i2qnkvfjaq"]
+[gd_scene load_steps=10 format=3 uid="uid://66i2qnkvfjaq"]
 
 [ext_resource type="Script" path="res://scenes/VillagerMob.cs" id="1_sumpi"]
 [ext_resource type="Texture2D" uid="uid://boxxsnb26gr1o" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/bearded-walk.png" id="2_eqi2q"]
 [ext_resource type="Texture2D" uid="uid://ikj6t1quf7wn" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/hat-man-walk.png" id="3_csxyp"]
+[ext_resource type="Texture2D" uid="uid://34uwocbe0mjo" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/woman-walk.png" id="4_jor0t"]
+[ext_resource type="Texture2D" uid="uid://pfixv20ndyrc" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/oldman-walk.png" id="5_mekmv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g48av"]
-size = Vector2(469, 432)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wukni"]
+radius = 206.814
 
 [sub_resource type="Animation" id="Animation_6b244"]
 resource_name = "walk"
@@ -59,6 +61,90 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Villager5:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Villager6:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 11]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Villager7:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Villager8:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 0, 1, 2, 3, 4]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Villager9:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 0, 1, 2, 3]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Villager10:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 0, 1]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Villager11:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_irqex"]
 length = 0.001
@@ -110,6 +196,90 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Villager5:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Villager6:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Villager7:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Villager8:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Villager9:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Villager10:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Villager11:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2tb1"]
 _data = {
@@ -123,8 +293,8 @@ collision_mask = 3
 script = ExtResource("1_sumpi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(236, 215)
-shape = SubResource("RectangleShape2D_g48av")
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_wukni")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -132,13 +302,13 @@ libraries = {
 }
 
 [node name="Villager1" type="Sprite2D" parent="."]
-position = Vector2(412, 143)
+position = Vector2(-83, 121)
 scale = Vector2(1.675, 1.675)
 texture = ExtResource("2_eqi2q")
 hframes = 6
 
 [node name="Villager2" type="Sprite2D" parent="."]
-position = Vector2(377, 246)
+position = Vector2(149, -54)
 rotation = -0.558505
 scale = Vector2(2.0625, 2.0625)
 texture = ExtResource("2_eqi2q")
@@ -146,9 +316,55 @@ hframes = 6
 frame = 1
 
 [node name="Villager3" type="Sprite2D" parent="."]
-position = Vector2(411, 83)
+position = Vector2(129, 126)
 scale = Vector2(1.37179, 1.32692)
 texture = ExtResource("3_csxyp")
 hframes = 6
 
 [node name="Villager4" type="Sprite2D" parent="."]
+
+[node name="Villager5" type="Sprite2D" parent="."]
+position = Vector2(52, 124)
+scale = Vector2(1.63514, 1.63514)
+texture = ExtResource("4_jor0t")
+hframes = 6
+
+[node name="Villager6" type="Sprite2D" parent="."]
+position = Vector2(92, 134)
+scale = Vector2(1.23529, 1.23529)
+texture = ExtResource("5_mekmv")
+hframes = 12
+
+[node name="Villager7" type="Sprite2D" parent="."]
+position = Vector2(-131, 133)
+texture = ExtResource("3_csxyp")
+hframes = 6
+frame = 1
+
+[node name="Villager8" type="Sprite2D" parent="."]
+position = Vector2(-142, 81)
+scale = Vector2(1.55405, 1.55405)
+texture = ExtResource("4_jor0t")
+hframes = 6
+frame = 5
+
+[node name="Villager9" type="Sprite2D" parent="."]
+position = Vector2(-21.25, 129.851)
+scale = Vector2(1.31081, 1.31081)
+texture = ExtResource("4_jor0t")
+hframes = 6
+frame = 4
+
+[node name="Villager10" type="Sprite2D" parent="."]
+position = Vector2(166, 62)
+scale = Vector2(1.7973, 1.7973)
+texture = ExtResource("4_jor0t")
+hframes = 6
+frame = 2
+
+[node name="Villager11" type="Sprite2D" parent="."]
+position = Vector2(-45, 154)
+scale = Vector2(1.48001, 1.48001)
+texture = ExtResource("4_jor0t")
+hframes = 6
+frame = 4

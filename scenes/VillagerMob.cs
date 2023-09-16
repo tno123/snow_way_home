@@ -15,6 +15,7 @@ public partial class VillagerMob : CharacterBody2D
 	public AnimationPlayer AnimationPlayer;
 	public Sprite2D Sprite2D;
 
+
 	
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	
@@ -23,6 +24,7 @@ public partial class VillagerMob : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		
 		Snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
 		if (LineOfSight != null) {
 		//Add points to the LineOfSight.
@@ -37,7 +39,9 @@ public partial class VillagerMob : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		Rotation += .3f * (3.14f / 180.0f);
 		UpdateLineOfSight();
+	
 		AnimationPlayer.Play("walk");
 		Vector2 velocity = Velocity;
 

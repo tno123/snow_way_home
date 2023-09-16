@@ -580,4 +580,4 @@ position = Vector2(-1478, 363)
 position = Vector2(-1055, 423)
 
 [node name="VillagerMob" parent="Enemies" instance=ExtResource("19_60wko")]
-position = Vector2(-385, 87)
+position = Vector2(526, 401)

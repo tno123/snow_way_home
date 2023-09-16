@@ -26,7 +26,6 @@ public partial class Avalanche : Node2D
 	public override void _Process(double delta)
 	{
 		Position += (new Vector2(-1,0).Rotated(Rotation)) * Speed * (float)delta;
-		GD.Print(Position);
 		if (Position.X < EndPosition.X)
 		{
 			Position = startPosition;

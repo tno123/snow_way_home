@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=9 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyt7h86ku3rhn" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/glacial_mountains_lightened.png" id="4_7ls1o"]
 [ext_resource type="Texture2D" uid="uid://cr85h7cpnwdx" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_3.png" id="5_4pnk1"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_dh0fn"]
+[ext_resource type="PackedScene" uid="uid://b8e30v0tel02y" path="res://scenes/enemies/Avalanche.tscn" id="8_70glp"]
 
 [node name="MountainLevel" type="Node"]
 script = ExtResource("1_cl8hv")
@@ -18,13 +19,15 @@ script = ExtResource("1_cl8hv")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
-scale = Vector2(10, 10)
+visible = false
+scale = Vector2(50, 50)
 texture = ExtResource("1_fncc3")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(10, 10)
+visible = false
+scale = Vector2(50, 50)
 texture = ExtResource("3_i8qh5")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
@@ -58,7 +61,7 @@ polygon = PackedVector2Array(0, -88, 0, 32, 64, 32, 176, -48, 216, -48, 312, -12
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Ground"]
 position = Vector2(3904, -1592)
 scale = Vector2(10, 10)
-polygon = PackedVector2Array(0, 32, 64, 32, 176, -48, 216, -48, 288, -128, 320, -128, 320, 112, -64, 112, -64, 32)
+polygon = PackedVector2Array(0, 32, 64, 32, 176, -48, 216, -48, 300, -128, 320, -128, 320, 112, -64, 112, -64, 32)
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground/CollisionPolygon2D2"]
 
@@ -86,6 +89,34 @@ position = Vector2(32, -16)
 [node name="Powerups" type="Node" parent="."]
 
 [node name="MapObjects" type="Node" parent="."]
+
+[node name="Avalanche" parent="MapObjects" instance=ExtResource("8_70glp")]
+position = Vector2(1498, -293)
+rotation = -0.619592
+
+[node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche"]
+position = Vector2(-1054.48, 0.809631)
+
+[node name="Avalanche2" parent="MapObjects" instance=ExtResource("8_70glp")]
+position = Vector2(2820, -1032)
+rotation = -0.694641
+
+[node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche2"]
+position = Vector2(-860.408, 1.62)
+
+[node name="Avalanche3" parent="MapObjects" instance=ExtResource("8_70glp")]
+position = Vector2(5392, -1880)
+rotation = -0.619592
+
+[node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche3"]
+position = Vector2(-1043.44, 2.54614)
+
+[node name="Avalanche4" parent="MapObjects" instance=ExtResource("8_70glp")]
+position = Vector2(6683, -2663)
+rotation = -0.759218
+
+[node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche4"]
+position = Vector2(-855.825, 2.60498)
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2

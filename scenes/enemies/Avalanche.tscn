@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8e30v0tel02y"]
+[gd_scene load_steps=4 format=3 uid="uid://b8e30v0tel02y"]
 
+[ext_resource type="Script" path="res://scenes/enemies/Avalanche.cs" id="1_0f2me"]
 [ext_resource type="Texture2D" uid="uid://8fwpnyy3oojg" path="res://icon.svg" id="1_sak2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emaf2"]
-size = Vector2(128, 128)
+size = Vector2(320, 128)
 
 [node name="Avalanche" type="Node2D"]
+script = ExtResource("1_0f2me")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, -64)
+scale = Vector2(2.5, 1)
 texture = ExtResource("1_sak2l")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(160, -64)
 shape = SubResource("RectangleShape2D_emaf2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

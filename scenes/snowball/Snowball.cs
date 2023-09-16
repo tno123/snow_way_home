@@ -116,7 +116,7 @@ public partial class Snowball : CharacterBody2D
 			
 			HandleJump();
 			HandleBoost();
-			if (IsOnFloor() && PreviousVelocity.Y > 400)
+			if (IsOnFloor() && PreviousVelocity.Y > 600)
 			{
 				Damage(1);
 			}

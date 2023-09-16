@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv4vgn6yeth54"]
+[gd_scene load_steps=4 format=3 uid="uid://jgcldob3f86l"]
 
 [ext_resource type="Script" path="res://scenes/puddle/Puddle.cs" id="1_7cgpe"]
 [ext_resource type="Texture2D" uid="uid://bs5lc1yjmmxry" path="res://assets/puddle.png" id="1_wrc5x"]

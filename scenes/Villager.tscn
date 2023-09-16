@@ -53,7 +53,7 @@ size = Vector2(67, 108)
 
 [node name="Villager" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 7
 script = ExtResource("1_hx2ev")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

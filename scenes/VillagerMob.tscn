@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://66i2qnkvfjaq"]
+
+[ext_resource type="Script" path="res://scenes/VillagerMob.cs" id="1_sumpi"]
+[ext_resource type="Texture2D" uid="uid://boxxsnb26gr1o" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/bearded-walk.png" id="2_eqi2q"]
+[ext_resource type="Texture2D" uid="uid://ikj6t1quf7wn" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/hat-man-walk.png" id="3_csxyp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g48av"]
+size = Vector2(469, 432)
+
+[sub_resource type="Animation" id="Animation_6b244"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Villager1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_eqi2q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Villager1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Villager2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Villager3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_irqex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Villager1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_eqi2q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Villager1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Villager2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Villager3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l2tb1"]
+_data = {
+"RESET": SubResource("Animation_irqex"),
+"walk": SubResource("Animation_6b244")
+}
+
+[node name="VillagerMob" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_sumpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(236, 215)
+shape = SubResource("RectangleShape2D_g48av")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l2tb1")
+}
+
+[node name="Villager1" type="Sprite2D" parent="."]
+position = Vector2(412, 143)
+scale = Vector2(1.675, 1.675)
+texture = ExtResource("2_eqi2q")
+hframes = 6
+
+[node name="Villager2" type="Sprite2D" parent="."]
+position = Vector2(377, 246)
+rotation = -0.558505
+scale = Vector2(2.0625, 2.0625)
+texture = ExtResource("2_eqi2q")
+hframes = 6
+frame = 1
+
+[node name="Villager3" type="Sprite2D" parent="."]
+position = Vector2(411, 83)
+scale = Vector2(1.37179, 1.32692)
+texture = ExtResource("3_csxyp")
+hframes = 6
+
+[node name="Villager4" type="Sprite2D" parent="."]

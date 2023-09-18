@@ -1,27 +1,80 @@
-[gd_scene load_steps=5 format=3 uid="uid://fv50f0yicjpx"]
+[gd_scene load_steps=7 format=3 uid="uid://fv50f0yicjpx"]
 
 [ext_resource type="Script" path="res://scenes/Cutscene.cs" id="1_uu7pn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i24uy"]
-size = Vector2(39, 386)
+size = Vector2(88, 386)
 
-[sub_resource type="Animation" id="Animation_5g28t"]
-resource_name = "new_animation"
+[sub_resource type="Animation" id="Animation_r2uuc"]
+resource_name = "showbars"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-238, -330), Vector2(-238, -180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-233, 480), Vector2(-233, 330)]
+}
+
+[sub_resource type="Animation" id="Animation_n6id3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-238, -480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-233, 480)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dr3vf"]
 _data = {
-"new_animation": SubResource("Animation_5g28t")
+"RESET": SubResource("Animation_n6id3"),
+"showbars": SubResource("Animation_r2uuc")
 }
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cwwdb"]
 
 [node name="Cutscene" type="Node2D"]
 script = ExtResource("1_uu7pn")
 offset = Vector2(-250, 0)
-metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9.5, -183)
+position = Vector2(464, -10)
 shape = SubResource("RectangleShape2D_i24uy")
 
 [node name="StopTime" type="Timer" parent="."]
@@ -35,6 +88,22 @@ wait_time = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_dr3vf")
 }
+
+[node name="TopBar" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -238.0
+offset_top = -480.0
+offset_right = 1066.0
+offset_bottom = -306.0
+texture = SubResource("CanvasTexture_cwwdb")
+
+[node name="BottomBar" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -233.0
+offset_top = 480.0
+offset_right = 1056.0
+offset_bottom = 636.0
+texture = SubResource("CanvasTexture_cwwdb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="StopTime" to="." method="_on_timer_timeout"]

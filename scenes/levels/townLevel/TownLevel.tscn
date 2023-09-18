@@ -581,5 +581,5 @@ position = Vector2(-1644, 508)
 position = Vector2(-1930, 514)
 
 [node name="Cutscene2" parent="." instance=ExtResource("22_utifi")]
-position = Vector2(-1046, 552)
-offset = Vector2(-750, 0)
+position = Vector2(-1352, 505)
+offset = Vector2(-650, 0)

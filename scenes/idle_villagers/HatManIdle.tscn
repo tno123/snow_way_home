@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwbut0x1o8umo"]
+
+[ext_resource type="PackedScene" uid="uid://bgsfwqlbfxlot" path="res://scenes/idle_villagers/BaseVillager.tscn" id="1_uhdvc"]
+[ext_resource type="Texture2D" uid="uid://cwpx32i1glsyv" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/hat-man-idle.png" id="2_pttdm"]
+
+[sub_resource type="Animation" id="Animation_41525"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_41g53"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gokm"]
+_data = {
+"RESET": SubResource("Animation_41g53"),
+"idle": SubResource("Animation_41525")
+}
+
+[node name="BaseVillager" instance=ExtResource("1_uhdvc")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pttdm")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_0gokm")
+}

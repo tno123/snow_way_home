@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://4wmweqy4sp6r"]
+
+[ext_resource type="PackedScene" uid="uid://bgsfwqlbfxlot" path="res://scenes/idle_villagers/BaseVillager.tscn" id="1_n8tca"]
+[ext_resource type="Texture2D" uid="uid://ba5lx47y1nnmg" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/bearded-idle.png" id="2_c6685"]
+
+[sub_resource type="Animation" id="Animation_r3prr"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_g5iat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6g3m"]
+_data = {
+"RESET": SubResource("Animation_g5iat"),
+"idle": SubResource("Animation_r3prr")
+}
+
+[node name="BaseVillager" instance=ExtResource("1_n8tca")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_c6685")
+hframes = 5
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_j6g3m")
+}
+
+[node name="Exclamation" parent="." index="2"]
+position = Vector2(2, -81)

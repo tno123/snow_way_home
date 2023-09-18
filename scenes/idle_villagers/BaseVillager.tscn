@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgsfwqlbfxlot"]
+
+[ext_resource type="Script" path="res://scenes/idle_villagers/BaseVillager.cs" id="1_5l3xu"]
+[ext_resource type="PackedScene" uid="uid://d1b3sy7n064ko" path="res://utils/Exclamation.tscn" id="2_byg02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxsh"]
+size = Vector2(377, 48.25)
+
+[node name="BaseVillager" type="Node2D"]
+script = ExtResource("1_5l3xu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Exclamation" parent="." instance=ExtResource("2_byg02")]
+position = Vector2(1, -57)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_pmxsh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

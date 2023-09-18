@@ -33,7 +33,7 @@ public partial class VillagerMob : CharacterBody2D
 		}
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		Sprite2D = GetNode<Sprite2D>("Sprite2D");
+		//Sprite2D = GetNode<Sprite2D>("Sprite2D");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

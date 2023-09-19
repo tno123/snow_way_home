@@ -29,6 +29,7 @@ public partial class Snowball : CharacterBody2D
 	public StaticBody2D staticBody2D;
 	public bool CurrentIce = false;
 	public Vector2 Checkpoint = Vector2.Zero;
+	public Snowbank Snowbank;
 
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
@@ -74,7 +75,7 @@ public partial class Snowball : CharacterBody2D
 		Checkpoint = Position;
 
 		//Groups are good thumbsup emoji
-		var powerups = GetParent().GetNode<Node>("Powerups");
+		var powerups = GetParent().GetNodeOrNull<Node>("Powerups");
 		if (powerups != null)
 		{
 			var allPowerups = GetTree().GetNodesInGroup("Powerups");
@@ -84,7 +85,7 @@ public partial class Snowball : CharacterBody2D
 				powerup.PowerupCollected += OnPowerup;
 			}
 		}
-		var mapObjects = GetParent().GetNode("MapObjects");
+		var mapObjects = GetParent().GetNodeOrNull("MapObjects");
 		if (mapObjects != null)
 		{
 			var puddles = GetTree().GetNodesInGroup("Puddles");
@@ -94,6 +95,8 @@ public partial class Snowball : CharacterBody2D
 				puddle.PuddleEntered += OnIced;
 			}
 		}
+		Snowbank = GetNodeOrNull<Snowbank>("Snowbank");
+
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -103,7 +106,8 @@ public partial class Snowball : CharacterBody2D
 		WasOnFloor = IsOnFloor();
 
 		velocity = Velocity;
-		
+
+		HandleSnowbank();
 
 		// Add the gravity.
 		ApplyGravity((float)delta);
@@ -289,7 +293,8 @@ public partial class Snowball : CharacterBody2D
 		}
 	}
 
-	bool HandleIceTile() {
+	bool HandleIceTile()
+	{
 	// Pressing "down" negates ice physics 
 		var retVal = false;
 		try {
@@ -310,6 +315,33 @@ public partial class Snowball : CharacterBody2D
 				// Do nothing
 			}
 		return retVal;
+	}
+
+	void HandleSnowbank()
+	{
+		if (Snowbank != null)
+		{
+			if (Input.IsActionPressed("ui_down"))
+			{
+				var allAvalanches = GetTree().GetNodesInGroup("avalanches");
+				for (int i = 0; i < allAvalanches.Count; i++)
+				{
+					var avalanche = (Avalanche)allAvalanches[i];
+					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+				}
+				canMove = false;
+			}
+			else
+			{
+				var allAvalanches = GetTree().GetNodesInGroup("avalanches");
+				for (int i = 0; i < allAvalanches.Count; i++)
+				{
+					var avalanche = (Avalanche)allAvalanches[i];
+					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+				}
+				canMove = true;
+			}
+		}
 	}
 
 	public void Damage(int damage)

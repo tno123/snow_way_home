@@ -488,6 +488,10 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="HidingTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(43, 3)
 scale = Vector2(6.125, 3.3125)

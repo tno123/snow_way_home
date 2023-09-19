@@ -71,7 +71,7 @@ _data = {
 "start": SubResource("Animation_padu1")
 }
 
-[node name="Avalanche" type="Node2D"]
+[node name="Avalanche" type="Node2D" groups=["avalanches"]]
 script = ExtResource("1_0f2me")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -81,7 +81,7 @@ texture = ExtResource("1_sak2l")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(160, -64)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=10 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cr85h7cpnwdx" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_3.png" id="5_4pnk1"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_dh0fn"]
 [ext_resource type="PackedScene" uid="uid://b8e30v0tel02y" path="res://scenes/enemies/Avalanche.tscn" id="8_70glp"]
+[ext_resource type="PackedScene" uid="uid://bv24ynbtof7em" path="res://scenes/snowbank/Snowbank.tscn" id="9_r03cb"]
 
 [node name="MountainLevel" type="Node"]
 script = ExtResource("1_cl8hv")
@@ -78,13 +79,13 @@ grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Snowball" parent="." instance=ExtResource("1_my4fi")]
-position = Vector2(32, -16)
+position = Vector2(146, 224)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(32, -16)
+position = Vector2(146, 224)
 
 [node name="Powerups" type="Node" parent="."]
 
@@ -93,6 +94,7 @@ position = Vector2(32, -16)
 [node name="Avalanche" parent="MapObjects" instance=ExtResource("8_70glp")]
 position = Vector2(1498, -293)
 rotation = -0.619592
+Speed = 175.0
 
 [node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche"]
 position = Vector2(-1054.48, 0.809631)
@@ -117,6 +119,14 @@ rotation = -0.759218
 
 [node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche4"]
 position = Vector2(-855.825, 2.60498)
+
+[node name="Snowbank" parent="." instance=ExtResource("9_r03cb")]
+position = Vector2(1320, -136)
+rotation = -0.619592
+
+[node name="Snowbank2" parent="." instance=ExtResource("9_r03cb")]
+position = Vector2(896, 168)
+rotation = -0.619592
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2

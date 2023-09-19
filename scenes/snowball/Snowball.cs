@@ -329,6 +329,7 @@ public partial class Snowball : CharacterBody2D
 					var avalanche = (Avalanche)allAvalanches[i];
 					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
 				}
+				Visible = false;
 				canMove = false;
 			}
 			else
@@ -339,6 +340,7 @@ public partial class Snowball : CharacterBody2D
 					var avalanche = (Avalanche)allAvalanches[i];
 					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 				}
+				Visible = true;
 				canMove = true;
 			}
 		}

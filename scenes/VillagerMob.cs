@@ -13,7 +13,7 @@ public partial class VillagerMob : CharacterBody2D
 
 	public Snowball Snowball;
 	public AnimationPlayer AnimationPlayer;
-	public Sprite2D Sprite2D;
+	public Sprite2D sprite;
 
 
 	
@@ -33,7 +33,7 @@ public partial class VillagerMob : CharacterBody2D
 		}
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		//Sprite2D = GetNode<Sprite2D>("Sprite2D");
+		sprite = GetNode<Sprite2D>("Sprite2D");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,7 +49,20 @@ public partial class VillagerMob : CharacterBody2D
 		if (!IsOnFloor())
 			velocity.Y += gravity * (float)delta;
 		
-		Position += new Vector2(Speed * (float)delta,0);
+		
+		
+		if (Position.X < Snowball.Position.X)
+			{
+				Position += new Vector2(Speed * (float)delta,0);
+				sprite.FlipH = false;
+			}
+		else
+			{
+				Position -= new Vector2(Speed * (float)delta,0);
+				sprite.FlipH = true;
+			}
+		
+		
 		
 			
 
@@ -68,11 +81,6 @@ public partial class VillagerMob : CharacterBody2D
 					LineOfSight.QueueFree();
 			}
 		}
-
-		
-
-		
-
 	}
 	private void UpdateLineOfSight()
 	{

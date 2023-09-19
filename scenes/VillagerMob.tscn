@@ -604,7 +604,6 @@ position = Vector2(87, -34)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_sumpi")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -840,7 +839,7 @@ scale = Vector2(1.125, 1.125)
 
 [node name="Villager19" type="Sprite2D" parent="."]
 position = Vector2(71, -143)
-rotation = 3.54302
+rotation = -2.74017
 scale = Vector2(2.28508, 2.28508)
 texture = ExtResource("5_mekmv")
 hframes = 12
@@ -864,7 +863,7 @@ frame = 3
 
 [node name="Villager13" type="Sprite2D" parent="."]
 position = Vector2(-3.8147e-06, -159)
-rotation = -3.16777
+rotation = 3.11542
 scale = Vector2(1.86181, 1.86181)
 texture = ExtResource("2_eqi2q")
 hframes = 6
@@ -895,7 +894,7 @@ frame = 2
 
 [node name="Villager15" type="Sprite2D" parent="."]
 position = Vector2(-91, -125)
-rotation = -3.37198
+rotation = 2.91121
 scale = Vector2(2.32031, 2.32031)
 texture = ExtResource("2_eqi2q")
 hframes = 6
@@ -999,8 +998,4 @@ texture = ExtResource("4_jor0t")
 hframes = 6
 frame = 4
 
-[node name="Beards" type="Node" parent="."]
-
-[node name="Hatman" type="Node" parent="."]
-
-[node name="DressPerson" type="Node" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]

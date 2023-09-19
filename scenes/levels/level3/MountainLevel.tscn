@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=11 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cr85h7cpnwdx" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_3.png" id="5_4pnk1"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_dh0fn"]
 [ext_resource type="PackedScene" uid="uid://b8e30v0tel02y" path="res://scenes/enemies/Avalanche.tscn" id="8_70glp"]
+[ext_resource type="PackedScene" uid="uid://b2elgt5fb07il" path="res://scenes/UI_scenes/DarkenScreen.tscn" id="8_m5ybj"]
 [ext_resource type="PackedScene" uid="uid://bv24ynbtof7em" path="res://scenes/snowbank/Snowbank.tscn" id="9_r03cb"]
 
 [node name="MountainLevel" type="Node"]
@@ -66,6 +67,15 @@ polygon = PackedVector2Array(0, 32, 64, 32, 176, -48, 216, -48, 300, -128, 320, 
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground/CollisionPolygon2D2"]
 
+[node name="Snowball" parent="." instance=ExtResource("1_my4fi")]
+position = Vector2(146, 224)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(146, 224)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SnowPower" parent="CanvasLayer" instance=ExtResource("6_dh0fn")]
@@ -78,14 +88,7 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Snowball" parent="." instance=ExtResource("1_my4fi")]
-position = Vector2(146, 224)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
-remote_path = NodePath("../../Camera2D")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(146, 224)
+[node name="DarkenScreen" parent="CanvasLayer" instance=ExtResource("8_m5ybj")]
 
 [node name="Powerups" type="Node" parent="."]
 

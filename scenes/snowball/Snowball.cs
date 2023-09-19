@@ -17,9 +17,13 @@ public partial class Snowball : CharacterBody2D
 
 	[Export]
 	public const float JumpVelocity = -350.0f;
+	[Export]
+	public float DarkenTime = 5.0f;
 
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
+	[Signal]
+	public delegate void DarkenScreenEventHandler(bool value);
 
 	public const float Speed = 200.0f;
 	public const float BounceVelocity = -750.0f;
@@ -34,6 +38,7 @@ public partial class Snowball : CharacterBody2D
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
+	private Timer HidingTimer;
 	private Vector2 velocity = Vector2.Zero;
 	private bool WasOnFloor = false;
 	private bool IsOnIce = false;
@@ -70,8 +75,10 @@ public partial class Snowball : CharacterBody2D
 		
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
+		HidingTimer = GetNode<Timer>("HidingTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
+		HidingTimer.WaitTime = DarkenTime;
 		Checkpoint = Position;
 
 		//Groups are good thumbsup emoji
@@ -331,6 +338,9 @@ public partial class Snowball : CharacterBody2D
 				}
 				Visible = false;
 				canMove = false;
+				EmitSignal(SignalName.DarkenScreen, true);
+				if (HidingTimer.IsStopped())
+					HidingTimer.Start();
 			}
 			else
 			{
@@ -342,6 +352,8 @@ public partial class Snowball : CharacterBody2D
 				}
 				Visible = true;
 				canMove = true;
+				EmitSignal(SignalName.DarkenScreen, false);
+				HidingTimer.Stop();
 			}
 		}
 	}
@@ -420,7 +432,17 @@ public partial class Snowball : CharacterBody2D
 	public void StartMovement()
 	{
 		 canMove = true;
-	}	
+	}
+
+	private void _on_hiding_timer_timeout()
+	{
+		EmitSignal(SignalName.DarkenScreen, false);
+		Snowbank = null;
+		Visible = true;
+		canMove = true;
+		Death();
+	}
+
 	/*It is probably best to handle logic for what happens with
 	steam and puddles and lava pit in this script (snowball.cs)*/
 	
@@ -430,6 +452,3 @@ public partial class Snowball : CharacterBody2D
 	
 	/*Lava pit*/
 }
-
-
-

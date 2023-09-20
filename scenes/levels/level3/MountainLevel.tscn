@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=12 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b8e30v0tel02y" path="res://scenes/enemies/Avalanche.tscn" id="8_70glp"]
 [ext_resource type="PackedScene" uid="uid://b2elgt5fb07il" path="res://scenes/UI_scenes/DarkenScreen.tscn" id="8_m5ybj"]
 [ext_resource type="PackedScene" uid="uid://bv24ynbtof7em" path="res://scenes/snowbank/Snowbank.tscn" id="9_r03cb"]
+[ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="11_wl22c"]
 
 [node name="MountainLevel" type="Node"]
 script = ExtResource("1_cl8hv")
@@ -97,7 +98,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Avalanche" parent="MapObjects" instance=ExtResource("8_70glp")]
 position = Vector2(1498, -293)
 rotation = -0.619592
-Speed = 175.0
+Speed = 150.0
 
 [node name="Endpoint" type="Node2D" parent="MapObjects/Avalanche"]
 position = Vector2(-1054.48, 0.809631)
@@ -127,9 +128,22 @@ position = Vector2(-855.825, 2.60498)
 position = Vector2(1320, -136)
 rotation = -0.619592
 
+[node name="Snowbank3" parent="." instance=ExtResource("9_r03cb")]
+position = Vector2(2408, -648)
+rotation = -0.694641
+
+[node name="Snowbank4" parent="." instance=ExtResource("9_r03cb")]
+position = Vector2(2800, -976)
+rotation = -0.694641
+
 [node name="Snowbank2" parent="." instance=ExtResource("9_r03cb")]
 position = Vector2(896, 168)
 rotation = -0.619592
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="SnowEater" parent="Enemies" instance=ExtResource("11_wl22c")]
+position = Vector2(3632, -1336)

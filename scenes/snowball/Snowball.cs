@@ -337,13 +337,14 @@ public partial class Snowball : CharacterBody2D
 				Power -= damage;
 				EmitSignal(SignalName.Powerup, -damage);
 				if (Power <= 0)
-					Death();
+					Death();	
 			}
 		}
 	}
 
 	public void Death()
 	{
+		if (!BlinkTimer.IsStopped()) BlinkTimer.Stop();
 		Position = Checkpoint;
 		Power = MaxPower;
 		EmitSignal(SignalName.Powerup, MaxPower);

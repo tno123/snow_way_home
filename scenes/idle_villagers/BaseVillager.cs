@@ -38,7 +38,7 @@ public partial class BaseVillager : Node2D
 	private void _on_area_2d_body_entered(Node2D body)
 	{
 		if (body is Snowball){
-			exclamation.Play("default");
+			if (HasNode("Exclamation")) exclamation.Play("default");
 			sprite.FlipH = true;
 			AnimationPlayer.Stop();
 			

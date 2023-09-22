@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=16 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -12,6 +12,29 @@
 [ext_resource type="PackedScene" uid="uid://bv24ynbtof7em" path="res://scenes/snowbank/Snowbank.tscn" id="9_r03cb"]
 [ext_resource type="PackedScene" uid="uid://dhloll65wgpxm" path="res://scenes/levels/level3/BossTransition.tscn" id="11_mmxsw"]
 [ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="11_wl22c"]
+
+[sub_resource type="Curve" id="Curve_65mtk"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, 805.117, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_se1hv"]
+curve = SubResource("Curve_65mtk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1pcgb"]
+emission_shape = 3
+emission_box_extents = Vector3(600, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(-0.5, 1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_curve = SubResource("CurveTexture_se1hv")
+scale_min = 4.0
+scale_max = 4.0
 
 [node name="MountainLevel" type="Node"]
 script = ExtResource("1_cl8hv")
@@ -77,6 +100,12 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(112, 264)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
+position = Vector2(0, -300)
+amount = 700
+process_material = SubResource("ParticleProcessMaterial_1pcgb")
+lifetime = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

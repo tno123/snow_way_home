@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhloll65wgpxm"]
+
+[ext_resource type="Script" path="res://scenes/levels/level3/BossTransition.cs" id="1_1t2pc"]
+[ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="1_ubjpe"]
+[ext_resource type="PackedScene" uid="uid://cbrjivs3fuxlf" path="res://scenes/levels/level4/BossLevel.tscn" id="3_08ddg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awv7p"]
+size = Vector2(64, 64)
+
+[node name="BossTransition" type="Node2D"]
+script = ExtResource("1_1t2pc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_awv7p")
+
+[node name="Transitions" parent="." instance=ExtResource("1_ubjpe")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scene_to_load = ExtResource("3_08ddg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

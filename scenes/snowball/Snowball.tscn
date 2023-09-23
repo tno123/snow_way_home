@@ -632,8 +632,6 @@ autoplay = "default"
 visible = false
 sprite_frames = SubResource("SpriteFrames_0fsnf")
 animation = &"main"
-frame = 8
-frame_progress = 0.841631
 
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

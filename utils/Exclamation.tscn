@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1b3sy7n064ko"]
+[gd_scene load_steps=10 format=3 uid="uid://d1b3sy7n064ko"]
 
 [ext_resource type="Texture2D" uid="uid://cj7gb28vdwq4x" path="res://assets/Rocky Roads/FX/exclamation.png" id="1_m766b"]
+[ext_resource type="Script" path="res://utils/Exclamation.cs" id="2_7yq1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw3t5"]
 atlas = ExtResource("1_m766b")
@@ -81,5 +82,10 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 position = Vector2(35, 30.5)
-scale = Vector2(5.375, 4.8125)
+scale = Vector2(3.583, 3.208)
 sprite_frames = SubResource("SpriteFrames_k6xeh")
+frame = 14
+frame_progress = 1.0
+script = ExtResource("2_7yq1s")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -52,7 +52,11 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
 	private bool canMove = true;
-
+	
+	private Timer DamageBoostTimer;
+	private Timer BlinkTimer;
+	private bool isDamaged = false;
+	
 	private Vector2 PreviousVelocity = Vector2.Zero;
 	
 	private bool isBoosting = false;
@@ -104,6 +108,9 @@ public partial class Snowball : CharacterBody2D
 		}
 		Snowbank = GetNodeOrNull<Snowbank>("Snowbank");
 
+		
+		DamageBoostTimer = GetNode<Timer>("DamageBoostTimer");
+		BlinkTimer = GetNode<Timer>("BlinkTimer");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -127,7 +134,7 @@ public partial class Snowball : CharacterBody2D
 			
 			HandleJump();
 			HandleBoost();
-			if (IsOnFloor() && PreviousVelocity.Y > 600)
+			if (IsOnFloor() && PreviousVelocity.Y > 800)
 			{
 				Damage(1);
 			}
@@ -360,6 +367,12 @@ public partial class Snowball : CharacterBody2D
 
 	public void Damage(int damage)
 	{
+		if (!isDamaged)
+			{
+				isDamaged = true;
+				DamageBoostTimer.Start();
+				BlinkTimer.Start();
+			}
 		if (CurrentIce) {
 			CurrentIce = false;
 			OnIced(false);
@@ -370,13 +383,14 @@ public partial class Snowball : CharacterBody2D
 				Power -= damage;
 				EmitSignal(SignalName.Powerup, -damage);
 				if (Power <= 0)
-					Death();
+					Death();	
 			}
 		}
 	}
 
 	public void Death()
 	{
+		if (!BlinkTimer.IsStopped()) BlinkTimer.Stop();
 		Position = Checkpoint;
 		Power = MaxPower;
 		EmitSignal(SignalName.Powerup, MaxPower);
@@ -451,4 +465,20 @@ public partial class Snowball : CharacterBody2D
 	/*Puddle*/
 	
 	/*Lava pit*/
+	private void _on_damage_boost_timer_timeout()
+		{
+			isDamaged = false;
+			BlinkTimer.Stop();
+			Visible = true; // Ensure player is visible at the end of damage boost
+		}
+		
+	private void _on_blink_timer_timeout()
+		{
+			Visible = !Visible; // Toggle visibility
+			if (!DamageBoostTimer.IsStopped())
+				{
+					BlinkTimer.Start();
+				}
+		}
 }
+

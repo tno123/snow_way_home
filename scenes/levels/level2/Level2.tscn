@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bfovgbicmuwg4"]
+[gd_scene load_steps=35 format=3 uid="uid://bfovgbicmuwg4"]
 
 [ext_resource type="Texture2D" uid="uid://c4pwnmx6jm3oo" path="res://assets/oak_woods_v1.0/background/background_layer_1.png" id="1_25esc"]
 [ext_resource type="Texture2D" uid="uid://dm0joiqd70s6l" path="res://assets/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains_desat.png" id="1_l4fhy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="3_3dois"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_34k1r"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="7_7yeh8"]
+[ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="9_8wrjr"]
 [ext_resource type="Texture2D" uid="uid://degromml7q0ok" path="res://assets/oak_woods_v1.0/oak_woods_tileset_64_snowy.png" id="9_mhmt3"]
 [ext_resource type="Script" path="res://scenes/levels/level2/StartIceDestroy.cs" id="9_otg0r"]
 [ext_resource type="Script" path="res://scenes/levels/level2/StartSlowGravity.cs" id="9_vci2x"]
@@ -1537,6 +1538,13 @@ ThrowTime = 1.5
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("15_7i35h")]
 position = Vector2(1088, 224)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-178, -1568)
+scale = Vector2(0.987499, 0.987499)
+texture = ExtResource("9_8wrjr")
+region_enabled = true
+region_rect = Rect2(160, 16, 32, 64)
 
 [node name="Powerups" type="Node" parent="."]
 

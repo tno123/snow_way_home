@@ -4,6 +4,8 @@ using System;
 public partial class Bonfire : Node2D
 {
 	private AnimatedSprite2D animation;
+	
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,7 +17,7 @@ public partial class Bonfire : Node2D
 	{
 		animation.Play("default");
 	}
-	private void _on_area_2d_body_entered(Node2D body)
+	protected virtual void _on_area_2d_body_entered(Node2D body)
 	{
 		if (body is Snowball){
 			((Snowball)body).Damage(1);
@@ -23,6 +25,7 @@ public partial class Bonfire : Node2D
 
 		}
 	}
+	
 }
 
 

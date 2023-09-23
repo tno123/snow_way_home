@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cooq1pghfkb3p"]
+
+[ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/bonfire/Bonfire.tscn" id="1_qr7uy"]
+[ext_resource type="Script" path="res://scenes/bonfire/BlinkingBonfire.cs" id="2_4e23r"]
+
+[node name="Bonfire" instance=ExtResource("1_qr7uy")]
+script = ExtResource("2_4e23r")
+VisibleStart = false
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+frame_progress = 0.715605
+
+[node name="BlinkTimer" type="Timer" parent="." index="2"]
+
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_timer_timeout"]

@@ -54,12 +54,15 @@ public partial class Snowball : CharacterBody2D
 	private Vector2 PreviousVelocity = Vector2.Zero;
 	
 	private bool isBoosting = false;
+
+	private Vector2 originalScale; 
 	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
+		originalScale = Scale;
 		sprite = GetNode<Sprite2D>("Sprite2D");
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		
@@ -334,10 +337,10 @@ public partial class Snowball : CharacterBody2D
 		{
 			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped())
 			{
-				Power -= damage;
-				EmitSignal(SignalName.Powerup, -damage);
-				if (Power <= 0)
-					Death();	
+					Power -= damage;
+					EmitSignal(SignalName.Powerup, -damage);
+					if (Power <= 0)
+						Death();		
 			}
 		}
 	}
@@ -348,6 +351,7 @@ public partial class Snowball : CharacterBody2D
 		Position = Checkpoint;
 		Power = MaxPower;
 		EmitSignal(SignalName.Powerup, MaxPower);
+		Scale = originalScale;
 	}
 
 	public void SetIce(bool ice) {

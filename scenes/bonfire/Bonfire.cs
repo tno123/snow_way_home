@@ -20,8 +20,11 @@ public partial class Bonfire : Node2D
 	protected virtual void _on_area_2d_body_entered(Node2D body)
 	{
 		if (body is Snowball){
-			((Snowball)body).Damage(1);
-			((Snowball)body).Scale = new Vector2((float)(((Snowball)body).Scale.X/1.5), (float)(((Snowball)body).Scale.Y/1.5));
+			var snowball = (Snowball)body;
+			if(snowball.GetNode<Timer>("DamageBoostTimer").IsStopped()){
+				snowball.Damage(1);
+				snowball.Scale = new Vector2((float)(((Snowball)body).Scale.X/1.5), (float)(((Snowball)body).Scale.Y/1.5));
+			}
 
 		}
 	}

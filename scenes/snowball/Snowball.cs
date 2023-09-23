@@ -17,9 +17,13 @@ public partial class Snowball : CharacterBody2D
 
 	[Export]
 	public const float JumpVelocity = -350.0f;
+	[Export]
+	public float DarkenTime = 5.0f;
 
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
+	[Signal]
+	public delegate void DarkenScreenEventHandler(bool value);
 
 	public const float Speed = 200.0f;
 	public const float BounceVelocity = -750.0f;
@@ -29,10 +33,12 @@ public partial class Snowball : CharacterBody2D
 	public StaticBody2D staticBody2D;
 	public bool CurrentIce = false;
 	public Vector2 Checkpoint = Vector2.Zero;
+	public Snowbank Snowbank;
 
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
 	private Timer NextJumpTimer;
+	private Timer HidingTimer;
 	private Vector2 velocity = Vector2.Zero;
 	private bool WasOnFloor = false;
 	private bool IsOnIce = false;
@@ -45,6 +51,7 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D BoostChargingAnim;
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
+	private AnimatedSprite2D SnowDiveAnim;
 	private bool canMove = true;
 	
 	private Timer DamageBoostTimer;
@@ -54,6 +61,7 @@ public partial class Snowball : CharacterBody2D
 	private Vector2 PreviousVelocity = Vector2.Zero;
 	
 	private bool isBoosting = false;
+	private bool hasDived = false;
 
 	private Vector2 originalScale; 
 	
@@ -69,6 +77,7 @@ public partial class Snowball : CharacterBody2D
 		BoostAnimLeft = GetNode<AnimatedSprite2D>("BoostAnimationLeft");
 		BoostAnimRight = GetNode<AnimatedSprite2D>("BoostAnimationRight");
 		BoostChargingAnim = GetNode<AnimatedSprite2D>("BoostChargingAnim");
+		SnowDiveAnim = GetNode<AnimatedSprite2D>("SnowDiveAnim");
 		
 		JumpAnim = GetNode<AnimatedSprite2D>("JumpAnim");
 		JumpLandAnim = GetNode<AnimatedSprite2D>("JumpLandAnim");
@@ -76,12 +85,14 @@ public partial class Snowball : CharacterBody2D
 		
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
+		HidingTimer = GetNode<Timer>("HidingTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
+		HidingTimer.WaitTime = DarkenTime;
 		Checkpoint = Position;
 
 		//Groups are good thumbsup emoji
-		var powerups = GetParent().GetNode<Node>("Powerups");
+		var powerups = GetParent().GetNodeOrNull<Node>("Powerups");
 		if (powerups != null)
 		{
 			var allPowerups = GetTree().GetNodesInGroup("Powerups");
@@ -91,7 +102,7 @@ public partial class Snowball : CharacterBody2D
 				powerup.PowerupCollected += OnPowerup;
 			}
 		}
-		var mapObjects = GetParent().GetNode("MapObjects");
+		var mapObjects = GetParent().GetNodeOrNull("MapObjects");
 		if (mapObjects != null)
 		{
 			var puddles = GetTree().GetNodesInGroup("Puddles");
@@ -101,6 +112,8 @@ public partial class Snowball : CharacterBody2D
 				puddle.PuddleEntered += OnIced;
 			}
 		}
+		Snowbank = GetNodeOrNull<Snowbank>("Snowbank");
+
 		
 		DamageBoostTimer = GetNode<Timer>("DamageBoostTimer");
 		BlinkTimer = GetNode<Timer>("BlinkTimer");
@@ -113,7 +126,8 @@ public partial class Snowball : CharacterBody2D
 		WasOnFloor = IsOnFloor();
 
 		velocity = Velocity;
-		
+
+		HandleSnowbank();
 
 		// Add the gravity.
 		ApplyGravity((float)delta);
@@ -299,7 +313,8 @@ public partial class Snowball : CharacterBody2D
 		}
 	}
 
-	bool HandleIceTile() {
+	bool HandleIceTile()
+	{
 	// Pressing "down" negates ice physics 
 		var retVal = false;
 		try {
@@ -322,26 +337,62 @@ public partial class Snowball : CharacterBody2D
 		return retVal;
 	}
 
+	void HandleSnowbank()
+	{
+		if (Snowbank != null)
+		{
+			if (Input.IsActionPressed("ui_down"))
+			{
+				var allAvalanches = GetTree().GetNodesInGroup("avalanches");
+				for (int i = 0; i < allAvalanches.Count; i++)
+				{
+					var avalanche = (Avalanche)allAvalanches[i];
+					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+				}
+				GetNode<Sprite2D>("Sprite2D").Visible = false;
+				canMove = false;
+				if (!hasDived) {
+					SnowDiveAnim.Visible = true;
+					SnowDiveAnim.Play("main");
+					hasDived = true;
+				}
+				EmitSignal(SignalName.DarkenScreen, true);
+				if (HidingTimer.IsStopped())
+					HidingTimer.Start();
+			}
+			else
+			{
+				var allAvalanches = GetTree().GetNodesInGroup("avalanches");
+				for (int i = 0; i < allAvalanches.Count; i++)
+				{
+					var avalanche = (Avalanche)allAvalanches[i];
+					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+				}
+				GetNode<Sprite2D>("Sprite2D").Visible = true;
+				canMove = true;
+				SnowDiveAnim.Visible = false;
+				hasDived = false;
+				EmitSignal(SignalName.DarkenScreen, false);
+				HidingTimer.Stop();
+			}
+		}
+	}
+
 	public void Damage(int damage)
 	{
-		if (!isDamaged)
+		if (!isDamaged && GetNode<Timer>("InvulnerabilityTimer").IsStopped() && DamageBoostTimer.IsStopped() && !CurrentIce)
 			{
 				isDamaged = true;
+				Power -= damage;
+				EmitSignal(SignalName.Powerup, -damage);
+				if (Power <= 0)
+					Death();
 				DamageBoostTimer.Start();
 				BlinkTimer.Start();
 			}
 		if (CurrentIce) {
 			CurrentIce = false;
 			OnIced(false);
-		} else 
-		{
-			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped())
-			{
-					Power -= damage;
-					EmitSignal(SignalName.Powerup, -damage);
-					if (Power <= 0)
-						Death();		
-			}
 		}
 	}
 
@@ -404,7 +455,17 @@ public partial class Snowball : CharacterBody2D
 	public void StartMovement()
 	{
 		 canMove = true;
-	}	
+	}
+
+	private void _on_hiding_timer_timeout()
+	{
+		EmitSignal(SignalName.DarkenScreen, false);
+		Snowbank = null;
+		Visible = true;
+		canMove = true;
+		Death();
+	}
+
 	/*It is probably best to handle logic for what happens with
 	steam and puddles and lava pit in this script (snowball.cs)*/
 	
@@ -429,4 +490,3 @@ public partial class Snowball : CharacterBody2D
 				}
 		}
 }
-

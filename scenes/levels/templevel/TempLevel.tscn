@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfrhscokjxy7t"]
+[gd_scene load_steps=22 format=3 uid="uid://dfrhscokjxy7t"]
 
 [ext_resource type="Script" path="res://scenes/levels/templevel/TempLevel.cs" id="1_4kpna"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="2_g608n"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="5_iw12g"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_ejhy1"]
 [ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_gh2tq"]
+[ext_resource type="PackedScene" uid="uid://b8e30v0tel02y" path="res://scenes/enemies/Avalanche.tscn" id="7_p5ule"]
 [ext_resource type="PackedScene" uid="uid://d37gf16f3078l" path="res://scenes/key/Key.tscn" id="7_quxfs"]
 [ext_resource type="PackedScene" uid="uid://djrawr3j1j264" path="res://scenes/crate/Crate.tscn" id="8_ms5ip"]
 [ext_resource type="PackedScene" uid="uid://d343cauapd6gf" path="res://scenes/button/Button.tscn" id="9_o18qb"]
@@ -88,6 +89,7 @@ texture_region_size = Vector2i(64, 64)
 7:1/0 = 0
 7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 7:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 7:1/0/physics_layer_1/angular_velocity = 0.0
 1:2/0 = 0
@@ -265,10 +267,10 @@ polygon = PackedVector2Array(0, 384, -968, 384, -968, 280, -432, 280, -392, 208,
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vxx7b")
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 196612, 196610, 0, 65540, 196610, 1, 4, 262146, 0, -65530, 196610, 1, -131066, 131074, 0)
+layer_0/tile_data = PackedInt32Array(327680, 458754, 3, 327681, 524290, 3, 327682, 65538, 3, 262146, 131074, 1, 262147, 524290, 3, 262148, 262146, 1, 327684, 327682, 3, 327685, 458754, 5, 327686, 524290, 5, 327687, 589826, 5, 327688, 655362, 5, 327683, 196610, 2, 196612, 196610, 0, 65540, 196610, 1, 4, 262146, 0, -65530, 196610, 1, -131066, 131074, 0, 196620, 458754, 3, 196621, 524290, 3, 196622, 524290, 3, 196623, 524290, 3, 196624, 524290, 3, 196625, 524290, 3, 196626, 589826, 3, 131084, 589826, 2, 262154, 458754, 1)
 
 [node name="Snowball" parent="." instance=ExtResource("3_fgw1v")]
-position = Vector2(285, 210)
+position = Vector2(529, 266)
 floor_snap_length = 3.0
 metadata/_edit_group_ = true
 
@@ -276,7 +278,7 @@ metadata/_edit_group_ = true
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(285, 210)
+position = Vector2(529, 266)
 process_callback = 0
 limit_bottom = 550
 position_smoothing_enabled = true
@@ -307,6 +309,12 @@ offset_bottom = 0.16
 grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Avalanche" parent="." instance=ExtResource("7_p5ule")]
+position = Vector2(1085, 190)
+
+[node name="Endpoint" type="Node2D" parent="Avalanche"]
+position = Vector2(-315, -2)
 
 [node name="BouncePad" parent="." instance=ExtResource("7_gh2tq")]
 position = Vector2(197, 223)
@@ -374,7 +382,3 @@ position = Vector2(-624, 128)
 [node name="Line2D" type="Line2D" parent="TempLines"]
 
 [node name="Line2D2" type="Line2D" parent="TempLines"]
-
-[connection signal="Bounce" from="BouncePad" to="Snowball" method="_on_bounce_pad_bounce"]
-[connection signal="Bounce" from="BouncePad2" to="Snowball" method="_on_bounce_pad_bounce"]
-[connection signal="Bounce" from="BouncePad3" to="Snowball" method="_on_bounce_pad_bounce"]

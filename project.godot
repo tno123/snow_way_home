@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Snow Way Home"
 
+[editor]
+
+movie_writer/movie_file="E:/Godot_projs/godot_movs/swh.avi"
+
 [input]
 
 boost={

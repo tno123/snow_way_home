@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scenes/levels/level2/StartIceDestroy.cs" id="9_otg0r"]
 [ext_resource type="Script" path="res://scenes/levels/level2/StartSlowGravity.cs" id="9_vci2x"]
 [ext_resource type="Shader" uid="uid://cfxf5sla6qv7s" path="res://scenes/levels/level2/Fogtest.tres" id="10_7ewqi"]
-[ext_resource type="PackedScene" uid="uid://cv4vgn6yeth54" path="res://scenes/puddle/Puddle.tscn" id="13_06y8t"]
+[ext_resource type="PackedScene" uid="uid://jgcldob3f86l" path="res://scenes/puddle/Puddle.tscn" id="13_06y8t"]
 [ext_resource type="PackedScene" uid="uid://bqpqdmxhpgxl5" path="res://scenes/enemies/Squirrel.tscn" id="14_i8dcy"]
 [ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="15_7i35h"]
 [ext_resource type="PackedScene" uid="uid://byrwr0ao16lvb" path="res://scenes/levels/level2/EndTransition.tscn" id="16_w4qy7"]

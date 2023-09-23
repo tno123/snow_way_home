@@ -536,8 +536,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4pqet")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"main",
 "speed": 20.0
 }]
@@ -629,8 +632,8 @@ autoplay = "default"
 visible = false
 sprite_frames = SubResource("SpriteFrames_0fsnf")
 animation = &"main"
-frame = 3
-frame_progress = 0.642418
+frame = 8
+frame_progress = 0.841631
 
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

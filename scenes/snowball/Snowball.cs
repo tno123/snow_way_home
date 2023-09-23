@@ -61,6 +61,7 @@ public partial class Snowball : CharacterBody2D
 	private Vector2 PreviousVelocity = Vector2.Zero;
 	
 	private bool isBoosting = false;
+	private bool hasDived = false;
 	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -345,10 +346,13 @@ public partial class Snowball : CharacterBody2D
 					var avalanche = (Avalanche)allAvalanches[i];
 					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
 				}
-				Visible = false;
+				GetNode<Sprite2D>("Sprite2D").Visible = false;
 				canMove = false;
-				SnowDiveAnim.Visible = true;
-				SnowDiveAnim.Play("main");
+				if (!hasDived) {
+					SnowDiveAnim.Visible = true;
+					SnowDiveAnim.Play("main");
+					hasDived = true;
+				}
 				EmitSignal(SignalName.DarkenScreen, true);
 				if (HidingTimer.IsStopped())
 					HidingTimer.Start();
@@ -361,9 +365,10 @@ public partial class Snowball : CharacterBody2D
 					var avalanche = (Avalanche)allAvalanches[i];
 					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 				}
-				Visible = true;
+				GetNode<Sprite2D>("Sprite2D").Visible = true;
 				canMove = true;
 				SnowDiveAnim.Visible = false;
+				hasDived = false;
 				EmitSignal(SignalName.DarkenScreen, false);
 				HidingTimer.Stop();
 			}

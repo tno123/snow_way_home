@@ -377,27 +377,19 @@ public partial class Snowball : CharacterBody2D
 
 	public void Damage(int damage)
 	{
-		if (!isDamaged)
+		if (!isDamaged && GetNode<Timer>("InvulnerabilityTimer").IsStopped() && DamageBoostTimer.IsStopped() && !CurrentIce)
 			{
 				isDamaged = true;
+				Power -= damage;
+				EmitSignal(SignalName.Powerup, -damage);
+				if (Power <= 0)
+					Death();
 				DamageBoostTimer.Start();
 				BlinkTimer.Start();
 			}
 		if (CurrentIce) {
 			CurrentIce = false;
 			OnIced(false);
-		} else 
-		{
-			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped())
-			{
-				if (DamageBoostTimer.IsStopped())
-				{
-					Power -= damage;
-					EmitSignal(SignalName.Powerup, -damage);
-					if (Power <= 0)
-						Death();
-				}	
-			}
 		}
 	}
 

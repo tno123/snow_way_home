@@ -390,10 +390,13 @@ public partial class Snowball : CharacterBody2D
 		{
 			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped())
 			{
-				Power -= damage;
-				EmitSignal(SignalName.Powerup, -damage);
-				if (Power <= 0)
-					Death();	
+				if (DamageBoostTimer.IsStopped())
+				{
+					Power -= damage;
+					EmitSignal(SignalName.Powerup, -damage);
+					if (Power <= 0)
+						Death();
+				}	
 			}
 		}
 	}
@@ -491,4 +494,3 @@ public partial class Snowball : CharacterBody2D
 				}
 		}
 }
-

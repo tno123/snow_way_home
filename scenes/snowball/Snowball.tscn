@@ -575,6 +575,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="DamageBoostTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="BlinkTimer" type="Timer" parent="."]
 wait_time = 0.08
@@ -634,4 +635,6 @@ sprite_frames = SubResource("SpriteFrames_0fsnf")
 animation = &"main"
 
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
+[connection signal="timeout" from="DamageBoostTimer" to="." method="_on_damage_boost_timer_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

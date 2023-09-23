@@ -51,6 +51,7 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D BoostChargingAnim;
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
+	private AnimatedSprite2D SnowDiveAnim;
 	private bool canMove = true;
 	
 	private Timer DamageBoostTimer;
@@ -72,6 +73,7 @@ public partial class Snowball : CharacterBody2D
 		BoostAnimLeft = GetNode<AnimatedSprite2D>("BoostAnimationLeft");
 		BoostAnimRight = GetNode<AnimatedSprite2D>("BoostAnimationRight");
 		BoostChargingAnim = GetNode<AnimatedSprite2D>("BoostChargingAnim");
+		SnowDiveAnim = GetNode<AnimatedSprite2D>("SnowDiveAnim");
 		
 		JumpAnim = GetNode<AnimatedSprite2D>("JumpAnim");
 		JumpLandAnim = GetNode<AnimatedSprite2D>("JumpLandAnim");
@@ -345,6 +347,8 @@ public partial class Snowball : CharacterBody2D
 				}
 				Visible = false;
 				canMove = false;
+				SnowDiveAnim.Visible = true;
+				SnowDiveAnim.Play("main");
 				EmitSignal(SignalName.DarkenScreen, true);
 				if (HidingTimer.IsStopped())
 					HidingTimer.Start();
@@ -359,6 +363,7 @@ public partial class Snowball : CharacterBody2D
 				}
 				Visible = true;
 				canMove = true;
+				SnowDiveAnim.Visible = false;
 				EmitSignal(SignalName.DarkenScreen, false);
 				HidingTimer.Stop();
 			}

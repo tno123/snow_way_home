@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://qhu4pswy7baj"]
+[gd_scene load_steps=78 format=3 uid="uid://qhu4pswy7baj"]
 
 [ext_resource type="Script" path="res://scenes/snowball/Snowball.cs" id="1_6j51x"]
 [ext_resource type="Texture2D" uid="uid://bsu2xcd1s2ixt" path="res://art/character/snowball_64x64.png" id="1_h1lvw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cj6g0mvp183j5" path="res://assets/Rocky Roads/FX/splash.png" id="6_cwfuq"]
 [ext_resource type="Texture2D" uid="uid://ccodblmhppaug" path="res://art/character/icesprite.png" id="7_442re"]
 [ext_resource type="Texture2D" uid="uid://d0fjdyjes4e2h" path="res://art/character/brokenicesprite.png" id="8_ffdj1"]
+[ext_resource type="Texture2D" uid="uid://crb4rhmidaknn" path="res://art/character/snowdive-Sheet.png" id="9_jwuhc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
 radius = 32.0156
@@ -463,6 +464,84 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7te4w"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo7w7"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mdpv"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0raij"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkslm"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5qte"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6tyc"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83mbi"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5qnq"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pqet"]
+atlas = ExtResource("9_jwuhc")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0fsnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7te4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo7w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mdpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0raij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkslm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5qte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6tyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83mbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5qnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pqet")
+}],
+"loop": true,
+"name": &"main",
+"speed": 20.0
+}]
+
 [node name="Snowball" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_6j51x")
@@ -540,13 +619,13 @@ frame_progress = 1.0
 [node name="IceSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xp2j4")
 autoplay = "default"
-[connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
-[node name="DamageBoostTimer" type="Timer" parent="."]
 
-[node name="BlinkTimer" type="Timer" parent="."]
-wait_time = 0.08
+[node name="SnowDiveAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_0fsnf")
+animation = &"main"
+frame = 3
+frame_progress = 0.642418
 
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="timeout" from="DamageBoostTimer" to="." method="_on_damage_boost_timer_timeout"]
-[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

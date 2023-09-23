@@ -509,11 +509,11 @@ position = Vector2(2005, 469)
 position = Vector2(1319, 492)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-2673, 132)
+position = Vector2(1181, 1139)
 zoom = Vector2(0.8, 0.8)
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(-2673, 132)
+position = Vector2(1181, 1139)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -556,6 +556,7 @@ position = Vector2(550, 1500)
 
 [node name="Cutscene" parent="." instance=ExtResource("22_utifi")]
 position = Vector2(2646, 518)
+offset = Vector2(250, 500)
 
 [node name="EndTransition" parent="." instance=ExtResource("23_087am")]
 position = Vector2(3447, 1799)
@@ -563,7 +564,7 @@ position = Vector2(3447, 1799)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="VillagerMob" parent="Enemies" instance=ExtResource("19_60wko")]
-position = Vector2(-260, 190)
+position = Vector2(1894, 1582)
 
 [node name="BaseVillager" parent="." instance=ExtResource("19_u5syu")]
 position = Vector2(-2099, 507)

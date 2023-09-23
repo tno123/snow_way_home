@@ -665,8 +665,8 @@ hframes = 6
 frame = 2
 
 [node name="Villager53" type="Sprite2D" parent="."]
-position = Vector2(-57, -72)
-scale = Vector2(2.77225, 2.77225)
+position = Vector2(-52.7225, -72.0739)
+scale = Vector2(2.98612, 2.7691)
 texture = ExtResource("2_eqi2q")
 hframes = 6
 frame = 2
@@ -813,8 +813,6 @@ scale = Vector2(2.19042, 2.19042)
 texture = ExtResource("4_jor0t")
 hframes = 6
 frame = 3
-
-[node name="Node" type="Node" parent="."]
 
 [node name="Villager4" type="Sprite2D" parent="."]
 

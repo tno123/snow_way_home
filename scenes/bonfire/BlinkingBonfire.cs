@@ -4,6 +4,7 @@ using System;
 public partial class BlinkingBonfire : Bonfire
 {
 	private Timer blinkTimer;
+	private CollisionShape2D collision;
 	
 	[Export] 
 	bool VisibleStart;
@@ -13,9 +14,10 @@ public partial class BlinkingBonfire : Bonfire
 		
 		base._Ready(); // This will call the _Ready() from the parent class Bonfire
 		Visible = VisibleStart;
-
 		blinkTimer = GetNode<Timer>("BlinkTimer");
 	 	blinkTimer.Start();
+		
+		collision = GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,8 +31,12 @@ public partial class BlinkingBonfire : Bonfire
 	{
 		if (Visible == true){
 			Visible = false;
+			collision.Disabled = true;
 		}
-		else{Visible = true; }
+		else{
+			Visible = true;
+			collision.Disabled = false; 
+			}
 		
 	}
 	
@@ -40,6 +46,7 @@ public partial class BlinkingBonfire : Bonfire
 		{
 			base._on_area_2d_body_entered(body);
 		}
+
 	}
 }
 

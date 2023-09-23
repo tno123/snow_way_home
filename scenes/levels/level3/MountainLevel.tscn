@@ -192,6 +192,9 @@ rotation = -0.767945
 position = Vector2(896, 168)
 rotation = -0.619592
 
+[node name="Snowbank10" parent="MapObjects" instance=ExtResource("9_r03cb")]
+position = Vector2(496, 344)
+
 [node name="BossTransition" parent="MapObjects" instance=ExtResource("11_mmxsw")]
 position = Vector2(7120, -3000)
 

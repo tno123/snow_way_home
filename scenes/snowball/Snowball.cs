@@ -17,11 +17,13 @@ public partial class Snowball : CharacterBody2D
 
 	[Export]
 	public const float JumpVelocity = -350.0f;
+
 	[Export]
 	public float DarkenTime = 5.0f;
 
 	[Signal]
 	public delegate void PowerupEventHandler(int value);
+
 	[Signal]
 	public delegate void DarkenScreenEventHandler(bool value);
 
@@ -45,7 +47,7 @@ public partial class Snowball : CharacterBody2D
 	private float lastVelocityX = 0;
 	private AnimatedSprite2D animation;
 	private Sprite2D sprite;
-	
+
 	private AnimatedSprite2D BoostAnimLeft;
 	private AnimatedSprite2D BoostAnimRight;
 	private AnimatedSprite2D BoostChargingAnim;
@@ -53,36 +55,35 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D JumpAnim;
 	private AnimatedSprite2D SnowDiveAnim;
 	private bool canMove = true;
-	
+
 	private Timer DamageBoostTimer;
 	private Timer BlinkTimer;
 	private bool isDamaged = false;
-	
+
 	private Vector2 PreviousVelocity = Vector2.Zero;
-	
+
 	private bool isBoosting = false;
 	private bool hasDived = false;
 
-	private Vector2 originalScale; 
-	
+	private Vector2 originalScale;
+
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
-		originalScale = Scale;
 		sprite = GetNode<Sprite2D>("Sprite2D");
+		originalScale = Scale;
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		
+
 		BoostAnimLeft = GetNode<AnimatedSprite2D>("BoostAnimationLeft");
 		BoostAnimRight = GetNode<AnimatedSprite2D>("BoostAnimationRight");
 		BoostChargingAnim = GetNode<AnimatedSprite2D>("BoostChargingAnim");
 		SnowDiveAnim = GetNode<AnimatedSprite2D>("SnowDiveAnim");
-		
+
 		JumpAnim = GetNode<AnimatedSprite2D>("JumpAnim");
 		JumpLandAnim = GetNode<AnimatedSprite2D>("JumpLandAnim");
-		
-		
+
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
 		HidingTimer = GetNode<Timer>("HidingTimer");
@@ -114,7 +115,6 @@ public partial class Snowball : CharacterBody2D
 		}
 		Snowbank = GetNodeOrNull<Snowbank>("Snowbank");
 
-		
 		DamageBoostTimer = GetNode<Timer>("DamageBoostTimer");
 		BlinkTimer = GetNode<Timer>("BlinkTimer");
 	}
@@ -133,18 +133,21 @@ public partial class Snowball : CharacterBody2D
 		ApplyGravity((float)delta);
 
 		// Handle Jump, Coyote Jump, and Next Jump
-		
+
 		//test test test
-		
-		if (canMove){
-			
+
+		if (canMove)
+		{
 			HandleJump();
 			HandleBoost();
 			if (IsOnFloor() && PreviousVelocity.Y > 800)
 			{
 				Damage(1);
 			}
-			if (GetNode<Timer>("InvulnerabilityTimer").IsStopped() && GetNode<AnimatedSprite2D>("IceSprite").Animation == "breaking")
+			if (
+				GetNode<Timer>("InvulnerabilityTimer").IsStopped()
+				&& GetNode<AnimatedSprite2D>("IceSprite").Animation == "breaking"
+			)
 			{
 				GetNode<AnimatedSprite2D>("IceSprite").Visible = false;
 			}
@@ -154,27 +157,31 @@ public partial class Snowball : CharacterBody2D
 			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 			if (direction.X != 0)
 			{
-				//if (!HandleIceTile())	
-					velocity.X = direction.X * Speed;
+				//if (!HandleIceTile())
+				velocity.X = direction.X * Speed;
 				//else
 				//	velocity.X = direction.X * PreviousVelocity.X / IceSpeed;
 
-				if (IsOnFloor()){animation.Play("move");}
+				if (IsOnFloor())
+				{
+					animation.Play("move");
+				}
 				//else{animation.Stop();}
-				
-				if (direction.X < 0){
+
+				if (direction.X < 0)
+				{
 					Vector2 newOffset = animation.Offset;
 					newOffset.X = 0;
-					animation.Offset = newOffset;				
+					animation.Offset = newOffset;
 					sprite.FlipH = animation.FlipH = false;
 				}
-				if (direction.X > 0){
+				if (direction.X > 0)
+				{
 					Vector2 newOffset = animation.Offset;
 					newOffset.X = -15;
 					animation.Offset = newOffset;
 					sprite.FlipH = animation.FlipH = true;
 				}
-				
 			}
 			else
 			{
@@ -184,15 +191,15 @@ public partial class Snowball : CharacterBody2D
 				//IsOnIce=false;
 				//Friction
 				if (IsOnIce)
-					velocity.X = Mathf.Lerp(Velocity.X, 0,0.01f);
+					velocity.X = Mathf.Lerp(Velocity.X, 0, 0.01f);
 				else
 					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				//lastVelocityX = velocity.X;
 			}
 
 			Velocity = velocity;
-			PreviousVelocity=velocity;
-			
+			PreviousVelocity = velocity;
+
 			MoveAndSlide();
 
 			// Handle coyote jump timer.
@@ -210,21 +217,29 @@ public partial class Snowball : CharacterBody2D
 		}
 	}
 
-	void HandleJump() {
+	void HandleJump()
+	{
 		bool jumped = false;
 		// Handle Jump, Coyote Jump, and Next Jump
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor() ||
-			!IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0)
+		if (
+			Input.IsActionJustPressed("ui_accept") && IsOnFloor()
+			|| !IsOnFloor() && Input.IsActionPressed("ui_accept") && CoyoteJumpTimer.TimeLeft > 0
+		)
 		{
 			//NextJumpTimer.Start();
-			
+
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Start();
 			jumped = true;
 		}
-		
-		if (Input.IsActionJustPressed("ui_accept") && !IsOnFloor() && NextJumpTimer.IsStopped() && Power > 0)
+
+		if (
+			Input.IsActionJustPressed("ui_accept")
+			&& !IsOnFloor()
+			&& NextJumpTimer.IsStopped()
+			&& Power > 0
+		)
 		{
 			JumpAnim.Play("main");
 			NextJumpTimer.Start();
@@ -233,12 +248,12 @@ public partial class Snowball : CharacterBody2D
 			EmitSignal(SignalName.Powerup, -1);
 			Power--;
 		}
-		if (PreviousVelocity.Y > 400 && IsOnFloor()){
+		if (PreviousVelocity.Y > 400 && IsOnFloor())
+		{
 			JumpLandAnim.Play("main");
 		}
-		
 	}
-	
+
 	private void HandleBoost()
 	{
 		// Check if the X button is just pressed
@@ -246,7 +261,7 @@ public partial class Snowball : CharacterBody2D
 		{
 			StartBoost();
 		}
-		 // Check if the X button (or your defined action) is being held down
+		// Check if the X button (or your defined action) is being held down
 		if (Input.IsActionPressed("boost") && isBoosting)
 		{
 			BoostChargingAnim.Play("boost_charging");
@@ -258,11 +273,12 @@ public partial class Snowball : CharacterBody2D
 			EndBoost();
 		}
 	}
+
 	public bool IsBoosting
 	{
 		get { return isBoosting; }
 	}
-	
+
 	private void StartBoost()
 	{
 		isBoosting = true;
@@ -273,7 +289,7 @@ public partial class Snowball : CharacterBody2D
 		BoostAnimLeft.Play("left_boost");
 		BoostAnimRight.Play("right_boost");
 	}
-	
+
 	private void EndBoost()
 	{
 		isBoosting = false;
@@ -286,7 +302,6 @@ public partial class Snowball : CharacterBody2D
 		BoostAnimLeft.Stop();
 		BoostAnimRight.Stop();
 
-
 		// Increase velocity in the X direction that snowball is facing
 		if (sprite.FlipH) // Facing right
 		{
@@ -296,44 +311,49 @@ public partial class Snowball : CharacterBody2D
 		}
 		else // Facing left
 		{
-			velocity.X -= BoostVelocity;;
+			velocity.X -= BoostVelocity;
+			;
 			Velocity = velocity;
 			MoveAndSlide();
+		}
+
+		// If you want this boost to be a one-time burst, you can reset the velocity back after some time or distance. Consider using a Timer for that.
 	}
 
-	// If you want this boost to be a one-time burst, you can reset the velocity back after some time or distance. Consider using a Timer for that.
-	}
-
-	void ApplyGravity(float delta) {
+	void ApplyGravity(float delta)
+	{
 		// Add the gravity.
-		if (!IsOnFloor()) 
+		if (!IsOnFloor())
 		{
 			velocity.Y += gravity * delta * FallSpeed;
-			
 		}
 	}
 
 	bool HandleIceTile()
 	{
-	// Pressing "down" negates ice physics 
+		// Pressing "down" negates ice physics
 		var retVal = false;
-		try {
-				var collider = GetLastSlideCollision().GetCollider();
-				var colliderRid = GetLastSlideCollision().GetColliderRid();
-				if (colliderRid != null) //Todo: Check if this is the correct way to check for null
-				{
-					//check if standing on staticbody
-					if (collider.GetClass() == "StaticBody2D")
-						return false;
+		try
+		{
+			var collider = GetLastSlideCollision().GetCollider();
+			var colliderRid = GetLastSlideCollision().GetColliderRid();
+			if (colliderRid != null) //Todo: Check if this is the correct way to check for null
+			{
+				//check if standing on staticbody
+				if (collider.GetClass() == "StaticBody2D")
+					return false;
 
-					var tileData = tileMap.GetCellTileData(0,tileMap.GetCoordsForBodyRid(colliderRid));
-					if ((bool)tileData.GetCustomData("Ice") == true && IsOnFloor()) {
-						retVal = true;
-					}
+				var tileData = tileMap.GetCellTileData(0, tileMap.GetCoordsForBodyRid(colliderRid));
+				if ((bool)tileData.GetCustomData("Ice") == true && IsOnFloor())
+				{
+					retVal = true;
 				}
-			} catch (NullReferenceException) {
-				// Do nothing
 			}
+		}
+		catch (NullReferenceException)
+		{
+			// Do nothing
+		}
 		return retVal;
 	}
 
@@ -347,11 +367,15 @@ public partial class Snowball : CharacterBody2D
 				for (int i = 0; i < allAvalanches.Count; i++)
 				{
 					var avalanche = (Avalanche)allAvalanches[i];
-					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+					avalanche
+						.GetNode<Area2D>("Area2D")
+						.GetNode<CollisionShape2D>("CollisionShape2D")
+						.Disabled = true;
 				}
 				GetNode<Sprite2D>("Sprite2D").Visible = false;
 				canMove = false;
-				if (!hasDived) {
+				if (!hasDived)
+				{
 					SnowDiveAnim.Visible = true;
 					SnowDiveAnim.Play("main");
 					hasDived = true;
@@ -366,7 +390,10 @@ public partial class Snowball : CharacterBody2D
 				for (int i = 0; i < allAvalanches.Count; i++)
 				{
 					var avalanche = (Avalanche)allAvalanches[i];
-					avalanche.GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+					avalanche
+						.GetNode<Area2D>("Area2D")
+						.GetNode<CollisionShape2D>("CollisionShape2D")
+						.Disabled = false;
 				}
 				GetNode<Sprite2D>("Sprite2D").Visible = true;
 				canMove = true;
@@ -380,17 +407,23 @@ public partial class Snowball : CharacterBody2D
 
 	public void Damage(int damage)
 	{
-		if (!isDamaged && GetNode<Timer>("InvulnerabilityTimer").IsStopped() && DamageBoostTimer.IsStopped() && !CurrentIce)
-			{
-				isDamaged = true;
-				Power -= damage;
-				EmitSignal(SignalName.Powerup, -damage);
-				if (Power <= 0)
-					Death();
-				DamageBoostTimer.Start();
-				BlinkTimer.Start();
-			}
-		if (CurrentIce) {
+		if (
+			!isDamaged
+			&& GetNode<Timer>("InvulnerabilityTimer").IsStopped()
+			&& DamageBoostTimer.IsStopped()
+			&& !CurrentIce
+		)
+		{
+			isDamaged = true;
+			Power -= damage;
+			EmitSignal(SignalName.Powerup, -damage);
+			if (Power <= 0)
+				Death();
+			DamageBoostTimer.Start();
+			BlinkTimer.Start();
+		}
+		if (CurrentIce)
+		{
 			CurrentIce = false;
 			OnIced(false);
 		}
@@ -398,14 +431,17 @@ public partial class Snowball : CharacterBody2D
 
 	public void Death()
 	{
-		if (!BlinkTimer.IsStopped()) BlinkTimer.Stop();
+		GD.Print(originalScale); // Print the original scale for debugging
+		Scale = originalScale;
+		if (!BlinkTimer.IsStopped())
+			BlinkTimer.Stop();
 		Position = Checkpoint;
 		Power = MaxPower;
 		EmitSignal(SignalName.Powerup, MaxPower);
-		Scale = originalScale;
 	}
 
-	public void SetIce(bool ice) {
+	public void SetIce(bool ice)
+	{
 		CurrentIce = ice;
 		OnIced(ice);
 	}
@@ -414,10 +450,11 @@ public partial class Snowball : CharacterBody2D
 	{
 		if (Power < MaxPower)
 		{
-			EmitSignal(SignalName.Powerup,1);
+			EmitSignal(SignalName.Powerup, 1);
 			Power++;
 		}
 	}
+
 	private void OnIced(bool ice)
 	{
 		CurrentIce = ice;
@@ -426,7 +463,7 @@ public partial class Snowball : CharacterBody2D
 
 		if (ice)
 			sprite.Play("iced");
-		else 
+		else
 		{
 			sprite.Play("breaking");
 			GetNode<Timer>("InvulnerabilityTimer").Start();
@@ -438,23 +475,26 @@ public partial class Snowball : CharacterBody2D
 		velocity.Y = BounceVelocity;
 		Velocity = velocity;
 		MoveAndSlide();
-		
 	}
+
 	private void _on_animated_sprite_2d_animation_finished()
 	{
 		/* let the animation play out after a jump
 		but stop playing when in air */
-		if (!IsOnFloor()){animation.Stop();}
-		
-
+		if (!IsOnFloor())
+		{
+			animation.Stop();
+		}
 	}
+
 	public void StopMovement()
 	{
 		canMove = false;
 	}
+
 	public void StartMovement()
 	{
-		 canMove = true;
+		canMove = true;
 	}
 
 	private void _on_hiding_timer_timeout()
@@ -468,25 +508,25 @@ public partial class Snowball : CharacterBody2D
 
 	/*It is probably best to handle logic for what happens with
 	steam and puddles and lava pit in this script (snowball.cs)*/
-	
+
 	/*Steam*/
-	
+
 	/*Puddle*/
-	
+
 	/*Lava pit*/
 	private void _on_damage_boost_timer_timeout()
-		{
-			isDamaged = false;
-			BlinkTimer.Stop();
-			Visible = true; // Ensure player is visible at the end of damage boost
-		}
-		
+	{
+		isDamaged = false;
+		BlinkTimer.Stop();
+		Visible = true; // Ensure player is visible at the end of damage boost
+	}
+
 	private void _on_blink_timer_timeout()
+	{
+		Visible = !Visible; // Toggle visibility
+		if (!DamageBoostTimer.IsStopped())
 		{
-			Visible = !Visible; // Toggle visibility
-			if (!DamageBoostTimer.IsStopped())
-				{
-					BlinkTimer.Start();
-				}
+			BlinkTimer.Start();
 		}
+	}
 }

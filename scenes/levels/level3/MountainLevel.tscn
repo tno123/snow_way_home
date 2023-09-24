@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=22 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_dh0fn"]
 [ext_resource type="PackedScene" uid="uid://b8e30v0tel02y" path="res://scenes/enemies/Avalanche.tscn" id="8_70glp"]
 [ext_resource type="PackedScene" uid="uid://b2elgt5fb07il" path="res://scenes/UI_scenes/DarkenScreen.tscn" id="8_m5ybj"]
+[ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="9_341xx"]
 [ext_resource type="PackedScene" uid="uid://bv24ynbtof7em" path="res://scenes/snowbank/Snowbank.tscn" id="9_r03cb"]
 [ext_resource type="PackedScene" uid="uid://dhloll65wgpxm" path="res://scenes/levels/level3/BossTransition.tscn" id="11_mmxsw"]
 [ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="11_wl22c"]
@@ -619,6 +620,15 @@ metadata/_edit_use_anchors_ = true
 [node name="DarkenScreen" parent="CanvasLayer" instance=ExtResource("8_m5ybj")]
 
 [node name="Powerups" type="Node" parent="."]
+
+[node name="Powerup" parent="Powerups" instance=ExtResource("9_341xx")]
+position = Vector2(680, -88)
+
+[node name="Powerup2" parent="Powerups" instance=ExtResource("9_341xx")]
+position = Vector2(1160, -216)
+
+[node name="Powerup3" parent="Powerups" instance=ExtResource("9_341xx")]
+position = Vector2(4000, -1320)
 
 [node name="MapObjects" type="Node" parent="."]
 

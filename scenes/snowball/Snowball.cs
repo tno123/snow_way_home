@@ -129,10 +129,6 @@ public partial class Snowball : CharacterBody2D
 		// Add the gravity.
 		ApplyGravity((float)delta);
 
-		// Handle Jump, Coyote Jump, and Next Jump
-
-		//test test test
-
 		if (canMove)
 		{
 			HandleJump();
@@ -373,6 +369,7 @@ public partial class Snowball : CharacterBody2D
 				canMove = false;
 				if (!hasDived)
 				{
+					SnowDiveAnim.Rotation = Snowbank.Rotation;
 					SnowDiveAnim.Visible = true;
 					SnowDiveAnim.Play("main");
 					hasDived = true;

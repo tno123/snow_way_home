@@ -627,6 +627,9 @@ position = Vector2(680, -88)
 [node name="Powerup2" parent="Powerups" instance=ExtResource("9_341xx")]
 position = Vector2(1160, -216)
 
+[node name="Powerup4" parent="Powerups" instance=ExtResource("9_341xx")]
+position = Vector2(2496, -1000)
+
 [node name="Powerup3" parent="Powerups" instance=ExtResource("9_341xx")]
 position = Vector2(4000, -1320)
 
@@ -708,7 +711,7 @@ position = Vector2(7120, -3000)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6prki")
 format = 2
-layer_0/tile_data = PackedInt32Array(13, 458753, 5, 14, 655361, 5, -65525, 655361, 5, -65526, 589825, 5, -65527, 458753, 5, -131059, 458753, 5, -131058, 524289, 5, -131057, 655361, 5, -196591, 458753, 5, -196590, 655361, 5)
+layer_0/tile_data = PackedInt32Array(13, 458753, 5, 14, 655361, 5, -65525, 655361, 5, -65526, 589825, 5, -65527, 458753, 5, -131059, 458753, 5, -131058, 524289, 5, -131057, 655361, 5, -196591, 458753, 5, -196590, 655361, 5, -983002, 458753, 5, -983001, 655361, 5)
 
 [node name="Enemies" type="Node" parent="."]
 

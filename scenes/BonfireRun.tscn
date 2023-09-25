@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgfk6vconqc0c"]
+
+[ext_resource type="Script" path="res://scenes/BonfireRun.cs" id="1_4hu7n"]
+[ext_resource type="PackedScene" uid="uid://b18of0v7rtdqu" path="res://scenes/bonfire/PermanentBonfire.tscn" id="2_mdn3b"]
+
+[node name="BonfireRun" type="Node2D"]
+position = Vector2(-176, 178)
+script = ExtResource("1_4hu7n")
+gapWidth = 2
+flip = true
+
+[node name="Bonfire" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(217, -145)
+
+[node name="Bonfire2" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(305, -145)
+
+[node name="Bonfire3" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(381, -145)
+
+[node name="Bonfire4" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(470, -145)
+
+[node name="Bonfire5" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(546, -145)
+
+[node name="Bonfire6" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(629, -145)
+
+[node name="Bonfire7" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(708, -145)
+
+[node name="Bonfire8" parent="." instance=ExtResource("2_mdn3b")]
+position = Vector2(789, -145)
+
+[node name="GapTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="GapTimer" to="." method="_on_gap_timer_timeout"]

@@ -388,25 +388,25 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g38rg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_evsmf"]
 atlas = ExtResource("4_n40du")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lye4e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdfil"]
 atlas = ExtResource("4_n40du")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3hnbx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvmej"]
 atlas = ExtResource("4_n40du")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vinbi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuhsh"]
 atlas = ExtResource("4_n40du")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oafpd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lt4m"]
 atlas = ExtResource("4_n40du")
-region = Rect2(64, 0, 16, 16)
+region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f2ofb"]
 animations = [{
@@ -415,19 +415,19 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g38rg")
+"texture": SubResource("AtlasTexture_evsmf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lye4e")
+"texture": SubResource("AtlasTexture_xdfil")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3hnbx")
+"texture": SubResource("AtlasTexture_hvmej")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vinbi")
+"texture": SubResource("AtlasTexture_kuhsh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oafpd")
+"texture": SubResource("AtlasTexture_8lt4m")
 }, {
 "duration": 1.0,
 "texture": null
@@ -617,13 +617,11 @@ sprite_frames = SubResource("SpriteFrames_itjid")
 animation = &"main"
 
 [node name="JumpAnim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, 73)
+position = Vector2(-4.26326e-14, 56)
 rotation = -1.5708
-scale = Vector2(5, 5)
+scale = Vector2(0.849593, 1.01498)
 sprite_frames = SubResource("SpriteFrames_f2ofb")
 animation = &"main"
-frame = 6
-frame_progress = 1.0
 
 [node name="IceSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xp2j4")

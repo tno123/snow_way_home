@@ -1,3 +1,51 @@
-[gd_scene format=3 uid="uid://cbrjivs3fuxlf"]
+[gd_scene load_steps=5 format=3 uid="uid://cbrjivs3fuxlf"]
+
+[ext_resource type="Script" path="res://scenes/levels/level4/BossLevel.cs" id="1_yccq0"]
+[ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="2_lflwj"]
+[ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="3_s1lwj"]
+[ext_resource type="PackedScene" uid="uid://b2elgt5fb07il" path="res://scenes/UI_scenes/DarkenScreen.tscn" id="4_bj62c"]
 
 [node name="BossLevel" type="Node"]
+script = ExtResource("1_yccq0")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+
+[node name="Mountain" type="Polygon2D" parent="Background"]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(0, -168, -120, -80, -152, 32, -176, 128, -304, 240, 304, 240, 184, 112, 160, -32, 72, -128)
+
+[node name="Cave" type="Polygon2D" parent="Background"]
+color = Color(0.109804, 0.211765, 0.270588, 1)
+polygon = PackedVector2Array(-224, 40, -232, -80, -152, -152, 40, -176, 216, -112, 264, -8, 256, 40)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+z_index = 1
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Ground"]
+position = Vector2(8, 48)
+polygon = PackedVector2Array(-232, -16, 245, -16, 252, 24, -242, 24)
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground/CollisionShape2D"]
+color = Color(0, 0.811765, 0.819608, 1)
+
+[node name="Snowball" parent="." instance=ExtResource("2_lflwj")]
+position = Vector2(-24, 8)
+scale = Vector2(0.5, 0.5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-24, 8)
+scale = Vector2(0.5, 0.5)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SnowPower" parent="UI" instance=ExtResource("3_s1lwj")]
+
+[node name="DarkenScreen" parent="UI" instance=ExtResource("4_bj62c")]

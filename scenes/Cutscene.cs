@@ -2,39 +2,38 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-
 public partial class Cutscene : Node2D
 {
-	
 	public Camera2D camera;
-	public Vector2 previousPosition; 
+	public Vector2 previousPosition;
 	public RemoteTransform2D remoteTransform;
 	public Snowball snowball;
 	private bool cameraReturningToPlayer;
 	private AnimationPlayer _animPlayer;
-	
- 	[Export]
+
+	[Export]
 	public Vector2 offset = new Vector2(250, 0); // Default offset values, can be changed in the Godot Editor.
 
 	[Export]
 	public float stopTimeDuration = 2.0f; // Default stop time duration.
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		camera =GetParent().GetNode<Camera2D>("Camera2D");
+		camera = GetParent().GetNode<Camera2D>("Camera2D");
 		snowball = GetParent().GetNode<Snowball>("Snowball");
-		remoteTransform = GetParent().GetNode<Snowball>("Snowball").GetNode<RemoteTransform2D>("RemoteTransform2D");
-		cameraReturningToPlayer = false;  
-		
+		remoteTransform = GetParent()
+			.GetNode<Snowball>("Snowball")
+			.GetNode<RemoteTransform2D>("RemoteTransform2D");
+		cameraReturningToPlayer = false;
+
 		GetNode<Timer>("StopTime").WaitTime = stopTimeDuration;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
 		/*
 		if (cameraReturningToPlayer)
 		{
@@ -51,14 +50,11 @@ public partial class Cutscene : Node2D
 				}
 		}
 		*/
-		
-
-		
 	}
+
 	private async void _on_area_2d_body_entered(Node2D body)
 	{
-		
-		camera.PositionSmoothingEnabled=true;
+		camera.PositionSmoothingEnabled = true;
 		previousPosition = new Vector2(remoteTransform.Position.X, remoteTransform.Position.Y);
 		remoteTransform.Position += offset; // Use the offset property here
 		snowball.StopMovement();
@@ -73,38 +69,31 @@ public partial class Cutscene : Node2D
 
 		StopTime();
 	}
-	
+
 	private void StopTime()
 	{
 		GetNode<Timer>("StopTime").Start();
-		
 	}
+
 	private void _on_timer_timeout()
 	{
 		//cameraReturningToPlayer = true;  // Set the flag to true when the timer times out.
-		remoteTransform.Position =previousPosition;
-		
+		remoteTransform.Position = previousPosition;
+
 		QueueFree();
 		snowball.StartMovement();
-		camera.PositionSmoothingEnabled=false;
-					
+		camera.PositionSmoothingEnabled = false;
+
 		//if (remoteTransform.Position ==previousPosition){
 		//	camera.PositionSmoothingEnabled=false;
 		//}
-	 	
 	}
-	 public void ShowBars()
+
+	public void ShowBars()
 	{
 		if (_animPlayer != null)
 		{
 			_animPlayer.Play("showbars");
 		}
 	}
-	
-	}
-
-
-
-
-
-
+}

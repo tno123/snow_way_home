@@ -6,6 +6,10 @@
 [node name="Bonfire" instance=ExtResource("1_yu4ko")]
 script = ExtResource("2_02qj6")
 
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"default"
+frame_progress = 0.0
+
 [node name="Area2D" parent="." index="1"]
 position = Vector2(0, 20)
 

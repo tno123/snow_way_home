@@ -1,19 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://cooq1pghfkb3p"]
+[gd_scene load_steps=11 format=3 uid="uid://cooq1pghfkb3p"]
 
 [ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/bonfire/Bonfire.tscn" id="1_qr7uy"]
 [ext_resource type="Script" path="res://scenes/bonfire/BlinkingBonfire.cs" id="2_4e23r"]
+[ext_resource type="Texture2D" uid="uid://518fyt3ngww" path="res://assets/fire_fx_v1.0/png/blinking_bonfire_anim-Sheet.png" id="3_fv4ug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pexuu"]
+atlas = ExtResource("3_fv4ug")
+region = Rect2(0, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mof6w"]
+atlas = ExtResource("3_fv4ug")
+region = Rect2(24, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7a4i"]
+atlas = ExtResource("3_fv4ug")
+region = Rect2(48, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqcp"]
+atlas = ExtResource("3_fv4ug")
+region = Rect2(72, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll1hm"]
+atlas = ExtResource("3_fv4ug")
+region = Rect2(96, 0, 24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn1gc"]
+atlas = ExtResource("3_fv4ug")
+region = Rect2(120, 0, 24, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8i5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pexuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mof6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7a4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbqcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll1hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn1gc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Bonfire" instance=ExtResource("1_qr7uy")]
 script = ExtResource("2_4e23r")
 VisibleStart = false
+Hot = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(-2, -28)
-frame_progress = 0.715605
+frame_progress = 0.0
 
 [node name="Area2D" parent="." index="1"]
 position = Vector2(-2, 18)
 
 [node name="BlinkTimer" type="Timer" parent="." index="2"]
+
+[node name="BlinkingBonfireAnim" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(-2, -17)
+scale = Vector2(4, 3.825)
+sprite_frames = SubResource("SpriteFrames_x8i5r")
 
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_timer_timeout"]

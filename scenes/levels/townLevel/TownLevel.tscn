@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=28 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="2_g4so2"]
@@ -402,6 +402,7 @@ texture = ExtResource("15_8tde8")
 18:6/0/physics_layer_0/angular_velocity = 0.0
 18:6/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 18:6/0/physics_layer_1/angular_velocity = 0.0
+18:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(8, 0.888889, -8, 0.888889, -8, 8, 8, 8)
 22:6/0 = 0
 22:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 22:6/0/physics_layer_0/angular_velocity = 0.0
@@ -683,38 +684,6 @@ custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_j3i28")
 sources/1 = SubResource("TileSetAtlasSource_fyw74")
 
-[sub_resource type="CSharpScript" id="CSharpScript_qk4of"]
-script/source = "using Godot;
-using System;
-
-public partial class MobManager : Node
-{
-	// Singleton instance.
-	private static MobManager _instance;
-	public static MobManager Instance
-	{
-		get { return _instance; }
-	}
-
-	public override void _Ready()
-	{
-		if (_instance != null)
-		{
-			GD.PrintErr(\"Multiple instances of MobManager detected. Deleting this one.\");
-			QueueFree();
-			return;
-		}
-		_instance = this;
-	}
-
-	public void DestroyExistingMob()
-	{
-		var existingMob = GetTree().Root.GetNodeOrNull<VillagerMob>(\"Enemies/VillagerMob\");
-		existingMob?.QueueFree();
-	}
-}
-"
-
 [node name="TownLevel" type="Node"]
 script = ExtResource("1_ryx16")
 
@@ -782,11 +751,11 @@ position = Vector2(2005, 469)
 position = Vector2(1319, 492)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(3414, 1078)
+position = Vector2(489, 1802)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(3414, 1078)
+position = Vector2(489, 1802)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -858,14 +827,15 @@ position = Vector2(-1644, 508)
 position = Vector2(-1930, 514)
 
 [node name="Bonfire" parent="." instance=ExtResource("23_4enol")]
-position = Vector2(894, 1170)
+position = Vector2(920, 1170)
+Hot = false
 
 [node name="Bonfire2" parent="." instance=ExtResource("23_4enol")]
-position = Vector2(791, 1170)
+position = Vector2(777, 1170)
 VisibleStart = true
 
 [node name="Bonfire3" parent="." instance=ExtResource("23_4enol")]
-position = Vector2(995, 1170)
+position = Vector2(1063, 1170)
 VisibleStart = true
 
 [node name="Bonfire5" parent="." instance=ExtResource("24_a5cv7")]
@@ -893,9 +863,6 @@ spawnFromLeft = true
 
 [node name="SpawnEnemy2" parent="." instance=ExtResource("25_wtx6o")]
 position = Vector2(3138, 1206)
-
-[node name="MobManager" type="Node" parent="."]
-script = SubResource("CSharpScript_qk4of")
 
 [node name="SpawnEnemy3" parent="." instance=ExtResource("25_wtx6o")]
 position = Vector2(-66, 1988)

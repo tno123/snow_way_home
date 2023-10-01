@@ -30,11 +30,16 @@ public partial class SpawnEnemy : Area2D
 			var VillagerMobScene = GD.Load<PackedScene>("res://scenes/VillagerMob.tscn");
 			var instance = (VillagerMob)VillagerMobScene.Instantiate();
 			var snowBallPosition = body.Position;
+
 			instance.Position = new Vector2(
 				snowBallPosition.X + (spawnFromLeft ? -distanceFromSnowball : distanceFromSnowball),
 				snowBallPosition.Y
 			);
 			GetParent().GetNode<Node>("Enemies").AddChild(instance);
+			if (spawnFromLeft)
+			{
+				instance.GetNode<Sprite2D>("VillagerMob").FlipH = false;
+			}
 			enemySpawned = true;
 		}
 	}

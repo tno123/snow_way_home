@@ -27,13 +27,7 @@ position = Vector2(546, -145)
 [node name="Bonfire6" parent="." instance=ExtResource("2_mdn3b")]
 position = Vector2(629, -145)
 
-[node name="Bonfire7" parent="." instance=ExtResource("2_mdn3b")]
-position = Vector2(708, -145)
-
-[node name="Bonfire8" parent="." instance=ExtResource("2_mdn3b")]
-position = Vector2(789, -145)
-
 [node name="GapTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.75
 
 [connection signal="timeout" from="GapTimer" to="." method="_on_gap_timer_timeout"]

@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scenes/SpawnEnemy.cs" id="1_3db0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ant8t"]
-size = Vector2(1130, 24)
+size = Vector2(2840, 30)
 
 [node name="SpawnEnemy" type="Area2D"]
 script = ExtResource("1_3db0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(555, 2)
+position = Vector2(466, 5)
 shape = SubResource("RectangleShape2D_ant8t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

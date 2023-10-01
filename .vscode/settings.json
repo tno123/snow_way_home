@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "Snow Way Home.sln"
+    "dotnet.defaultSolution": "Snow Way Home.sln",
+    "editor.wordWrap": "off"
 }

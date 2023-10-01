@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bikucff26lt5j"]
+[gd_scene load_steps=13 format=3 uid="uid://bikucff26lt5j"]
 
 [ext_resource type="Script" path="res://scenes/boss/BossHand.cs" id="1_2uqce"]
 [ext_resource type="Texture2D" uid="uid://6q2kd2aa76po" path="res://assets/testhands.png" id="1_qp22w"]
@@ -39,10 +39,39 @@ tracks/0/keys = {
 "values": [Rect2(7, 7, 64, 45)]
 }
 
+[sub_resource type="Animation" id="Animation_kwi7e"]
+resource_name = "SmashWindup"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(144, 78, 55, 42), Rect2(74, 82, 51, 41), Rect2(12, 82, 51, 41)]
+}
+
+[sub_resource type="Animation" id="Animation_n7cc5"]
+resource_name = "Smash"
+
+[sub_resource type="Animation" id="Animation_tegot"]
+resource_name = "PickupSnow"
+
+[sub_resource type="Animation" id="Animation_kh80o"]
+resource_name = "ThrowSnow"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_clvhj"]
 _data = {
 "Idle": SubResource("Animation_wn6ks"),
-"RESET": SubResource("Animation_qosrc")
+"PickupSnow": SubResource("Animation_tegot"),
+"RESET": SubResource("Animation_qosrc"),
+"Smash": SubResource("Animation_n7cc5"),
+"SmashWindup": SubResource("Animation_kwi7e"),
+"ThrowSnow": SubResource("Animation_kh80o")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5prw"]
@@ -50,8 +79,9 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u23dm"]
 states/Idle/node = SubResource("AnimationNodeAnimation_f5prw")
-states/Idle/position = Vector2(509, 82)
+states/Idle/position = Vector2(517, 56)
 states/Start/position = Vector2(211, 89)
+graph_offset = Vector2(-2, -69)
 
 [node name="BossHand" type="Node2D"]
 script = ExtResource("1_2uqce")

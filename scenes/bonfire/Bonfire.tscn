@@ -132,7 +132,7 @@ script = ExtResource("1_ruev6")
 position = Vector2(-3, -28)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_avks1")
-frame_progress = 0.0197551
+frame_progress = 0.682457
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(3, 12)

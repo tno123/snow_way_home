@@ -9,7 +9,7 @@ public partial class VillagerMob : CharacterBody2D
 	[Export]
 	public Line2D LineOfSight;
 
-	public const float Speed = 100.0f;
+	public const float Speed = 200.0f;
 	public const float JumpVelocity = -400.0f;
 
 	public Snowball Snowball;

@@ -36,10 +36,13 @@ public partial class SpawnEnemy : Area2D
 				snowBallPosition.Y
 			);
 			GetParent().GetNode<Node>("Enemies").AddChild(instance);
-			if (spawnFromLeft)
-			{
-				instance.GetNode<Sprite2D>("VillagerMob").FlipH = false;
-			}
+
+
+
+
+
+
+
 			enemySpawned = true;
 		}
 	}

@@ -189,7 +189,6 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sonmi"]
-atlas = ExtResource("4_xn7uu")
 region = Rect2(96, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ovyp"]

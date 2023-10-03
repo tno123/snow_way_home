@@ -751,11 +751,11 @@ position = Vector2(2005, 469)
 position = Vector2(1319, 492)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1107, 1796)
+position = Vector2(-2284, 405)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(1107, 1796)
+position = Vector2(-2284, 405)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]
@@ -858,7 +858,7 @@ position = Vector2(2579, 1839)
 rotation = -1.62316
 
 [node name="SpawnEnemy" parent="." instance=ExtResource("25_wtx6o")]
-position = Vector2(-179, 523)
+position = Vector2(0, 514)
 spawnFromLeft = true
 
 [node name="SpawnEnemy2" parent="." instance=ExtResource("25_wtx6o")]

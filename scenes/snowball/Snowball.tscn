@@ -188,24 +188,6 @@ animations = [{
 "speed": 15.0
 }]
 
-
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ovyp"]
-atlas = ExtResource("4_xn7uu")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c53q7"]
-atlas = ExtResource("4_xn7uu")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eq3eb"]
-atlas = ExtResource("4_xn7uu")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dcvgh"]
-atlas = ExtResource("4_xn7uu")
-region = Rect2(0, 0, 24, 24)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_f2ofb"]
 animations = [{
 "frames": [{

@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bsu2xcd1s2ixt" path="res://art/character/snowball_64x64.png" id="1_h1lvw"]
 [ext_resource type="Texture2D" uid="uid://by78ld8ldtq15" path="res://assets/Rocky Roads/FX/walk_dust.png" id="3_y5v0d"]
 [ext_resource type="Texture2D" uid="uid://c40kjrhgpegod" path="res://assets/Rocky Roads/FX/cannon_fire_smoke.png" id="4_n40du"]
-[ext_resource type="Texture2D" path="res://assets/Rocky Roads/FX/cannon_fire_smoke2.png" id="4_xn7uu"]
 [ext_resource type="Texture2D" uid="uid://cj6g0mvp183j5" path="res://assets/Rocky Roads/FX/splash.png" id="6_cwfuq"]
 [ext_resource type="Texture2D" uid="uid://ccodblmhppaug" path="res://art/character/icesprite.png" id="7_442re"]
 [ext_resource type="Texture2D" uid="uid://d0fjdyjes4e2h" path="res://art/character/brokenicesprite.png" id="8_ffdj1"]
 [ext_resource type="Texture2D" uid="uid://crb4rhmidaknn" path="res://art/character/snowdive-Sheet.png" id="9_jwuhc"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]
 radius = 32.0156

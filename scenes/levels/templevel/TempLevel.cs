@@ -54,16 +54,7 @@ public partial class TempLevel : Node
 			//Docs: https://docs.godotengine.org/en/stable/tutorials/math/interpolation.html
 					// from above page see: https://docs.godotengine.org/en/stable/classes/class_vector2.html#class-vector2-method-lerp
 			
-			if ((snowball as Snowball).IsBoosting)
-			{
-				camera.Zoom = camera.Zoom.Lerp(boostZoom, zoomSpeed);
-				//camera.ZoomIn();
-			}
-			else
-			{
-				camera.Zoom = camera.Zoom.Lerp(defaultZoom, zoomSpeed);
-				//camera.ZoomOut();
-			}
+		
 			
 			
 			

@@ -48,9 +48,8 @@ public partial class Snowball : CharacterBody2D
 	private AnimatedSprite2D animation;
 	private Sprite2D sprite;
 
-	private AnimatedSprite2D BoostAnimLeft;
-	private AnimatedSprite2D BoostAnimRight;
-	private AnimatedSprite2D BoostChargingAnim;
+	private AnimatedSprite2D BoostSmokeAnimation;
+
 	private AnimatedSprite2D JumpLandAnim;
 	private AnimatedSprite2D JumpAnim;
 	private AnimatedSprite2D SnowDiveAnim;
@@ -58,6 +57,7 @@ public partial class Snowball : CharacterBody2D
 
 	private Timer DamageBoostTimer;
 	private Timer BlinkTimer;
+	private Timer MovementBoostTimer;
 	private bool isDamaged = false;
 
 	private Vector2 PreviousVelocity = Vector2.Zero;
@@ -76,9 +76,7 @@ public partial class Snowball : CharacterBody2D
 		originalScale = Scale;
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
-		BoostAnimLeft = GetNode<AnimatedSprite2D>("BoostAnimationLeft");
-		BoostAnimRight = GetNode<AnimatedSprite2D>("BoostAnimationRight");
-		BoostChargingAnim = GetNode<AnimatedSprite2D>("BoostChargingAnim");
+		BoostSmokeAnimation = GetNode<AnimatedSprite2D>("BoostSmokeAnimation");
 		SnowDiveAnim = GetNode<AnimatedSprite2D>("SnowDiveAnim");
 
 		JumpAnim = GetNode<AnimatedSprite2D>("JumpAnim");
@@ -87,6 +85,7 @@ public partial class Snowball : CharacterBody2D
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
 		HidingTimer = GetNode<Timer>("HidingTimer");
+		MovementBoostTimer = GetNode<Timer>("MovementBoostTimer");
 		CoyoteJumpTimer.WaitTime = CoyoteTime;
 		NextJumpTimer.WaitTime = NextJumpTime;
 		HidingTimer.WaitTime = DarkenTime;
@@ -155,7 +154,7 @@ public partial class Snowball : CharacterBody2D
 			// Get the input direction and handle the movement/deceleration.
 			// As good practice, you should replace UI actions with custom gameplay actions.
 			Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-			if (direction.X != 0)
+			if (direction.X != 0 && !isBoosting)
 			{
 				//if (!HandleIceTile())
 				velocity.X = direction.X * Speed;
@@ -170,16 +169,20 @@ public partial class Snowball : CharacterBody2D
 
 				if (direction.X < 0)
 				{
-					Vector2 newOffset = animation.Offset;
-					newOffset.X = 0;
-					animation.Offset = newOffset;
+					Vector2 newOffset = sprite.Offset;
+					newOffset.X = 20;
+					BoostSmokeAnimation.Offset = animation.Offset = newOffset;
+
+					BoostSmokeAnimation.FlipH = false;
+
 					sprite.FlipH = animation.FlipH = false;
 				}
 				if (direction.X > 0)
 				{
-					Vector2 newOffset = animation.Offset;
-					newOffset.X = -15;
-					animation.Offset = newOffset;
+					Vector2 newOffset = sprite.Offset;
+					newOffset.X = -20;
+					BoostSmokeAnimation.Offset = animation.Offset = newOffset;
+					BoostSmokeAnimation.FlipH = true;
 					sprite.FlipH = animation.FlipH = true;
 				}
 			}
@@ -259,50 +262,16 @@ public partial class Snowball : CharacterBody2D
 		// Check if the X button is just pressed
 		if (Input.IsActionJustPressed("boost") && !isBoosting)
 		{
+			MovementBoostTimer.Start();
 			StartBoost();
 		}
-		// Check if the X button (or your defined action) is being held down
-		if (Input.IsActionPressed("boost") && isBoosting)
-		{
-			BoostChargingAnim.Play("boost_charging");
-		}
-
-		// Check if the X button is just released
-		if (Input.IsActionJustReleased("boost") && isBoosting)
-		{
-			EndBoost();
-		}
-	}
-
-	public bool IsBoosting
-	{
-		get { return isBoosting; }
 	}
 
 	private void StartBoost()
 	{
 		isBoosting = true;
 
-		// Slight scale change to help indicate boost
-		sprite.Scale = new Vector2(0.9f, 0.9f);
-
-		BoostAnimLeft.Play("left_boost");
-		BoostAnimRight.Play("right_boost");
-	}
-
-	private void EndBoost()
-	{
-		isBoosting = false;
-		BoostChargingAnim.Stop();
-
-		// Reset the zoom/scale
-		sprite.Scale = new Vector2(1f, 1f);
-
-		// End animations
-		BoostAnimLeft.Stop();
-		BoostAnimRight.Stop();
-
-		// Increase velocity in the X direction that snowball is facing
+		BoostSmokeAnimation.Play("default");
 		if (sprite.FlipH) // Facing right
 		{
 			velocity.X += BoostVelocity;
@@ -312,12 +281,9 @@ public partial class Snowball : CharacterBody2D
 		else // Facing left
 		{
 			velocity.X -= BoostVelocity;
-			;
 			Velocity = velocity;
 			MoveAndSlide();
 		}
-
-		// If you want this boost to be a one-time burst, you can reset the velocity back after some time or distance. Consider using a Timer for that.
 	}
 
 	void ApplyGravity(float delta)
@@ -528,5 +494,10 @@ public partial class Snowball : CharacterBody2D
 		{
 			BlinkTimer.Start();
 		}
+	}
+
+	private void _on_movement_boost_timer_timeout()
+	{
+		isBoosting = false;
 	}
 }

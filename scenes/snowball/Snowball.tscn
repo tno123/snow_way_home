@@ -188,8 +188,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sonmi"]
-region = Rect2(96, 0, 24, 24)
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ovyp"]
 atlas = ExtResource("4_xn7uu")

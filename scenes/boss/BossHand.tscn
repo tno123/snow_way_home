@@ -1,101 +1,137 @@
-[gd_scene load_steps=13 format=3 uid="uid://bikucff26lt5j"]
+[gd_scene load_steps=19 format=3 uid="uid://bikucff26lt5j"]
 
 [ext_resource type="Script" path="res://scenes/boss/BossHand.cs" id="1_2uqce"]
 [ext_resource type="Texture2D" uid="uid://6q2kd2aa76po" path="res://assets/testhands.png" id="1_qp22w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fk1ds"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7psm"]
 atlas = ExtResource("1_qp22w")
-region = Rect2(7, 7, 64, 45)
+region = Rect2(4, 0, 73, 69)
 
-[sub_resource type="Animation" id="Animation_wn6ks"]
-resource_name = "Idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(7, 7, 64, 45), Rect2(87, 14, 60, 38), Rect2(164, 18, 55, 37), Rect2(241, 21, 50, 35), Rect2(314, 21, 48, 34), Rect2(380, 20, 57, 35), Rect2(453, 18, 61, 35), Rect2(524, 12, 62, 37)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb7l0"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(77, 0, 73, 69)
 
-[sub_resource type="Animation" id="Animation_qosrc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(7, 7, 64, 45)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffa5b"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(150, 0, 73, 69)
 
-[sub_resource type="Animation" id="Animation_kwi7e"]
-resource_name = "SmashWindup"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Rect2(144, 78, 55, 42), Rect2(74, 82, 51, 41), Rect2(12, 82, 51, 41)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_al66c"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(223, 0, 73, 69)
 
-[sub_resource type="Animation" id="Animation_n7cc5"]
-resource_name = "Smash"
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufh6u"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(296, 0, 73, 69)
 
-[sub_resource type="Animation" id="Animation_tegot"]
-resource_name = "PickupSnow"
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi67f"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(369, 0, 73, 69)
 
-[sub_resource type="Animation" id="Animation_kh80o"]
-resource_name = "ThrowSnow"
+[sub_resource type="AtlasTexture" id="AtlasTexture_brfl1"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(442, 0, 73, 69)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_clvhj"]
-_data = {
-"Idle": SubResource("Animation_wn6ks"),
-"PickupSnow": SubResource("Animation_tegot"),
-"RESET": SubResource("Animation_qosrc"),
-"Smash": SubResource("Animation_n7cc5"),
-"SmashWindup": SubResource("Animation_kwi7e"),
-"ThrowSnow": SubResource("Animation_kh80o")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fi65"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(515, 0, 73, 69)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5prw"]
-animation = &"Idle"
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rvic"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(134, 69, 67, 69)
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u23dm"]
-states/Idle/node = SubResource("AnimationNodeAnimation_f5prw")
-states/Idle/position = Vector2(517, 56)
-states/Start/position = Vector2(211, 89)
-graph_offset = Vector2(-2, -69)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r42lw"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(67, 69, 67, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp30o"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(0, 69, 67, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emhk8"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(15, 276, 62, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kog73"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(77, 276, 62, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l77h"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(139, 276, 62, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jt7p"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(201, 276, 62, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6s4qv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7psm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb7l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffa5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al66c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufh6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi67f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brfl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fi65")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rvic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r42lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp30o")
+}],
+"loop": false,
+"name": &"smash_windup",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emhk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kog73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l77h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jt7p")
+}],
+"loop": false,
+"name": &"take_damage",
+"speed": 5.0
+}]
 
 [node name="BossHand" type="Node2D"]
 script = ExtResource("1_2uqce")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_fk1ds")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
-libraries = {
-"": SubResource("AnimationLibrary_clvhj")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_u23dm")
-anim_player = NodePath("../AnimationPlayer")
-active = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6s4qv")
+animation = &"take_damage"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.726743

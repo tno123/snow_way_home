@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c3rap4ggvuflm" path="res://scenes/bonfire/Bonfire.tscn" id="1_qr7uy"]
 [ext_resource type="Script" path="res://scenes/bonfire/BlinkingBonfire.cs" id="2_4e23r"]
-[ext_resource type="Texture2D" uid="uid://518fyt3ngww" path="res://assets/fire_fx_v1.0/png/blinking_bonfire_anim-Sheet.png" id="3_fv4ug"]
+[ext_resource type="Texture2D" path="res://assets/fire_fx_v1.0/png/blinking_bonfire_anim-Sheet.png" id="3_fv4ug"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pexuu"]
 atlas = ExtResource("3_fv4ug")

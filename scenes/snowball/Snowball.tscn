@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cj6g0mvp183j5" path="res://assets/Rocky Roads/FX/splash.png" id="6_cwfuq"]
 [ext_resource type="Texture2D" uid="uid://ccodblmhppaug" path="res://art/character/icesprite.png" id="7_442re"]
 [ext_resource type="Texture2D" uid="uid://d0fjdyjes4e2h" path="res://art/character/brokenicesprite.png" id="8_ffdj1"]
-[ext_resource type="Texture2D" uid="uid://ckgdotievbcj2" path="res://art/character/animations/death-Sheet.png" id="9_3qb17"]
+[ext_resource type="Texture2D" path="res://art/character/animations/death-Sheet.png" id="9_3qb17"]
 [ext_resource type="Texture2D" uid="uid://crb4rhmidaknn" path="res://art/character/snowdive-Sheet.png" id="9_jwuhc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4jxrl"]

@@ -31,8 +31,8 @@ public partial class Bonfire : Node2D
 	{
 		snowball.Damage(1);
 		snowball.Scale = new Vector2(
-			(float)(((Snowball)snowball).Scale.X / 1.5),
-			(float)(((Snowball)snowball).Scale.Y / 1.5)
+			(float)(((Snowball)snowball).Scale.X / 1.1),
+			(float)(((Snowball)snowball).Scale.Y / 1.1)
 		);
 	}
 

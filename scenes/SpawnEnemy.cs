@@ -35,13 +35,8 @@ public partial class SpawnEnemy : Area2D
 				snowBallPosition.X + (spawnFromLeft ? -distanceFromSnowball : distanceFromSnowball),
 				snowBallPosition.Y
 			);
-			GetParent().GetNode<Node>("Enemies").AddChild(instance);
-
-
-
-
-
-
+			GetParent().GetNode<Node>("Enemies").CallDeferred("add_child", instance); // Calls the method on the object during idle time. Always returns null, not the method's result.
+			// see https://docs.godotengine.org/en/stable/classes/class_object.html#class-object-method-call-deferred
 
 			enemySpawned = true;
 		}

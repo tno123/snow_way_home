@@ -10,6 +10,7 @@ public partial class Cutscene : Node2D
 	public Snowball snowball;
 	private bool cameraReturningToPlayer;
 	private AnimationPlayer _animPlayer;
+	public Node enemies;
 
 	[Export]
 	public Vector2 offset = new Vector2(250, 0); // Default offset values, can be changed in the Godot Editor.
@@ -20,6 +21,7 @@ public partial class Cutscene : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		enemies = GetParent().GetNode<Node>("Enemies");
 		_animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		camera = GetParent().GetNode<Camera2D>("Camera2D");
 		snowball = GetParent().GetNode<Snowball>("Snowball");
@@ -58,6 +60,8 @@ public partial class Cutscene : Node2D
 		previousPosition = new Vector2(remoteTransform.Position.X, remoteTransform.Position.Y);
 		remoteTransform.Position += offset; // Use the offset property here
 		snowball.StopMovement();
+		VillagerMob villagermob = enemies.GetChild(0) as VillagerMob;
+		villagermob.StopMovement();
 		ShowBars();
 
 		/*
@@ -82,6 +86,8 @@ public partial class Cutscene : Node2D
 
 		QueueFree();
 		snowball.StartMovement();
+		VillagerMob villagermob = enemies.GetChild(0) as VillagerMob;
+		villagermob.StartMovement();
 		camera.PositionSmoothingEnabled = false;
 
 		//if (remoteTransform.Position ==previousPosition){

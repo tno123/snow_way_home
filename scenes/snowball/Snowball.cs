@@ -45,7 +45,7 @@ public partial class Snowball : CharacterBody2D
 	private bool WasOnFloor = false;
 	private bool IsOnIce = false;
 	private float lastVelocityX = 0;
-	private AnimatedSprite2D animation;
+	private AnimatedSprite2D WalkDustAnimation;
 	private Sprite2D sprite;
 
 	private AnimatedSprite2D BoostSmokeAnimation;
@@ -76,7 +76,7 @@ public partial class Snowball : CharacterBody2D
 	{
 		sprite = GetNode<Sprite2D>("Sprite2D");
 		originalScale = Scale;
-		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		WalkDustAnimation = GetNode<AnimatedSprite2D>("WalkDustAnimation");
 
 		BoostSmokeAnimation = GetNode<AnimatedSprite2D>("BoostSmokeAnimation");
 		DeathAnimation = GetNode<AnimatedSprite2D>("DeathAnimation");
@@ -167,7 +167,7 @@ public partial class Snowball : CharacterBody2D
 
 				if (IsOnFloor())
 				{
-					animation.Play("move");
+					WalkDustAnimation.Play("default");
 				}
 				//else{animation.Stop();}
 
@@ -175,24 +175,24 @@ public partial class Snowball : CharacterBody2D
 				{
 					Vector2 newOffset = sprite.Offset;
 					newOffset.X = 20;
-					BoostSmokeAnimation.Offset = animation.Offset = newOffset;
+					BoostSmokeAnimation.Offset = WalkDustAnimation.Offset = newOffset;
 
 					BoostSmokeAnimation.FlipH = false;
 
-					sprite.FlipH = animation.FlipH = false;
+					sprite.FlipH = WalkDustAnimation.FlipH = false;
 				}
 				if (direction.X > 0)
 				{
 					Vector2 newOffset = sprite.Offset;
 					newOffset.X = -20;
-					BoostSmokeAnimation.Offset = animation.Offset = newOffset;
+					BoostSmokeAnimation.Offset = WalkDustAnimation.Offset = newOffset;
 					BoostSmokeAnimation.FlipH = true;
-					sprite.FlipH = animation.FlipH = true;
+					sprite.FlipH = WalkDustAnimation.FlipH = true;
 				}
 			}
 			else
 			{
-				animation.Stop();
+				WalkDustAnimation.Stop();
 				//TODO: Need to handle correct ice physics
 				IsOnIce = HandleIceTile();
 				//IsOnIce=false;
@@ -453,7 +453,7 @@ public partial class Snowball : CharacterBody2D
 		but stop playing when in air */
 		if (!IsOnFloor())
 		{
-			animation.Stop();
+			WalkDustAnimation.Stop();
 		}
 	}
 

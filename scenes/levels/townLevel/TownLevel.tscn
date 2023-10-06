@@ -751,11 +751,11 @@ position = Vector2(2005, 469)
 position = Vector2(1319, 492)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1229, 1100)
+position = Vector2(1798, 333)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(1229, 1100)
+position = Vector2(1798, 333)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]

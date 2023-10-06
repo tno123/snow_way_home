@@ -6,10 +6,13 @@ public partial class VillagerMob : CharacterBody2D
 	[Export]
 	public float MinDistance = 2000.0f;
 
+	public bool canMove = true;
+
 	[Export]
 	public Line2D LineOfSight;
 
 	public const float Speed = 300.0f;
+	private Vector2 PreviousVelocity;
 	public const float JumpVelocity = -400.0f;
 
 	public Snowball Snowball;
@@ -46,15 +49,18 @@ public partial class VillagerMob : CharacterBody2D
 		if (!IsOnFloor())
 			velocity.Y += gravity * (float)delta;
 
-		if (Position.X < Snowball.Position.X)
+		if (canMove)
 		{
-			Position += new Vector2(Speed * (float)delta, 0);
-			sprite.FlipH = false;
-		}
-		else
-		{
-			Position -= new Vector2(Speed * (float)delta, 0);
-			sprite.FlipH = true;
+			if (Position.X < Snowball.Position.X)
+			{
+				Position += new Vector2(Speed * (float)delta, 0);
+				sprite.FlipH = false;
+			}
+			else
+			{
+				Position -= new Vector2(Speed * (float)delta, 0);
+				sprite.FlipH = true;
+			}
 		}
 
 		Velocity = velocity;
@@ -92,5 +98,18 @@ public partial class VillagerMob : CharacterBody2D
 		{
 			LineOfSight.DefaultColor = new Color(1, 0, 0);
 		}
+	}
+
+	public void StopMovement()
+	{
+		canMove = false;
+		//PreviousVelocity = Velocity;
+		//Velocity = new Vector2(0, 0);
+	}
+
+	public void StartMovement()
+	{
+		canMove = true;
+		//Velocity = PreviousVelocity;
 	}
 }

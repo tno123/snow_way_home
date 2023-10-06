@@ -39,10 +39,13 @@ public partial class VillagerMob : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Rotation += .3f * (3.14f / 180.0f);
+		if (canMove)
+		{
+			AnimationPlayer.Play("walk");
+			Rotation += .3f * (3.14f / 180.0f);
+		}
 		UpdateLineOfSight();
 
-		AnimationPlayer.Play("walk");
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
@@ -102,6 +105,7 @@ public partial class VillagerMob : CharacterBody2D
 
 	public void StopMovement()
 	{
+		AnimationPlayer.Stop();
 		canMove = false;
 		//PreviousVelocity = Velocity;
 		//Velocity = new Vector2(0, 0);

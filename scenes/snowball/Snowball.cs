@@ -176,9 +176,7 @@ public partial class Snowball : CharacterBody2D
 					Vector2 newOffset = sprite.Offset;
 					newOffset.X = 20;
 					BoostSmokeAnimation.Offset = WalkDustAnimation.Offset = newOffset;
-
 					BoostSmokeAnimation.FlipH = false;
-
 					sprite.FlipH = WalkDustAnimation.FlipH = false;
 				}
 				if (direction.X > 0)
@@ -381,6 +379,7 @@ public partial class Snowball : CharacterBody2D
 			!isDamaged
 			&& GetNode<Timer>("InvulnerabilityTimer").IsStopped()
 			&& DamageBoostTimer.IsStopped()
+			&& DeathTimer.IsStopped()
 			&& !CurrentIce
 		)
 		{
@@ -407,7 +406,10 @@ public partial class Snowball : CharacterBody2D
 		Scale = originalScale;
 		if (!BlinkTimer.IsStopped())
 			BlinkTimer.Stop();
-		DeathTimer.Start();
+		if (DeathTimer.IsStopped())
+		{
+			DeathTimer.Start();
+		}
 	}
 
 	public void SetIce(bool ice)

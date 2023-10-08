@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bikucff26lt5j"]
+
+[ext_resource type="Script" path="res://scenes/boss/BossHand.cs" id="1_2uqce"]
+[ext_resource type="Texture2D" uid="uid://6q2kd2aa76po" path="res://assets/testhands.png" id="1_qp22w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk1ds"]
+atlas = ExtResource("1_qp22w")
+region = Rect2(7, 7, 64, 45)
+
+[sub_resource type="Animation" id="Animation_wn6ks"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(7, 7, 64, 45), Rect2(87, 14, 60, 38), Rect2(164, 18, 55, 37), Rect2(241, 21, 50, 35), Rect2(314, 21, 48, 34), Rect2(380, 20, 57, 35), Rect2(453, 18, 61, 35), Rect2(524, 12, 62, 37)]
+}
+
+[sub_resource type="Animation" id="Animation_qosrc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(7, 7, 64, 45)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_clvhj"]
+_data = {
+"Idle": SubResource("Animation_wn6ks"),
+"RESET": SubResource("Animation_qosrc")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5prw"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u23dm"]
+states/Idle/node = SubResource("AnimationNodeAnimation_f5prw")
+states/Idle/position = Vector2(509, 82)
+states/Start/position = Vector2(211, 89)
+
+[node name="BossHand" type="Node2D"]
+script = ExtResource("1_2uqce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_fk1ds")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_clvhj")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_u23dm")
+anim_player = NodePath("../AnimationPlayer")
+active = true

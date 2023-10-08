@@ -5,6 +5,7 @@ public partial class SnowPower : ProgressBar
 {
 	//Temp child
 	public Sprite2D Sprite;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -16,9 +17,7 @@ public partial class SnowPower : ProgressBar
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+	public override void _Process(double delta) { }
 
 	private void PowerupCollected(int value)
 	{

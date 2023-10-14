@@ -121,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7jt7p")
 }],
-"loop": false,
+"loop": true,
 "name": &"take_damage",
 "speed": 5.0
 }]
@@ -131,7 +131,7 @@ script = ExtResource("1_2uqce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6s4qv")
-animation = &"take_damage"
+animation = &"idle"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.726743
+frame = 5
+frame_progress = 0.905163

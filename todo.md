@@ -1,8 +1,8 @@
 # Boss Level
 - Powerups (respawning) (Frederik)
-- Boss attacks (Most of the work)
+- Boss attacks (Most of the work) (Tor-Arne)
   - Different attacks
-- Bounce pads for damage on Boss (Frederik)
+- Bounce pads for damage on Boss (Tor-Arne)
   - jump on hands
 - Boss health bar (somewhere) (Frederik)
 - Giant Snoweater (ending cutscene) (Frederik)

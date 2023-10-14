@@ -16,3 +16,8 @@
 # Mountain Level
 - Finish up
 
+# UI/UX (bare bones)
+- Menus
+- HUD
+- Startable intro screen
+- Letterboxing

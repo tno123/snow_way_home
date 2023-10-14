@@ -133,5 +133,5 @@ script = ExtResource("1_2uqce")
 sprite_frames = SubResource("SpriteFrames_6s4qv")
 animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 0.905163
+frame = 3
+frame_progress = 0.360218

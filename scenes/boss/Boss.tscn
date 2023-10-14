@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ebbl3kcaa3ih"]
+[gd_scene load_steps=3 format=3 uid="uid://ebbl3kcaa3ih"]
+
+[ext_resource type="Script" path="res://scenes/boss/Boss.cs" id="1_o11o1"]
+[ext_resource type="PackedScene" uid="uid://bikucff26lt5j" path="res://scenes/boss/BossHand.tscn" id="2_44cb5"]
 
 [node name="Boss" type="Node2D"]
+script = ExtResource("1_o11o1")
+
+[node name="BossHand" parent="." instance=ExtResource("2_44cb5")]
+position = Vector2(64, 0)
+
+[node name="BossHand2" parent="." instance=ExtResource("2_44cb5")]
+position = Vector2(-64, 0)
+flipped = true

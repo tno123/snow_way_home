@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://pfixv20ndyrc" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/spritesheets/oldman-walk.png" id="5_mekmv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wukni"]
-radius = 206.814
+radius = 192.094
 
 [sub_resource type="Animation" id="Animation_irqex"]
 length = 0.001

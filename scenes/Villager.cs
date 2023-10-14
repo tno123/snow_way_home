@@ -5,6 +5,7 @@ public partial class Villager : CharacterBody2D
 {
 	[Export]
 	public float MinDistance = 2000.0f;
+
 	[Export]
 	public Line2D LineOfSight;
 
@@ -17,17 +18,16 @@ public partial class Villager : CharacterBody2D
 
 	private string mode = "walk";
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	
-	
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
-		if (LineOfSight != null) {
-		//Add points to the LineOfSight.
-			LineOfSight.AddPoint(Position,0);
-			LineOfSight.AddPoint(Snowball.Position,1);
+		if (LineOfSight != null)
+		{
+			//Add points to the LineOfSight.
+			LineOfSight.AddPoint(Position, 0);
+			LineOfSight.AddPoint(Snowball.Position, 1);
 		}
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -89,12 +89,8 @@ public partial class Villager : CharacterBody2D
 					LineOfSight.QueueFree();
 			}
 		}
-
-		
-
-		
-
 	}
+
 	private void UpdateLineOfSight()
 	{
 		if (LineOfSight == null)
@@ -103,7 +99,10 @@ public partial class Villager : CharacterBody2D
 		LineOfSight.AddPoint(Position);
 		LineOfSight.AddPoint(Snowball.Position);
 		// if length of line if shorter than 100, color line green, else color it red
-		if (LineOfSight.GetPointPosition(0).DistanceTo(LineOfSight.GetPointPosition(1)) < MinDistance)
+		if (
+			LineOfSight.GetPointPosition(0).DistanceTo(LineOfSight.GetPointPosition(1))
+			< MinDistance
+		)
 		{
 			LineOfSight.DefaultColor = new Color(0, 1, 0);
 		}
@@ -111,18 +110,21 @@ public partial class Villager : CharacterBody2D
 		{
 			LineOfSight.DefaultColor = new Color(1, 0, 0);
 		}
-
 	}
 
-	private bool NotOnEdge() 
+	private bool NotOnEdge()
 	{
 		// Use raycast to check if there is a floor in front of the enemy
 		var spaceState = GetWorld2D().DirectSpaceState;
 		var direction = Sprite2D.FlipH ? -Speed : Speed;
-		var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, GlobalPosition + new Vector2(direction, Speed));
+		var query = PhysicsRayQueryParameters2D.Create(
+			GlobalPosition,
+			GlobalPosition + new Vector2(direction, Speed)
+		);
+
 		var result = spaceState.IntersectRay(query);
 		Variant value;
-		if (result.TryGetValue("normal",out value))
+		if (result.TryGetValue("normal", out value))
 		{
 			if ((Vector2)value == Vector2.Up || (Vector2)value == Vector2.Down)
 			{

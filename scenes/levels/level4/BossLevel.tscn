@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbrjivs3fuxlf"]
+[gd_scene load_steps=14 format=3 uid="uid://cbrjivs3fuxlf"]
 
 [ext_resource type="Script" path="res://scenes/levels/level4/BossLevel.cs" id="1_yccq0"]
 [ext_resource type="Texture2D" uid="uid://b7m254naui885" path="res://assets/oak_woods_v1.0/decorations/rock_1.png" id="2_42m38"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="3_s1lwj"]
 [ext_resource type="Texture2D" uid="uid://djehksdam4wlx" path="res://assets/oak_woods_v1.0/decorations/rock_3.png" id="4_3vpms"]
 [ext_resource type="PackedScene" uid="uid://b2elgt5fb07il" path="res://scenes/UI_scenes/DarkenScreen.tscn" id="4_bj62c"]
+[ext_resource type="PackedScene" uid="uid://jgcldob3f86l" path="res://scenes/puddle/Puddle.tscn" id="6_sqwfj"]
+[ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_48hmm"]
 [ext_resource type="PackedScene" uid="uid://ebbl3kcaa3ih" path="res://scenes/boss/Boss.tscn" id="7_cdo05"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcbot"]
@@ -164,8 +166,8 @@ position = Vector2(352, 240)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Ground"]
-position = Vector2(8, 48)
-polygon = PackedVector2Array(-232, -16, 245, -16, 252, 24, -242, 24)
+position = Vector2(10, 61)
+polygon = PackedVector2Array(-286, -17, 310, -17, 325, 24, -306, 23)
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground/CollisionShape2D"]
 color = Color(0, 0.811765, 0.819608, 1)
@@ -175,6 +177,13 @@ tile_set = SubResource("TileSet_uwvww")
 cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(196610, 458752, 5, 196611, 655360, 5, 196615, 524288, 5, 196616, 589824, 5)
+
+[node name="MapObjects" type="Node" parent="."]
+
+[node name="Puddle" parent="MapObjects" instance=ExtResource("6_sqwfj")]
+
+[node name="BouncePad" parent="MapObjects" instance=ExtResource("7_48hmm")]
+position = Vector2(97, 252)
 
 [node name="Snowball" parent="." instance=ExtResource("2_lflwj")]
 position = Vector2(328, 248)

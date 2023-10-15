@@ -43,7 +43,7 @@ animations = [{
 a = Vector2(-4.76837e-07, -4.76837e-07)
 b = Vector2(0, 10.6667)
 
-[node name="BouncePad" type="Sprite2D"]
+[node name="BouncePad" type="Sprite2D" groups=["BouncePads"]]
 position = Vector2(112, 71)
 script = ExtResource("1_2i2uy")
 metadata/_edit_group_ = true

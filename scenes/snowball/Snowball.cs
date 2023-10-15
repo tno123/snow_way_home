@@ -429,7 +429,6 @@ public partial class Snowball : CharacterBody2D
 				var node = nodes[i];
 				if (node.HasSignal(signalName))
 				{
-					GD.Print("Subscribing to signal: " + signalName);
 					var callable = new Callable(this, callback);
 					node.Connect(signalName, callable);
 				}

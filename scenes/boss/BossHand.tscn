@@ -103,6 +103,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mp30o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r42lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp30o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r42lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp30o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r42lw")
 }],
 "loop": false,
 "name": &"smash_windup",
@@ -131,7 +146,5 @@ script = ExtResource("1_2uqce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6s4qv")
-animation = &"idle"
+animation = &"smash_windup"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.360218

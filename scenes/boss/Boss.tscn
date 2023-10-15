@@ -12,3 +12,7 @@ position = Vector2(64, 0)
 [node name="BossHand2" parent="." instance=ExtResource("2_44cb5")]
 position = Vector2(-64, 0)
 flipped = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

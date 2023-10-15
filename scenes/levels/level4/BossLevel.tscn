@@ -160,6 +160,10 @@ position = Vector2(-2.30771, -7.69231)
 scale = Vector2(5.01923, 5.28496)
 texture = ExtResource("4_3vpms")
 
+[node name="BattleArea" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(92, 106, 64, 279, 681, 281, 615, 95)
+
 [node name="Ground" type="StaticBody2D" parent="."]
 z_index = 1
 position = Vector2(352, 240)

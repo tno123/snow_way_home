@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://br4i63m5y1qmt"]
+[gd_scene load_steps=23 format=3 uid="uid://br4i63m5y1qmt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level3/MountainLevel.cs" id="1_cl8hv"]
 [ext_resource type="Texture2D" uid="uid://coahybowdl6xu" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_fncc3"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bqsgnsek1wfqi" path="res://scenes/enemies/SnowEater.tscn" id="11_wl22c"]
 [ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="12_lt1u3"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="13_54xhc"]
+[ext_resource type="PackedScene" uid="uid://cjtgywppgw4ut" path="res://scenes/checkpoint/Checkpoint.tscn" id="13_a756w"]
 
 [sub_resource type="Curve" id="Curve_65mtk"]
 min_value = -200.0
@@ -633,6 +634,12 @@ position = Vector2(2496, -1000)
 [node name="Powerup3" parent="Powerups" instance=ExtResource("9_341xx")]
 position = Vector2(4000, -1320)
 
+[node name="Powerup5" parent="Powerups" instance=ExtResource("9_341xx")]
+position = Vector2(4968, -1784)
+
+[node name="Powerup6" parent="Powerups" instance=ExtResource("9_341xx")]
+position = Vector2(5832, -2416)
+
 [node name="MapObjects" type="Node" parent="."]
 
 [node name="Avalanche" parent="MapObjects" instance=ExtResource("8_70glp")]
@@ -708,10 +715,19 @@ position = Vector2(496, 344)
 [node name="BossTransition" parent="MapObjects" instance=ExtResource("11_mmxsw")]
 position = Vector2(7120, -3000)
 
+[node name="Checkpoint" parent="MapObjects" instance=ExtResource("13_a756w")]
+position = Vector2(1968, -544)
+
+[node name="Checkpoint2" parent="MapObjects" instance=ExtResource("13_a756w")]
+position = Vector2(4240, -1336)
+
+[node name="Checkpoint3" parent="MapObjects" instance=ExtResource("13_a756w")]
+position = Vector2(5768, -2136)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6prki")
 format = 2
-layer_0/tile_data = PackedInt32Array(13, 458753, 5, 14, 655361, 5, -65525, 655361, 5, -65526, 589825, 5, -65527, 458753, 5, -131059, 458753, 5, -131058, 524289, 5, -131057, 655361, 5, -196591, 458753, 5, -196590, 655361, 5, -983002, 458753, 5, -983001, 655361, 5)
+layer_0/tile_data = PackedInt32Array(13, 458753, 5, 14, 655361, 5, -65525, 655361, 5, -65526, 589825, 5, -65527, 458753, 5, -131059, 458753, 5, -131058, 524289, 5, -131057, 655361, 5, -196591, 458753, 5, -196590, 655361, 5, -983002, 458753, 5, -983001, 655361, 5, -1769395, 589825, 5, -1769396, 524289, 5, -1769394, 655361, 5, -2228132, 655361, 5, -2228133, 458753, 5, -2359202, 589825, 5, -2359201, 655361, 5, -2359203, 458753, 5, -2293670, 655361, 5, -2293671, 458753, 5, -2424741, 524289, 5, -2424742, 458753, 5, -2490275, 458753, 5, -2490273, 589825, 5, -2490274, 524289, 5, -2490272, 655361, 5, -2555806, 655361, 5, -2555807, 458753, 5, -2621341, 524289, 5, -2621340, 589825, 5)
 
 [node name="Enemies" type="Node" parent="."]
 

@@ -99,6 +99,7 @@ public partial class Snowball : CharacterBody2D
 		SubscribeToSignals("Powerups", "Powerups", "PowerupCollected", "OnPowerup");
 		SubscribeToSignals("MapObjects", "Puddles", "PuddleEntered", "OnIced");
 		SubscribeToSignals("MapObjects", "BouncePads", "Bounce", "_on_bounce_pad_bounce");
+		SubscribeToSignals("MapObjects", "Checkpoints", "SetCheckpoint", "OnCheckpoint");
 
 		Snowbank = GetNodeOrNull<Snowbank>("Snowbank");
 
@@ -458,6 +459,11 @@ public partial class Snowball : CharacterBody2D
 			sprite.Play("breaking");
 			GetNode<Timer>("InvulnerabilityTimer").Start();
 		}
+	}
+
+	private void OnCheckpoint()
+	{
+		Checkpoint = Position;
 	}
 
 	private void _on_bounce_pad_bounce()

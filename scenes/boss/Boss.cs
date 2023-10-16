@@ -3,223 +3,223 @@ using System;
 
 public partial class Boss : Node2D
 {
-	public float damping = 0.1f;
-	public float maxVelocity = 300.0f;
+    public float damping = 0.1f;
+    public float maxVelocity = 300.0f;
 
-	[Signal]
-	public delegate void SmashHitEventHandler();
-	private bool actionStarted = false;
-	private Vector2 attackTargetPosition;
-	private BossHand currentHand;
-	private Snowball snowball;
-	private BossHand leftHand;
-	private BossHand rightHand;
-	private Timer attackTimer;
-	private Timer waitTimer;
-	private Polygon2D bounds;
+    [Signal]
+    public delegate void SmashHitEventHandler();
+    private bool actionStarted = false;
+    private Vector2 attackTargetPosition;
+    private BossHand currentHand;
+    private Snowball snowball;
+    private BossHand leftHand;
+    private BossHand rightHand;
+    private Timer attackTimer;
+    private Timer waitTimer;
+    private Polygon2D bounds;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		snowball = GetParent().GetNode<Snowball>("Snowball");
-		leftHand = GetNode<BossHand>("BossHand2");
-		rightHand = GetNode<BossHand>("BossHand");
-		attackTimer = GetNode<Timer>("AttackTimer");
-		waitTimer = GetNode<Timer>("WaitTimer");
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        snowball = GetParent().GetNode<Snowball>("Snowball");
+        leftHand = GetNode<BossHand>("BossHand2");
+        rightHand = GetNode<BossHand>("BossHand");
+        attackTimer = GetNode<Timer>("AttackTimer");
+        waitTimer = GetNode<Timer>("WaitTimer");
 
-		//Set the initial position of the hands
-		leftHand.GlobalPosition = new Vector2(snowball.Position.X - 100, snowball.Position.Y - 100);
-		rightHand.GlobalPosition = new Vector2(
-			snowball.Position.X + 100,
-			snowball.Position.Y - 100
-		);
+        //Set the initial position of the hands
+        leftHand.GlobalPosition = new Vector2(snowball.Position.X - 100, snowball.Position.Y - 100);
+        rightHand.GlobalPosition = new Vector2(
+            snowball.Position.X + 100,
+            snowball.Position.Y - 100
+        );
 
-		//Define the bounds of the boss
-		bounds = GetParent().GetNode<Polygon2D>("BattleArea");
+        //Define the bounds of the boss
+        bounds = GetParent().GetNode<Polygon2D>("BattleArea");
 
-		//Start the attack timer
-		attackTimer.Start();
-	}
+        //Start the attack timer
+        attackTimer.Start();
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		if (!Geometry2D.IsPointInPolygon(snowball.Position, bounds.Polygon))
-		{
-			//If snowball is outside the bounds, stop the hands from moving
-			leftHand.Velocity = Vector2.Zero;
-			rightHand.Velocity = Vector2.Zero;
-			return;
-		}
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+        if (!Geometry2D.IsPointInPolygon(snowball.Position, bounds.Polygon))
+        {
+            //If snowball is outside the bounds, stop the hands from moving
+            leftHand.Velocity = Vector2.Zero;
+            rightHand.Velocity = Vector2.Zero;
+            return;
+        }
 
-		//If timer is finished, select a random attack
-		if (attackTimer.TimeLeft <= 0 && rightHand.State == "idle" && leftHand.State == "idle")
-		{
-			Random random = new Random();
-			int attack = random.Next(0, 2);
-			attack = 1;
-			if (attack == 0)
-			{
-				rightHand.State = "smash_windup";
-				rightHand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("smash_windup");
-			}
-			else if (attack == 1)
-			{
-				leftHand.State = "fire_windup";
-				leftHand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fire_windup");
-			}
-		}
+        //If timer is finished, select a random attack
+        if (attackTimer.TimeLeft <= 0 && rightHand.State == "idle" && leftHand.State == "idle")
+        {
+            Random random = new Random();
+            int attack = random.Next(0, 2);
+            attack = 1;
+            if (attack == 0)
+            {
+                rightHand.State = "smash_windup";
+                rightHand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("smash_windup");
+            }
+            else if (attack == 1)
+            {
+                leftHand.State = "fire_windup";
+                leftHand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fire_windup");
+            }
+        }
 
-		UpdateHands((float)delta);
-	}
+        UpdateHands((float)delta);
+    }
 
-	// Update the position of the hands to follow the snowball and move in a small circle
-	private void UpdateHands(float delta)
-	{
-		//target for hands
-		Vector2 lTarget = targetForHand(leftHand, leftHand.State);
-		Vector2 rTarget = targetForHand(rightHand, rightHand.State);
+    // Update the position of the hands to follow the snowball and move in a small circle
+    private void UpdateHands(float delta)
+    {
+        //target for hands
+        Vector2 lTarget = targetForHand(leftHand, leftHand.State);
+        Vector2 rTarget = targetForHand(rightHand, rightHand.State);
 
-		UpdateHand(leftHand, lTarget, delta, leftHand.State);
-		UpdateHand(rightHand, rTarget, delta, rightHand.State);
-	}
+        UpdateHand(leftHand, lTarget, delta, leftHand.State);
+        UpdateHand(rightHand, rTarget, delta, rightHand.State);
+    }
 
-	// Update the position of a hand to follow its target and move in a small circle
-	private void UpdateHand(BossHand hand, Vector2 target, float delta, string state)
-	{
-		if (state == "idle")
-		{
-			// Apply drag to the hand's velocity
-			hand.Velocity = hand.Velocity.Lerp(
-				(target - hand.GlobalPosition) / (delta * 10),
-				damping
-			);
+    // Update the position of a hand to follow its target and move in a small circle
+    private void UpdateHand(BossHand hand, Vector2 target, float delta, string state)
+    {
+        if (state == "idle")
+        {
+            // Apply drag to the hand's velocity
+            hand.Velocity = hand.Velocity.Lerp(
+                (target - hand.GlobalPosition) / (delta * 10),
+                damping
+            );
 
-			// Clamp the velocity of the hand to the maximum value
-			if (hand.Velocity.Length() > maxVelocity)
-			{
-				hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
-			}
+            // Clamp the velocity of the hand to the maximum value
+            if (hand.Velocity.Length() > maxVelocity)
+            {
+                hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
+            }
 
-			// Update the position of the hand based on its velocity
-			hand.GlobalPosition += hand.Velocity * delta;
+            // Update the position of the hand based on its velocity
+            hand.GlobalPosition += hand.Velocity * delta;
 
-			// Make the hand move in a small circle
-			hand.Position += new Vector2(
-				Mathf.Cos(Time.GetTicksMsec() / 500.0f) * 5,
-				Mathf.Sin(Time.GetTicksMsec() / 500.0f) * 5
-			);
-		}
-		else if (state == "smash_windup")
-		{
-			// Apply drag to the hand's velocity
-			hand.Velocity = hand.Velocity.Lerp(
-				(target - hand.GlobalPosition) / (delta * 50),
-				damping
-			);
+            // Make the hand move in a small circle
+            hand.Position += new Vector2(
+                Mathf.Cos(Time.GetTicksMsec() / 500.0f) * 5,
+                Mathf.Sin(Time.GetTicksMsec() / 500.0f) * 5
+            );
+        }
+        else if (state == "smash_windup")
+        {
+            // Apply drag to the hand's velocity
+            hand.Velocity = hand.Velocity.Lerp(
+                (target - hand.GlobalPosition) / (delta * 50),
+                damping
+            );
 
-			// Clamp the velocity of the hand to the maximum value
-			if (hand.Velocity.Length() > maxVelocity)
-			{
-				hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
-			}
+            // Clamp the velocity of the hand to the maximum value
+            if (hand.Velocity.Length() > maxVelocity)
+            {
+                hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
+            }
 
-			// Update the position of the hand based on its velocity
-			hand.GlobalPosition += hand.Velocity * delta;
+            // Update the position of the hand based on its velocity
+            hand.GlobalPosition += hand.Velocity * delta;
 
-			// if the hand is close enough to the target, start the smash attack
-			if (hand.GlobalPosition.DistanceTo(target) < 10)
-			{
-				hand.Velocity = Vector2.Zero;
-				hand.GlobalPosition = target;
-				rightHand.State = "smash";
-			}
-		}
-		else if (state == "smash")
-		{
-			// Move the hand straight down
-			hand.Position += new Vector2(0, 10);
-			if (hand.hit)
-			{
-				hand.hit = false;
-				rightHand.State = "smash_hit";
-				waitTimer.Start();
+            // if the hand is close enough to the target, start the smash attack
+            if (hand.GlobalPosition.DistanceTo(target) < 10)
+            {
+                hand.Velocity = Vector2.Zero;
+                hand.GlobalPosition = target;
+                rightHand.State = "smash";
+            }
+        }
+        else if (state == "smash")
+        {
+            // Move the hand straight down
+            hand.Position += new Vector2(0, 10);
+            if (hand.hit)
+            {
+                hand.hit = false;
+                rightHand.State = "smash_hit";
+                waitTimer.Start();
 
-				//send signal to camera to shake
-				EmitSignal(SignalName.SmashHit);
-			}
-		}
-		else if (state == "smash_hit")
-		{
-			//stay in position for a small amount of time
-			if (!waitTimer.IsStopped())
-			{
-				hand.Velocity = Vector2.Zero;
-			}
-			else
-			{
-				rightHand.State = "idle";
-				hand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
-				attackTimer.Start();
-			}
-		}
-		else if (state == "fire_windup")
-		{
-			// Apply drag to the hand's velocity
-			hand.Velocity = hand.Velocity.Lerp(
-				(target - hand.GlobalPosition) / (delta * 10),
-				damping
-			);
+                //send signal to camera to shake
+                EmitSignal(SignalName.SmashHit);
+            }
+        }
+        else if (state == "smash_hit")
+        {
+            //stay in position for a small amount of time
+            if (!waitTimer.IsStopped())
+            {
+                hand.Velocity = Vector2.Zero;
+            }
+            else
+            {
+                rightHand.State = "idle";
+                hand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
+                attackTimer.Start();
+            }
+        }
+        else if (state == "fire_windup")
+        {
+            // Apply drag to the hand's velocity
+            hand.Velocity = hand.Velocity.Lerp(
+                (target - hand.GlobalPosition) / (delta * 10),
+                damping
+            );
 
-			// Clamp the velocity of the hand to the maximum value
-			if (hand.Velocity.Length() > maxVelocity)
-			{
-				hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
-			}
+            // Clamp the velocity of the hand to the maximum value
+            if (hand.Velocity.Length() > maxVelocity)
+            {
+                hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
+            }
 
-			// Update the position of the hand based on its velocity
-			hand.GlobalPosition += hand.Velocity * delta;
+            // Update the position of the hand based on its velocity
+            hand.GlobalPosition += hand.Velocity * delta;
 
-			// Make the hand move in a small circle
-			hand.Position += new Vector2(
-				Mathf.Cos(Time.GetTicksMsec() / 500.0f) * 3,
-				Mathf.Sin(Time.GetTicksMsec() / 500.0f) * 3
-			);
-		}
-		else if (state == "fire")
-		{
-			return;
-		}
-	}
+            // Make the hand move up and down slightly
+            hand.Position += new Vector2(
+                Vector2.Zero.X,
+                Mathf.Sin(Time.GetTicksMsec() / 500.0f) * 3
+            );
+        }
+        else if (state == "fire")
+        {
+            return;
+        }
+    }
 
-	private Vector2 targetForHand(BossHand hand, string state)
-	{
-		if (state == "idle")
-		{
-			if (hand == leftHand)
-			{
-				return new Vector2(snowball.Position.X - 100, snowball.Position.Y - 100);
-			}
-			else if (hand == rightHand)
-			{
-				return new Vector2(snowball.Position.X + 100, snowball.Position.Y - 100);
-			}
-		}
-		else if (state == "smash_windup")
-		{
-			if (!actionStarted)
-			{
-				attackTargetPosition = new Vector2(snowball.Position.X, snowball.Position.Y - 200);
-				actionStarted = true;
-				return attackTargetPosition;
-			}
-			else
-				return attackTargetPosition;
-		}
-		else if (state == "fire_windup")
-		{
-			return new Vector2(snowball.Position.X - 200, snowball.Position.Y);
-		}
-		return Vector2.Zero;
-	}
+    private Vector2 targetForHand(BossHand hand, string state)
+    {
+        if (state == "idle")
+        {
+            if (hand == leftHand)
+            {
+                return new Vector2(snowball.Position.X - 100, snowball.Position.Y - 100);
+            }
+            else if (hand == rightHand)
+            {
+                return new Vector2(snowball.Position.X + 100, snowball.Position.Y - 100);
+            }
+        }
+        else if (state == "smash_windup")
+        {
+            if (!actionStarted)
+            {
+                attackTargetPosition = new Vector2(snowball.Position.X, snowball.Position.Y - 200);
+                actionStarted = true;
+                return attackTargetPosition;
+            }
+            else
+                return attackTargetPosition;
+        }
+        else if (state == "fire_windup")
+        {
+            return new Vector2(snowball.Position.X - 200, snowball.Position.Y);
+        }
+        return Vector2.Zero;
+    }
 }

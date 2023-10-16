@@ -1,5 +1,5 @@
 # Boss Level
-- Powerups (respawning) (Frederik)
+- Powerups (respawning) (Frederik) DONE
 - Boss attacks (Most of the work) (Tor-Arne)
   - Different attacks
 - Bounce pads for damage on Boss (Tor-Arne)

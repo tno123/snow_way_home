@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://csr3byn2tuva0"]
+
+[ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="1_nddnm"]
+[ext_resource type="Script" path="res://scenes/powerup/RespawnPowerup.cs" id="2_8lung"]
+
+[node name="Powerup" instance=ExtResource("1_nddnm")]
+script = ExtResource("2_8lung")
+
+[node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

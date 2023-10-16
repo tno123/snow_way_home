@@ -8,6 +8,9 @@ public partial class Boss : Node2D
 
 	[Export]
 	public PackedScene Bullet;
+
+	[Export]
+	public float Health = 10.0f;
 	public float damping = 0.1f;
 	public float maxVelocity = 300.0f;
 	private bool actionStarted = false;
@@ -60,7 +63,6 @@ public partial class Boss : Node2D
 		{
 			Random random = new Random();
 			int attack = random.Next(0, 2);
-			attack = 1;
 			if (attack == 0)
 			{
 				rightHand.State = "smash_windup";

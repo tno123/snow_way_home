@@ -13,7 +13,7 @@
   - Spits out snowball family
   - Jumps away
  
-# Mountain Level
+# Mountain Level (DONE)
 - Finish up
 
 # UI/UX (bare bones) (Frederik)

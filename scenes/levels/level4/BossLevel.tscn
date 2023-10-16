@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbrjivs3fuxlf"]
+[gd_scene load_steps=15 format=3 uid="uid://cbrjivs3fuxlf"]
 
 [ext_resource type="Script" path="res://scenes/levels/level4/BossLevel.cs" id="1_yccq0"]
 [ext_resource type="Texture2D" uid="uid://b7m254naui885" path="res://assets/oak_woods_v1.0/decorations/rock_1.png" id="2_42m38"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jgcldob3f86l" path="res://scenes/puddle/Puddle.tscn" id="6_sqwfj"]
 [ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_48hmm"]
 [ext_resource type="PackedScene" uid="uid://ebbl3kcaa3ih" path="res://scenes/boss/Boss.tscn" id="7_cdo05"]
+[ext_resource type="PackedScene" uid="uid://ct6xe2miasoqd" path="res://scenes/boss/BossBullet.tscn" id="10_tg87v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcbot"]
 texture = ExtResource("2_mhhrn")
@@ -165,7 +166,6 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(92, 106, 64, 279, 681, 281, 615, 95)
 
 [node name="Ground" type="StaticBody2D" parent="."]
-z_index = 1
 position = Vector2(352, 240)
 collision_layer = 2
 
@@ -202,6 +202,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Boss" parent="." instance=ExtResource("7_cdo05")]
 position = Vector2(321, 240)
+Bullet = ExtResource("10_tg87v")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

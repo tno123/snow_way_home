@@ -5,6 +5,10 @@ public partial class BossHand : Node2D
 {
 	[Export]
 	public bool flipped = false;
+
+	[Signal]
+	public delegate void BossDamageEventHandler();
+	public string State = "idle";
 	public Vector2 Velocity = Vector2.Zero;
 	public bool hit = false;
 
@@ -27,6 +31,13 @@ public partial class BossHand : Node2D
 	{
 		if (body is Snowball)
 		{
+			//If snowball enters from above, damage boss
+			if (body.Position.Y < GlobalPosition.Y)
+			{
+				EmitSignal(SignalName.BossDamage);
+			}
+
+			//Else damage snowball
 			hit = true;
 			((Snowball)body).Damage(1);
 		}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://00ae8gsru8jo"]
+[gd_scene load_steps=29 format=3 uid="uid://00ae8gsru8jo"]
 
 [ext_resource type="Script" path="res://scenes/levels/townLevel/TownLevel.cs" id="1_ryx16"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="2_g4so2"]
@@ -23,7 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://cgluklbgi0scq" path="res://scenes/levels/townLevel/WellTransition.tscn" id="23_087am"]
 [ext_resource type="PackedScene" path="res://scenes/bonfire/PermanentBonfire.tscn" id="24_a5cv7"]
 [ext_resource type="PackedScene" path="res://scenes/BonfireRun.tscn" id="24_lqcsm"]
-[ext_resource type="PackedScene" uid="uid://d20sb8r6n6hsr" path="res://scenes/SpawnEnemy.tscn" id="25_wtx6o"]
+[ext_resource type="AudioStream" uid="uid://1modeyyjy24c" path="res://assets/Music/creepy-devil-dance-166764.mp3" id="25_uwe6u"]
+[ext_resource type="PackedScene" path="res://scenes/SpawnEnemy.tscn" id="25_wtx6o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3i28"]
 
@@ -867,3 +868,7 @@ position = Vector2(2391, 1179)
 [node name="SpawnEnemy3" parent="." instance=ExtResource("25_wtx6o")]
 position = Vector2(634, 1980)
 spawnFromLeft = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_uwe6u")
+autoplay = true

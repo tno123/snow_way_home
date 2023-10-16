@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bfovgbicmuwg4"]
+[gd_scene load_steps=36 format=3 uid="uid://bfovgbicmuwg4"]
 
 [ext_resource type="Texture2D" uid="uid://c4pwnmx6jm3oo" path="res://assets/oak_woods_v1.0/background/background_layer_1.png" id="1_25esc"]
 [ext_resource type="Texture2D" uid="uid://dm0joiqd70s6l" path="res://assets/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains_desat.png" id="1_l4fhy"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://byrwr0ao16lvb" path="res://scenes/levels/level2/EndTransition.tscn" id="16_w4qy7"]
 [ext_resource type="PackedScene" uid="uid://mc5ufaqxse2x" path="res://scenes/lava_pit/LavaPit.tscn" id="17_myfx3"]
 [ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="20_j1fd3"]
+[ext_resource type="AudioStream" uid="uid://50unyq3vwpmj" path="res://assets/Music/8-bit-halloween-story-166454.mp3" id="22_v1f2o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wt1dw"]
 shader = ExtResource("2_1o0pk")
@@ -1553,6 +1554,10 @@ position = Vector2(1123, -21)
 
 [node name="Powerup2" parent="Powerups" instance=ExtResource("20_j1fd3")]
 position = Vector2(2497, 167)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_v1f2o")
+autoplay = true
 
 [connection signal="body_entered" from="StartObjects/IceDestroyArea" to="Snowball/StartIceDestroy" method="_on_ice_destroy_area_body_entered"]
 [connection signal="body_entered" from="StartObjects/SlowGravityArea" to="Snowball/StartSlowGravity" method="_on_slow_gravity_area_body_entered"]

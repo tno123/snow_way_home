@@ -29,12 +29,15 @@ public partial class BossHand : Node2D
 
 	private void _on_area_2d_body_entered(Node2D body)
 	{
-		if (body is Snowball)
+		if (body is Snowball && (State != "smash" || State != "smash_hit"))
 		{
 			//If snowball enters from above, damage boss
-			if (body.Position.Y < GlobalPosition.Y)
+			if (body.GlobalPosition.Y < GlobalPosition.Y)
 			{
 				EmitSignal(SignalName.BossDamage);
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("take_damage");
+				State = "take_damage";
+				return;
 			}
 
 			//Else damage snowball

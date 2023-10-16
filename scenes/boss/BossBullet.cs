@@ -1,0 +1,27 @@
+using Godot;
+using System;
+
+public partial class BossBullet : Node2D
+{
+	public bool Right = true;
+	public float Speed = 200.0f;
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		if (Right)
+		{
+			Position += new Vector2((float)delta * Speed, 0);
+		}
+		else
+		{
+			Position -= new Vector2((float)delta * Speed, 0);
+		}
+	}
+}

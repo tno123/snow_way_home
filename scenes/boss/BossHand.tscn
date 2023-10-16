@@ -73,6 +73,11 @@ region = Rect2(201, 276, 62, 69)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6s4qv"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kyxc3")
@@ -171,10 +176,8 @@ script = ExtResource("1_2uqce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6s4qv")
-animation = &"fire_windup"
+animation = &"fire"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3

@@ -5,8 +5,9 @@ public partial class Boss : Node2D
 {
 	public float damping = 0.1f;
 	public float maxVelocity = 300.0f;
-	private string rState = "idle";
-	private string lState = "idle";
+
+	[Signal]
+	public delegate void SmashHitEventHandler();
 	private bool actionStarted = false;
 	private Vector2 attackTargetPosition;
 	private BossHand currentHand;
@@ -14,6 +15,7 @@ public partial class Boss : Node2D
 	private BossHand leftHand;
 	private BossHand rightHand;
 	private Timer attackTimer;
+	private Timer waitTimer;
 	private Polygon2D bounds;
 
 	// Called when the node enters the scene tree for the first time.
@@ -23,6 +25,7 @@ public partial class Boss : Node2D
 		leftHand = GetNode<BossHand>("BossHand2");
 		rightHand = GetNode<BossHand>("BossHand");
 		attackTimer = GetNode<Timer>("AttackTimer");
+		waitTimer = GetNode<Timer>("WaitTimer");
 
 		//Set the initial position of the hands
 		leftHand.GlobalPosition = new Vector2(snowball.Position.X - 100, snowball.Position.Y - 100);
@@ -50,19 +53,20 @@ public partial class Boss : Node2D
 		}
 
 		//If timer is finished, select a random attack
-		if (attackTimer.TimeLeft <= 0 && rState == "idle" && lState == "idle")
+		if (attackTimer.TimeLeft <= 0 && rightHand.State == "idle" && leftHand.State == "idle")
 		{
 			Random random = new Random();
 			int attack = random.Next(0, 2);
-			attack = 0;
+			attack = 1;
 			if (attack == 0)
 			{
-				rState = "smash_windup";
+				rightHand.State = "smash_windup";
 				rightHand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("smash_windup");
 			}
 			else if (attack == 1)
 			{
-				lState = "fire_windup";
+				leftHand.State = "fire_windup";
+				leftHand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fire_windup");
 			}
 		}
 
@@ -73,11 +77,11 @@ public partial class Boss : Node2D
 	private void UpdateHands(float delta)
 	{
 		//target for hands
-		Vector2 lTarget = targetForHand(leftHand, lState);
-		Vector2 rTarget = targetForHand(rightHand, rState);
+		Vector2 lTarget = targetForHand(leftHand, leftHand.State);
+		Vector2 rTarget = targetForHand(rightHand, rightHand.State);
 
-		UpdateHand(leftHand, lTarget, delta, lState);
-		UpdateHand(rightHand, rTarget, delta, rState);
+		UpdateHand(leftHand, lTarget, delta, leftHand.State);
+		UpdateHand(rightHand, rTarget, delta, rightHand.State);
 	}
 
 	// Update the position of a hand to follow its target and move in a small circle
@@ -128,7 +132,7 @@ public partial class Boss : Node2D
 			{
 				hand.Velocity = Vector2.Zero;
 				hand.GlobalPosition = target;
-				rState = "smash";
+				rightHand.State = "smash";
 			}
 		}
 		else if (state == "smash")
@@ -138,10 +142,53 @@ public partial class Boss : Node2D
 			if (hand.hit)
 			{
 				hand.hit = false;
-				rState = "idle";
+				rightHand.State = "smash_hit";
+				waitTimer.Start();
+
+				//send signal to camera to shake
+				EmitSignal(SignalName.SmashHit);
+			}
+		}
+		else if (state == "smash_hit")
+		{
+			//stay in position for a small amount of time
+			if (!waitTimer.IsStopped())
+			{
+				hand.Velocity = Vector2.Zero;
+			}
+			else
+			{
+				rightHand.State = "idle";
 				hand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
 				attackTimer.Start();
 			}
+		}
+		else if (state == "fire_windup")
+		{
+			// Apply drag to the hand's velocity
+			hand.Velocity = hand.Velocity.Lerp(
+				(target - hand.GlobalPosition) / (delta * 10),
+				damping
+			);
+
+			// Clamp the velocity of the hand to the maximum value
+			if (hand.Velocity.Length() > maxVelocity)
+			{
+				hand.Velocity = hand.Velocity.Normalized() * maxVelocity;
+			}
+
+			// Update the position of the hand based on its velocity
+			hand.GlobalPosition += hand.Velocity * delta;
+
+			// Make the hand move in a small circle
+			hand.Position += new Vector2(
+				Mathf.Cos(Time.GetTicksMsec() / 500.0f) * 3,
+				Mathf.Sin(Time.GetTicksMsec() / 500.0f) * 3
+			);
+		}
+		else if (state == "fire")
+		{
+			return;
 		}
 	}
 
@@ -168,6 +215,10 @@ public partial class Boss : Node2D
 			}
 			else
 				return attackTargetPosition;
+		}
+		else if (state == "fire_windup")
+		{
+			return new Vector2(snowball.Position.X - 200, snowball.Position.Y);
 		}
 		return Vector2.Zero;
 	}

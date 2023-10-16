@@ -165,7 +165,6 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(92, 106, 64, 279, 681, 281, 615, 95)
 
 [node name="Ground" type="StaticBody2D" parent="."]
-z_index = 1
 position = Vector2(352, 240)
 collision_layer = 2
 

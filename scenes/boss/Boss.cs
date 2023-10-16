@@ -286,12 +286,12 @@ public partial class Boss : Node2D
 		if (hand == leftHand)
 		{
 			bullet.Right = true;
-			bullet.GlobalPosition = hand.GlobalPosition + new Vector2(0, 20);
+			bullet.GlobalPosition = hand.GlobalPosition + new Vector2(10, 0);
 		}
 		else
 		{
 			bullet.Right = false;
-			bullet.GlobalPosition = hand.GlobalPosition + new Vector2(0, -20);
+			bullet.GlobalPosition = hand.GlobalPosition + new Vector2(-10, 0);
 		}
 	}
 

@@ -26,7 +26,6 @@ public partial class Boss : Node2D
 		snowball = GetParent().GetNode<Snowball>("Snowball");
 		leftHand = GetNode<BossHand>("BossHand2");
 		rightHand = GetNode<BossHand>("BossHand");
-		Bullet = GD.Load<PackedScene>("res://scenes/boss/BossBullet.tscn");
 		attackTimer = GetNode<Timer>("AttackTimer");
 		//waitTimer used for smash and fire attacks
 		waitTimer = GetNode<Timer>("WaitTimer");
@@ -201,7 +200,7 @@ public partial class Boss : Node2D
 		else if (state == "fire")
 		{
 			attackTimer.Start();
-			hand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fire");
+			hand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
 			Fire(hand);
 			leftHand.State = "idle";
 			hand.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
@@ -235,7 +234,7 @@ public partial class Boss : Node2D
 		}
 		else if (state == "fire_windup")
 		{
-			return new Vector2(snowball.Position.X - 200, snowball.Position.Y);
+			return new Vector2(snowball.Position.X - 200, snowball.Position.Y - 20);
 		}
 		return Vector2.Zero;
 	}
@@ -244,15 +243,16 @@ public partial class Boss : Node2D
 	{
 		//fire a projectile
 		var bullet = (BossBullet)Bullet.Instantiate();
+		AddChild(bullet);
 		if (hand == leftHand)
 		{
 			bullet.Right = true;
-			bullet.Position = hand.GlobalPosition + new Vector2(0, 20);
+			bullet.GlobalPosition = hand.GlobalPosition + new Vector2(0, 20);
 		}
 		else
 		{
 			bullet.Right = false;
-			bullet.Position = hand.GlobalPosition + new Vector2(0, -20);
+			bullet.GlobalPosition = hand.GlobalPosition + new Vector2(0, -20);
 		}
 	}
 }

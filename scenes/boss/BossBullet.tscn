@@ -40,8 +40,9 @@ script = ExtResource("1_cut4a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4wy0t")
-frame = 2
-frame_progress = 0.262941
+autoplay = "default"
+frame = 1
+frame_progress = 0.92147
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -51,3 +52,5 @@ shape = SubResource("RectangleShape2D_mhksx")
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

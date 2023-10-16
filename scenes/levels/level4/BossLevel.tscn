@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbrjivs3fuxlf"]
+[gd_scene load_steps=16 format=3 uid="uid://cbrjivs3fuxlf"]
 
 [ext_resource type="Script" path="res://scenes/levels/level4/BossLevel.cs" id="1_yccq0"]
 [ext_resource type="Texture2D" uid="uid://b7m254naui885" path="res://assets/oak_woods_v1.0/decorations/rock_1.png" id="2_42m38"]
@@ -12,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_48hmm"]
 [ext_resource type="PackedScene" uid="uid://ebbl3kcaa3ih" path="res://scenes/boss/Boss.tscn" id="7_cdo05"]
 [ext_resource type="PackedScene" uid="uid://ct6xe2miasoqd" path="res://scenes/boss/BossBullet.tscn" id="10_tg87v"]
-[ext_resource type="PackedScene" uid="uid://cmty4q2b5q4b0" path="res://scenes/powerup/Powerup.tscn" id="13_7ypvj"]
-[ext_resource type="PackedScene" uid="uid://bhdkvdafr8t8d" path="res://scenes/powerup/RespawnPowerup.tscn" id="14_nyplt"]
+[ext_resource type="PackedScene" uid="uid://csr3byn2tuva0" path="res://scenes/powerup/RespawnPowerup.tscn" id="14_nyplt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcbot"]
 texture = ExtResource("2_mhhrn")
@@ -191,12 +190,6 @@ layer_0/tile_data = PackedInt32Array(196610, 458752, 5, 196611, 655360, 5, 19661
 [node name="BouncePad" parent="MapObjects" instance=ExtResource("7_48hmm")]
 position = Vector2(97, 252)
 
-[node name="Powerup" parent="MapObjects" instance=ExtResource("14_nyplt")]
-position = Vector2(509, 168)
-
-[node name="Powerup2" parent="MapObjects" instance=ExtResource("14_nyplt")]
-position = Vector2(192, 168)
-
 [node name="Snowball" parent="." instance=ExtResource("2_lflwj")]
 position = Vector2(328, 248)
 scale = Vector2(0.5, 0.5)
@@ -229,8 +222,10 @@ offset_top = 240.0
 offset_right = 352.0
 offset_bottom = 240.0
 
-[node name="Powerup" parent="." instance=ExtResource("13_7ypvj")]
-position = Vector2(297, 260)
+[node name="Powerups" type="Node" parent="."]
 
-[node name="Powerup2" parent="." instance=ExtResource("13_7ypvj")]
-position = Vector2(406, 266)
+[node name="Powerup" parent="Powerups" instance=ExtResource("14_nyplt")]
+position = Vector2(509, 168)
+
+[node name="Powerup2" parent="Powerups" instance=ExtResource("14_nyplt")]
+position = Vector2(192, 168)

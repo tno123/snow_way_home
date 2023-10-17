@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bikucff26lt5j"]
+[gd_scene load_steps=23 format=3 uid="uid://bikucff26lt5j"]
 
 [ext_resource type="Script" path="res://scenes/boss/BossHand.cs" id="1_2uqce"]
 [ext_resource type="Texture2D" uid="uid://6q2kd2aa76po" path="res://assets/testhands.png" id="1_qp22w"]
+[ext_resource type="AudioStream" uid="uid://b8alfcy56il3e" path="res://assets/SFX/BossHurt.wav" id="3_bgmht"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyxc3"]
 atlas = ExtResource("1_qp22w")
@@ -185,5 +186,9 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, -3)
 shape = SubResource("RectangleShape2D_jl8ry")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bgmht")
+volume_db = -7.495
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

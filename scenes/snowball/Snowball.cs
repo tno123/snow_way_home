@@ -36,6 +36,8 @@ public partial class Snowball : CharacterBody2D
 	public bool CurrentIce = false;
 	public Vector2 Checkpoint = Vector2.Zero;
 	public Snowbank Snowbank;
+	public AudioStreamPlayer JumpSound;
+	public AudioStreamPlayer HurtSound;
 
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
@@ -84,6 +86,9 @@ public partial class Snowball : CharacterBody2D
 
 		JumpAnim = GetNode<AnimatedSprite2D>("JumpAnim");
 		JumpLandAnim = GetNode<AnimatedSprite2D>("JumpLandAnim");
+
+		JumpSound = GetNode<AudioStreamPlayer>("JumpSound");
+		HurtSound = GetNode<AudioStreamPlayer>("HurtSound");
 
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
@@ -220,6 +225,7 @@ public partial class Snowball : CharacterBody2D
 			velocity.Y = JumpVelocity;
 			CoyoteJumpTimer.Stop();
 			NextJumpTimer.Start();
+			JumpSound.Play();
 		}
 
 		if (
@@ -234,6 +240,7 @@ public partial class Snowball : CharacterBody2D
 			velocity.Y = JumpVelocity;
 			EmitSignal(SignalName.Powerup, -1);
 			Power--;
+			JumpSound.Play();
 		}
 		if (PreviousVelocity.Y > 400 && IsOnFloor())
 		{
@@ -373,11 +380,13 @@ public partial class Snowball : CharacterBody2D
 				Death();
 			DamageBoostTimer.Start();
 			BlinkTimer.Start();
+			HurtSound.Play();
 		}
 		if (CurrentIce)
 		{
 			CurrentIce = false;
 			OnIced(false);
+			HurtSound.Play();
 		}
 	}
 

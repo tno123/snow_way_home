@@ -11,10 +11,12 @@ public partial class BossHand : Node2D
 	public string State = "idle";
 	public Vector2 Velocity = Vector2.Zero;
 	public bool hit = false;
+	public AudioStreamPlayer HitSound;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		HitSound = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		if (flipped)
 		{
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
@@ -37,6 +39,7 @@ public partial class BossHand : Node2D
 				EmitSignal(SignalName.BossDamage);
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("take_damage");
 				State = "take_damage";
+				HitSound.Play();
 				return;
 			}
 

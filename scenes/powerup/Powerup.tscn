@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmty4q2b5q4b0"]
+[gd_scene load_steps=11 format=3 uid="uid://cmty4q2b5q4b0"]
 
 [ext_resource type="Texture2D" uid="uid://08tdletvr0jm" path="res://assets/Rocky Roads/Objects/gem.png" id="1_5026r"]
 [ext_resource type="Script" path="res://scenes/powerup/Powerup.cs" id="1_m1bpc"]
+[ext_resource type="AudioStream" uid="uid://dqd8oq8nb24h0" path="res://assets/SFX/PickupCoin.wav" id="3_1puk1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwoa8"]
 atlas = ExtResource("1_5026r")
@@ -63,5 +64,9 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_1ff2i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1puk1")
+volume_db = -4.685
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

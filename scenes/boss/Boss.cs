@@ -22,10 +22,14 @@ public partial class Boss : Node2D
 	private Timer attackTimer;
 	private Timer waitTimer;
 	private Polygon2D bounds;
+	private ProgressBar bossHealthProgressBar;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		bossHealthProgressBar = GetParent()
+			.GetNode<Camera2D>("Camera2D")
+			.GetNode<ProgressBar>("BossHealth");
 		snowball = GetParent().GetNode<Snowball>("Snowball");
 		leftHand = GetNode<BossHand>("BossHand2");
 		rightHand = GetNode<BossHand>("BossHand");
@@ -298,6 +302,7 @@ public partial class Boss : Node2D
 	void OnBossDamage()
 	{
 		Health -= 1;
+		bossHealthProgressBar.Value -= bossHealthProgressBar.Step;
 		waitTimer.WaitTime = 1.0f;
 		waitTimer.Start();
 		if (Health <= 0)

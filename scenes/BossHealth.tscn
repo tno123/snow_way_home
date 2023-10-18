@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpf6ood7wmex4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgx5a"]
+bg_color = Color(1, 1, 1, 0.054902)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maiof"]
+bg_color = Color(0.941176, 0.360784, 0.6, 1)
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="BossHealth" type="ProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.5
+offset_top = -14.0
+offset_right = 320.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_kgx5a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_maiof")
+step = 10.0
+value = 100.0
+show_percentage = false

@@ -28,7 +28,7 @@ public partial class Boss : Node2D
 	public override void _Ready()
 	{
 		bossHealthProgressBar = GetParent()
-			.GetNode<Camera2D>("Camera2D")
+			.GetNode<CanvasLayer>("UI")
 			.GetNode<ProgressBar>("BossHealth");
 		snowball = GetParent().GetNode<Snowball>("Snowball");
 		leftHand = GetNode<BossHand>("BossHand2");

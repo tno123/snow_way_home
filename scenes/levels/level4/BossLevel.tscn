@@ -211,17 +211,17 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(328, 248)
 scale = Vector2(0.5, 0.5)
 
-[node name="BossHealth" parent="Camera2D" instance=ExtResource("10_5vfex")]
-offset_left = -322.0
-offset_top = -398.0
-offset_right = 318.0
-offset_bottom = -369.0
-
 [node name="Boss" parent="." instance=ExtResource("7_cdo05")]
 position = Vector2(321, 240)
 Bullet = ExtResource("10_tg87v")
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BossHealth" parent="UI" instance=ExtResource("10_5vfex")]
+offset_left = -207.0
+offset_top = -189.0
+offset_right = 224.0
+offset_bottom = -173.0
 
 [node name="SnowPower" parent="UI" instance=ExtResource("3_s1lwj")]
 anchors_preset = 0

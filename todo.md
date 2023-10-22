@@ -12,13 +12,14 @@
   - Angry Snoweater (ROAR)
   - Spits out snowball family
   - Jumps away
-- Death Animation bug (Frederik)
+- Death Animation bug (Tor-Arne)
 - Info page about mechanics for TownLevel and MountainLevel (Frederik)
 # Mountain Level (DONE)
 - Finish up
 
 # UI/UX (bare bones) (Frederik)
 - Menus
-- HUD
-- Startable intro screen
+- Ability to pause, start, restart while in game
+- HUD (bare polish, ikke kritisk per nå)
+- Intro screen where you can start or quit the game
 - Letterboxing

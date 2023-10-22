@@ -12,11 +12,15 @@ public partial class Avalanche : Node2D
 	private Vector2 startPosition;
 	private Vector2 EndPosition;
 	private bool atEnd = false;
+	private Snowball snowball;
+	private CollisionShape2D collisionShape2D;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		startPosition = Position;
+		snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
+		collisionShape2D = GetNode<Area2D>("Area2D").GetNode<CollisionShape2D>("CollisionShape2D");
 		try
 		{
 			Endpoint = GetNode<Node2D>("Endpoint");
@@ -32,7 +36,14 @@ public partial class Avalanche : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (!atEnd)
+		//if the snowball is close to startPosition, make invisible and non-collidable
+		var tooClose = snowball.GlobalPosition.DistanceTo(startPosition) < 100;
+		if (tooClose)
+		{
+			Visible = false;
+			collisionShape2D.Disabled = true;
+		}
+		if (!atEnd && !tooClose)
 		{
 			Position += (new Vector2(-1, 0).Rotated(Rotation)) * Speed * (float)delta;
 			if (Position.X < EndPosition.X)

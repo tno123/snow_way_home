@@ -30,7 +30,7 @@ void fragment() {
 	float numLevels = 8.0;
 	combinedFogFactor = floor(combinedFogFactor * numLevels)/numLevels;
 	
-	vec4 baseColor = texture(TEXTURE,UV);
+	vec4 baseColor = vec4(0.5);
 	baseColor = mix(baseColor,vec4(0.9,0.8,0.5,1.0),baseColor.a);
 	vec4 fogColor = vec4(vec3(0.5),1.0);
 	COLOR = mix(baseColor,fogColor,combinedFogFactor);

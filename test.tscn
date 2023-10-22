@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://rpkmbwj40vu2"]
 
 [ext_resource type="Shader" path="res://test.gdshader" id="1_7dq7p"]
-[ext_resource type="Texture2D" uid="uid://cr85h7cpnwdx" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_3.png" id="2_pdn22"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qv1pt"]
 shader = ExtResource("1_7dq7p")
 shader_parameter/uLoopSpeed = 1.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dnoi1"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qv1pt")
 position = Vector2(4.76837e-07, 4.76837e-07)
-texture = ExtResource("2_pdn22")
+texture = SubResource("PlaceholderTexture2D_dnoi1")
 region_enabled = true
 region_rect = Rect2(0, 144, 384, 72)

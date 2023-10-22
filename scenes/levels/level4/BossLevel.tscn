@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jgcldob3f86l" path="res://scenes/puddle/Puddle.tscn" id="6_sqwfj"]
 [ext_resource type="PackedScene" uid="uid://b3rvweu6uicbd" path="res://scenes/bounce_pad/BouncePad.tscn" id="7_48hmm"]
 [ext_resource type="PackedScene" uid="uid://ebbl3kcaa3ih" path="res://scenes/boss/Boss.tscn" id="7_cdo05"]
-[ext_resource type="PackedScene" uid="uid://bpf6ood7wmex4" path="res://scenes/BossHealth.tscn" id="10_5vfex"]
+[ext_resource type="PackedScene" uid="uid://bg7q3d24k6nw8" path="res://scenes/BossHealth.tscn" id="10_5vfex"]
 [ext_resource type="PackedScene" uid="uid://ct6xe2miasoqd" path="res://scenes/boss/BossBullet.tscn" id="10_tg87v"]
 [ext_resource type="AudioStream" uid="uid://d4c2jgwapoywn" path="res://assets/Music/the-final-boss-battle-158700.mp3" id="14_0wpm7"]
 [ext_resource type="PackedScene" uid="uid://csr3byn2tuva0" path="res://scenes/powerup/RespawnPowerup.tscn" id="14_nyplt"]

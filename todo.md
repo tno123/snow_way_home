@@ -13,7 +13,8 @@
   - Spits out snowball family
   - Jumps away
 - Death Animation bug (Tor-Arne)
-- Info page about mechanics for TownLevel and MountainLevel (Frederik)
+- Info page about mechanics for TownLevel and MountainLevel (Frederik) (DONE)
+- Info page about puddle (Frederik)
 # Mountain Level (DONE)
 - Finish up
 

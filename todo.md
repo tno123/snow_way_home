@@ -12,7 +12,7 @@
   - Angry Snoweater (ROAR)
   - Spits out snowball family
   - Jumps away
- 
+- Death Animation bug (Frederik) 
 # Mountain Level (DONE)
 - Finish up
 

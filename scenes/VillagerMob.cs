@@ -8,9 +8,6 @@ public partial class VillagerMob : CharacterBody2D
 
 	public bool canMove = true;
 
-	[Export]
-	public Line2D LineOfSight;
-
 	public const float Speed = 300.0f;
 	private Vector2 PreviousVelocity;
 	public const float JumpVelocity = -400.0f;
@@ -19,18 +16,15 @@ public partial class VillagerMob : CharacterBody2D
 	public AnimationPlayer AnimationPlayer;
 	public Sprite2D sprite;
 
+	public Vector2 StartPosition;
+
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Snowball = GetParent().GetParent().GetNode<Snowball>("Snowball");
-		if (LineOfSight != null)
-		{
-			//Add points to the LineOfSight.
-			LineOfSight.AddPoint(Position, 0);
-			LineOfSight.AddPoint(Snowball.Position, 1);
-		}
+		StartPosition = Position;
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		sprite = GetNode<Sprite2D>("Sprite2D");
@@ -44,7 +38,6 @@ public partial class VillagerMob : CharacterBody2D
 			AnimationPlayer.Play("walk");
 			Rotation += .3f * (3.14f / 180.0f);
 		}
-		UpdateLineOfSight();
 
 		Vector2 velocity = Velocity;
 
@@ -54,14 +47,14 @@ public partial class VillagerMob : CharacterBody2D
 
 		if (canMove)
 		{
-			if (Position.X < Snowball.Position.X)
+			if (Position.X < Snowball.Position.X && Velocity.X < Speed)
 			{
-				Position += new Vector2(Speed * (float)delta, 0);
+				velocity += new Vector2(Speed * (float)delta, 0);
 				sprite.FlipH = false;
 			}
 			else
 			{
-				Position -= new Vector2(Speed * (float)delta, 0);
+				velocity -= new Vector2(Speed * (float)delta, 0);
 				sprite.FlipH = true;
 			}
 		}
@@ -76,30 +69,11 @@ public partial class VillagerMob : CharacterBody2D
 			{
 				//Damage snowball and destroy self
 				Snowball.Damage(1);
-				if (LineOfSight != null)
-					LineOfSight.QueueFree();
+				if (Snowball.Power <= 1)
+				{
+					Position = StartPosition;
+				}
 			}
-		}
-	}
-
-	private void UpdateLineOfSight()
-	{
-		if (LineOfSight == null)
-			return;
-		LineOfSight.ClearPoints();
-		LineOfSight.AddPoint(Position);
-		LineOfSight.AddPoint(Snowball.Position);
-		// if length of line if shorter than 100, color line green, else color it red
-		if (
-			LineOfSight.GetPointPosition(0).DistanceTo(LineOfSight.GetPointPosition(1))
-			< MinDistance
-		)
-		{
-			LineOfSight.DefaultColor = new Color(0, 1, 0);
-		}
-		else
-		{
-			LineOfSight.DefaultColor = new Color(1, 0, 0);
 		}
 	}
 

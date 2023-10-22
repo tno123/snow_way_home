@@ -31,6 +31,7 @@ public partial class Snowball : CharacterBody2D
 	public const float BounceVelocity = -750.0f;
 	public const float BoostVelocity = 2000.0f;
 	public float FallSpeed = 1.0f;
+	public bool CanJump = true;
 	public TileMap tileMap;
 	public StaticBody2D staticBody2D;
 	public bool CurrentIce = false;
@@ -232,7 +233,8 @@ public partial class Snowball : CharacterBody2D
 			Input.IsActionJustPressed("ui_accept")
 			&& !IsOnFloor()
 			&& NextJumpTimer.IsStopped()
-			&& Power > 0
+			&& Power > 0 
+			&& CanJump
 		)
 		{
 			JumpAnim.Play("main");

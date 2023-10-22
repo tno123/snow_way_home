@@ -20,6 +20,7 @@ public partial class StartSlowGravity : Node
 	{
 		snowball.FallSpeed = 0.05f;
 		//snowball.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("slow");
+		snowball.CanJump = false;
 		QueueFree();
 	}
 }

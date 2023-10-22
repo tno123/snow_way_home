@@ -22,6 +22,7 @@ public partial class StartIceDestroy : Node
 	{
 		snowball.FallSpeed = 1.0f;
 		snowball.Damage(1);
+		snowball.CanJump = true;
 		QueueFree();
 	}
 }

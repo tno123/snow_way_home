@@ -1088,7 +1088,7 @@ texture = ExtResource("27_cvx2a")
 visible = false
 position = Vector2(35, -95)
 sprite_frames = SubResource("SpriteFrames_mb41b")
-frame_progress = 0.457147
+frame_progress = 0.174966
 
 [connection signal="body_entered" from="infoBoard" to="." method="_on_info_board_body_entered"]
 [connection signal="body_exited" from="infoBoard" to="." method="_on_info_board_body_exited"]

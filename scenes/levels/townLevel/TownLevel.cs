@@ -6,46 +6,51 @@ public partial class TownLevel : Node
 	// Called when the node enters the scene tree for the first time.
 	AnimatedSprite2D boostInfo;
 	ProgressBar SnowPower;
+	Area2D infoBoard;
 
-	//bool playing = false;
+	bool playing = false;
+	bool infoAvailable = false;
 
 	public override void _Ready()
 	{
+		infoBoard = GetNode<Area2D>("infoBoard");
 		boostInfo = GetNode<CanvasLayer>("UI").GetNode<AnimatedSprite2D>("boostInfo");
-		SnowPower = GetNode<CanvasLayer>("UI").GetNode<ProgressBar>("SnowPower");
 		boostInfo.Hide();
-		SnowPower.Hide();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed("ui_down"))
+		if (Input.IsActionPressed("showInfo") && infoAvailable)
 		{
-			GD.Print("pressed");
 			boostInfo.Show();
-			SnowPower.Show();
 			boostInfo.Play("default");
-			/*  if (!playing)
-			 {
-				 boostInfo.Play("default");
-				 playing = true;
-			 } */
 		}
+		else if (Input.IsActionPressed("hideInfo"))
+		{
+			boostInfo.Hide();
+			boostInfo.Stop();
+		}
+	}
 
-		//boostInfo.Hide();
-		//boostInfo.Stop();
-		/*
-		if ((snowball as Snowball).IsBoosting)
-			{
-				camera.Zoom = camera.Zoom.Lerp(boostZoom, zoomSpeed);
-				//camera.ZoomIn();
-			}
-			else
-			{
-				camera.Zoom = camera.Zoom.Lerp(defaultZoom, zoomSpeed);
-				//camera.ZoomOut();
-			}
-			*/
+	private void _on_info_board_body_entered(Node2D body)
+	{
+		if (body is Snowball)
+		{
+			infoAvailable = true;
+			infoBoard.GetNode<AnimatedSprite2D>("boardArrow").Visible = true;
+			infoBoard.GetNode<AnimatedSprite2D>("boardArrow").Play("default");
+		}
+	}
+
+	private void _on_info_board_body_exited(Node2D body)
+	{
+		if (body is Snowball)
+		{
+			infoAvailable = false;
+			infoBoard.GetNode<AnimatedSprite2D>("boardArrow").Visible = false;
+			boostInfo.Hide();
+			boostInfo.Stop();
+		}
 	}
 }

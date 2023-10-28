@@ -188,6 +188,7 @@ layer_0/tile_data = PackedInt32Array(196610, 458752, 5, 196611, 655360, 5, 19661
 [node name="MapObjects" type="Node" parent="."]
 
 [node name="Puddle" parent="MapObjects" instance=ExtResource("6_sqwfj")]
+visible = false
 
 [node name="BouncePad" parent="MapObjects" instance=ExtResource("7_48hmm")]
 position = Vector2(97, 252)

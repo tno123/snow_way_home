@@ -50,6 +50,8 @@ public partial class BossHand : Node2D
 		else if (body is StaticBody2D)
 		{
 			hit = true;
+			// Move back a bit
+			Position = Position - Velocity.Normalized() * 20;
 		}
 	}
 }

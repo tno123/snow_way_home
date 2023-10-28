@@ -152,7 +152,7 @@ public partial class Boss : Node2D
 		else if (state == "smash")
 		{
 			// Move the hand straight down
-			hand.Position += new Vector2(0, 10);
+			hand.Velocity = new Vector2(0, 400);
 			if (hand.hit)
 			{
 				hand.hit = false;

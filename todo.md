@@ -24,3 +24,4 @@
 - HUD (bare polish, ikke kritisk per nå)
 - Intro screen where you can start or quit the game
 - Letterboxing
+- Poof sound on boost (Tor-Arne)

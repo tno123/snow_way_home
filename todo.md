@@ -12,7 +12,7 @@
   - Angry Snoweater (ROAR)
   - Spits out snowball family
   - Jumps away
-- Death Animation bug (Tor-Arne)
+- Death Animation bug (Tor-Arne) (DONE)
 - Info page about mechanics for TownLevel and MountainLevel (Frederik) (DONE)
 - Info page about puddle (Frederik)
 # Mountain Level (DONE)

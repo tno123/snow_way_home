@@ -71,7 +71,8 @@ public partial class MainMenu : Control
 	
 	private void _on_levels_button_pressed()
 	{
-		LevelsTransition.SetNextAnimation("fade_out");
+		//Quit game
+		GetTree().Quit();
 
 	}
 }

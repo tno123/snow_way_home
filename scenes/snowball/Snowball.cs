@@ -404,9 +404,6 @@ public partial class Snowball : CharacterBody2D
 		{
 			DeathTimer.Start();
 		}
-		Position = Checkpoint;
-		Power = MaxPower;
-		EmitSignal(SignalName.Powerup, MaxPower);
 	}
 
 	public void SetIce(bool ice)

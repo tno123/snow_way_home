@@ -20,7 +20,11 @@
 
 # UI/UX (bare bones) (Frederik)
 - Menus
-- Ability to pause, start, restart while in game
+- Ability to pause, start, restart while in game.
+  - Pause in game 
+  - Restart level button
+  - Quit game button
+  - Main menu button
 - HUD (bare polish, ikke kritisk per nå)
 - Intro screen where you can start or quit the game
 - ~Letterboxing (SCRAPPED)~

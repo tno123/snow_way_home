@@ -500,14 +500,6 @@ public partial class Snowball : CharacterBody2D
 		Death();
 	}
 
-	/*It is probably best to handle logic for what happens with
-	steam and puddles and lava pit in this script (snowball.cs)*/
-
-	/*Steam*/
-
-	/*Puddle*/
-
-	/*Lava pit*/
 	private void _on_damage_boost_timer_timeout()
 	{
 		isDamaged = false;

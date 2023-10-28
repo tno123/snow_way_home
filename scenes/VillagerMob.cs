@@ -9,6 +9,7 @@ public partial class VillagerMob : CharacterBody2D
 	public bool canMove = true;
 
 	public const float Speed = 300.0f;
+	public const float MaxSpeed = 400.0f;
 	private Vector2 PreviousVelocity;
 	public const float JumpVelocity = -400.0f;
 
@@ -59,6 +60,9 @@ public partial class VillagerMob : CharacterBody2D
 			}
 		}
 
+		if (velocity.Length() > MaxSpeed)
+			velocity = velocity.Normalized() * MaxSpeed;
+
 		Velocity = velocity;
 		MoveAndSlide();
 
@@ -69,12 +73,15 @@ public partial class VillagerMob : CharacterBody2D
 			{
 				//Damage snowball and destroy self
 				Snowball.Damage(1);
-				if (Snowball.Power <= 1)
+				if (Snowball.Power <= 0)
 				{
 					Position = StartPosition;
+					StopMovement();
 				}
 			}
 		}
+		if (!canMove && Snowball.Power > 0)
+			StartMovement();
 	}
 
 	public void StopMovement()

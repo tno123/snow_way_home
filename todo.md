@@ -23,5 +23,5 @@
 - Ability to pause, start, restart while in game
 - HUD (bare polish, ikke kritisk per nå)
 - Intro screen where you can start or quit the game
-- Letterboxing
+- ~Letterboxing (SCRAPPED)~
 - Poof sound on boost (Tor-Arne)

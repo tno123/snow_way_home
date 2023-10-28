@@ -1562,6 +1562,7 @@ position = Vector2(2497, 167)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_v1f2o")
 autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="StartObjects/IceDestroyArea" to="Snowball/StartIceDestroy" method="_on_ice_destroy_area_body_entered"]
 [connection signal="body_entered" from="StartObjects/SlowGravityArea" to="Snowball/StartSlowGravity" method="_on_slow_gravity_area_body_entered"]

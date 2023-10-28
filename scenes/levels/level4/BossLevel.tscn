@@ -242,3 +242,4 @@ offset_bottom = 240.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_0wpm7")
 autoplay = true
+bus = &"Music"

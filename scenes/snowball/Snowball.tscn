@@ -483,9 +483,11 @@ sprite_frames = SubResource("SpriteFrames_3gqu2")
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_e43pk")
+bus = &"Sound FX"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_36q41")
+bus = &"Sound FX"
 
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
 [connection signal="timeout" from="DamageBoostTimer" to="." method="_on_damage_boost_timer_timeout"]

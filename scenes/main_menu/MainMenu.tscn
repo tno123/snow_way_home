@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/main_menu/MainMenu.cs" id="1_v54ta"]
 [ext_resource type="Texture2D" uid="uid://doy6gokr7rwgq" path="res://art/ui/startbutton.png" id="2_m4dlg"]
 [ext_resource type="Texture2D" uid="uid://ckt8ni4qn0anp" path="res://art/ui/optionsbutton.png" id="3_lo6h0"]
-[ext_resource type="PackedScene" uid="uid://dfrhscokjxy7t" path="res://scenes/levels/templevel/TempLevel.tscn" id="4_dnbh2"]
 [ext_resource type="PackedScene" uid="uid://bmahbldyxo1ex" path="res://utils/Transitions.tscn" id="4_s5p2y"]
+[ext_resource type="PackedScene" uid="uid://00ae8gsru8jo" path="res://scenes/levels/townLevel/TownLevel.tscn" id="6_puert"]
 [ext_resource type="Texture2D" uid="uid://c75nqpu35i15g" path="res://art/ui/levels.png" id="7_d7urs"]
 [ext_resource type="PackedScene" uid="uid://cb8j53junrfii" path="res://scenes/select_screen/select_screen.tscn" id="7_prflq"]
 
@@ -67,7 +67,7 @@ offset_left = 4.0
 offset_right = 4.0
 offset_bottom = 0.0
 scale = Vector2(1.00632, 1.01012)
-scene_to_load = ExtResource("4_dnbh2")
+scene_to_load = ExtResource("6_puert")
 
 [node name="StartTexture" type="TextureRect" parent="Start"]
 layout_mode = 0

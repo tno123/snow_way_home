@@ -60,8 +60,9 @@ public partial class MainMenu : Control
 	
 	private void _on_options_button_down()
 	{
-		
 		OptionsButtonTexture.Texture = OptionsSelected;
+		var sceneManager = GetNode<SceneManager>("/root/SceneManager");
+		sceneManager.GotoScene("res://scenes/options_menu/OptionsMenu.tscn");
 	}
 	
 	private void _on_options_button_up()

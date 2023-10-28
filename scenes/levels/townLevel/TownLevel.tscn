@@ -872,3 +872,4 @@ spawnFromLeft = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_uwe6u")
 autoplay = true
+bus = &"Music"

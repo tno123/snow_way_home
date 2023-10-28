@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://x10n2221qhy7"]
+
+[ext_resource type="Script" path="res://scenes/options_menu/OptionsMenu.cs" id="1_boq0j"]
+[ext_resource type="Texture2D" uid="uid://dm0joiqd70s6l" path="res://assets/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains_desat.png" id="1_u2h82"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lyjvi"]
+font_size = 32
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_boq0j")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 243)
+scale = Vector2(2.26852, 2.26852)
+texture = ExtResource("1_u2h82")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 256.0
+offset_right = 384.0
+offset_bottom = 48.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_lyjvi")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.262
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.717
+offset_left = 152.32
+offset_top = 144.0
+offset_right = -192.0
+offset_bottom = -104.16
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Labels" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = -96.0
+offset_top = -136.0
+offset_right = 80.0
+offset_bottom = 96.0
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="MasterLabel" type="Label" parent="Control/Labels"]
+layout_mode = 2
+text = "Master"
+
+[node name="MusicLabel" type="Label" parent="Control/Labels"]
+layout_mode = 2
+text = "Music"
+
+[node name="FXLabel" type="Label" parent="Control/Labels"]
+layout_mode = 2
+text = "Sound FX"
+
+[node name="Sliders" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = -64.0
+offset_right = 96.0
+offset_bottom = 24.0
+size_flags_horizontal = 8
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Control/Sliders"]
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="Control/Sliders"]
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+
+[node name="FXSlider" type="HSlider" parent="Control/Sliders"]
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.462
+anchor_top = 0.95
+anchor_right = 0.537
+anchor_bottom = 1.0
+offset_left = 0.320007
+offset_top = -152.0
+offset_right = 0.320007
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="value_changed" from="Control/Sliders/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Control/Sliders/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Control/Sliders/FXSlider" to="." method="_on_fx_slider_value_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

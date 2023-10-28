@@ -5,7 +5,7 @@
 - Bounce pads for damage on Boss (Tor-Arne) DONE
   - jump on hands (need boss health bar to thoroughly test)
 - Boss health bar (somewhere) (Frederik) (DONE)
-- Giant Snoweater (ending cutscene) (Frederik)
+- Giant Snoweater (ending cutscene) (Frederik) (SCRAPPED)
   - Zoom out to show mountain
   - Jumps out from behind mountain
   - Jumps on player platform

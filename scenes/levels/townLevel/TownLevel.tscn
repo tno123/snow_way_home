@@ -697,19 +697,21 @@ script = ExtResource("1_ryx16")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.6, 0.6)
 motion_offset = Vector2(0, -100)
-motion_mirroring = Vector2(1.228, 0)
+motion_mirroring = Vector2(1.229, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(3.2, 3.2)
+position = Vector2(0, -96)
+scale = Vector2(3.53333, 3.53333)
 texture = ExtResource("2_hle1d")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.65, 0.65)
-motion_mirroring = Vector2(1024, 923)
+motion_mirroring = Vector2(1344, 923)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(3.206, 3.206)
+position = Vector2(0, -88)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("3_5p34v")
 centered = false
 
@@ -752,11 +754,11 @@ position = Vector2(2005, 469)
 position = Vector2(1319, 492)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1824, 301)
+position = Vector2(-2736, 488)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Snowball" parent="." instance=ExtResource("2_gbfq3")]
-position = Vector2(1824, 301)
+position = Vector2(-2736, 488)
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Snowball"]

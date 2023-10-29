@@ -39,6 +39,7 @@ public partial class Snowball : CharacterBody2D
 	public Snowbank Snowbank;
 	public AudioStreamPlayer JumpSound;
 	public AudioStreamPlayer HurtSound;
+	public AudioStreamPlayer BoostSound;
 
 	private int MaxPower = 3;
 	private Timer CoyoteJumpTimer;
@@ -90,6 +91,7 @@ public partial class Snowball : CharacterBody2D
 
 		JumpSound = GetNode<AudioStreamPlayer>("JumpSound");
 		HurtSound = GetNode<AudioStreamPlayer>("HurtSound");
+		BoostSound = GetNode<AudioStreamPlayer>("BoostSound");
 
 		CoyoteJumpTimer = GetNode<Timer>("CoyoteJumpTimer");
 		NextJumpTimer = GetNode<Timer>("NextJumpTimer");
@@ -265,6 +267,8 @@ public partial class Snowball : CharacterBody2D
 		isBoosting = true;
 
 		BoostSmokeAnimation.Play("default");
+		BoostSound.Play();
+
 		if (sprite.FlipH) // Facing right
 		{
 			velocity.X += BoostVelocity;
@@ -395,6 +399,7 @@ public partial class Snowball : CharacterBody2D
 	public void Death()
 	{
 		sprite.Visible = false;
+		StopMovement();
 
 		DeathAnimation.Play("default");
 		Scale = originalScale;
@@ -528,6 +533,7 @@ public partial class Snowball : CharacterBody2D
 
 		Position = Checkpoint;
 		Power = MaxPower;
+		StartMovement();
 		EmitSignal(SignalName.Powerup, MaxPower);
 	}
 }

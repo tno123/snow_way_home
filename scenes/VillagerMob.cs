@@ -80,13 +80,14 @@ public partial class VillagerMob : CharacterBody2D
 				}
 			}
 		}
-		if (!canMove && Snowball.Power > 0)
+		if (!canMove && GlobalPosition.DistanceTo(Snowball.GlobalPosition) > 600)
 			StartMovement();
 	}
 
 	public void StopMovement()
 	{
 		AnimationPlayer.Stop();
+		Velocity = new Vector2(0, 0);
 		canMove = false;
 		//PreviousVelocity = Velocity;
 		//Velocity = new Vector2(0, 0);

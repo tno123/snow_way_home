@@ -456,11 +456,12 @@ sprite_frames = SubResource("SpriteFrames_itjid")
 animation = &"main"
 
 [node name="JumpAnim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4, 89)
+position = Vector2(-4, 69)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_f2ofb")
 animation = &"main"
+frame = 6
 frame_progress = 1.0
 
 [node name="IceSprite" type="AnimatedSprite2D" parent="."]
@@ -488,6 +489,7 @@ bus = &"Sound FX"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_36q41")
+volume_db = -5.622
 bus = &"Sound FX"
 
 [node name="BoostSound" type="AudioStreamPlayer" parent="."]

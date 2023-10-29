@@ -167,16 +167,18 @@ public partial class Snowball : CharacterBody2D
 				if (direction.X < 0)
 				{
 					Vector2 newOffset = sprite.Offset;
-					newOffset.X = 20;
-					BoostSmokeAnimation.Offset = WalkDustAnimation.Offset = newOffset;
+					newOffset.X = 10;
+					WalkDustAnimation.Offset = newOffset;
+					BoostSmokeAnimation.Offset = newOffset + new Vector2(10, 0);
 					BoostSmokeAnimation.FlipH = false;
 					sprite.FlipH = WalkDustAnimation.FlipH = false;
 				}
 				if (direction.X > 0)
 				{
 					Vector2 newOffset = sprite.Offset;
-					newOffset.X = -20;
-					BoostSmokeAnimation.Offset = WalkDustAnimation.Offset = newOffset;
+					newOffset.X = -10;
+					WalkDustAnimation.Offset = newOffset;
+					BoostSmokeAnimation.Offset = newOffset + new Vector2(-10, 0);
 					BoostSmokeAnimation.FlipH = true;
 					sprite.FlipH = WalkDustAnimation.FlipH = true;
 				}

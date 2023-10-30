@@ -1094,4 +1094,3 @@ frame_progress = 0.174966
 
 [connection signal="body_entered" from="infoBoard" to="." method="_on_info_board_body_entered"]
 [connection signal="body_exited" from="infoBoard" to="." method="_on_info_board_body_exited"]
-bus = &"Music"

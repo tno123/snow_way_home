@@ -26,8 +26,8 @@
 [ext_resource type="AudioStream" uid="uid://1modeyyjy24c" path="res://assets/Music/creepy-devil-dance-166764.mp3" id="25_uwe6u"]
 [ext_resource type="PackedScene" uid="uid://d20sb8r6n6hsr" path="res://scenes/SpawnEnemy.tscn" id="25_wtx6o"]
 [ext_resource type="Texture2D" uid="uid://bebchycvc0ivl" path="res://art/mechanicInfoScreen/townLevelInfo-Sheet.png" id="26_76a47"]
-[ext_resource type="Texture2D" uid="uid://xk7n4stisokj" path="res://art/mechanicInfoScreen/infoBoard.png" id="27_cvx2a"]
-[ext_resource type="Texture2D" uid="uid://csnsv2j7b6m8y" path="res://art/mechanicInfoScreen/simpleArrow-Sheet.png" id="28_oelh8"]
+[ext_resource type="Texture2D" path="res://art/mechanicInfoScreen/infoBoard.png" id="27_cvx2a"]
+[ext_resource type="Texture2D" path="res://art/mechanicInfoScreen/simpleArrow-Sheet.png" id="28_oelh8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3x36"]
 atlas = ExtResource("26_76a47")

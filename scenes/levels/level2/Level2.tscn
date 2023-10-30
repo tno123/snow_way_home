@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bfovgbicmuwg4"]
+[gd_scene load_steps=35 format=3 uid="uid://bfovgbicmuwg4"]
 
 [ext_resource type="Texture2D" uid="uid://c4pwnmx6jm3oo" path="res://assets/oak_woods_v1.0/background/background_layer_1.png" id="1_25esc"]
 [ext_resource type="Texture2D" uid="uid://dm0joiqd70s6l" path="res://assets/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains_desat.png" id="1_l4fhy"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b6yeb1l6fchdg" path="res://assets/oak_woods_v1.0/background/background_layer_2.png" id="2_qobuu"]
 [ext_resource type="PackedScene" uid="uid://qhu4pswy7baj" path="res://scenes/snowball/Snowball.tscn" id="2_u6hjr"]
 [ext_resource type="Texture2D" uid="uid://bxeq73ac2mvpx" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="3_3dois"]
-[ext_resource type="Texture2D" uid="uid://b7vkivtjs4ouv" path="res://assets/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2_alt.png" id="3_rbe0n"]
 [ext_resource type="PackedScene" uid="uid://ciawowjochtyb" path="res://scenes/powerup/SnowPower.tscn" id="6_34k1r"]
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="7_7yeh8"]
 [ext_resource type="Texture2D" uid="uid://dkdwcmlxbrdq1" path="res://assets/GothicVania-town-files/GothicVania-town-files/PNG/environment/layers/tileset.png" id="9_8wrjr"]
@@ -1379,7 +1378,6 @@ motion_mirroring = Vector2(1800, 0)
 material = SubResource("ShaderMaterial_3c2ru")
 position = Vector2(836, -272)
 scale = Vector2(4.6875, 3.80328)
-texture = ExtResource("3_rbe0n")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)
@@ -1555,7 +1553,6 @@ position = Vector2(2497, 167)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_v1f2o")
 autoplay = true
-bus = &"Music"
 
 [connection signal="body_entered" from="StartObjects/IceDestroyArea" to="Snowball/StartIceDestroy" method="_on_ice_destroy_area_body_entered"]
 [connection signal="body_entered" from="StartObjects/SlowGravityArea" to="Snowball/StartSlowGravity" method="_on_slow_gravity_area_body_entered"]

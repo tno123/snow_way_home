@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://ct1kkmefo05im" path="res://assets/Rocky Roads/Tilesets/tileset_snow_64.png" id="13_54xhc"]
 [ext_resource type="PackedScene" uid="uid://cjtgywppgw4ut" path="res://scenes/checkpoint/Checkpoint.tscn" id="13_a756w"]
 [ext_resource type="AudioStream" uid="uid://cde4lqeeh1eos" path="res://assets/Music/a-hero-of-the-80s-126684.mp3" id="17_vdorh"]
-[ext_resource type="Texture2D" path="res://art/mechanicInfoScreen/snowyInfoBoard.png" id="19_xv4c1"]
-[ext_resource type="Texture2D" path="res://art/mechanicInfoScreen/simpleArrow-Sheet.png" id="20_dav27"]
+[ext_resource type="Texture2D" uid="uid://4m7ljispgnen" path="res://art/mechanicInfoScreen/snowyInfoBoard.png" id="19_xv4c1"]
+[ext_resource type="Texture2D" uid="uid://csnsv2j7b6m8y" path="res://art/mechanicInfoScreen/simpleArrow-Sheet.png" id="20_dav27"]
 
 [sub_resource type="Curve" id="Curve_65mtk"]
 min_value = -200.0

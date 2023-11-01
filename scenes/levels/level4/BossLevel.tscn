@@ -211,6 +211,7 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(328, 248)
 scale = Vector2(0.5, 0.5)
+limit_bottom = 512
 
 [node name="Boss" parent="." instance=ExtResource("7_cdo05")]
 position = Vector2(321, 240)
